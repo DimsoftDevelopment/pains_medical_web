@@ -1,0 +1,2852 @@
+/*Fonts*/
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+/*Fonts*/
+/*Mixin*/
+/*Mixin*/
+/*Styles*/
+/*Basic*/
+* {
+  margin: 0;
+  padding: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+html {
+  height: 100%; }
+
+body, html {
+  width: 100%;
+  color: #000; }
+
+body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background-color: #f5f8f9; }
+  body * {
+    font-family: 'Montserrat', sans-serif;
+    color: #0d2a4a; }
+  body.overlay {
+    overflow: hidden; }
+
+input,
+button {
+  border: 0 none;
+  background-color: transparent; }
+
+a:focus,
+input:focus,
+button:focus {
+  outline: none; }
+
+button {
+  cursor: pointer; }
+
+.logo {
+  display: block;
+  width: 200px;
+  height: 243px;
+  background-image: url("../img/logo.png");
+  background-image: -webkit-image-set(url("../img/logo.png") 1x, url("../img/logo@2x.png") 2x, url("../img/logo@3x.png") 3x);
+  background-image: image-set(url("../img/logo.png") 1x, url("../img/logo@2x.png") 2x, url("../img/logo@3x.png") 3x);
+  background-repeat: no-repeat; }
+  .logo--small {
+    display: inline-block;
+    width: 61px;
+    height: 61px;
+    background-image: url("../img/logo_small.png");
+    background-image: -webkit-image-set(url("../img/logo_small.png") 1x, url("../img/logo_small@2x.png") 2x, url("../img/logo_small@3x.png") 3x);
+    background-image: image-set(url("../img/logo_small.png") 1x, url("../img/logo_small@2x.png") 2x, url("../img/logo_small@3x.png") 3x);
+    background-repeat: no-repeat; }
+
+.avatar {
+  position: relative;
+  font-size: 0;
+  line-height: 0;
+  border-radius: 50%;
+  overflow: hidden; }
+  .avatar img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: center;
+    object-position: center; }
+
+/*Forms*/
+.form__row {
+  margin-bottom: 32px; }
+  .form__row--columns {
+    display: flex;
+    justify-content: space-between;
+    align-items: start; }
+    .form__row--columns .columns__column--course {
+      flex: 1; }
+    .form__row--columns .columns__column--start, .form__row--columns .columns__column--end {
+      padding-left: 32px;
+      flex: 0 0 287px;
+      width: 287px; }
+    .form__row--columns .columns__column--time, .form__row--columns .columns__column--doze {
+      margin-left: 32px;
+      flex: 1; }
+  .form__row.tac {
+    text-align: center; }
+
+.form__label {
+  display: block;
+  margin-bottom: 17px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.11px;
+  cursor: pointer; }
+  .form__label--gallery {
+    display: block; }
+    .form__label--gallery:before {
+      display: inline-block;
+      content: '';
+      width: 85px;
+      height: 85px;
+      cursor: pointer;
+      border-radius: 5px;
+      background-color: rgba(43, 132, 235, 0.1);
+      background-image: url("../img/icons/i-camera_2.png");
+      background-image: -webkit-image-set(url("../img/icons/i-camera_2.png") 1x, url("../img/icons/i-camera_2@2x.png") 2x, url("../img/icons/i-camera_2@3x.png") 3x);
+      background-image: image-set(url("../img/icons/i-camera_2.png") 1x, url("../img/icons/i-camera_2@2x.png") 2x, url("../img/icons/i-camera_2@3x.png") 3x);
+      background-position: 50%;
+      background-repeat: no-repeat;
+      vertical-align: middle; }
+    .form__label--gallery span {
+      margin-left: 30px;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.11px;
+      text-align: left;
+      color: #2b84eb; }
+    .form__label--gallery input {
+      display: none; }
+  .form__label--radio {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(13, 42, 74, 0.5);
+    cursor: pointer;
+    line-height: 1.5;
+    letter-spacing: 0.15px; }
+    .form__label--radio:before {
+      display: inline-block;
+      content: '';
+      margin: -3px 16px 0 0;
+      width: 20px;
+      height: 20px;
+      box-shadow: inset 1px 1px 2px 0 rgba(0, 0, 0, 0.1);
+      background-color: #dbdfe4;
+      border-radius: 50%;
+      vertical-align: middle; }
+
+.form__input, .form__textarea, .form__select {
+  padding: 16px 16px 17px 16px;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.15px;
+  line-height: 1;
+  border-radius: 3.5px;
+  border: solid 1px #dbdfe4;
+  background-color: #ffffff;
+  box-shadow: 0 7px 20px 0 rgba(216, 223, 225, 0.5);
+  outline: none; }
+  .form__input::-webkit-input-placeholder, .form__textarea::-webkit-input-placeholder, .form__select::-webkit-input-placeholder {
+    color: rgba(13, 42, 74, 0.54); }
+  .form__input::-moz-placeholder, .form__textarea::-moz-placeholder, .form__select::-moz-placeholder {
+    color: rgba(13, 42, 74, 0.54); }
+  .form__input:-ms-input-placeholder, .form__textarea:-ms-input-placeholder, .form__select:-ms-input-placeholder {
+    color: rgba(13, 42, 74, 0.54); }
+  .form__input:-moz-placeholder, .form__textarea:-moz-placeholder, .form__select:-moz-placeholder {
+    color: rgba(13, 42, 74, 0.54); }
+
+.form__input.datepicker-here {
+  background: #fff url("../img/icons/i-calendar_2.png") no-repeat calc(100% - 16px) 50%; }
+
+.form__input--radio {
+  display: none; }
+  .form__input--radio:checked + label {
+    color: #0d2a4a; }
+    .form__input--radio:checked + label:before {
+      width: 10px;
+      height: 10px;
+      border: solid 5px #2b84eb;
+      background-color: #f5f8f9;
+      box-shadow: unset; }
+
+.form__input--pin {
+  margin: 0 12px;
+  width: 20px;
+  height: 20px;
+  box-shadow: inset 1px 1px 2px 0 rgba(0, 0, 0, 0.1);
+  background-color: #dbdfe4;
+  border-radius: 50%; }
+
+.form__textarea {
+  line-height: 1.33; }
+
+.form .custom-select {
+  position: relative; }
+  .form .custom-select select {
+    display: none; }
+  .form .custom-select .select-selected {
+    position: relative;
+    width: 100%;
+    padding: 18px 46px 18px 16px;
+    font-size: 16px;
+    color: #0d2a4a;
+    cursor: pointer;
+    line-height: 1;
+    border-radius: 4px;
+    border: solid 1px #dcdcdc;
+    background-color: #ffffff;
+    box-shadow: 0 7px 20px 0 rgba(216, 223, 225, 0.5); }
+    .form .custom-select .select-selected:after {
+      content: '';
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      margin-top: -6px;
+      width: 21px;
+      height: 12px;
+      background: url("../img/icons/i-chevron_down.png") no-repeat 50%; }
+    .form .custom-select .select-selected.select-arrow-active:after {
+      transform: rotate(-180deg); }
+  .form .custom-select .select-items {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 24px;
+    background-color: #fff;
+    z-index: 21;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2); }
+    .form .custom-select .select-items div {
+      margin-bottom: 12px;
+      font-size: 16px;
+      color: #0d2a4a;
+      cursor: pointer; }
+      .form .custom-select .select-items div:hover {
+        color: #000; }
+      .form .custom-select .select-items div:last-child {
+        margin-bottom: 0; }
+  .form .custom-select .select-hide {
+    display: none; }
+
+.form .switch__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; }
+  .form .switch__wrapper.active .switch__text,
+  .form .switch__wrapper.active .switch__text *,
+  .form .switch__wrapper.active .switch__hint {
+    color: #0d2a4a; }
+    .form .switch__wrapper.active .switch__text img,
+    .form .switch__wrapper.active .switch__text * img,
+    .form .switch__wrapper.active .switch__hint img {
+      opacity: 1; }
+
+.form .switch__text,
+.form .switch__text * {
+  color: rgba(13, 42, 74, 0.5); }
+  .form .switch__text img,
+  .form .switch__text * img {
+    opacity: 0.5; }
+
+.form .switch__input {
+  display: none; }
+  .form .switch__input:checked + label {
+    background-color: #2b84eb; }
+    .form .switch__input:checked + label:before {
+      left: calc(100% - 31px); }
+
+.form .switch__label {
+  position: relative;
+  display: block;
+  width: 62px;
+  height: 34px;
+  padding: 2px;
+  cursor: pointer;
+  border-radius: 75px;
+  box-shadow: inset 1px 1px 2px 0 rgba(0, 0, 0, 0.1);
+  background-color: #dbdfe4;
+  transition: background-color 0.5s ease; }
+  .form .switch__label:before {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    content: '';
+    width: 29px;
+    height: 30px;
+    border-radius: 75px;
+    background-color: #fff;
+    transition: left 0.5s ease; }
+
+.form .switch__hint {
+  flex: 0 0 100%;
+  color: rgba(13, 42, 74, 0.5); }
+
+.form__reset, .form__submit {
+  padding: 24px;
+  min-width: 250px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.11px;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 10px 4px 20px 0 rgba(216, 223, 225, 0.5); }
+  .form__reset:disabled, .form__submit:disabled {
+    opacity: 0.5; }
+
+.form__reset {
+  background-color: #ff765f; }
+
+.form__submit {
+  background-color: #2b84eb; }
+
+.form--authorization {
+  width: 430px; }
+  .form--authorization .logo {
+    margin: 0 auto 32px auto; }
+  .form--authorization .form__row {
+    margin-bottom: 16px; }
+  .form--authorization .form__title {
+    margin-bottom: 24px;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: 0.22px;
+    text-align: center; }
+  .form--authorization .form__row {
+    margin-bottom: 16px; }
+    .form--authorization .form__row--avatar {
+      margin-bottom: 32px; }
+    .form--authorization .form__row--columns {
+      display: flex;
+      justify-content: space-betwen;
+      align-items: center;
+      margin: 0 -15px 16px -15px; }
+      .form--authorization .form__row--columns .form__column--2 {
+        flex: 0 0 50%;
+        padding: 0 15px; }
+    .form--authorization .form__row--submit {
+      margin-bottom: 0;
+      padding-top: 24px;
+      text-align: center; }
+    .form--authorization .form__row--skip {
+      padding-top: 24px;
+      text-align: center; }
+  .form--authorization .form__label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 18px;
+    line-height: 1.5;
+    letter-spacing: 0.11px;
+    cursor: pointer; }
+    .form--authorization .form__label--avatar {
+      margin: 0 auto;
+      width: 200px;
+      height: 200px;
+      border-radius: 500px;
+      background-color: rgba(43, 132, 235, 0.1);
+      background-image: url("../img/icons/i-camera.png");
+      background-position: 50%;
+      background-repeat: no-repeat; }
+  .form--authorization .form__input {
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.15px;
+    border-radius: 3.5px;
+    background-color: #fff;
+    border: 0 none;
+    box-shadow: unset; }
+    .form--authorization .form__input--avatar {
+      display: none; }
+    .form--authorization .form__input--datepicker {
+      background-image: url("../img/icons/i-calendar.png");
+      background-position: calc(100% - 16px) 50%;
+      background-repeat: no-repeat; }
+  .form--authorization .form__submit {
+    min-width: 332px;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.15px;
+    color: #fff;
+    border-radius: 500px;
+    background-color: #2b84eb; }
+  .form--authorization .btn-skip {
+    font-size: 18px;
+    line-height: 1.5;
+    letter-spacing: 0.11px; }
+  .form--authorization .custom-select .select-selected {
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.15px;
+    color: #0d2a4a;
+    border: 0 none; }
+  .form--authorization .custom-select .select-items {
+    right: 15px;
+    left: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.15px; }
+    .form--authorization .custom-select .select-items div {
+      padding: 16px 0; }
+
+.form--popup .form__row {
+  margin-bottom: 16px; }
+  .form--popup .form__row--columns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 -12px 24px; }
+    .form--popup .form__row--columns .form__column--4 {
+      flex: 0 0 25%;
+      padding: 0px 12px; }
+  .form--popup .form__row--notification {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.11px;
+    color: #2b84eb; }
+    .form--popup .form__row--notification .icon {
+      margin-left: 16px; }
+  .form--popup .form__row--text {
+    font-size: 14px;
+    line-height: 1.5;
+    letter-spacing: 0.08px; }
+    .form--popup .form__row--text a {
+      color: #2b84eb; }
+  .form--popup .form__row--submit {
+    padding-top: 16px; }
+
+.form--popup .form__input {
+  padding: 13px 24px;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.14px;
+  border-radius: 3.5px;
+  box-shadow: 0 7px 20px 0 rgba(216, 223, 225, 0.5);
+  background-color: #fff;
+  border: 0 none; }
+  .form--popup .form__input.tac {
+    text-align: center; }
+
+.form--popup .form__submit {
+  padding: 19px;
+  min-width: 160px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.5;
+  letter-spacing: 0.11px;
+  border-radius: 500px;
+  background-color: #2b84eb; }
+  .form--popup .form__submit:disabled {
+    background-color: #dbdfe4; }
+
+/*Forms*/
+/*Basic*/
+/*Content*/
+.page__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  min-height: 100vh; }
+
+.page__title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.14px; }
+
+.content__wrapper {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: stretch; }
+  .content__wrapper > .content {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    max-width: calc(100% - 350px); }
+    .content__wrapper > .content > .content__block {
+      flex: 1 0 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: stretch;
+      padding: 40px 45px 40px 30px; }
+      .content__wrapper > .content > .content__block > .section--fullheight {
+        flex: 1 0 auto; }
+        .content__wrapper > .content > .content__block > .section--fullheight .block--fullheight {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          height: 100%; }
+          .content__wrapper > .content > .content__block > .section--fullheight .block--fullheight .block__empty {
+            flex: 1 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%; }
+        .content__wrapper > .content > .content__block > .section--fullheight .page--fullheight {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          height: 100%; }
+
+.breadcrumbs {
+  padding: 32px;
+  background-color: #fff;
+  border: solid 1px #f5f8f9;
+  box-shadow: 0 7px 20px 0 rgba(216, 223, 225, 0.5); }
+
+.block__title {
+  margin-bottom: 16px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.11px; }
+  .block__title--schedule {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; }
+    .block__title--schedule .date {
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1.5;
+      letter-spacing: 0.14px; }
+    .block__title--schedule .count {
+      font-size: 24px;
+      font-weight: normal;
+      line-height: 1.5;
+      letter-spacing: 0.14px; }
+    .block__title--schedule .slashes {
+      flex: 0 0 100%;
+      padding-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 3px; }
+      .block__title--schedule .slashes .slash {
+        display: block;
+        margin: 0 9px;
+        width: 100%;
+        height: 3px;
+        background-color: #dbdfe4; }
+        .block__title--schedule .slashes .slash.missed {
+          background-color: #ff765f; }
+        .block__title--schedule .slashes .slash.taken {
+          background-color: #2b84eb; }
+        .block__title--schedule .slashes .slash:first-child {
+          margin-left: 0; }
+        .block__title--schedule .slashes .slash:last-child {
+          margin-right: 0; }
+  .block__title img {
+    margin-right: 8px;
+    vertical-align: middle; }
+
+/*SignIn*/
+.signin .content__wrapper > .content {
+  max-width: unset;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+/*SignIn*/
+/*Empty*/
+.empty__icon {
+  margin-bottom: 31px; }
+
+.empty__title {
+  margin-bottom: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.11px; }
+
+.empty__text {
+  margin: 0 auto 40px auto;
+  max-width: 300px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.5;
+  letter-spacing: 0.08px; }
+
+.empty__btns .btns {
+  padding: 18px 50px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.11px;
+  color: #fff;
+  border-radius: 500px;
+  box-shadow: 0 7px 20px 0 rgba(216, 223, 225, 0.5);
+  background-color: #2b84eb; }
+
+/*Empty*/
+/*Family*/
+.family__block {
+  margin-bottom: 24px; }
+  .family__block .family__list .list__item {
+    display: inline-block;
+    margin-right: 40px;
+    vertical-align: top;
+    opacity: 0.5; }
+    .family__block .family__list .list__item.active {
+      opacity: 1; }
+      .family__block .family__list .list__item.active .family__avatar {
+        border-color: #2b84eb; }
+      .family__block .family__list .list__item.active .family__name {
+        padding-top: 0; }
+        .family__block .family__list .list__item.active .family__name span {
+          font-size: 18px;
+          letter-spacing: 0.11px; }
+  .family__block .family__list .list__link {
+    position: relative; }
+  .family__block .family__avatar {
+    margin: 0 auto 16px;
+    width: 64px;
+    height: 64px;
+    border: 4px solid transparent; }
+  .family__block .family__name {
+    display: block;
+    padding-top: 6px; }
+    .family__block .family__name span {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.5;
+      letter-spacing: 0.08px;
+      text-align: center; }
+  .family__block .family__notification {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 24px;
+    height: 24px;
+    padding: 1px 8px;
+    font-size: 14px;
+    line-height: 1.57;
+    letter-spacing: -0.41px;
+    text-align: center;
+    color: #fff;
+    border-radius: 50%;
+    background-color: #ff765f; }
+
+.family__page .block__title {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end; }
+
+.family__page .btn-invite,
+.family__page .btn-remove {
+  padding: 19px;
+  min-width: 260px;
+  font-size: 18px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: 0.11px;
+  text-align: center;
+  color: #fff;
+  border-radius: 5px; }
+
+.family__page .btn-invite {
+  background-color: #2b84eb; }
+
+.family__page .btn-remove {
+  background-color: #ff765f; }
+
+.family__page .courses__block {
+  display: flex;
+  justify-content: space-between;
+  align-items: stetch; }
+  .family__page .courses__block .tabs__wrapper {
+    flex: 0 0 430px;
+    margin-right: 30px;
+    width: 430px; }
+  .family__page .courses__block .courses__list .card .course__date .notifications {
+    display: inline-block;
+    padding: 4px 8px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.07px;
+    color: #fff;
+    border-radius: 500px;
+    background-color: #ff765f; }
+
+.family__page .btns__wrapper {
+  position: relative; }
+  .family__page .btns__wrapper .btn-remove {
+    position: absolute;
+    bottom: 0;
+    right: 0; }
+
+/*Family*/
+/*Calendar*/
+.calendar__block {
+  margin-bottom: 24px;
+  padding: 24px 0;
+  border-top: 1px solid #dbdfe4;
+  border-bottom: 1px solid #dbdfe4; }
+  .calendar__block .calendar__months .months__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px; }
+    .calendar__block .calendar__months .months__list .month {
+      font-size: 18px;
+      line-height: 1.5;
+      letter-spacing: 0.11px; }
+      .calendar__block .calendar__months .months__list .month.active {
+        font-size: 24px;
+        font-weight: 600;
+        letter-spacing: 0.14px; }
+  .calendar__block .calendar__days .days__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+    .calendar__block .calendar__days .days__list .day {
+      text-align: center; }
+      .calendar__block .calendar__days .days__list .day .month__day {
+        margin-bottom: 8px;
+        padding: 20px;
+        width: 62px;
+        height: 62px;
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 0.92;
+        letter-spacing: -0.41px;
+        border-radius: 50%; }
+      .calendar__block .calendar__days .days__list .day .week__day {
+        font-size: 18px;
+        line-height: 1.5;
+        letter-spacing: 0.11px; }
+      .calendar__block .calendar__days .days__list .day.active .month__day {
+        font-weight: 700;
+        color: #fff;
+        background-color: #2b84eb; }
+      .calendar__block .calendar__days .days__list .day.missed .month__day {
+        color: #ff765f; }
+      .calendar__block .calendar__days .days__list .day.past {
+        opacity: 0.5; }
+
+/*Calendar*/
+/*Schedule*/
+.schedule__block {
+  display: flex;
+  justify-content: flex-start;
+  align-items: start; }
+  .schedule__block .block__medicines {
+    flex: 0 0 515px; }
+  .schedule__block .block__courses {
+    padding-left: 60px; }
+
+/*Schedule*/
+/*Medicines*/
+.medicines__list .list__item {
+  margin-bottom: 32px; }
+  .medicines__list .list__item:last-child {
+    margin-bottom: 0; }
+
+.medicines__list .card {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 16px 19px 16px 35px;
+  width: 100%;
+  border-radius: 5px;
+  background-color: #fff; }
+  .medicines__list .card .medicine__time {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 35px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.08px;
+    border-right: 1px solid #0d2a4a; }
+  .medicines__list .card .medicine__block {
+    flex: 1; }
+  .medicines__list .card .medicine__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    width: 100%; }
+    .medicines__list .card .medicine__item:last-child {
+      margin-bottom: 0; }
+    .medicines__list .card .medicine__item.missed {
+      opacity: 0.5; }
+      .medicines__list .card .medicine__item.missed .medicine__image .image {
+        background-image: url("../img/icons/i-missed.png");
+        background-size: 100%; }
+      .medicines__list .card .medicine__item.missed .medicine__image img {
+        display: none; }
+    .medicines__list .card .medicine__item.taken {
+      opacity: 0.5; }
+      .medicines__list .card .medicine__item.taken .medicine__name, .medicines__list .card .medicine__item.taken .medicine__quantity {
+        text-decoration: line-through; }
+      .medicines__list .card .medicine__item.taken .medicine__image .image {
+        background-image: url("../img/icons/i-tacken.png");
+        background-size: 100%; }
+      .medicines__list .card .medicine__item.taken .medicine__image img {
+        display: none; }
+  .medicines__list .card .medicine__text {
+    flex: 1;
+    padding: 0px 32px;
+    text-align: left; }
+  .medicines__list .card .medicine__name {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.11px; }
+  .medicines__list .card .medicine__quantity, .medicines__list .card .medicine__period {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.08px; }
+  .medicines__list .card .medicine__image {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .medicines__list .card .medicine__image .image {
+      width: 52px;
+      height: 52px;
+      background-color: rgba(43, 132, 235, 0.1);
+      background-image: url("../img/icons/i-camera_2.png");
+      background-size: 24px 20px;
+      background-position: 50%;
+      background-repeat: no-repeat; }
+  .medicines__list .card .medicine__store {
+    text-align: right; }
+  .medicines__list .card.taken, .medicines__list .card.missed {
+    opacity: 0.5; }
+    .medicines__list .card.taken .medicine__item, .medicines__list .card.missed .medicine__item {
+      opacity: 1; }
+
+.medicines__columns {
+  display: flex;
+  justify-content: flex-start;
+  align-items: start;
+  flex-wrap: nowrap;
+  overflow-x: auto; }
+  .medicines__columns .column {
+    flex: 0 0 430px;
+    margin-right: 32px;
+    width: 430px; }
+    .medicines__columns .column .btn-add {
+      margin-bottom: 16px;
+      padding: 16px 46px 16px 16px;
+      width: 100%;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.11px;
+      color: #2b84eb;
+      text-align: left;
+      text-transform: uppercase;
+      border-radius: 5px;
+      background: #fff url("../img/icons/i-plus_blue.png") no-repeat calc(100% - 16px) 50%;
+      box-shadow: 0 7px 20px 0 rgba(216, 223, 225, 0.5); }
+      .medicines__columns .column .btn-add:before {
+        display: inline-block;
+        content: '';
+        margin-right: 16px;
+        width: 24px;
+        height: 24px;
+        padding: 10px;
+        border-radius: 500px;
+        background-color: #f5f8f9;
+        background-image: url("../img/icons/i-medicine.png");
+        vertical-align: middle; }
+      .medicines__columns .column .btn-add:disabled {
+        opacity: 0.5; }
+    .medicines__columns .column .card {
+      position: relative;
+      padding: 16px;
+      border-radius: 5px;
+      border: solid 1px #dbdfe4;
+      background-color: #fff; }
+      .medicines__columns .column .card__top {
+        display: flex;
+        justify-content: speace-between;
+        align-items: center; }
+      .medicines__columns .column .card__menu {
+        margin-left: 16px; }
+      .medicines__columns .column .card .medicine__icon {
+        margin-right: 16px;
+        width: 44px;
+        height: 44px;
+        background: url("../img/icons/i-medicine.png") no-repeat 50%;
+        border-radius: 50%;
+        border: solid 1px rgba(43, 132, 235, 0.5);
+        overflow: hidden; }
+      .medicines__columns .column .card .medicine__text {
+        flex: 1; }
+      .medicines__columns .column .card .medicine__name {
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: 0.11px; }
+      .medicines__columns .column .card .medicine__frequency {
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.07px; }
+      .medicines__columns .column .card .medicine__duration {
+        font-weight: 600;
+        letter-spacing: 0.11px;
+        color: #2b84eb; }
+      .medicines__columns .column .card .medicine__schedule {
+        padding-top: 16px; }
+        .medicines__columns .column .card .medicine__schedule .schedule__list {
+          list-style: none; }
+          .medicines__columns .column .card .medicine__schedule .schedule__list .list__item {
+            margin-bottom: 8px; }
+            .medicines__columns .column .card .medicine__schedule .schedule__list .list__item span {
+              display: inline-block; }
+            .medicines__columns .column .card .medicine__schedule .schedule__list .list__item .time {
+              margin-right: 16px;
+              min-width: 50px;
+              font-size: 18px;
+              font-weight: 600;
+              letter-spacing: 0.11px; }
+            .medicines__columns .column .card .medicine__schedule .schedule__list .list__item .quantity {
+              font-size: 11px;
+              font-weight: 500;
+              letter-spacing: 0.07px; }
+            .medicines__columns .column .card .medicine__schedule .schedule__list .list__item:before {
+              display: inline-block;
+              content: '';
+              margin: -2px 16px 0 0;
+              width: 44px;
+              height: 1px;
+              background-color: #0d2a4a;
+              vertical-align: middle; }
+      .medicines__columns .column .card .medicine__menu {
+        display: none;
+        position: absolute;
+        top: 5px;
+        right: -60px;
+        padding: 16px;
+        border-radius: 3.5px;
+        box-shadow: 0 7px 20px 0 rgba(216, 223, 225, 0.5);
+        border: solid 2px #dbdfe4;
+        background-color: #fff;
+        z-index: 2; }
+        .medicines__columns .column .card .medicine__menu .menu__list {
+          list-style: none;
+          text-align: left; }
+          .medicines__columns .column .card .medicine__menu .menu__list .list__item {
+            margin-bottom: 16px; }
+            .medicines__columns .column .card .medicine__menu .menu__list .list__item:last-child {
+              margin-bottom: 0; }
+          .medicines__columns .column .card .medicine__menu .menu__list .list__link {
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 0.25px;
+            color: #0d2a4a;
+            text-decoration: none; }
+            .medicines__columns .column .card .medicine__menu .menu__list .list__link.delete {
+              color: #ff765f; }
+      .medicines__columns .column .card.show-menu .medicine__menu {
+        display: block; }
+    .medicines__columns .column:last-child {
+      margin-right: 45px; }
+
+.medicines__search .search__label {
+  display: block;
+  margin-bottom: 17px;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.11px; }
+
+.medicines__search .search__input {
+  padding: 15px 23px 15px 65px;
+  width: 100%;
+  border-radius: 50px;
+  background: #fff url("../img/icons/i-search.png") no-repeat 16px 50%;
+  border: 1px solid #dbdfe4;
+  box-shadow: 0 7px 20px 0 rgba(216, 223, 225, 0.5); }
+  .medicines__search .search__input:focus {
+    border-color: #2b84eb; }
+
+.medicines__search .search__results {
+  padding-top: 24px; }
+  .medicines__search .search__results .medicines__list .card {
+    padding: 18px; }
+    .medicines__search .search__results .medicines__list .card.active {
+      border: solid 1px #0d2a4a; }
+    .medicines__search .search__results .medicines__list .card.inactive {
+      opacity: 0.5; }
+  .medicines__search .search__results .medicines__list .medicine__item {
+    text-decoration: none; }
+  .medicines__search .search__results .medicines__list .medicine__text {
+    padding: 0px 18px; }
+  .medicines__search .search__results .medicines__list .medicine__name {
+    margin-bottom: 0; }
+
+.medicines__search .search__noresults {
+  padding: 54px 0;
+  text-align: center; }
+  .medicines__search .search__noresults p {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.11px; }
+    .medicines__search .search__noresults p img {
+      margin-top: 16px; }
+  .medicines__search .search__noresults .btn-add {
+    margin-top: 67px;
+    padding: 18px 50px 14px 16px;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.11px;
+    color: #fff;
+    text-align: left;
+    border-radius: 5px;
+    background: #2b84eb url(../img/icons/i-plus.png) no-repeat calc(100% - 16px) 50%; }
+    .medicines__search .search__noresults .btn-add:before {
+      display: inline-block;
+      content: '';
+      margin-right: 16px;
+      width: 24px;
+      height: 24px;
+      padding: 10px;
+      border-radius: 500px;
+      background-color: #f5f8f9;
+      background-image: url("../img/icons/i-medicine.png");
+      vertical-align: middle; }
+
+.medicines__page {
+  display: flex;
+  justify-content: space-between;
+  align-items: start; }
+  .medicines__page .medicines__search {
+    flex: 0 0 428px;
+    width: 428px; }
+    .medicines__page .medicines__search .medicines__list .list__item {
+      margin-bottom: 16px; }
+  .medicines__page .medicines__details {
+    flex: 1;
+    padding-left: 32px; }
+
+.medicines__details .details__btns--top {
+  text-align: center; }
+
+.medicines__details .details__btns--bottom {
+  padding-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+
+.medicines__details .details__btns .btn-add {
+  padding: 18px 50px 14px 16px;
+  min-width: 343px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.11px;
+  color: #fff;
+  text-align: left;
+  border-radius: 5px;
+  background: #2b84eb url(../img/icons/i-plus.png) no-repeat calc(100% - 16px) 50%; }
+  .medicines__details .details__btns .btn-add:before {
+    display: inline-block;
+    content: '';
+    margin-right: 16px;
+    width: 24px;
+    height: 24px;
+    padding: 10px;
+    border-radius: 500px;
+    background-color: #f5f8f9;
+    background-image: url("../img/icons/i-medicine.png");
+    vertical-align: middle; }
+
+.medicines__details .details__btns .btn-edit,
+.medicines__details .details__btns .btn-create {
+  padding: 24px;
+  min-width: 257px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.11px;
+  text-transform: uppercase;
+  border-radius: 5px; }
+
+.medicines__details .details__btns .btn-edit {
+  box-shadow: 10px 4px 20px 0 rgba(216, 223, 225, 0.5);
+  background-color: #0d2a4a; }
+
+.medicines__details .details__btns .btn-create {
+  background-color: #2b84eb; }
+
+.medicines__details .medicine__gallery {
+  display: flex;
+  justify-content: flex-start;
+  align-items: start;
+  margin-bottom: 24px; }
+  .medicines__details .medicine__gallery .gallery__big {
+    position: relative;
+    margin-right: 30px; }
+    .medicines__details .medicine__gallery .gallery__big .big {
+      border-radius: 20px;
+      overflow: hidden; }
+    .medicines__details .medicine__gallery .gallery__big .btn-delete {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 40px;
+      height: 40px;
+      background-image: url("../img/icons/i-close_red.png");
+      background-image: -webkit-image-set(url("../img/icons/i-close_red.png") 1x, url("../img/icons/i-close_red@2x.png") 2x, url("../img/icons/i-close_red@3x.png") 3x);
+      background-image: image-set(url("../img/icons/i-close_red.png") 1x, url("../img/icons/i-close_red@2x.png") 2x, url("../img/icons/i-close_red@3x.png") 3x); }
+  .medicines__details .medicine__gallery .gallery__small .small {
+    border-radius: 5px;
+    overflow: hidden; }
+  .medicines__details .medicine__gallery .gallery__small .form__label--gallery span {
+    display: none; }
+  .medicines__details .medicine__gallery .small {
+    margin-bottom: 10px;
+    opacity: 0.5; }
+    .medicines__details .medicine__gallery .small.active {
+      opacity: 1; }
+
+.medicines__details .medicine__text .btn-notes {
+  margin-bottom: 32px; }
+
+.medicines__details .medicine__name {
+  margin-bottom: 8px;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.14px; }
+
+.medicines__details .medicine__description {
+  margin-bottom: 16px;
+  font-size: 18px;
+  line-height: 1.5;
+  letter-spacing: 0.11px; }
+
+.medicines__details .medicine__schedule {
+  margin-bottom: 32px; }
+  .medicines__details .medicine__schedule span {
+    padding: 0px 16px;
+    font-size: 14px;
+    letter-spacing: 0.08px;
+    border-left: 1px solid #0d2a4a; }
+    .medicines__details .medicine__schedule span strong {
+      margin-right: 8px;
+      font-weight: 500; }
+    .medicines__details .medicine__schedule span:first-child {
+      padding-left: 0;
+      border-left: 0 none; }
+
+.medicines__details .medicine__stock .card {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border-radius: 3.5px;
+  background-color: #fff; }
+  .medicines__details .medicine__stock .card__icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 500px;
+    background-image: url("../img/icons/i-stock.png");
+    background-image: -webkit-image-set(url("../img/icons/i-stock.png") 1x, url("../img/icons/i-stock@2x.png") 2x, url("../img/icons/i-stock@3x.png") 3x);
+    background-image: image-set(url("../img/icons/i-stock.png") 1x, url("../img/icons/i-stock@2x.png") 2x, url("../img/icons/i-stock@3x.png") 3x);
+    background-position: 50%;
+    background-repeat: no-repeat; }
+  .medicines__details .medicine__stock .card__text {
+    flex: 1;
+    padding: 0px 16px; }
+  .medicines__details .medicine__stock .card .btn-edit {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.1px;
+    color: #2b84eb; }
+  .medicines__details .medicine__stock .card.alarm .card__icon {
+    background-image: url("../img/icons/i-stock_red.png");
+    background-image: -webkit-image-set(url("../img/icons/i-stock_red.png") 1x, url("../img/icons/i-stock_red@2x.png") 2x, url("../img/icons/i-stock_red@3x.png") 3x);
+    background-image: image-set(url("../img/icons/i-stock_red.png") 1x, url("../img/icons/i-stock_red@2x.png") 2x, url("../img/icons/i-stock_red@3x.png") 3x); }
+  .medicines__details .medicine__stock .card.alarm .card__text div {
+    color: #ff765f; }
+
+.medicines__details .medicine__stock .stock__quantity {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.1px; }
+
+.medicines__details .medicine__stock .stock__status {
+  font-size: 11px;
+  letter-spacing: 0.07px; }
+
+.medicines__details .medicine__stock .reminder {
+  padding-bottom: 48px; }
+  .medicines__details .medicine__stock .reminder .switch__text {
+    font-size: 16px;
+    letter-spacing: 0.15px; }
+    .medicines__details .medicine__stock .reminder .switch__text strong {
+      display: block;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.15px; }
+
+.medicines__details .medicine__stock .btn-stock {
+  margin-bottom: 32px; }
+
+.medicines__details .medicine__forecast {
+  padding-top: 48px;
+  border-top: 1px solid #0d2a4a; }
+  .medicines__details .medicine__forecast .block__title {
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 0.14px; }
+  .medicines__details .medicine__forecast .forecast__summary {
+    margin-bottom: 32px; }
+    .medicines__details .medicine__forecast .forecast__summary .card {
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+      border-radius: 3.5px;
+      background-color: #fff; }
+      .medicines__details .medicine__forecast .forecast__summary .card__icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 500px;
+        background-color: rgba(43, 132, 235, 0.1);
+        background-image: url("../img/icons/i-arrow_down-circle.png");
+        background-image: -webkit-image-set(url("../img/icons/i-arrow_down-circle.png") 1x, url("../img/icons/i-arrow_down-circle@2x.png") 2x, url("../img/icons/i-arrow_down-circle@3x.png") 3x);
+        background-image: image-set(url("../img/icons/i-arrow_down-circle.png") 1x, url("../img/icons/i-arrow_down-circle@2x.png") 2x, url("../img/icons/i-arrow_down-circle@3x.png") 3x);
+        background-position: 50%;
+        background-repeat: no-repeat; }
+      .medicines__details .medicine__forecast .forecast__summary .card__text {
+        flex: 1;
+        padding: 0px 16px; }
+      .medicines__details .medicine__forecast .forecast__summary .card__status {
+        max-width: 105px;
+        text-align: right; }
+      .medicines__details .medicine__forecast .forecast__summary .card.alarm .card__status * {
+        color: #ff765f; }
+    .medicines__details .medicine__forecast .forecast__summary .summary__count {
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.1px; }
+    .medicines__details .medicine__forecast .forecast__summary .summary__duration {
+      font-size: 11px;
+      letter-spacing: 0.07px; }
+    .medicines__details .medicine__forecast .forecast__summary .summary__status {
+      font-size: 11px;
+      line-height: 1.5;
+      letter-spacing: 0.07px; }
+  .medicines__details .medicine__forecast .forecast__courses .courses__list .list__item {
+    margin-bottom: 16px; }
+  .medicines__details .medicine__forecast .forecast__courses .courses__list .card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    border-radius: 5px;
+    box-shadow: 0 7px 20px 0 rgba(216, 223, 225, 0.5);
+    background-color: #fff; }
+
+.medicines__create .create__top .top__btns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+  .medicines__create .create__top .top__btns .btn-complete {
+    padding: 19px;
+    min-width: 260px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.11px;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    border-radius: 5px;
+    background-color: #2b84eb; }
+    .medicines__create .create__top .top__btns .btn-complete:disabled {
+      opacity: 0.5; }
+
+.medicines__create .create__content {
+  flex: 1 0 auto;
+  padding: 64px 0; }
+  .medicines__create .create__content--center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+    .medicines__create .create__content--center .name {
+      padding: 30px;
+      min-width: 430px;
+      border-radius: 10px;
+      box-shadow: 10px 4px 20px 0 rgba(216, 223, 225, 0.5);
+      background-color: #fff; }
+      .medicines__create .create__content--center .name__label {
+        margin-bottom: 16px;
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: 0.11px; }
+      .medicines__create .create__content--center .name__search {
+        position: relative;
+        margin-bottom: 62px; }
+        .medicines__create .create__content--center .name__search .search__input {
+          padding: 15px;
+          width: 100%;
+          font-size: 16px;
+          font-weight: 600;
+          letter-spacing: 0.15px;
+          border-radius: 3.5px;
+          background-color: #fff;
+          border: 1px solid #2b84eb;
+          box-shadow: 10px 4px 20px 0 rgba(216, 223, 225, 0.5); }
+        .medicines__create .create__content--center .name__search .search__autosearch {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          padding: 21px 16px;
+          max-height: 146px;
+          background-color: #fff;
+          border-radius: 4px;
+          box-shadow: 0 7px 20px 0 rgba(216, 223, 225, 0.5);
+          overflow-x: auto; }
+          .medicines__create .create__content--center .name__search .search__autosearch ul {
+            list-style: none; }
+            .medicines__create .create__content--center .name__search .search__autosearch ul li {
+              margin-bottom: 16px;
+              font-size: 16px;
+              font-weight: 600;
+              letter-spacing: 0.15px; }
+              .medicines__create .create__content--center .name__search .search__autosearch ul li:last-child {
+                margin-bottom: 0; }
+      .medicines__create .create__content--center .name__btns .btn-continue {
+        padding: 25px;
+        width: 100%;
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: 0.11px;
+        color: #fff;
+        border-radius: 5px;
+        background-color: #2b84eb;
+        visibility: hidden; }
+        .medicines__create .create__content--center .name__btns .btn-continue.active {
+          visibility: visible; }
+  .medicines__create .create__content .form {
+    display: flex;
+    justify-content: flex-start;
+    align-items: start;
+    flex-wrap: wrap; }
+  .medicines__create .create__content .create__gallery {
+    flex: 0 0 440px;
+    margin-right: 32px; }
+    .medicines__create .create__content .create__gallery .medicine__gallery {
+      display: flex;
+      justify-content: flex-start;
+      align-items: start;
+      margin-bottom: 24px; }
+      .medicines__create .create__content .create__gallery .medicine__gallery .gallery__big {
+        position: relative;
+        margin-right: 30px; }
+        .medicines__create .create__content .create__gallery .medicine__gallery .gallery__big .big {
+          border-radius: 20px;
+          overflow: hidden; }
+        .medicines__create .create__content .create__gallery .medicine__gallery .gallery__big .btn-delete {
+          position: absolute;
+          top: 16px;
+          right: 16px;
+          width: 40px;
+          height: 40px;
+          background-image: url("../img/icons/i-close_red.png");
+          background-image: -webkit-image-set(url("../img/icons/i-close_red.png") 1x, url("../img/icons/i-close_red@2x.png") 2x, url("../img/icons/i-close_red@3x.png") 3x);
+          background-image: image-set(url("../img/icons/i-close_red.png") 1x, url("../img/icons/i-close_red@2x.png") 2x, url("../img/icons/i-close_red@3x.png") 3x); }
+      .medicines__create .create__content .create__gallery .medicine__gallery .gallery__small .small {
+        border-radius: 5px;
+        overflow: hidden; }
+      .medicines__create .create__content .create__gallery .medicine__gallery .gallery__small .form__label--gallery span {
+        display: none; }
+      .medicines__create .create__content .create__gallery .medicine__gallery .small {
+        margin-bottom: 10px;
+        opacity: 0.5; }
+        .medicines__create .create__content .create__gallery .medicine__gallery .small.active {
+          opacity: 1; }
+  .medicines__create .create__content .create__measurement {
+    flex: 1 0 485px; }
+    .medicines__create .create__content .create__measurement .form__label--radio {
+      display: inline-block;
+      margin-right: 64px; }
+  .medicines__create .create__content .create__notes {
+    flex: 0 0 544px;
+    margin-right: 32px; }
+  .medicines__create .create__content .create__stock {
+    flex: 1 0 auto; }
+    .medicines__create .create__content .create__stock .reminder {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 48px; }
+      .medicines__create .create__content .create__stock .reminder__title {
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: 0.15px; }
+      .medicines__create .create__content .create__stock .reminder__info {
+        font-size: 16px;
+        letter-spacing: 0.15px; }
+  .medicines__create .create__content .create__btns {
+    flex: 1 0 100%;
+    padding-top: 64px;
+    text-align: right; }
+    .medicines__create .create__content .create__btns .btns {
+      margin-left: 30px;
+      padding: 24px 91px 24px 92px;
+      min-width: 257px;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.11px;
+      text-align: center;
+      color: #fff;
+      text-transform: uppercase;
+      border-radius: 5px; }
+      .medicines__create .create__content .create__btns .btns.btn-delete {
+        box-shadow: 10px 4px 20px 0 rgba(216, 223, 225, 0.5);
+        background-color: #ff765f; }
+      .medicines__create .create__content .create__btns .btns.btn-course {
+        background-color: #2b84eb; }
+
+/*Medicines*/
+/*Courses*/
+.courses__list .list__item {
+  margin-bottom: 16px; }
+  .courses__list .list__item:last-child {
+    margin-bottom: 0; }
+
+.courses__list .card {
+  padding: 16px 17px 20px 16px;
+  min-width: 244px;
+  border-radius: 5px;
+  background-color: #fff; }
+  .courses__list .card__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px; }
+  .courses__list .card .course__date {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.07px; }
+    .courses__list .card .course__date .notifications {
+      color: #ff765f; }
+  .courses__list .card .course__name {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.11px; }
+  .courses__list .card .course__counter {
+    margin-left: 16px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.11px; }
+  .courses__list .card .course__slashes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 3px; }
+    .courses__list .card .course__slashes .slash {
+      display: inline-block;
+      margin: 0 3px;
+      width: 100%;
+      height: 3px;
+      background-color: #dbdfe4; }
+      .courses__list .card .course__slashes .slash.taken {
+        background-color: #2b84eb; }
+      .courses__list .card .course__slashes .slash.missed {
+        background-color: #ff765f; }
+      .courses__list .card .course__slashes .slash:first-child {
+        margin-left: 0; }
+      .courses__list .card .course__slashes .slash:last-child {
+        margin-right: 0; }
+    .courses__list .card .course__slashes--percent {
+      position: relative;
+      margin: 0;
+      height: 3px;
+      background-color: #dbdfe4; }
+      .courses__list .card .course__slashes--percent .slash {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: 0; }
+  .courses__list .card .course__duration {
+    margin-bottom: 8px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.07px; }
+  .courses__list .card .course__consumption {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.11px; }
+  .courses__list .card.past .course__date .notifications {
+    color: #0d2a4a; }
+  .courses__list .card.past .course__name, .courses__list .card.past .course__counter {
+    text-decoration: line-through; }
+  .courses__list .card.past .course__slashes .slash.missed, .courses__list .card.past .course__slashes .slash.taken {
+    background-color: #0d2a4a; }
+
+.courses__list--horizontal {
+  display: flex; }
+  .courses__list--horizontal .list__item {
+    margin-right: 16px; }
+
+.courses__page {
+  position: relative; }
+  .courses__page .btn-create {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 19px 23px 19px 22px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.11px;
+    text-align: left;
+    color: #fff;
+    border-radius: 5px;
+    background-color: #2b84eb; }
+    .courses__page .btn-create:after {
+      display: inline-block;
+      content: '';
+      margin-left: 16px;
+      width: 27px;
+      height: 27px;
+      background-image: url("../img/icons/i-plus.png");
+      vertical-align: middle; }
+  .courses__page .courses__list--horizontal {
+    margin-bottom: 16px; }
+  .courses__page .block__medicines {
+    max-width: 50%; }
+    .courses__page .block__medicines .block__title {
+      margin-bottom: 32px; }
+
+.courses__add .add__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 48px; }
+  .courses__add .add__top .btn-save {
+    padding: 19px;
+    min-width: 255px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.11px;
+    color: #fff;
+    text-transform: uppercase;
+    border-radius: 5px;
+    background-color: #2b84eb; }
+
+.courses__add .form__top {
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(13, 42, 74, 0.5); }
+
+.courses__add .form__bottom {
+  display: flex;
+  justify-content: flex-start;
+  align-items: start;
+  padding-top: 24px; }
+  .courses__add .form__bottom .medicines__search {
+    flex: 0 0 428px;
+    margin-right: 32px;
+    width: 428px; }
+  .courses__add .form__bottom .medicines__settings {
+    flex: 1; }
+    .courses__add .form__bottom .medicines__settings .settings__label {
+      display: block;
+      margin-bottom: 17px;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 0.11px; }
+    .courses__add .form__bottom .medicines__settings .settings__form .custom-select .select-selected {
+      padding: 26px 24px;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.15px; }
+    .courses__add .form__bottom .medicines__settings .settings__form .custom-select .select-items div {
+      margin-bottom: 24px;
+      font-size: 14px;
+      line-height: 1.43;
+      letter-spacing: 0.25px; }
+      .courses__add .form__bottom .medicines__settings .settings__form .custom-select .select-items div:last-child {
+        margin-bottom: 0; }
+    .courses__add .form__bottom .medicines__settings .settings__form .btn-timeAdoze {
+      width: 83px;
+      height: 70px;
+      border-radius: 3.5px;
+      background: #fff url("../img/icons/i-plus_dark.png") no-repeat 50%;
+      border: 1px solid #dbdfe4; }
+    .courses__add .form__bottom .medicines__settings .settings__form .medicine__timeAdoze {
+      position: relative;
+      margin-right: 32px;
+      padding: 16px;
+      width: 113px;
+      height: 70px;
+      text-align: center;
+      border-radius: 3.5px;
+      background-color: #f5f8f9;
+      border: 1px solid #dbdfe4; }
+      .courses__add .form__bottom .medicines__settings .settings__form .medicine__timeAdoze span {
+        display: block; }
+      .courses__add .form__bottom .medicines__settings .settings__form .medicine__timeAdoze .time {
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: 0.15px; }
+      .courses__add .form__bottom .medicines__settings .settings__form .medicine__timeAdoze .doze {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.5;
+        letter-spacing: 0.08px; }
+      .courses__add .form__bottom .medicines__settings .settings__form .medicine__timeAdoze .btn-menu {
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: rotate(-90deg); }
+      .courses__add .form__bottom .medicines__settings .settings__form .medicine__timeAdoze .medicine__menu {
+        display: none;
+        position: absolute;
+        top: -40px;
+        right: -60px;
+        padding: 16px;
+        border-radius: 3.5px;
+        box-shadow: 0 7px 20px 0 rgba(216, 223, 225, 0.5);
+        border: solid 2px #dbdfe4;
+        background-color: #fff;
+        z-index: 2; }
+        .courses__add .form__bottom .medicines__settings .settings__form .medicine__timeAdoze .medicine__menu .menu__list {
+          list-style: none;
+          text-align: left; }
+          .courses__add .form__bottom .medicines__settings .settings__form .medicine__timeAdoze .medicine__menu .menu__list .list__item {
+            margin-bottom: 16px; }
+            .courses__add .form__bottom .medicines__settings .settings__form .medicine__timeAdoze .medicine__menu .menu__list .list__item:last-child {
+              margin-bottom: 0; }
+          .courses__add .form__bottom .medicines__settings .settings__form .medicine__timeAdoze .medicine__menu .menu__list .list__link {
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 0.25px;
+            color: #0d2a4a;
+            text-decoration: none; }
+            .courses__add .form__bottom .medicines__settings .settings__form .medicine__timeAdoze .medicine__menu .menu__list .list__link.delete {
+              color: #ff765f; }
+      .courses__add .form__bottom .medicines__settings .settings__form .medicine__timeAdoze.show-menu .medicine__menu {
+        display: block; }
+    .courses__add .form__bottom .medicines__settings .settings__form .form__row--columns {
+      justify-content: flex-start;
+      flex-wrap: wrap; }
+      .courses__add .form__bottom .medicines__settings .settings__form .form__row--columns .columns__column--time, .courses__add .form__bottom .medicines__settings .settings__form .form__row--columns .columns__column--doze {
+        position: relative; }
+        .courses__add .form__bottom .medicines__settings .settings__form .form__row--columns .columns__column--time .form__input, .courses__add .form__bottom .medicines__settings .settings__form .form__row--columns .columns__column--doze .form__input {
+          padding: 24px 24px 25px 24px;
+          text-align: center; }
+        .courses__add .form__bottom .medicines__settings .settings__form .form__row--columns .columns__column--time .btn-plus,
+        .courses__add .form__bottom .medicines__settings .settings__form .form__row--columns .columns__column--time .btn-minus, .courses__add .form__bottom .medicines__settings .settings__form .form__row--columns .columns__column--doze .btn-plus,
+        .courses__add .form__bottom .medicines__settings .settings__form .form__row--columns .columns__column--doze .btn-minus {
+          position: absolute;
+          top: 50%;
+          margin-top: -14px;
+          width: 28px;
+          height: 28px; }
+        .courses__add .form__bottom .medicines__settings .settings__form .form__row--columns .columns__column--time .btn-plus, .courses__add .form__bottom .medicines__settings .settings__form .form__row--columns .columns__column--doze .btn-plus {
+          right: 38px;
+          background-image: url("../img/icons/i-plus_round.png");
+          background-image: -webkit-image-set(url("../img/icons/i-plus_round.png") 1x, url("../img/icons/i-plus_round@2x.png") 2x, url("../img/icons/i-plus_round@3x.png") 3x);
+          background-image: image-set(url("../img/icons/i-plus_round.png") 1x, url("../img/icons/i-plus_round@2x.png") 2x, url("../img/icons/i-plus_round@3x.png") 3x); }
+        .courses__add .form__bottom .medicines__settings .settings__form .form__row--columns .columns__column--time .btn-minus, .courses__add .form__bottom .medicines__settings .settings__form .form__row--columns .columns__column--doze .btn-minus {
+          left: 28px;
+          background-image: url("../img/icons/i-minus_round.png");
+          background-image: -webkit-image-set(url("../img/icons/i-minus_round.png") 1x, url("../img/icons/i-minus_round@2x.png") 2x, url("../img/icons/i-minus_round@3x.png") 3x);
+          background-image: image-set(url("../img/icons/i-minus_round.png") 1x, url("../img/icons/i-minus_round@2x.png") 2x, url("../img/icons/i-minus_round@3x.png") 3x); }
+      .courses__add .form__bottom .medicines__settings .settings__form .form__row--columns .columns__column--timeAdoze {
+        display: flex;
+        justify-content: flext-start;
+        align-items: center; }
+    .courses__add .form__bottom .medicines__settings .settings__form .form__row--duration {
+      position: relative; }
+      .courses__add .form__bottom .medicines__settings .settings__form .form__row--duration input {
+        text-align: center; }
+      .courses__add .form__bottom .medicines__settings .settings__form .form__row--duration .btn-prev,
+      .courses__add .form__bottom .medicines__settings .settings__form .form__row--duration .btn-next {
+        position: absolute;
+        bottom: 16px;
+        width: 24px;
+        height: 24px;
+        background-image: url("../img/icons/i-chevron_down.png");
+        background-image: -webkit-image-set(url("../img/icons/i-chevron_down.png") 1x, url("../img/icons/i-chevron_down@2x.png") 2x, url("../img/icons/i-chevron_down@3x.png") 3x);
+        background-image: image-set(url("../img/icons/i-chevron_down.png") 1x, url("../img/icons/i-chevron_down@2x.png") 2x, url("../img/icons/i-chevron_down@3x.png") 3x);
+        background-position: 50%;
+        background-repeat: no-repeat; }
+      .courses__add .form__bottom .medicines__settings .settings__form .form__row--duration .btn-prev {
+        left: 16px;
+        transform: rotate(90deg); }
+      .courses__add .form__bottom .medicines__settings .settings__form .form__row--duration .btn-next {
+        right: 16px;
+        transform: rotate(-90deg); }
+    .courses__add .form__bottom .medicines__settings .settings__form .form__row--days {
+      display: flex;
+      justify-content: space-between;
+      align-items: center; }
+      .courses__add .form__bottom .medicines__settings .settings__form .form__row--days input {
+        display: none; }
+        .courses__add .form__bottom .medicines__settings .settings__form .form__row--days input:checked + label {
+          background-color: #fff;
+          opacity: 1; }
+      .courses__add .form__bottom .medicines__settings .settings__form .form__row--days label {
+        display: block;
+        width: 48px;
+        height: 48px;
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: -0.41px;
+        text-align: center;
+        color: #0d2a4a;
+        cursor: pointer;
+        line-height: 46px;
+        border-radius: 25px;
+        background-color: #dbdfe4;
+        opacity: 0.5; }
+    .courses__add .form__bottom .medicines__settings .settings__form .form__row--submit {
+      display: flex;
+      justify-content: space-between;
+      align-items: center; }
+      .courses__add .form__bottom .medicines__settings .settings__form .form__row--submit input {
+        flex: 0 0 calc(50% - 16px); }
+
+.courses__medicines {
+  margin-right: -45px;
+  min-height: 215px;
+  overflow-x: hidden; }
+
+.courses__block {
+  position: relative; }
+
+.courses .tabs__menu {
+  margin-bottom: 48px; }
+  .courses .tabs__menu .list__item {
+    display: inline-block;
+    margin-right: 45px; }
+    .courses .tabs__menu .list__item.ui-state-active .list__link {
+      font-weight: 600;
+      box-shadow: 0 7px 20px 0 rgba(216, 223, 225, 0.5);
+      border: solid 1px #dbdfe4; }
+  .courses .tabs__menu .list__link {
+    padding: 19px 41px 19px 42px;
+    font-size: 18px;
+    line-height: 1.5;
+    letter-spacing: 0.11px;
+    border-radius: 5px;
+    background-color: #fff; }
+
+/*Courses*/
+/*Settings*/
+.settings__page .settings__row {
+  padding: 24px 0;
+  border-bottom: 1px solid #0d2a4a; }
+  .settings__page .settings__row--top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+    .settings__page .settings__row--top .btn-logout {
+      padding: 19px;
+      min-width: 260px;
+      font-size: 18px;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.5;
+      letter-spacing: 0.11px;
+      text-align: left;
+      color: #2b84eb;
+      text-align: center;
+      border-radius: 5px;
+      background-color: #fff;
+      box-shadow: 10px 4px 20px 0 rgba(216, 223, 225, 0.5); }
+  .settings__page .settings__row .user__avatar {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 16px;
+    width: 107px;
+    height: 107px;
+    cursor: pointer;
+    border-radius: 500px;
+    border: solid 4px #2b84eb;
+    background-color: #2b84eb; }
+    .settings__page .settings__row .user__avatar > img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      -o-object-fit: cover;
+      object-fit: cover;
+      -o-object-position: center;
+      object-position: center;
+      border-radius: 500px; }
+    .settings__page .settings__row .user__avatar input {
+      display: none; }
+    .settings__page .settings__row .user__avatar .btn-delete {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      width: 40px;
+      height: 40px;
+      background: url(../img/icons/i-close_red.png);
+      z-index: 2; }
+  .settings__page .settings__row .user__abbr {
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.22px;
+    color: #fff; }
+  .settings__page .settings__row .user__meds img {
+    vertical-align: middle; }
+  .settings__page .settings__row .user__meds div {
+    font-size: 18px;
+    font-weight: 500;
+    color: rgba(13, 42, 74, 0.5);
+    letter-spacing: 0.11px; }
+  .settings__page .settings__row--first {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center; }
+  .settings__page .settings__row--form {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin: 0 -16px; }
+    .settings__page .settings__row--form .form__row--columns {
+      margin: 0 -16px; }
+    .settings__page .settings__row--form .columns__column--2,
+    .settings__page .settings__row--form .form__column--2 {
+      flex: 0 0 50%;
+      padding: 0 16px; }
+  .settings__page .settings__row--notifications {
+    border-bottom: 0 none; }
+  .settings__page .settings__row .switch__wrapper {
+    margin-bottom: 18px; }
+    .settings__page .settings__row .switch__wrapper .switch__text {
+      font-size: 18px;
+      letter-spacing: 0.11px; }
+    .settings__page .settings__row .switch__wrapper .switch__hint {
+      padding-top: 20px;
+      font-size: 18px;
+      line-height: 1.5;
+      letter-spacing: 0.11px; }
+  .settings__page .settings__row .block__title,
+  .settings__page .settings__row .block__title .switch__text {
+    margin-bottom: 0;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 0.14px; }
+  .settings__page .settings__row .btn-pin {
+    width: 100%;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: left;
+    letter-spacing: 0.14px;
+    background-image: url("../img/icons/i-chevron_right.png");
+    background-image: -webkit-image-set(url("../img/icons/i-chevron_right.png") 1x, url("../img/icons/i-chevron_right@2x.png") 2x, url("../img/icons/i-chevron_right@3x.png") 3x);
+    background-image: image-set(url("../img/icons/i-chevron_right.png") 1x, url("../img/icons/i-chevron_right@2x.png") 2x, url("../img/icons/i-chevron_right@3x.png") 3x);
+    background-position: calc(100% - 16px) 50%;
+    background-repeat: no-repeat; }
+    .settings__page .settings__row .btn-pin img {
+      margin-right: 8px;
+      vertical-align: middle; }
+  .settings__page .settings__row:last-child {
+    border: 0 none; }
+
+.settings__page .settings__btns {
+  padding-top: 32px;
+  text-align: right; }
+  .settings__page .settings__btns .btn-delete {
+    padding: 24px;
+    min-width: 260px;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.11px;
+    text-align: center;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 10px 4px 20px 0 rgba(216, 223, 225, 0.5);
+    background-color: #ff765f; }
+
+/*Settings*/
+/*Content*/
+/*SideBar*/
+.sidebar {
+  padding: 24px 32px;
+  flex: 0 0 315px;
+  margin-left: 45px;
+  width: 315px;
+  box-shadow: 2px 0 16px 0 rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  z-index: 1; }
+  .sidebar__header {
+    margin-bottom: 32px;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: 0.22px;
+    text-align: center;
+    color: #2b84eb; }
+  .sidebar__nav {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    bottom: 0;
+    padding: 32px 0 64px 0; }
+    .sidebar__nav .menu__list {
+      list-style: none; }
+      .sidebar__nav .menu__list--main {
+        margin-bottom: 80px; }
+        .sidebar__nav .menu__list--main .menu__item {
+          position: relative; }
+          .sidebar__nav .menu__list--main .menu__item .notification {
+            display: none;
+            position: absolute;
+            width: 100px;
+            height: 85px;
+            top: 50%;
+            right: -32px;
+            margin-top: -43px; }
+            .sidebar__nav .menu__list--main .menu__item .notification.family {
+              background-image: url("../img/icons/i-family_menu.png");
+              background-image: -webkit-image-set(url("../img/icons/i-family_menu.png") 1x, url("../img/icons/i-family_menu@2x.png") 2x, url("../img/icons/i-family_menu@3x.png") 3x);
+              background-image: image-set(url("../img/icons/i-family_menu.png") 1x, url("../img/icons/i-family_menu@2x.png") 2x, url("../img/icons/i-family_menu@3x.png") 3x); }
+          .sidebar__nav .menu__list--main .menu__item.family {
+            opacity: 0;
+            transition: opacity 0.5s ease; }
+          .sidebar__nav .menu__list--main .menu__item.show-notification {
+            opacity: 1; }
+            .sidebar__nav .menu__list--main .menu__item.show-notification .notification {
+              display: block; }
+        .sidebar__nav .menu__list--main .menu__link {
+          display: block;
+          margin-bottom: 7px;
+          padding: 16px 21px;
+          font-size: 18px;
+          line-height: 1.5;
+          letter-spacing: 0.11px;
+          text-transform: uppercase; }
+          .sidebar__nav .menu__list--main .menu__link .icons {
+            margin: -2px 26px 0 0;
+            background-image: url("/img/icons/i-menu.png");
+            background-repeat: no-repeat; }
+            .sidebar__nav .menu__list--main .menu__link .icons.i-home {
+              background-position: -160px -0px; }
+            .sidebar__nav .menu__list--main .menu__link .icons.i-clipboard {
+              background-position: -32px -0px; }
+            .sidebar__nav .menu__list--main .menu__link .icons.i-medicine {
+              background-position: -224px -0px; }
+            .sidebar__nav .menu__list--main .menu__link .icons.i-users {
+              background-position: -288px -0px;
+              opacity: 0.6; }
+            .sidebar__nav .menu__list--main .menu__link .icons.i-gear {
+              background-position: -96px -0px; }
+          .sidebar__nav .menu__list--main .menu__link:hover, .sidebar__nav .menu__list--main .menu__link.active {
+            font-weight: 600;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 7px 20px 0 rgba(216, 223, 225, 0.5); }
+            .sidebar__nav .menu__list--main .menu__link:hover .i-home, .sidebar__nav .menu__list--main .menu__link.active .i-home {
+              background-position: -128px -0px; }
+            .sidebar__nav .menu__list--main .menu__link:hover .i-clipboard, .sidebar__nav .menu__list--main .menu__link.active .i-clipboard {
+              background-position: 0px -0px; }
+            .sidebar__nav .menu__list--main .menu__link:hover .i-medicine, .sidebar__nav .menu__list--main .menu__link.active .i-medicine {
+              background-position: -192px -0px; }
+            .sidebar__nav .menu__list--main .menu__link:hover .i-users, .sidebar__nav .menu__list--main .menu__link.active .i-users {
+              background-position: -256px -0px;
+              opacity: 1; }
+            .sidebar__nav .menu__list--main .menu__link:hover .i-gear, .sidebar__nav .menu__list--main .menu__link.active .i-gear {
+              background-position: -64px -0px; }
+      .sidebar__nav .menu__list--last {
+        position: -webkit-sticky;
+        position: sticky;
+        bottom: 0; }
+        .sidebar__nav .menu__list--last .menu__link {
+          display: block;
+          margin-bottom: 7px;
+          padding: 16px 21px;
+          font-size: 18px;
+          color: #ff765f;
+          line-height: 1.5;
+          letter-spacing: 0.11px;
+          text-align: center;
+          text-transform: uppercase; }
+
+/*SideBar*/
+/*Footer*/
+.footer {
+  background-color: #fff;
+  box-shadow: 0 7px 20px 0 rgba(216, 223, 225, 0.5);
+  border: solid 1px #f5f8f9;
+  z-index: 3; }
+  .footer__content {
+    padding: 7px 45px; }
+  .footer__menu .menu__list {
+    list-style: none;
+    text-align: right; }
+  .footer__menu .menu__item {
+    display: inline-block;
+    padding: 0px 42px;
+    border-right: 1px solid #0d2a4a; }
+    .footer__menu .menu__item:last-child {
+      padding-right: 0;
+      border-right: 0 none; }
+  .footer__menu .menu__link {
+    font-size: 14px;
+    letter-spacing: 0.08px;
+    text-decoration: none; }
+
+/*Footer*/
+/*Popups*/
+.popup__overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  background-color: rgba(43, 132, 235, 0.05);
+  z-index: 40; }
+
+.popup__block {
+  position: relative;
+  display: none;
+  width: 490px;
+  max-height: 80vh;
+  padding: 24px 55px 36px 55px;
+  border-radius: 20px;
+  box-shadow: 0 7px 20px 0 rgba(216, 223, 225, 0.5);
+  background-color: #fff;
+  z-index: 44;
+  overflow-y: auto; }
+  .popup__block .block__top {
+    text-align: right; }
+    .popup__block .block__top .btn-close {
+      width: 40px;
+      height: 40px;
+      background: url("../img/icons/i-close_red.png"); }
+  .popup__block .block__title {
+    margin-bottom: 24px;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.14px; }
+    .popup__block .block__title.tac {
+      text-align: center; }
+  .popup__block .block__content h1 {
+    margin-bottom: 16px;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: 0.22px; }
+  .popup__block .block__content h2 {
+    margin-bottom: 16px;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: 0.14px; }
+  .popup__block .block__content h3 {
+    margin-bottom: 16px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: 0.11px; }
+  .popup__block .block__content p {
+    margin-bottom: 32px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.11px; }
+  .popup__block .block__btns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+    .popup__block .block__btns .btns {
+      padding: 18px 0;
+      min-width: 160px;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.11px;
+      color: #fff;
+      text-transform: uppercase;
+      text-align: center;
+      border-radius: 500px; }
+    .popup__block .block__btns .btn-cancel {
+      background-color: #0d2a4a; }
+    .popup__block .block__btns .btn-remove {
+      background-color: #ff765f; }
+    .popup__block .block__btns .btn-invite {
+      background-color: #2b84eb; }
+    .popup__block .block__btns.tac {
+      justify-content: center; }
+  .popup__block.tac {
+    text-align: center; }
+  .popup__block.popup--terms {
+    width: 825px; }
+  .popup__block.popup--medicine {
+    padding: 24px;
+    width: 459px; }
+    .popup__block.popup--medicine .medicine__gallery {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 8px; }
+      .popup__block.popup--medicine .medicine__gallery .small {
+        margin-bottom: 12px;
+        opacity: 0.5; }
+        .popup__block.popup--medicine .medicine__gallery .small.active {
+          opacity: 1; }
+      .popup__block.popup--medicine .medicine__gallery .image {
+        border-radius: 10px; }
+    .popup__block.popup--medicine .medicine__time {
+      margin-bottom: 16px;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: 0.08px; }
+    .popup__block.popup--medicine .medicine__name {
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: 0.14px; }
+    .popup__block.popup--medicine .medicine__quantity {
+      font-size: 14px;
+      line-height: 1.5;
+      letter-spacing: 0.08px; }
+    .popup__block.popup--medicine .medicine__btns {
+      padding-top: 20px; }
+      .popup__block.popup--medicine .medicine__btns.tac {
+        text-align: center; }
+      .popup__block.popup--medicine .medicine__btns .btn-close,
+      .popup__block.popup--medicine .medicine__btns .btn-take,
+      .popup__block.popup--medicine .medicine__btns .btn-untake {
+        margin: 0 15px;
+        min-width: 159px;
+        padding: 18px 48px;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1.5;
+        letter-spacing: 0.11px;
+        text-align: center;
+        color: #fff;
+        border-radius: 500px; }
+      .popup__block.popup--medicine .medicine__btns .btn-close {
+        background-color: #0d2a4a; }
+      .popup__block.popup--medicine .medicine__btns .btn-take {
+        background-color: #2b84eb; }
+      .popup__block.popup--medicine .medicine__btns .btn-untake {
+        background-color: #ff765f; }
+      .popup__block.popup--medicine .medicine__btns .btn-takeswipe {
+        position: relative;
+        display: block;
+        padding: 4px;
+        width: 100%;
+        height: 72px;
+        border-radius: 500px;
+        box-shadow: inset 1px 1px 2px 0 rgba(0, 0, 0, 0.1);
+        background-color: #dbdfe4; }
+        .popup__block.popup--medicine .medicine__btns .btn-takeswipe span {
+          display: inline-block;
+          position: absolute;
+          top: 4px;
+          left: 4px;
+          padding: 18px 40px;
+          font-size: 18px;
+          font-weight: 600;
+          line-height: 1.5;
+          letter-spacing: 0.11px;
+          text-align: center;
+          color: #fff;
+          white-space: nowrap;
+          border-radius: 500px;
+          background-color: #2b84eb;
+          transition: all 0.5s ease; }
+          .popup__block.popup--medicine .medicine__btns .btn-takeswipe span:after {
+            content: '';
+            display: inline-block;
+            margin-left: 16px;
+            width: 13px;
+            height: 13px;
+            background: url("../img/icons/i-arrow_right-white.png") no-repeat 50%; }
+        .popup__block.popup--medicine .medicine__btns .btn-takeswipe:active span {
+          left: calc(100% - 163px); }
+  .popup__block.popup--missed .medicine__name, .popup__block.popup--missed .medicine__quantity {
+    color: #ff765f; }
+  .popup__block.popup--taken .medicine__name, .popup__block.popup--taken .medicine__quantity {
+    text-decoration: line-through; }
+
+.popup.show .popup__overlay {
+  display: flex; }
+
+.popup.phone .popup--phone,
+.popup.sms .popup--sms,
+.popup.terms .popup--terms,
+.popup.medicine .popup--medicine,
+.popup.missed .popup--missed,
+.popup.taken .popup--taken,
+.popup.take .popup--take,
+.popup.invite .popup--invite,
+.popup.remove .popup--remove,
+.popup.pin .popup--pin {
+  display: block; }
+
+/*Popups*/
+/*Icons*/
+.icons {
+  display: inline-block;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  vertical-align: middle; }
+  .icons.i24x24 {
+    width: 32px;
+    height: 32px; }
+  .icons.i32x32 {
+    width: 32px;
+    height: 32px; }
+  .icons.i-arrow_left {
+    background-image: url("../img/icons/i-arrow_left.svg");
+    background-size: 100%; }
+  .icons.i-dots {
+    background-image: url("../img/icons/i-dots.svg");
+    background-size: 66.66% 16.66%; }
+
+/*Icons*/
+/*Buttons*/
+.btns {
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none; }
+  .btns.btn-whitebrd {
+    padding: 14px 60px 14px 25px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.1px;
+    text-align: left;
+    color: #2b84eb;
+    background-color: #fff;
+    background-image: url("../img/icons/i-plus_blue.png");
+    background-image: -webkit-image-set(url("../img/icons/i-plus_blue.png") 1x, url("../img/icons/i-plus_blue@2x.png") 2x, url("../img/icons/i-plus_blue@3x.png") 3x);
+    background-image: image-set(url("../img/icons/i-plus_blue.png") 1x, url("../img/icons/i-plus_blue@2x.png") 2x, url("../img/icons/i-plus_blue@3x.png") 3x);
+    background-position: calc(100% - 16px) 50%;
+    background-repeat: no-repeat;
+    border: solid 1px #dbdfe4;
+    border-radius: 3.5px;
+    box-shadow: 0 7px 20px 0 rgba(216, 223, 225, 0.5); }
+    .btns.btn-whitebrd:before {
+      display: inline-block;
+      content: '';
+      margin-right: 16px;
+      width: 44px;
+      height: 44px;
+      border-radius: 500px;
+      vertical-align: middle; }
+  .btns.btn-icon.btn-course:before {
+    background-image: url("../img/icons/i-clipboard_circle.png");
+    background-image: -webkit-image-set(url("../img/icons/i-clipboard_circle.png") 1x, url("../img/icons/i-clipboard_circle@2x.png") 2x, url("../img/icons/i-clipboard_circle@3x.png") 3x);
+    background-image: image-set(url("../img/icons/i-clipboard_circle.png") 1x, url("../img/icons/i-clipboard_circle@2x.png") 2x, url("../img/icons/i-clipboard_circle@3x.png") 3x); }
+  .btns.btn-icon.btn-notes:before {
+    background-image: url("../img/icons/i-notes_circle.png");
+    background-image: -webkit-image-set(url("../img/icons/i-notes_circle.png") 1x, url("../img/icons/i-notes_circle@2x.png") 2x, url("../img/icons/i-notes_circle@3x.png") 3x);
+    background-image: image-set(url("../img/icons/i-notes_circle.png") 1x, url("../img/icons/i-notes_circle@2x.png") 2x, url("../img/icons/i-notes_circle@3x.png") 3x); }
+  .btns.btn-icon.btn-stock:before {
+    background-image: url("../img/icons/i-stock.png");
+    background-image: -webkit-image-set(url("../img/icons/i-stock.png") 1x, url("../img/icons/i-stock@2x.png") 2x, url("../img/icons/i-stock@3x.png") 3x);
+    background-image: image-set(url("../img/icons/i-stock.png") 1x, url("../img/icons/i-stock@2x.png") 2x, url("../img/icons/i-stock@3x.png") 3x); }
+  .btns:focus {
+    outline: none; }
+
+/*Buttons*/
+/*Common*/
+.hidden {
+  display: none; }
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+  font-size: 0;
+  line-height: 0;
+  height: 0;
+  visibility: hidden; }
+
+/*Common*/
+
+.datepicker--cells {
+  display: flex;
+  flex-wrap: wrap; }
+
+.datepicker--cell {
+  border-radius: 4px;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  z-index: 1; }
+
+.datepicker--cell.-focus- {
+  background: #f0f0f0; }
+
+.datepicker--cell.-current- {
+  color: #4EB5E6; }
+
+.datepicker--cell.-current-.-focus- {
+  color: #4a4a4a; }
+
+.datepicker--cell.-current-.-in-range- {
+  color: #4EB5E6; }
+
+.datepicker--cell.-in-range- {
+  background: rgba(92, 196, 239, 0.1);
+  color: #4a4a4a;
+  border-radius: 0; }
+
+.datepicker--cell.-in-range-.-focus- {
+  background-color: rgba(92, 196, 239, 0.2); }
+
+.datepicker--cell.-disabled- {
+  cursor: default;
+  color: #aeaeae; }
+
+.datepicker--cell.-disabled-.-focus- {
+  color: #aeaeae; }
+
+.datepicker--cell.-disabled-.-in-range- {
+  color: #a1a1a1; }
+
+.datepicker--cell.-disabled-.-current-.-focus- {
+  color: #aeaeae; }
+
+.datepicker--cell.-range-from- {
+  border: 1px solid rgba(92, 196, 239, 0.5);
+  background-color: rgba(92, 196, 239, 0.1);
+  border-radius: 4px 0 0 4px; }
+
+.datepicker--cell.-range-to- {
+  border: 1px solid rgba(92, 196, 239, 0.5);
+  background-color: rgba(92, 196, 239, 0.1);
+  border-radius: 0 4px 4px 0; }
+
+.datepicker--cell.-selected-, .datepicker--cell.-selected-.-current- {
+  color: #fff;
+  background: #5cc4ef; }
+
+.datepicker--cell.-range-from-.-range-to- {
+  border-radius: 4px; }
+
+.datepicker--cell.-selected- {
+  border: none; }
+
+.datepicker--cell.-selected-.-focus- {
+  background: #45bced; }
+
+.datepicker--cell:empty {
+  cursor: default; }
+
+.datepicker--days-names {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 8px 0 3px; }
+
+.datepicker--day-name {
+  color: #FF9A19;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: .8em; }
+
+.-only-timepicker- .datepicker--content, .datepicker--body, .datepicker-inline .datepicker--pointer {
+  display: none; }
+
+.datepicker--cell-day {
+  width: 14.28571%; }
+
+.datepicker--cells-months {
+  height: 170px; }
+
+.datepicker--cell-month {
+  width: 33.33%;
+  height: 25%; }
+
+.datepicker--cells-years, .datepicker--years {
+  height: 170px; }
+
+.datepicker--cell-year {
+  width: 25%;
+  height: 33.33%; }
+
+.datepickers-container {
+  position: absolute;
+  left: 0;
+  top: 0; }
+
+@media print {
+  .datepickers-container {
+    display: none; } }
+
+.datepicker {
+  background: #fff;
+  border: 1px solid #dbdbdb;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  box-sizing: content-box;
+  font-family: Tahoma,sans-serif;
+  font-size: 14px;
+  color: #4a4a4a;
+  width: 250px;
+  position: absolute;
+  left: -100000px;
+  opacity: 0;
+  transition: opacity .3s ease,transform .3s ease,left 0s .3s;
+  z-index: 100; }
+
+.datepicker.-from-top- {
+  transform: translateY(-8px); }
+
+.datepicker.-from-right- {
+  transform: translateX(8px); }
+
+.datepicker.-from-bottom- {
+  transform: translateY(8px); }
+
+.datepicker.-from-left- {
+  transform: translateX(-8px); }
+
+.datepicker.active {
+  opacity: 1;
+  transform: translate(0);
+  transition: opacity .3s ease,transform .3s ease,left 0s 0s; }
+
+.datepicker-inline .datepicker {
+  border-color: #d7d7d7;
+  box-shadow: none;
+  position: static;
+  left: auto;
+  right: auto;
+  opacity: 1;
+  transform: none; }
+
+.datepicker--content {
+  box-sizing: content-box;
+  padding: 4px; }
+
+.datepicker--pointer {
+  position: absolute;
+  background: #fff;
+  border-top: 1px solid #dbdbdb;
+  border-right: 1px solid #dbdbdb;
+  width: 10px;
+  height: 10px;
+  z-index: -1; }
+
+.datepicker--nav-action:hover, .datepicker--nav-title:hover {
+  background: #f0f0f0; }
+
+.-top-center- .datepicker--pointer, .-top-left- .datepicker--pointer, .-top-right- .datepicker--pointer {
+  top: calc(100% - 4px);
+  transform: rotate(135deg); }
+
+.-right-bottom- .datepicker--pointer, .-right-center- .datepicker--pointer, .-right-top- .datepicker--pointer {
+  right: calc(100% - 4px);
+  transform: rotate(225deg); }
+
+.-bottom-center- .datepicker--pointer, .-bottom-left- .datepicker--pointer, .-bottom-right- .datepicker--pointer {
+  bottom: calc(100% - 4px);
+  transform: rotate(315deg); }
+
+.-left-bottom- .datepicker--pointer, .-left-center- .datepicker--pointer, .-left-top- .datepicker--pointer {
+  left: calc(100% - 4px);
+  transform: rotate(45deg); }
+
+.-bottom-left- .datepicker--pointer, .-top-left- .datepicker--pointer {
+  left: 10px; }
+
+.-bottom-right- .datepicker--pointer, .-top-right- .datepicker--pointer {
+  right: 10px; }
+
+.-bottom-center- .datepicker--pointer, .-top-center- .datepicker--pointer {
+  left: calc(50% - 10px / 2); }
+
+.-left-top- .datepicker--pointer, .-right-top- .datepicker--pointer {
+  top: 10px; }
+
+.-left-bottom- .datepicker--pointer, .-right-bottom- .datepicker--pointer {
+  bottom: 10px; }
+
+.-left-center- .datepicker--pointer, .-right-center- .datepicker--pointer {
+  top: calc(50% - 10px / 2); }
+
+.datepicker--body.active {
+  display: block; }
+
+.datepicker--nav {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #efefef;
+  min-height: 32px;
+  padding: 4px; }
+
+.-only-timepicker- .datepicker--nav {
+  display: none; }
+
+.datepicker--nav-action, .datepicker--nav-title {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center; }
+
+.datepicker--nav-action {
+  width: 32px;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+.datepicker--nav-action.-disabled- {
+  visibility: hidden; }
+
+.datepicker--nav-action svg {
+  width: 32px;
+  height: 32px; }
+
+.datepicker--nav-action path {
+  fill: none;
+  stroke: #9c9c9c;
+  stroke-width: 2px; }
+
+.datepicker--nav-title {
+  border-radius: 4px;
+  padding: 0 8px; }
+
+.datepicker--buttons, .datepicker--time {
+  border-top: 1px solid #efefef;
+  padding: 4px; }
+
+.datepicker--nav-title i {
+  font-style: normal;
+  color: #9c9c9c;
+  margin-left: 5px; }
+
+.datepicker--nav-title.-disabled- {
+  cursor: default;
+  background: 0 0; }
+
+.datepicker--buttons {
+  display: flex; }
+
+.datepicker--button {
+  color: #4EB5E6;
+  cursor: pointer;
+  border-radius: 4px;
+  flex: 1;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px; }
+
+.datepicker--button:hover {
+  color: #4a4a4a;
+  background: #f0f0f0; }
+
+.datepicker--time {
+  display: flex;
+  align-items: center;
+  position: relative; }
+
+.datepicker--time.-am-pm- .datepicker--time-sliders {
+  flex: 0 1 138px;
+  max-width: 138px; }
+
+.-only-timepicker- .datepicker--time {
+  border-top: none; }
+
+.datepicker--time-sliders {
+  flex: 0 1 153px;
+  margin-right: 10px;
+  max-width: 153px; }
+
+.datepicker--time-label {
+  display: none;
+  font-size: 12px; }
+
+.datepicker--time-current {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  font-size: 14px;
+  text-align: center;
+  margin: 0 0 0 10px; }
+
+.datepicker--time-current-colon {
+  margin: 0 2px 3px;
+  line-height: 1; }
+
+.datepicker--time-current-hours, .datepicker--time-current-minutes {
+  line-height: 1;
+  font-size: 19px;
+  font-family: "Century Gothic",CenturyGothic,AppleGothic,sans-serif;
+  position: relative;
+  z-index: 1; }
+
+.datepicker--time-current-hours:after, .datepicker--time-current-minutes:after {
+  content: '';
+  background: #f0f0f0;
+  border-radius: 4px;
+  position: absolute;
+  left: -2px;
+  top: -3px;
+  right: -2px;
+  bottom: -2px;
+  z-index: -1;
+  opacity: 0; }
+
+.datepicker--time-current-hours.-focus-:after, .datepicker--time-current-minutes.-focus-:after {
+  opacity: 1; }
+
+.datepicker--time-current-ampm {
+  text-transform: uppercase;
+  align-self: flex-end;
+  color: #9c9c9c;
+  margin-left: 6px;
+  font-size: 11px;
+  margin-bottom: 1px; }
+
+.datepicker--time-row {
+  display: flex;
+  align-items: center;
+  font-size: 11px;
+  height: 17px;
+  background: linear-gradient(to right, #dedede, #dedede) left 50%/100% 1px no-repeat; }
+
+.datepicker--time-row:first-child {
+  margin-bottom: 4px; }
+
+.datepicker--time-row input[type=range] {
+  background: 0 0;
+  cursor: pointer;
+  flex: 1;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  -webkit-appearance: none; }
+
+.datepicker--time-row input[type=range]::-ms-tooltip {
+  display: none; }
+
+.datepicker--time-row input[type=range]:hover::-webkit-slider-thumb {
+  border-color: #b8b8b8; }
+
+.datepicker--time-row input[type=range]:hover::-moz-range-thumb {
+  border-color: #b8b8b8; }
+
+.datepicker--time-row input[type=range]:hover::-ms-thumb {
+  border-color: #b8b8b8; }
+
+.datepicker--time-row input[type=range]:focus {
+  outline: 0; }
+
+.datepicker--time-row input[type=range]:focus::-webkit-slider-thumb {
+  background: #5cc4ef;
+  border-color: #5cc4ef; }
+
+.datepicker--time-row input[type=range]:focus::-moz-range-thumb {
+  background: #5cc4ef;
+  border-color: #5cc4ef; }
+
+.datepicker--time-row input[type=range]:focus::-ms-thumb {
+  background: #5cc4ef;
+  border-color: #5cc4ef; }
+
+.datepicker--time-row input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  height: 12px;
+  width: 12px;
+  border-radius: 3px;
+  border: 1px solid #dedede;
+  background: #fff;
+  cursor: pointer;
+  -webkit-transition: background .2s;
+  transition: background .2s;
+  margin-top: -6px; }
+
+.datepicker--time-row input[type=range]::-moz-range-thumb {
+  box-sizing: border-box;
+  height: 12px;
+  width: 12px;
+  border-radius: 3px;
+  border: 1px solid #dedede;
+  background: #fff;
+  cursor: pointer;
+  -moz-transition: background .2s;
+  transition: background .2s; }
+
+.datepicker--time-row input[type=range]::-ms-thumb {
+  box-sizing: border-box;
+  height: 12px;
+  width: 12px;
+  border-radius: 3px;
+  border: 1px solid #dedede;
+  background: #fff;
+  cursor: pointer;
+  -ms-transition: background .2s;
+  transition: background .2s; }
+
+.datepicker--time-row input[type=range]::-webkit-slider-runnable-track {
+  border: none;
+  height: 1px;
+  cursor: pointer;
+  color: transparent;
+  background: 0 0; }
+
+.datepicker--time-row input[type=range]::-moz-range-track {
+  border: none;
+  height: 1px;
+  cursor: pointer;
+  color: transparent;
+  background: 0 0; }
+
+.datepicker--time-row input[type=range]::-ms-track {
+  border: none;
+  height: 1px;
+  cursor: pointer;
+  color: transparent;
+  background: 0 0; }
+
+.datepicker--time-row input[type=range]::-ms-fill-lower {
+  background: 0 0; }
+
+.datepicker--time-row input[type=range]::-ms-fill-upper {
+  background: 0 0; }
+
+.datepicker--time-row span {
+  padding: 0 12px; }
+
+.datepicker--time-icon {
+  color: #9c9c9c;
+  border: 1px solid;
+  border-radius: 50%;
+  font-size: 16px;
+  position: relative;
+  margin: 0 5px -1px 0;
+  width: 1em;
+  height: 1em; }
+
+.datepicker--time-icon:after, .datepicker--time-icon:before {
+  content: '';
+  background: currentColor;
+  position: absolute; }
+
+.datepicker--time-icon:after {
+  height: .4em;
+  width: 1px;
+  left: calc(50% - 1px);
+  top: calc(50% + 1px);
+  transform: translateY(-100%); }
+
+.datepicker--time-icon:before {
+  width: .4em;
+  height: 1px;
+  top: calc(50% + 1px);
+  left: calc(50% - 1px); }
+
+.datepicker--cell-day.-other-month-, .datepicker--cell-year.-other-decade- {
+  color: #dedede; }
+
+.datepicker--cell-day.-other-month-:hover, .datepicker--cell-year.-other-decade-:hover {
+  color: #c5c5c5; }
+
+.-disabled-.-focus-.datepicker--cell-day.-other-month-, .-disabled-.-focus-.datepicker--cell-year.-other-decade- {
+  color: #dedede; }
+
+.-selected-.datepicker--cell-day.-other-month-, .-selected-.datepicker--cell-year.-other-decade- {
+  color: #fff;
+  background: #a2ddf6; }
+
+.-selected-.-focus-.datepicker--cell-day.-other-month-, .-selected-.-focus-.datepicker--cell-year.-other-decade- {
+  background: #8ad5f4; }
+
+.-in-range-.datepicker--cell-day.-other-month-, .-in-range-.datepicker--cell-year.-other-decade- {
+  background-color: rgba(92, 196, 239, 0.1);
+  color: #ccc; }
+
+.-in-range-.-focus-.datepicker--cell-day.-other-month-, .-in-range-.-focus-.datepicker--cell-year.-other-decade- {
+  background-color: rgba(92, 196, 239, 0.2); }
+
+.datepicker--cell-day.-other-month-:empty, .datepicker--cell-year.-other-decade-:empty {
+  background: 0 0;
+  border: none; }
+
+/*# sourceMappingURL=styles.css.map */
