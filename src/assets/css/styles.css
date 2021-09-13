@@ -61,9 +61,9 @@ button {
     display: inline-block;
     width: 61px;
     height: 61px;
-    background-image: url("../img/logo_small.png");
+    /* background-image: url("../img/logo_small.png");
     background-image: -webkit-image-set(url("../img/logo_small.png") 1x, url("../img/logo_small@2x.png") 2x, url("../img/logo_small@3x.png") 3x);
-    background-image: image-set(url("../img/logo_small.png") 1x, url("../img/logo_small@2x.png") 2x, url("../img/logo_small@3x.png") 3x);
+    background-image: image-set(url("../img/logo_small.png") 1x, url("../img/logo_small@2x.png") 2x, url("../img/logo_small@3x.png") 3x); */
     background-repeat: no-repeat; }
 
 .avatar {
@@ -89,7 +89,7 @@ button {
   .form__row--columns {
     display: flex;
     justify-content: space-between;
-    align-items: start; }
+    align-items: flex-start; }
     .form__row--columns .columns__column--course {
       flex: 1; }
     .form__row--columns .columns__column--start, .form__row--columns .columns__column--end {
@@ -771,7 +771,7 @@ button {
 .schedule__block {
   display: flex;
   justify-content: flex-start;
-  align-items: start; }
+  align-items: flex-start; }
   .schedule__block .block__medicines {
     flex: 0 0 515px; }
   .schedule__block .block__courses {
@@ -867,7 +867,7 @@ button {
 .medicines__columns {
   display: flex;
   justify-content: flex-start;
-  align-items: start;
+  align-items: flex-start;
   flex-wrap: nowrap;
   overflow-x: auto; }
   .medicines__columns .column {
@@ -1060,7 +1060,7 @@ button {
 .medicines__page {
   display: flex;
   justify-content: space-between;
-  align-items: start; }
+  align-items: flex-start; }
   .medicines__page .medicines__search {
     flex: 0 0 428px;
     width: 428px; }
@@ -1123,7 +1123,7 @@ button {
 .medicines__details .medicine__gallery {
   display: flex;
   justify-content: flex-start;
-  align-items: start;
+  align-items: flex-start;
   margin-bottom: 24px; }
   .medicines__details .medicine__gallery .gallery__big {
     position: relative;
@@ -1378,7 +1378,7 @@ button {
   .medicines__create .create__content .form {
     display: flex;
     justify-content: flex-start;
-    align-items: start;
+    align-items: flex-start;
     flex-wrap: wrap; }
   .medicines__create .create__content .create__gallery {
     flex: 0 0 440px;
@@ -1386,7 +1386,7 @@ button {
     .medicines__create .create__content .create__gallery .medicine__gallery {
       display: flex;
       justify-content: flex-start;
-      align-items: start;
+      align-items: flex-start;
       margin-bottom: 24px; }
       .medicines__create .create__content .create__gallery .medicine__gallery .gallery__big {
         position: relative;
@@ -1599,7 +1599,7 @@ button {
 .courses__add .form__bottom {
   display: flex;
   justify-content: flex-start;
-  align-items: start;
+  align-items: flex-start;
   padding-top: 24px; }
   .courses__add .form__bottom .medicines__search {
     flex: 0 0 428px;
@@ -1868,7 +1868,7 @@ button {
   .settings__page .settings__row--form {
     display: flex;
     justify-content: space-between;
-    align-items: start;
+    align-items: flex-start;
     margin: 0 -16px; }
     .settings__page .settings__row--form .form__row--columns {
       margin: 0 -16px; }
@@ -1986,7 +1986,7 @@ button {
           text-transform: uppercase; }
           .sidebar__nav .menu__list--main .menu__link .icons {
             margin: -2px 26px 0 0;
-            background-image: url("/img/icons/i-menu.png");
+            background-image: url("../img/icons/i-menu.png");
             background-repeat: no-repeat; }
             .sidebar__nav .menu__list--main .menu__link .icons.i-home {
               background-position: -160px -0px; }
@@ -2153,7 +2153,7 @@ button {
     .popup__block.popup--medicine .medicine__gallery {
       display: flex;
       justify-content: space-between;
-      align-items: start;
+      align-items: flex-start;
       margin-bottom: 8px; }
       .popup__block.popup--medicine .medicine__gallery .small {
         margin-bottom: 12px;

@@ -2,17 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { ConnectedRouter } from 'connected-react-router';
 import {Provider} from 'react-redux';
-import Routes from './routes';
+import Router from './router';
 
-import store from './store';
+import {store} from './store';
 import {appHistory} from './services/HistoryConfig';
-import './assets/styles.css';
+import './assets/css/styles.css';
 // import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={appHistory}>
-      <Routes />
+      <Router />
     </ConnectedRouter>
   </Provider>,
   document.getElementById('root')
