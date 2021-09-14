@@ -4,7 +4,7 @@ import PhoneModal from './PhoneModal';
 import CodeModal from './CodeModal';
 import 'react-phone-number-input/style.css';
 
-const CheckCode = () => {
+const PhoneVerificationModal = () => {
   const {phone} = useSelector(({authState}) => authState);
   return phone ? (
     <CodeModal />
@@ -13,4 +13,4 @@ const CheckCode = () => {
   );
 };
 
-export default CheckCode;
+export default PhoneVerificationModal;

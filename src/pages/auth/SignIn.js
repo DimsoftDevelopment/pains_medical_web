@@ -3,7 +3,7 @@ import {useForm} from 'react-hook-form';
 import PageWrapper from '../../components/PageWrapper';
 import TextInput from '../../components/inputs/TextInput';
 import SubmitButton from '../../components/buttons/SubmitButton';
-import CheckCode from '../../components/modals/CheckCode';
+import PhoneVerificationModal from '../../components/modals/PhoneVerificationModal';
 import AvatarInput from '../../components/inputs/AvatarInput';
 
 const SignIn = () => {
@@ -61,7 +61,7 @@ const SignIn = () => {
           <button className="btns btn-skip">SKIP</button>
         </div>
       </form>
-      <CheckCode />
+      <PhoneVerificationModal />
     </PageWrapper>
   );
 };
