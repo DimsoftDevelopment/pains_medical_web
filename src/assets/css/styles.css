@@ -310,6 +310,7 @@ button {
   font-weight: 600;
   letter-spacing: 0.11px;
   color: #fff;
+  cursor: pointer;
   border-radius: 5px;
   box-shadow: 10px 4px 20px 0 rgba(216, 223, 225, 0.5); }
   .form__reset:disabled, .form__submit:disabled {
@@ -369,6 +370,15 @@ button {
       background-image: url("../img/icons/i-camera.png");
       background-position: 50%;
       background-repeat: no-repeat; }
+    .form--authorization .form__label--avatar-container {
+      position: relative;
+    }
+    .form--authorization .btn-close {
+      position: absolute;
+      right: 30%;
+      width: 40px;
+      height: 40px;
+      background: url("../img/icons/i-close_red.png"); }
   .form--authorization .form__input {
     padding: 16px;
     font-size: 16px;
@@ -2848,5 +2858,21 @@ button {
 .datepicker--cell-day.-other-month-:empty, .datepicker--cell-year.-other-decade-:empty {
   background: 0 0;
   border: none; }
+
+.input-error-message {
+  color: red;
+  font-size: 12px !important;
+  margin-bottom: 16px;
+  margin-top: 8px;
+}
+
+.link {
+  color: #2b84eb;
+  text-decoration: underline;
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 0.08px;
+  text-align: center;
+}
 
 /*# sourceMappingURL=styles.css.map */

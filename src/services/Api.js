@@ -1,8 +1,8 @@
 import axios from 'axios';
-import {LOCAL_STORAGE} from '../redux/constants';
+import {LOCAL_STORAGE} from '../constants';
 import {config} from '../config';
-import {store} from '@redux/store'
-import {authActions} from '@actions'
+// import {store} from '@redux/store'
+// import {authActions} from '@actions'
 import {getToken, getRefreshToken, setToken} from './LocalStorage'
 
 export function processRequest(
@@ -33,7 +33,7 @@ export function processRequest(
 
     // on error interceptor
     const originalRequest = error.config;
-    if(error?.response?.status == 401 && refresh_token) {
+    if(error?.response?.status === 401 && refresh_token) {
       try {
         const conf = { method: 'post',
         url: `${config.REACT_APP_API_URL}/authorization/refresh_token?refresh_token=${refresh_token}`,

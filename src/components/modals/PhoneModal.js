@@ -1,50 +1,64 @@
 import React from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import PhoneInput from 'react-phone-number-input';
-import {useForm, Controller, useFormState, useController} from 'react-hook-form';
+import {useForm, Controller} from 'react-hook-form';
+import Modal from './Modal';
 import SubmitButton from '../buttons/SubmitButton';
+import {PHONE} from '../../constants';
+import {sendVerificationCode} from '../../pages/auth/actions';
 import 'react-phone-number-input/style.css';
 
 const PhoneModal = () => {
-  const {handleSubmit, control} = useForm({
+  const dispatch = useDispatch();
+  const {isLoading} = useSelector(({authState}) => authState);
+  const {handleSubmit, formState: {errors, isDirty, isValid}, control} = useForm({
     defaultValues: {
       phone: '',
     },
+    mode: 'onChange',
   });
-  const {fieldState} = useController({name: 'phone', control});
-  const {isDirty, isValid, errors} = useFormState({control});
-  const sendVerificationCode = () => {};
-  console.log(isDirty, isValid, errors, fieldState)
+  const handleSendVerificationCode = ({phone}) => {
+    console.log(phone)
+    dispatch(sendVerificationCode(phone));
+  };
   return (
-    <div className="popup show phone">
-      <div className="popup__overlay">
-        <div className="popup__block popup--phone">
-          {/* <div className="block__top">
-            <button className="btn btn-close"></button>
-          </div> */}
-          <div className="block__title tac">
-            Enter you mobile <br /> phone number
-          </div>
-          <div className="block__content">
-            <form className="form form--popup" onSubmit={handleSubmit(sendVerificationCode)}>
-              <div className="form__row">
-                <Controller
-                  control={control}
-                  name="phone"
-                  rules={{required: 'Phone is required.', validate: true}}
-                  render={({field}) => (
-                    <PhoneInput {...field} />
-                  )}
-                />
-              </div>
-              <div className="form__row form__row--text tac">
-                By clicking «Continue» button you are agree with <a href="#">terms and conditions</a>
-              </div>
-              <SubmitButton value="CONFIRM" disabled={!isDirty || !isValid} className="tac" />
-            </form>
-          </div>
+    <Modal
+      header="Enter you mobile"
+      title="phone number"
+      className={Modal.ModalClasses.phone}
+    >
+      <form className="form form--popup" onSubmit={handleSubmit(handleSendVerificationCode)}>
+        <div className="form__row">
+          <Controller
+            control={control}
+            name="phone"
+            rules={{
+              required: 'Phone is required.',
+              validate: {
+                phoneNumber: value => PHONE.test(value),
+              }
+            }}
+            render={({field}) => (
+              <PhoneInput {...field} />
+            )}
+          />
+          {errors.phone && errors.phone.type === 'phoneNumber' && (
+            <p className="input-error-message">Phone number is invalid.</p>
+          )}
+          {errors.phone && errors.phone.type !== 'phoneNumber' && (
+            <p className="input-error-message">{errors.phone}</p>
+          )}
         </div>
-      </div>
-    </div>
+        <div className="form__row form__row--text tac">
+          By clicking «Continue» button you are agree with <button className="link">terms and conditions</button>
+        </div>
+        <SubmitButton
+          value={isLoading ? "LOADING..." : "CONFIRM"}
+          disabled={!isDirty || !isValid || isLoading}
+          className="tac"
+        />
+      </form>
+    </Modal>
   );
 };
 

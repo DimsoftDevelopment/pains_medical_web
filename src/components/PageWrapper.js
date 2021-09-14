@@ -14,8 +14,8 @@ const PageWrapper = ({children, className}) => {
           <div className="footer__content">
             <div className="footer__menu">
               <ul className="menu__list">
-                <li className="menu__item"><a href="#" className="menu__link">Therms of services</a></li>
-                <li className="menu__item"><a href="#" className="menu__link">Privacy policy</a></li>
+                <li className="menu__item"><button className="menu__link">Therms of services</button></li>
+                <li className="menu__item"><button className="menu__link">Privacy policy</button></li>
               </ul>
             </div>
           </div>
