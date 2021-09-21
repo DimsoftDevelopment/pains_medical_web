@@ -14,13 +14,14 @@ const CodeModal = () => {
 		// if (error) dispatch(clearError());
     setPin(newPin);
 	};
-  const handleCheckPin = () => {
-    console.log(pin_code)
+  const handleCheckPin = event => {
+    if (event)
+		  event.preventDefault();
     dispatch(checkVerificationCode(phone, pin_code));
   };
   const handleKeyDown = () => {
     if (pin_code.length === 4)
-      handleCheckPin(pin_code);
+      handleCheckPin();
   };
   const handleResend = () => {
     dispatch(resendVerificationCode(phone));
@@ -32,7 +33,7 @@ const CodeModal = () => {
       subtitle={phone}
       className={Modal.ModalClasses.sms}
     >
-      <form className="form form--popup">
+      <form className="form form--popup" onSubmit={handleCheckPin}>
         <PinInput
           type={PinInput.PinInputTypes.text}
           handleChange={handleChangePin}

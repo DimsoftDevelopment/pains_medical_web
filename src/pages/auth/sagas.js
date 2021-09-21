@@ -9,6 +9,7 @@ import {
   checkVerificationCodeError,
 } from './actions';
 import {processRequest} from '../../services/Api';
+import {setToken, setRefreshToken, setUser} from '../../services/LocalStorage';
 
 function* handleSendVerificationCode(action) {
   const {phone, isResend} = action.payload || {};
@@ -17,12 +18,19 @@ function* handleSendVerificationCode(action) {
       phone_verification: {phone},
     };
     const {data} = yield call(processRequest, '/phone_verifications', 'POST', requestPayload);
-    if (isResend) {
-      yield put(resendVerificationCodeSuccess(data));
+    if (data.message) {
+      if (isResend) {
+        yield put(resendVerificationCodeSuccess(phone));
+      } else {
+        yield put(sendVerificationCodeSuccess(phone));
+      }
     } else {
-      yield put(sendVerificationCodeSuccess(data));
+      if (isResend) {
+        yield put(resendVerificationCodeError(data));
+      } else {
+        yield put(sendVerificationCodeError(data));
+      }
     }
-    console.log(data);
   } catch(e) {
     const sendError = isResend ? resendVerificationCodeError : sendVerificationCodeError;
     console.log(e);
@@ -35,8 +43,19 @@ function* handleCheckVerificationCode(action) {
   try {
     const requestPayload = {phone, code};
     const {data} = yield call(processRequest, '/phone_verifications/check_code', 'POST', requestPayload);
-    yield put(checkVerificationCodeSuccess(data));
-    console.log(data);
+    if (data.user) {
+      const user = data.user.data.attributes;
+      setUser(user);
+      setToken(data.token);
+      setRefreshToken(data.refresh_token);
+      yield put(checkVerificationCodeSuccess(user));
+    } else if (!data.user && data.token) {
+      setToken(data.token);
+      setRefreshToken(data.refresh_token);
+      yield put(checkVerificationCodeSuccess({}));
+    } else {
+      yield put(checkVerificationCodeError(data));
+    }
   } catch(e) {
     console.log(e);
     yield put(checkVerificationCodeError(e));

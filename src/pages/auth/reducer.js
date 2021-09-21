@@ -11,6 +11,7 @@ const authState = (state = AUTH_STATE, action) => {
       return {
         ...state,
         isLoading: true,
+        error: null,
       };
     case AUTH_ACTIONS.SEND_VERIFICATION_CODE_SUCCESS:
       return {

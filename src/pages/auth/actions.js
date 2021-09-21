@@ -5,8 +5,9 @@ export const sendVerificationCode = phone => ({
   payload: {phone},
 });
 
-export const sendVerificationCodeSuccess = () => ({
+export const sendVerificationCodeSuccess = phone => ({
   type: AUTH_ACTIONS.SEND_VERIFICATION_CODE_SUCCESS,
+  payload: {phone},
 });
 
 export const sendVerificationCodeError = error => ({
@@ -19,8 +20,9 @@ export const resendVerificationCode = phone => ({
   payload: {phone, isResend: true},
 });
 
-export const resendVerificationCodeSuccess = () => ({
+export const resendVerificationCodeSuccess = phone => ({
   type: AUTH_ACTIONS.RESEND_VERIFICATION_CODE_SUCCESS,
+  payload: {phone},
 });
 
 export const resendVerificationCodeError = error => ({
@@ -33,8 +35,9 @@ export const checkVerificationCode = (phone, code) => ({
   payload: {phone, code},
 });
 
-export const checkVerificationCodeSuccess = () => ({
+export const checkVerificationCodeSuccess = user => ({
   type: AUTH_ACTIONS.CHECK_VERIFICATION_CODE_SUCCESS,
+  payload: {user},
 });
 
 export const checkVerificationCodeError = error => ({

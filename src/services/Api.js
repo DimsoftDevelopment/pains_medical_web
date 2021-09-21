@@ -18,12 +18,11 @@ export function processRequest(
     'Content-Type': json ? 'application/json' : 'multipart/form-data',
     Authorization: token ? `Bearer ${token}` : '',
   };
-  
-  const body = json ? JSON.stringify(data) : data;
+
   const configs = {
     method,
     baseURL: config.REACT_APP_API_URL + url,
-    data: body,
+    data: data,
     headers: headers,
     responseType: responseType ? responseType : 'json',
   };
@@ -59,6 +58,6 @@ export function processRequest(
 
     return Promise.reject(error);
   })
-  
+
   return instance(configs).then((res) => res);
 }

@@ -729,17 +729,26 @@ button {
 
 /*Family*/
 /*Calendar*/
+.calendar {
+  width: 100%;
+  overflow: hidden;
+}
 .calendar__block {
   margin-bottom: 24px;
   padding: 24px 0;
   border-top: 1px solid #dbdfe4;
   border-bottom: 1px solid #dbdfe4; }
+  .calendar__block .calendar__months {
+    width: 100%;
+    overflow: auto;
+  }
   .calendar__block .calendar__months .months__list {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 14px; }
     .calendar__block .calendar__months .months__list .month {
+      cursor: pointer;
       font-size: 18px;
       line-height: 1.5;
       letter-spacing: 0.11px; }
@@ -747,6 +756,10 @@ button {
         font-size: 24px;
         font-weight: 600;
         letter-spacing: 0.14px; }
+  .calendar__block .calendar__days {
+    width: 100%;
+    overflow: auto;
+  }
   .calendar__block .calendar__days .days__list {
     display: flex;
     justify-content: space-between;
@@ -764,6 +777,7 @@ button {
         letter-spacing: -0.41px;
         border-radius: 50%; }
       .calendar__block .calendar__days .days__list .day .week__day {
+        text-transform: uppercase;
         font-size: 18px;
         line-height: 1.5;
         letter-spacing: 0.11px; }

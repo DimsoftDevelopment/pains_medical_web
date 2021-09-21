@@ -1,7 +1,13 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import {ROUTES} from '../router/routes';
 
-const PageWrapper = ({children, className}) => {
+const PageWrapper = ({children, className, showSideBar}) => {
+  const currentPage = window.location.pathname;
+  const handleLogout = () => {};
+
   return (
     <div className={className}>
       <div className="page__wrapper">
@@ -9,6 +15,92 @@ const PageWrapper = ({children, className}) => {
           <main className="content">
             {children}
           </main>
+          {showSideBar && (
+            <aside className="sidebar">
+              <div className="sidebar__header">
+                Pains
+              </div>
+              <nav className="sidebar__nav">
+                <ul className="menu__list menu__list--main">
+                  <li className="menu__item">
+                    <Link
+                      className={
+                        classnames("menu__link btns", {
+                          active: ROUTES.DASHBOARD === currentPage
+                        })
+                      }
+                      to={ROUTES.DASHBOARD}
+                      title="Home"
+                    >
+                      <i className="icons i32x32 i-home"></i> Home	
+                    </Link>
+                  </li>
+                  <li className="menu__item">
+                    <Link
+                      className={
+                        classnames("menu__link btns", {
+                          active: ROUTES.COURSES === currentPage
+                        })
+                      }
+                      to={ROUTES.COURSES}
+                      title="Courses"
+                    >
+                      <i className="icons i32x32 i-clipboard"></i> Courses
+                    </Link>
+                  </li>
+                  <li className="menu__item">
+                    <Link
+                      className={
+                        classnames("menu__link btns", {
+                          active: ROUTES.MEDS === currentPage
+                        })
+                      }
+                      to={ROUTES.MEDS}
+                      title="Medicines"
+                    >
+                      <i className="icons i32x32 i-medicine"></i> Meds			
+                    </Link>
+                  </li>
+                  <li className="menu__item @@nclass @@notification">
+                    <Link
+                      className={
+                        classnames("menu__link btns", {
+                          active: ROUTES.FAMILY === currentPage
+                        })
+                      }
+                      to={ROUTES.FAMILY}
+                      title="Family"
+                    >
+                      <i className="icons i32x32 i-users"></i> Family			
+                    </Link>
+                    <i className="notification family"></i>
+                  </li>
+                </ul>
+                <ul className="menu__list menu__list--main">
+                  <li className="menu__item">
+                    <Link
+                      className={
+                        classnames("menu__link btns", {
+                          active: ROUTES.SETTINGS === currentPage
+                        })
+                      }
+                      to={ROUTES.SETTINGS}
+                      title="Setting"
+                    >
+                      <i className="icons i32x32 i-gear"></i> Setting			
+                    </Link>
+                  </li>
+                </ul>
+                <ul className="menu__list menu__list--last">
+                  <li className="menu__item">
+                    <span className="menu__link btns" onClick={handleLogout} title="Logout">
+                      Log out			
+                    </span>
+                  </li>
+                </ul>
+              </nav>
+            </aside>
+          )}
         </div>
         <footer className="footer">
           <div className="footer__content">
@@ -35,6 +127,7 @@ const WrapperClassNames = {
 
 PageWrapper.propTypes = {
   className: PropTypes.oneOf(Object.keys(WrapperClassNames)).isRequired,
+  showSideBar: PropTypes.bool,
 };
 
 PageWrapper.WrapperClassNames = WrapperClassNames;

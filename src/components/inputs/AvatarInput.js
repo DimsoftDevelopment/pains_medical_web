@@ -5,7 +5,7 @@ const AvatarInput = ({avatar, handleAvatar, handleClearAvatar}) => {
   return avatar ? (
     <div className="form__label--avatar-container">
       <button className="btn btn-close" onClick={handleClearAvatar}></button>
-      <img src={avatar} className="form__label form__label--avatar" />
+      <img src={avatar} className="form__label form__label--avatar" alt="avatar" />
     </div>
   ) : (
     <label htmlFor="uAvatar" className="form__label form__label--avatar">
