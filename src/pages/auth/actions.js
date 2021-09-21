@@ -1,5 +1,9 @@
 import {AUTH_ACTIONS} from './constants';
 
+export const isAuthenticated = () => ({
+  type: AUTH_ACTIONS.IS_AUTHENTICATED,
+});
+
 export const sendVerificationCode = phone => ({
   type: AUTH_ACTIONS.SEND_VERIFICATION_CODE,
   payload: {phone},

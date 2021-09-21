@@ -6,9 +6,9 @@ import {Switch, Route} from "react-router-dom";
 import {ROUTES} from './routes';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
-import SignIn from '@pages/auth/SignIn';
-import Dashboard from '../pages/Dashboard';
-
+import SignIn from '../pages/auth/SignIn';
+import Dashboard from '../pages/dashboard';
+import Settings from '../pages/settings';
 
 const Routes = () => {
   return (
@@ -19,7 +19,7 @@ const Routes = () => {
       <PrivateRoute exact path={ROUTES.COURSES} component={Dashboard} />
       <PrivateRoute exact path={ROUTES.FAMILY} component={Dashboard} />
       <PrivateRoute exact path={ROUTES.MEDS} component={Dashboard} />
-      <PrivateRoute exact path={ROUTES.SETTINGS} component={Dashboard} />
+      <PrivateRoute exact path={ROUTES.SETTINGS} component={Settings} />
     </Switch>
   );
 }

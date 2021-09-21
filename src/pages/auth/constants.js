@@ -1,6 +1,7 @@
 import KeyMirror from "keymirror";
 
 const AUTH_ACTIONS = KeyMirror({
+  IS_AUTHENTICATED: null,
   SEND_VERIFICATION_CODE: null,
   SEND_VERIFICATION_CODE_SUCCESS: null,
   SEND_VERIFICATION_CODE_ERROR: null,

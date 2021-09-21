@@ -1,12 +1,18 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {useDispatch} from 'react-redux';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import {isAuthenticated} from '../pages/auth/actions';
 import {ROUTES} from '../router/routes';
 
 const PageWrapper = ({children, className, showSideBar}) => {
+  const dispatch = useDispatch();
   const currentPage = window.location.pathname;
   const handleLogout = () => {};
+  useEffect(() => {
+    dispatch(isAuthenticated());
+  }, [dispatch]);
 
   return (
     <div className={className}>
