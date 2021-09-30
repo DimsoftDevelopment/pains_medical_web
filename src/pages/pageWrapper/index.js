@@ -1,21 +1,53 @@
 import React, {useEffect} from 'react';
-import {useDispatch} from 'react-redux';
 import {Link} from 'react-router-dom';
+import {useDispatch, useSelector} from 'react-redux';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import {isAuthenticated} from '../pages/auth/actions';
-import {ROUTES} from '../router/routes';
+import ReactNotification, {store} from 'react-notifications-component';
+import {toggleNotification} from './actions';
+import {logout} from '../auth/actions';
+import {ROUTES} from '../../router/routes';
+import PinModal from '../../components/modals/PinModal';
+import PinChanged from '../../components/modals/PinChanged';
+import 'react-notifications-component/dist/theme.css';
+import 'animate.css/animate.compat.css';
 
 const PageWrapper = ({children, className, showSideBar}) => {
   const dispatch = useDispatch();
+  const {
+    isPinModalOpen,
+    notification,
+    isPinChangedOpen,
+  } = useSelector(({pageWrapperState}) => pageWrapperState);
   const currentPage = window.location.pathname;
-  const handleLogout = () => {};
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+  const handleCloseNotification = () => {
+    dispatch(toggleNotification(null));
+  };
   useEffect(() => {
-    dispatch(isAuthenticated());
-  }, [dispatch]);
+    if(notification) {
+      store.addNotification({
+        title: notification?.title || '',
+        message: notification?.message || '',
+        type: notification?.type || 'success',
+        insert: 'top',
+        container: 'top-right',
+        animationIn: ['animated', 'fadeIn'],
+        animationOut: ['animated', 'fadeOut'],
+        dismiss: {
+          duration: 5000,
+          onScreen: true
+        },
+        onRemoval: handleCloseNotification
+      });
+    }
+  }, [notification]);
 
   return (
     <div className={className}>
+      <ReactNotification />
       <div className="page__wrapper">
         <div className="content__wrapper">
           <main className="content">
@@ -119,6 +151,12 @@ const PageWrapper = ({children, className, showSideBar}) => {
           </div>
         </footer>
       </div>
+      {isPinModalOpen && (
+        <PinModal />
+      )}
+      {isPinChangedOpen && (
+        <PinChanged />
+      )}
     </div>
   );
 };

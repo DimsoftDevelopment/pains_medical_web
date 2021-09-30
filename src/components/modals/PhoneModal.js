@@ -18,7 +18,6 @@ const PhoneModal = () => {
     mode: 'onChange',
   });
   const handleSendVerificationCode = ({phone}) => {
-    console.log(phone)
     dispatch(sendVerificationCode(phone));
   };
   return (

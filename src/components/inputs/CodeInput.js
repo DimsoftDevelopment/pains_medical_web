@@ -1,7 +1,7 @@
 import React, {useRef} from 'react';
 import PropTypes from 'prop-types';
 
-const PinInput = ({handleChange, pin_code, onKeyDown, type}) => {
+const CodeInput = ({handleChange, pin_code, onKeyDown, type}) => {
 	const input_0 = useRef(null);
 	const input_1 = useRef(null);
 	const input_2 = useRef(null);
@@ -47,65 +47,72 @@ const PinInput = ({handleChange, pin_code, onKeyDown, type}) => {
     }
 	};
 	return (
-    <div className="block__content">
-      <div className="form__row form__row--pin">
+    <div className="form__row form__row--columns">
+      <div className="form__column--4">
         <input
           ref={input_0}
+          className="form__input tac"
           type={type}
-          className="form__input--pin"
           maxLength="1"
           name="1"
           inputMode="numeric"
           onChange={handleChangePin}
-        />			
+        />				
+      </div>
+      <div className="form__column--4">
         <input
           ref={input_1}
+          className="form__input tac"
           type={type}
-          className="form__input--pin"
           maxLength="1"
           name="2"
           inputMode="numeric"
           onChange={handleChangePin}
-        />			
+        />				
+      </div>
+      <div className="form__column--4">
         <input
           ref={input_2}
+          className="form__input tac"
           type={type}
-          className="form__input--pin"
           maxLength="1"
           name="3"
           inputMode="numeric"
           onChange={handleChangePin}
-        />			
+        />				
+      </div>
+      <div className="form__column--4">
         <input
           ref={input_3}
+          className="form__input tac"
           type={type}
-          className="form__input--pin"
           maxLength="1"
           name="4"
           inputMode="numeric"
           onChange={handleChangePin}
-        />			
+          onKeyDown={onKeyDown}
+        />				
       </div>
     </div>
 	);
 }
 
-const PinInputTypes = {
+const CodeInputTypes = {
   text: 'text',
   password: 'password',
 };
 
-PinInput.PinInputTypes = PinInputTypes;
+CodeInput.CodeInputTypes = CodeInputTypes;
 
-PinInput.propTypes = {
+CodeInput.propTypes = {
   handleChange: PropTypes.func.isRequired,
   pin_code: PropTypes.string.isRequired,
   onKeyDown: PropTypes.func.isRequired,
-  type: PropTypes.oneOf(Object.keys(PinInputTypes)).isRequired,
+  type: PropTypes.oneOf(Object.keys(CodeInputTypes)).isRequired,
 };
 
-PinInput.defaultProps = {
+CodeInput.defaultProps = {
   type: 'password',
 };
 
-export default PinInput;
+export default CodeInput;

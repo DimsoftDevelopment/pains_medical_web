@@ -192,6 +192,7 @@ button {
 
 .form__input--pin {
   margin: 0 12px;
+  text-align: center;
   width: 20px;
   height: 20px;
   box-shadow: inset 1px 1px 2px 0 rgba(0, 0, 0, 0.1);
@@ -203,8 +204,8 @@ button {
 
 .form .custom-select {
   position: relative; }
-  .form .custom-select select {
-    display: none; }
+  /* .form .custom-select select {
+    display: none; } */
   .form .custom-select .select-selected {
     position: relative;
     width: 100%;

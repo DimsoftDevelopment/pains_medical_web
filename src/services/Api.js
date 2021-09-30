@@ -1,63 +1,78 @@
 import axios from 'axios';
-import {LOCAL_STORAGE} from '../constants';
 import {config} from '../config';
-// import {store} from '@redux/store'
-// import {authActions} from '@actions'
-import {getToken, getRefreshToken, setToken} from './LocalStorage'
+import {getToken, getRefreshToken, setToken, setRefreshToken, getUser} from '../services/LocalStorage';
 
-export function processRequest(
-  url = '',
-  method = 'GET',
-  data = {},
-  json = true,
-  responseType
-) {
-  const token = getToken()
-  const refresh_token = getRefreshToken()
-  const headers = {
-    'Content-Type': json ? 'application/json' : 'multipart/form-data',
-    Authorization: token ? `Bearer ${token}` : '',
-  };
-
-  const configs = {
-    method,
-    baseURL: config.REACT_APP_API_URL + url,
-    data: data,
-    headers: headers,
-    responseType: responseType ? responseType : 'json',
-  };
-
-  const instance =  axios.create()
-  instance.interceptors.response.use(config => config, async (error) => {
-
-    // on error interceptor
-    const originalRequest = error.config;
-    if(error?.response?.status === 401 && refresh_token) {
-      try {
-        const conf = { method: 'post',
+const handleError = async (error, instance) => {
+  const refresh_token = getRefreshToken();
+  if (error.response && error.response.status !== 401) {
+    const errorData = {
+      data: error.response.data,
+      headers: error.response.headers,
+      status: error.response.status,
+    };
+    throw errorData;
+  } else if (error.response && error.response.status === 401 && refresh_token) {
+    try {
+      const originalRequest = error.config;
+      const user = getUser();
+      const {phone} = user || {};
+      const conf = {
+        method: 'POST',
         url: `${config.REACT_APP_API_URL}/authorization/refresh_token?refresh_token=${refresh_token}`,
         headers: { 
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        data : {}
-      }
+        data: {refresh_token, phone},
+      };
+      const response = await axios(conf)
 
-        const response = await axios(conf)
-
-        if(response?.data) {
-          console.log('CAHNGE TOKEN')
-          setToken(LOCAL_STORAGE.AUTH_TOKEN, response.data?.token)
-          setToken(LOCAL_STORAGE.REFRESH_TOKEN, response.data?.refresh_token)
-          return instance.request({ ...originalRequest, headers: { ...originalRequest.headers, Authorization: `Bearer ${response.data?.token}` } })
-        }
-      } catch (e) {
-        console.log('NOT AUTHORIZED')
-        // store.dispatch(authActions.logout())
+      if(response?.data) {
+        setToken(response.data?.token);
+        setRefreshToken(response.data?.refresh_token);
+        return instance.request({
+          ...originalRequest,
+          headers: {
+            ...originalRequest.headers,
+            Authorization: `Bearer ${response.data?.token}`,
+          },
+        });
       }
+    } catch (e) {
+      const errorData = {
+        headers: error.response.headers,
+        status: error.response.status,
+      };
+      throw errorData;
     }
+  } else if (error.response && error.response.status === 401 && !refresh_token) {
+    const errorData = {
+      headers: error.response.headers,
+      status: error.response.status,
+    };
+    throw errorData;
+  } else {
+    const errorData = new Error((error.data.response && error.data.response.message) || '');
+    errorData.response = error.data;
+    throw errorData;
+  }
+};
+const processRequest = (url = '', method = 'POST', data = {}) => {
+  const token = getToken();
+  const headers = {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}` || '',
+  };
+  const configs = {
+    method,
+    data,
+    headers,
+    url: config.REACT_APP_API_URL + url,
+    credentials: 'same-origin'
+  };
+  const instance = axios.create();
+  instance.interceptors.response.use(config => config, async error => handleError(error, instance));
 
-    return Promise.reject(error);
-  })
+  return instance(configs).then(res => res);
+};
 
-  return instance(configs).then((res) => res);
-}
+export {processRequest};

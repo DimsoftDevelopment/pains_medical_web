@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useForm} from 'react-hook-form';
-import PageWrapper from '../../components/PageWrapper';
+import PageWrapper from '../pageWrapper';
 import TextInput from '../../components/inputs/TextInput';
 import SubmitButton from '../../components/buttons/SubmitButton';
 import PhoneVerificationModal from '../../components/modals/PhoneVerificationModal';

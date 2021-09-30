@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {useSelector} from 'react-redux';
 import {Redirect, Route} from 'react-router-dom';
 import {ROUTES} from './routes';
 import {getToken} from '@services/LocalStorage';
 
 const PrivateRoute = (props) => {
   const token = getToken();
+  const {user} = useSelector(({authState}) => authState);
 
-  return token ? (
+  return user && token ? (
     <Route {...props } />
   ) : (
     <Redirect to={ROUTES.SIGN_IN} />

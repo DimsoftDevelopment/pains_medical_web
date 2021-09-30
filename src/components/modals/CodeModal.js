@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import Modal from './Modal';
-import PinInput from '../inputs/PinInput';
+import CodeInput from '../inputs/CodeInput';
 import {resendVerificationCode, checkVerificationCode} from '../../pages/auth/actions';
 import SubmitButton from '../buttons/SubmitButton';
 import blueCheckIcon from '@assets/img/icons/i-check_blue.png';
@@ -34,8 +34,8 @@ const CodeModal = () => {
       className={Modal.ModalClasses.sms}
     >
       <form className="form form--popup" onSubmit={handleCheckPin}>
-        <PinInput
-          type={PinInput.PinInputTypes.text}
+        <CodeInput
+          type={CodeInput.CodeInputTypes.text}
           handleChange={handleChangePin}
           pin_code={pin_code}
           onKeyDown={handleKeyDown}

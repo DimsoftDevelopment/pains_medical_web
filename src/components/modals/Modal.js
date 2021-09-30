@@ -1,14 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Modal = ({children, header, title, subtitle, className, showCloseButton}) => {
+const Modal = ({
+  children,
+  header,
+  title,
+  subtitle,
+  className,
+  showCloseButton,
+  handleCloseModal,
+  additionalClassNames,
+}) => {
   return (
     <div className={`popup show ${className}`}>
       <div className="popup__overlay">
-        <div className={`popup__block popup--${className}`}>
+        <div className={`popup__block ${className ? `popup--${className}` : ""} ${additionalClassNames}`}>
           {showCloseButton && (
             <div className="block__top">
-              <button className="btn btn-close"></button>
+              <button className="btn btn-close" onClick={handleCloseModal}></button>
             </div>
           )}
           <div className="block__title tac">
@@ -29,16 +38,21 @@ const Modal = ({children, header, title, subtitle, className, showCloseButton}) 
 const ModalClasses = {
   phone: "phone",
   sms: "sms",
+  pin: "pin",
 };
 
 Modal.propTypes = {
-  children: PropTypes.element,
   header: PropTypes.string,
   title: PropTypes.string,
   className: PropTypes.oneOf(Object.keys(ModalClasses)),
   showCloseButton: PropTypes.bool,
   subtitle: PropTypes.string,
+  handleCloseModal: PropTypes.func,
+  additionalClassNames: PropTypes.string,
 };
 Modal.ModalClasses = ModalClasses;
+Modal.defaultProps = {
+  additionalClassNames: "",
+};
 
 export default Modal;
