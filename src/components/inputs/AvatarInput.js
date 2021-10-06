@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 const AvatarInput = ({avatar, handleAvatar, handleClearAvatar, className, label}) => {
   return avatar ? (
     <div className="form__label--avatar-container">
-      <button className="btn btn-close" onClick={handleClearAvatar}></button>
       <img src={avatar} className={className ? className : "form__label form__label--avatar"} alt="avatar" />
+      <button className="btn btn-close" onClick={handleClearAvatar}></button>
     </div>
   ) : (
     <label

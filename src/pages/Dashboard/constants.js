@@ -1,4 +1,21 @@
 import moment from "moment";
+import KeyMirror from "keymirror";
+
+const DASHBOARD_ACTIONS = KeyMirror({
+  GET_RECEPTION_MEDICATIONS: null,
+  GET_RECEPTION_MEDICATIONS_SUCCESS: null,
+  GET_RECEPTION_MEDICATIONS_ERROR: null,
+  GET_RECEPTION_MEDICATIONS_BY_USER: null,
+  GET_RECEPTION_MEDICATIONS_BY_USER_SUCCESS: null,
+  GET_RECEPTION_MEDICATIONS_BY_USER_ERROR: null,
+});
+const INITIAL_STATE = {
+  start_date: moment().startOf('day'),
+  end_date: moment().endOf('day'),
+  selectedUser: '',
+  receptionMedications: [],
+  error: null,
+};
 const MONTHS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 const MONTH_DAYS = month => {
   const monthIndex = month - 1; // 0..11 instead of 1..12
@@ -15,4 +32,9 @@ const MONTH_DAYS = month => {
   return result;
 };
 
-export {MONTHS, MONTH_DAYS};
+export {
+  MONTHS,
+  MONTH_DAYS,
+  DASHBOARD_ACTIONS,
+  INITIAL_STATE,
+};

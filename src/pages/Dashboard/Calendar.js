@@ -3,14 +3,20 @@ import moment from 'moment';
 import classNames from 'classnames';
 import {MONTHS, MONTH_DAYS} from './constants';
 
-const Calendar = () => {
+const Calendar = ({onChangeDate}) => {
   const [selectedMonth, setSelectedMonth] = useState(moment().month() + 1);
   const [selectedDay, setSelectedDay] = useState(moment().date());
   const handleMonthSelect = month => () => {
+    const start_date = moment().startOf('day').month(month - 1).date(selectedDay).toISOString();
+    const end_date = moment().endOf('day').month(month - 1).date(selectedDay).toISOString();
     setSelectedMonth(month);
+    onChangeDate({start_date, end_date});
   };
   const handleDaySelect = day => () => {
+    const start_date = moment().startOf('day').add(3, 'hours').month(selectedMonth - 1).date(day).toISOString();;
+    const end_date = moment().endOf('day').month(selectedMonth - 1).date(day).toISOString();;
     setSelectedDay(day);
+    onChangeDate({start_date, end_date});
   };
   const days = MONTH_DAYS(selectedMonth);
   return (
