@@ -39,6 +39,8 @@ const ModalClasses = {
   phone: "phone",
   sms: "sms",
   pin: "pin",
+  remove: "remove",
+  invite: "invite",
 };
 
 Modal.propTypes = {

@@ -35,7 +35,7 @@ const ProfileDetails = () => {
   useEffect(() => {
     if (!user || !user.phone)
       dispatch(push(ROUTES.SIGN_IN));
-  }, []);
+  }, [dispatch, user]);
   return (
     <PageWrapper className={PageWrapper.WrapperClassNames.signin}>
       <form className="form form--authorization" onSubmit={handleSubmit(onSubmit)}>

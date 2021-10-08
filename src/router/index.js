@@ -11,6 +11,9 @@ import Dashboard from '../pages/dashboard';
 import Settings from '../pages/settings';
 import ProfileCreation from '../pages/auth/ProfileCreation';
 import ProfileDetails from '../pages/auth/ProfileDetails';
+import Courses from '../pages/courses';
+import Family from '../pages/family';
+import Meds from '../pages/meds';
 
 const Routes = () => {
   const dispatch = useDispatch();
@@ -24,9 +27,9 @@ const Routes = () => {
       <PublicRoute exact path={ROUTES.PROFILE_CREATION} component={ProfileCreation} />
       <PublicRoute exact path={ROUTES.PROFILE_DETAILS} component={ProfileDetails} />
       <PrivateRoute exact path={ROUTES.DASHBOARD} component={Dashboard} />
-      <PrivateRoute exact path={ROUTES.COURSES} component={Dashboard} />
-      <PrivateRoute exact path={ROUTES.FAMILY} component={Dashboard} />
-      <PrivateRoute exact path={ROUTES.MEDS} component={Dashboard} />
+      <PrivateRoute exact path={ROUTES.COURSES} component={Courses} />
+      <PrivateRoute exact path={ROUTES.FAMILY} component={Family} />
+      <PrivateRoute exact path={ROUTES.MEDS} component={Meds} />
       <PrivateRoute exact path={ROUTES.SETTINGS} component={Settings} />
     </Switch>
   );

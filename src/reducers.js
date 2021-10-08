@@ -5,6 +5,8 @@ import {profileState} from './pages/settings/reducer';
 import {pageWrapperState} from './pages/pageWrapper/reducer';
 import {familyState} from './pages/family/reducer';
 import {dashboardState} from './pages/dashboard/reducer';
+import {coursesState} from './pages/courses/reducer';
+import {medsState} from './pages/meds/reducer';
 
 const reducers = (history) => combineReducers({
   router: connectRouter(history),
@@ -13,6 +15,8 @@ const reducers = (history) => combineReducers({
   pageWrapperState,
   familyState,
   dashboardState,
+  coursesState,
+  medsState,
 });
 
 export default reducers;

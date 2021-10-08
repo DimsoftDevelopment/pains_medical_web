@@ -18,7 +18,6 @@ const ProfileCreation = () => {
   const {phone, user} = useSelector(({authState}) => authState);
   const dispatch = useDispatch();
   const onSubmit = formData => {
-    console.log(formData);
     dispatch(saveUserInfo({
       ...formData,
       phone,
@@ -52,7 +51,7 @@ const ProfileCreation = () => {
   useEffect(() => {
     if (!phone)
       dispatch(push(ROUTES.SIGN_IN));
-  }, []);
+  }, [dispatch, phone]);
   return (
     <PageWrapper className={PageWrapper.WrapperClassNames.signin}>
       <form className="form form--authorization" onSubmit={handleSubmit(onSubmit)}>

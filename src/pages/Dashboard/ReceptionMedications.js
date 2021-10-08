@@ -9,7 +9,6 @@ import clipboardIcon3x from '../../assets/img/icons/i-clipboard@3x.png';
 const ReceptionMedications = ({receptionMedications, selectedDate}) => {
   const isEmpty = receptionMedications.length === 0;
   const isToday = moment().date() === moment(selectedDate).date() ? 'Today, ' : '';
-  console.log(moment().date(), moment(selectedDate).date())
   return (
     <section className={classNames("schedule", {
       'section--fullheight': isEmpty,
@@ -53,7 +52,7 @@ const ReceptionMedications = ({receptionMedications, selectedDate}) => {
 
 ReceptionMedications.propTypes = {
   receptionMedications: PropTypes.array,
-  selectedDate: PropTypes.oneOfType([PropTypes.string, Date]),
+  selectedDate: PropTypes.oneOfType([PropTypes.string, Date, PropTypes.object]),
 };
 
 export default ReceptionMedications;

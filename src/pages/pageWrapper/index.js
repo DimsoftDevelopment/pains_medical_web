@@ -23,10 +23,10 @@ const PageWrapper = ({children, className, showSideBar}) => {
   const handleLogout = () => {
     dispatch(logout());
   };
-  const handleCloseNotification = () => {
-    dispatch(toggleNotification(null));
-  };
   useEffect(() => {
+    const handleCloseNotification = () => {
+      dispatch(toggleNotification(null));
+    };
     if(notification) {
       store.addNotification({
         title: notification?.title || '',
@@ -43,7 +43,7 @@ const PageWrapper = ({children, className, showSideBar}) => {
         onRemoval: handleCloseNotification
       });
     }
-  }, [notification]);
+  }, [notification, dispatch]);
 
   return (
     <div className={className}>

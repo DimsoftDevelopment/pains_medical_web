@@ -21,7 +21,11 @@ const Dashboard = () => {
   } = useSelector(({dashboardState}) => dashboardState);
   useEffect(() => {
     dispatch(getFamilyList());
-  }, []);
+    // dispatch(getReceptionMedications(
+    //   start_date,
+    //   end_date,
+    // ));
+  }, [dispatch]);
   const selectUser = user_id => {
     if (user_id === selectedUser) {
       dispatch(getReceptionMedications(

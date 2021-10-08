@@ -94,7 +94,6 @@ function* handleSendVerificationCode(action) {
     }
   } catch(e) {
     const sendError = isResend ? resendVerificationCodeError : sendVerificationCodeError;
-    console.log(e);
     yield put(sendError(e));
   }
 }
@@ -172,7 +171,6 @@ function* handleSendPinCode(action) {
       yield put(sendPinCodeError(data));
     }
   } catch(e) {
-    console.log(e);
     const {data, status, statusText} = e || {};
     const {error_messages, error, error_message} = data || {};
 
