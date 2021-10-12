@@ -77,7 +77,7 @@ const PageWrapper = ({children, className, showSideBar}) => {
                     <Link
                       className={
                         classnames("menu__link btns", {
-                          active: ROUTES.COURSES === currentPage
+                          active: ROUTES.COURSES === currentPage || ROUTES.CREATE_COURSE === currentPage
                         })
                       }
                       to={ROUTES.COURSES}
@@ -144,7 +144,7 @@ const PageWrapper = ({children, className, showSideBar}) => {
           <div className="footer__content">
             <div className="footer__menu">
               <ul className="menu__list">
-                <li className="menu__item"><button className="menu__link">Therms of services</button></li>
+                <li className="menu__item"><button className="menu__link">Terms of services</button></li>
                 <li className="menu__item"><button className="menu__link">Privacy policy</button></li>
               </ul>
             </div>
@@ -162,7 +162,7 @@ const PageWrapper = ({children, className, showSideBar}) => {
 };
 
 const WrapperClassNames = {
-  empty: '',
+  empty: 'empty',
   home: 'home',
   signin: 'signin',
   family: 'family',

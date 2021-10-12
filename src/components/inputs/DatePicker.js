@@ -4,13 +4,13 @@ import DatePicker from "react-datepicker";
 import moment from 'moment';
 import "react-datepicker/dist/react-datepicker.css";
 
-const DatePickerInput = ({name, value, onChange}) => {
+const DatePickerInput = ({label, name, value, onChange, containerClassName}) => {
   const handleDateChange = date => {
     onChange(moment(date).toISOString());
   };
   return (
-    <div className="columns__column--2">
-      <label className="form__label" htmlFor="uBday">Birth day</label>
+    <div className={containerClassName ? containerClassName : "columns__column--2"}>
+      <label className="form__label" htmlFor="uBday">{label || 'Birth day'}</label>
       <DatePicker
         name={name}
         selected={moment(value).toDate()}
@@ -25,9 +25,11 @@ const DatePickerInput = ({name, value, onChange}) => {
 };
 
 DatePickerInput.propTypes = {
+  label: PropTypes.string,
   name: PropTypes.string,
   value: PropTypes.oneOfType([PropTypes.string, Date]),
   onChange: PropTypes.func,
+  containerClassName: PropTypes.string,
 };
 
 export default DatePickerInput;

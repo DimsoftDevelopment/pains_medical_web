@@ -1,9 +1,11 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+import {ROUTES} from '../../router/routes';
 import clipboardIcon from '../../assets/img/icons/i-clipboard.png';
 import clipboardIcon2x from '../../assets/img/icons/i-clipboard@2x.png';
 import clipboardIcon3x from '../../assets/img/icons/i-clipboard@3x.png';
 
-const EmptyList = ({handleCreateCourse}) => {
+const EmptyList = () => {
   return (
     <section className="courses section--fullheight">
       <div className="courses__block block--fullheight">
@@ -19,7 +21,12 @@ const EmptyList = ({handleCreateCourse}) => {
             Want to create a medical course for this day?
           </div>
           <div className="empty__btns">
-            <button className="btns" onClick={handleCreateCourse}>CREATE COURSE</button>
+            <Link
+              className="btns"
+              to={ROUTES.CREATE_COURSE}
+            >
+              CREATE COURSE
+            </Link>
           </div>
         </div>
       </div>

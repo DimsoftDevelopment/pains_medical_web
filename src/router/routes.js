@@ -5,6 +5,7 @@ const ROUTES = {
   PROFILE_DETAILS: '/profile-details',
   DASHBOARD: '/dashboard',
   COURSES: '/courses',
+  CREATE_COURSE: '/create-course',
   MEDS: '/meds',
   FAMILY: '/family',
   SETTINGS: '/settings',

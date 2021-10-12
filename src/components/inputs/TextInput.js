@@ -10,9 +10,10 @@ const TextInput = ({
   type,
   id,
   defaultValue,
+  containerClassName,
 }) => {
   return (
-    <div className="form__row">
+    <div className={containerClassName ? containerClassName : "form__row"}>
       <label className="form__label" htmlFor={id}>{label}</label>
       <input
         {...register(name, {required})}
@@ -35,6 +36,7 @@ TextInput.propTypes = {
   type: PropTypes.string,
   id: PropTypes.string,
   defaultValue: PropTypes.string,
+  containerClassName: PropTypes.string,
 };
 
 export default TextInput;

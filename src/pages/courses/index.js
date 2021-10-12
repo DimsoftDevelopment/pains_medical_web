@@ -6,7 +6,6 @@ import EmptyList from './EmptyList';
 const Courses = () => {
   const {courses} = useSelector(({coursesState}) => coursesState);
   const isEmpty = courses.length === 0;
-  const handleCreateCourse = () => {};
   return (
     <PageWrapper showSideBar className={PageWrapper.WrapperClassNames.empty}>
       <div className="breadcrumbs">
@@ -14,7 +13,7 @@ const Courses = () => {
       </div>
       <div className="content__block">
         {isEmpty && (
-          <EmptyList handleCreateCourse={handleCreateCourse} />
+          <EmptyList />
         )}
       </div>
     </PageWrapper>

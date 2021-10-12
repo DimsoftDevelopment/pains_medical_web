@@ -1,7 +1,9 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import {ROUTES} from '../../router/routes';
 import clipboardIcon from '../../assets/img/icons/i-clipboard.png';
 import clipboardIcon2x from '../../assets/img/icons/i-clipboard@2x.png';
 import clipboardIcon3x from '../../assets/img/icons/i-clipboard@3x.png';
@@ -41,7 +43,12 @@ const ReceptionMedications = ({receptionMedications, selectedDate}) => {
               Want to create a medical course for this day?
             </div>
             <div className="empty__btns">
-              <button className="btns">CREATE COURSE</button>
+              <Link
+                className="btns"
+                to={ROUTES.CREATE_COURSE}
+              >
+                CREATE COURSE
+              </Link>
             </div>
           </div>
         )}
