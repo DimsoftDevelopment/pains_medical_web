@@ -28,7 +28,7 @@ function* handleGetMeds(action) {
     const getMedicationsSuccess = page === 1 ? getMedsSuccess : getMedsNextPageSuccess;
     const {data} = yield call(processRequest, `/medications?page${page}&per_page=${per_page}&query=${query}`, 'GET');
     if (data.medications) {
-      const meds = data.medications.data;
+      const meds = data.medications.data.map(medication => medication.attributes);
       yield put(getMedicationsSuccess(meds));
     } else {
       yield put(getMedsError(data));
@@ -71,7 +71,7 @@ function* handleGetMedication(action) {
     const {id} = payload || {};
     const {data} = yield call(processRequest, `/medications/${id}`, 'GET');
     if (data.medication) {
-      const medication = data.medication.data;
+      const medication = data.medication.data.attributes;
       yield put(getMedicationSuccess(medication));
     } else {
       yield put(toggleNotification({
@@ -145,7 +145,7 @@ function* handleCreateMedication(action) {
     const requestPayload = {medication}
     const {data} = yield call(processRequest, `/medications`, 'POST', requestPayload);
     if (data.medication) {
-      const medication = data.medication.data;
+      const medication = data.medication.data.attributes;
       yield put(createMedicationSuccess(medication));
     } else {
       yield put(createMedicationError());
@@ -219,7 +219,7 @@ function* handleUpdateMedication(action) {
     const requestPayload = {medication}
     const {data} = yield call(processRequest, `/medications`, 'PUT', requestPayload);
     if (data.medication) {
-      const medication = data.medication.data;
+      const medication = data.medication.data.attributes;
       yield put(updateMedicationSuccess(medication));
     } else {
       yield put(updateMedicationError());

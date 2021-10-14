@@ -19,7 +19,7 @@ const CreateCourse = () => {
   const dispatch = useDispatch();
   const {course} = useSelector(({createCourseState}) => createCourseState);
   const {meds} = useSelector(({medsState}) => medsState);
-  const isMedsEmpty = meds.length === 0;
+  // const isMedsEmpty = meds.length === 0;
   const {register, control, handleSubmit} = useForm({
     defaultValues: {
       title: course.title,
