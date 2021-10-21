@@ -1,14 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Switch = ({id, name, label, defaultChecked, simpleSwitch, onChange}) => {
-  const handleChange = event => {
-    const key = event.target.name;
-    onChange({
-      [key]: !defaultChecked,
-    });
-  };
-
+const Switch = ({id, name, label, defaultChecked, simpleSwitch, register}) => {
   return simpleSwitch ? (
     <div className="switch">
       <input
@@ -17,7 +10,7 @@ const Switch = ({id, name, label, defaultChecked, simpleSwitch, onChange}) => {
         defaultChecked={defaultChecked}
         name={name}
         id={id}
-        onChange={handleChange}
+        {...register(name)}
       />
       <label className="switch__label" htmlFor={id} />
     </div>
@@ -31,7 +24,7 @@ const Switch = ({id, name, label, defaultChecked, simpleSwitch, onChange}) => {
           defaultChecked={defaultChecked}
           name={name}
           id={id}
-          onChange={handleChange}
+          {...register(name)}
         />
         <label className="switch__label" htmlFor={id} />
       </div>
@@ -42,10 +35,10 @@ const Switch = ({id, name, label, defaultChecked, simpleSwitch, onChange}) => {
 Switch.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
   defaultChecked: PropTypes.bool,
   simpleSwitch: PropTypes.bool,
-  onChange: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired,
 };
 
 export default Switch;

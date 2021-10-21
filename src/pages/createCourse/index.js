@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import _ from 'lodash';
 import PageWrapper from '../pageWrapper';
 import {updateCourseProp} from './actions';
-import {getMeds} from '../meds/actions';
+import {getMeds, getMedication} from '../meds/actions';
 import {ROUTES} from '../../router/routes';
 import TextInput from '../../components/inputs/TextInput';
 import DatePickerInput from '../../components/inputs/DatePicker';
@@ -28,15 +28,19 @@ const CreateCourse = () => {
   const handleUpdateCourse = course => {
     dispatch(updateCourseProp(course));
   };
-  const handleSearch = useCallback(_.debounce(
+  const debounce = _.debounce(
     query => dispatch(getMeds({page: 1, per_page: 10, query})),
     500,
-  ), []);
+  );
+  const handleSearch = useCallback(debounce, []);
   const handleChange = event => {
     const {value} = event.target;
     setSearchValue(value);
     handleSearch(value);
-  }
+  };
+  const handleMedDetails = medication => {
+    dispatch(getMedication(medication.id));
+  };
   useEffect(() => {
     dispatch(getMeds({
       page: 1,
@@ -121,7 +125,7 @@ const CreateCourse = () => {
 									<div className="form__bottom">
 										<div className="medicines__search">
 											<div className="search__form">
-												<label className="search__label" for="mSearch">Select medicine</label>
+												<label className="search__label" htmlFor="mSearch">Select medicine</label>
 												<input
                           className="search__input"
                           name="mSearch"
@@ -139,6 +143,7 @@ const CreateCourse = () => {
                               <MedicationCard
                                 key={medication.id}
                                 medication={medication}
+                                handleMedDetails={handleMedDetails}
                               />
                             ))}
 													</div>

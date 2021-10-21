@@ -1,12 +1,28 @@
 import React from 'react';
+import {config} from '../../config';
 
-const MedicationCard = ({medication}) => {
+const MedicationCard = ({medication, handleMedDetails}) => {
+  const attachments = medication.attachments.data.map(attachment => attachment.attributes);
+  const getMedication = () => {
+    handleMedDetails(medication);
+  };
   return (
     <div className="card">
-      <button className="medicine__item">
+      <button
+        className="medicine__item"
+        onClick={getMedication}
+        type="button"
+      >
         <span className="medicine__image">
           <span className="image">
-            <img src={medication.img_url} alt="MEDICINENAME" />
+            {attachments.length > 0 &&
+              <img
+                key={attachments[0].id}
+                className="image"
+                src={`${config.REACT_APP_IMAGE_URL}${attachments[0].file_thumb_url}`}
+                alt={`attachment_${attachments[0].id}`}
+              />
+            }
           </span>
         </span>
         <span className="medicine__text">

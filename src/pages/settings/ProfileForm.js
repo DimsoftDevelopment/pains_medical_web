@@ -55,6 +55,9 @@ const ProfileForm = () => {
       last_name: user.last_name || "",
       email: user.email || "",
       birthday: user.birthday || new Date().toISOString(),
+      mises_notifications: user.mises_notifications || false,
+      stock_notifications: user.stock_notifications || false,
+      family_track: user.family_track || false,
     },
   });
   const isDirty = Object.keys(dirtyFields).length > 0;
@@ -74,12 +77,6 @@ const ProfileForm = () => {
         avatar: null,
       }));
     }
-  };
-  const handleSwitchChange = data => {
-    dispatch(updateProfile({
-      ...data,
-      id: user.id,
-    }));
   };
   const handlePinModal = () => {
     setPinModalOpened(!isPinModalOpened);
@@ -234,14 +231,14 @@ const ProfileForm = () => {
               id="uMisses"
               defaultChecked={user.mises_notifications}
               label="Misses"
-              onChange={handleSwitchChange}
+              register={register}
             />
             <Switch
               name="stock_notifications"
               id="uStock"
               defaultChecked={user.stock_notifications}
               label="Stock shortages"
-              onChange={handleSwitchChange}
+              register={register}
             />
             <button
               className="btns btn-pin"
@@ -270,9 +267,9 @@ const ProfileForm = () => {
                 name="family_track"
                 id="uFamily"
                 defaultChecked={user.family_track}
+                register={register}
                 label=""
                 simpleSwitch
-                onChange={handleSwitchChange}
               />
               <div className="switch__hint">
                 Create medical courses for your family members. Control medications presence, track their progress & more.

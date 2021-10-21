@@ -142,8 +142,18 @@ function* handleCreateMedication(action) {
   try {
     const {payload} = action || {};
     const {medication} = payload || {};
-    const requestPayload = {medication}
-    const {data} = yield call(processRequest, `/medications`, 'POST', requestPayload);
+    const formData = new FormData();
+    const keys = Object.keys(medication);
+    keys.forEach(key => {
+      if (key !== 'attachments' && key !== 'images') {
+        formData.append(`medication[${key}]`, medication[key]);
+      } else if (key === 'images') {
+        medication[key].forEach(image => {
+          formData.append(`medication[attachments_attributes[]]`, image.file);
+        });
+      }
+    });
+    const {data} = yield call(processRequest, `/medications`, 'POST', formData);
     if (data.medication) {
       const medication = data.medication.data.attributes;
       yield put(createMedicationSuccess(medication));
@@ -216,11 +226,31 @@ function* handleUpdateMedication(action) {
   try {
     const {payload} = action || {};
     const {medication} = payload || {};
-    const requestPayload = {medication}
-    const {data} = yield call(processRequest, `/medications`, 'PUT', requestPayload);
+    const formData = new FormData();
+    const keys = Object.keys(medication);
+    keys.forEach(key => {
+      if (key !== 'attachments' && key !== 'imagesForRemove' && key !== 'images') {
+        formData.append(`medication[${key}]`, medication[key]);
+      } else if (key === 'imagesForRemove') {
+        medication[key].forEach(removeImage => {
+          formData.append(`medication[attachments_attributes[]id]`, removeImage);
+          formData.append(`medication[attachments_attributes[]_destroy]`, true);
+        });
+      } else if (key === 'images') {
+        medication[key].forEach(image => {
+          formData.append(`medication[attachments_attributes[]file]`, image.file);
+        });
+      }
+    });
+    const {data} = yield call(processRequest, `/medications/${medication.id}`, 'PUT', formData);
     if (data.medication) {
       const medication = data.medication.data.attributes;
       yield put(updateMedicationSuccess(medication));
+      yield put(toggleNotification({
+        title: 'Success',
+        message: 'Medication updated.',
+        type: 'success',
+      }));
     } else {
       yield put(updateMedicationError());
       yield put(toggleNotification({

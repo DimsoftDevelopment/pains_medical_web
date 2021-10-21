@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {useDispatch} from 'react-redux';
 import {isAuthenticated} from '../pages/auth/actions';
 // import {push} from 'connected-react-router';
-import {Switch} from "react-router-dom";
+import {Switch, Redirect} from "react-router-dom";
 import {ROUTES} from './routes';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
@@ -16,6 +16,7 @@ import CreateCourse from '../pages/createCourse';
 import Family from '../pages/family';
 import Meds from '../pages/meds';
 import CreateMedication from '../pages/createMedication';
+import EditMedication from '../pages/editMedication';
 
 const Routes = () => {
   const dispatch = useDispatch();
@@ -35,6 +36,8 @@ const Routes = () => {
       <PrivateRoute exact path={ROUTES.MEDS} component={Meds} />
       <PrivateRoute exact path={ROUTES.CREATE_MEDICATION} component={CreateMedication} />
       <PrivateRoute exact path={ROUTES.SETTINGS} component={Settings} />
+      <PrivateRoute exact path={ROUTES.EDIT_MEDICATION} component={EditMedication} />
+      <Redirect from="*" to={ROUTES.SIGN_IN} />
     </Switch>
   );
 }
