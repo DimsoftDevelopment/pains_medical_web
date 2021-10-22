@@ -34,6 +34,7 @@
   "scripts": {
     "start": "craco start",
     "build": "craco build",
+    "build:test": "env-cmd -f .env.development craco build",
     "test": "craco test",
     "eject": "react-scripts eject"
   },
