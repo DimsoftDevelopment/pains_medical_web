@@ -8,7 +8,7 @@ const ROUTES = {
   CREATE_COURSE: '/create-course',
   MEDS: '/meds',
   CREATE_MEDICATION: '/create-medication',
-  EDIT_MEDICATION: '/edit-medication/:id',
+  EDIT_MEDICATION: '/edit-medication/:id?',
   FAMILY: '/family',
   SETTINGS: '/settings',
 };

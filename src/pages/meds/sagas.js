@@ -1,4 +1,5 @@
 import {takeEvery, put, call} from 'redux-saga/effects';
+import {goBack} from 'connected-react-router';
 import {MEDS_ACTIONS} from './constants';
 import {
   getMedsSuccess,
@@ -149,7 +150,7 @@ function* handleCreateMedication(action) {
         formData.append(`medication[${key}]`, medication[key]);
       } else if (key === 'images') {
         medication[key].forEach(image => {
-          formData.append(`medication[attachments_attributes[]]`, image.file);
+          formData.append(`medication[attachments_attributes[]file]`, image.file);
         });
       }
     });
@@ -157,6 +158,11 @@ function* handleCreateMedication(action) {
     if (data.medication) {
       const medication = data.medication.data.attributes;
       yield put(createMedicationSuccess(medication));
+      yield put(toggleNotification({
+        title: 'Success',
+        message: 'Medication created.',
+        type: 'success',
+      }));
     } else {
       yield put(createMedicationError());
       yield put(toggleNotification({
@@ -322,6 +328,12 @@ function* handleDeleteMedication(action) {
     const {id} = payload || {};
     const {data} = yield call(processRequest, `/medications/${id}`, 'DELETE');
     if (data) {
+      yield put(goBack());
+      yield put(toggleNotification({
+        title: 'Success',
+        message: 'Medication deleted.',
+        type: 'success',
+      }));
       yield put(deleteMedicationSuccess(id));
     } else {
       yield put(deleteMedicationError());

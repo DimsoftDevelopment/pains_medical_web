@@ -14,7 +14,7 @@ const MedicationDetails = ({medication, handleEdit}) => {
   }, [medication]);
   return (
     <div className="medicines__details">
-      <form className="form">
+      <div className="form">
         <div className="medicine__gallery">
           {bigImage && (
             <div className="gallery__big">
@@ -27,7 +27,7 @@ const MedicationDetails = ({medication, handleEdit}) => {
               </figure>
               <button
                 className="btns btn-delete"
-                type="button"
+                onClick={handleEdit}
               />
             </div>
           )}
@@ -49,10 +49,10 @@ const MedicationDetails = ({medication, handleEdit}) => {
               </figure>
             ))}
             <div className="form">
-              <label className="form__label--gallery">
-                <input type="file" name="mImage" />
-                <span>Add Medicine Photo</span>
-              </label>
+              <button
+                className="form__label--gallery"
+                onClick={handleEdit}
+              />
             </div>
           </div>
         </div>
@@ -85,7 +85,6 @@ const MedicationDetails = ({medication, handleEdit}) => {
             <div className="card__btns">
               <button
                 className="btns btn-edit"
-                type="button"
                 onClick={handleEdit}
               >
                 EDIT
@@ -105,6 +104,7 @@ const MedicationDetails = ({medication, handleEdit}) => {
                   defaultChecked={medication.is_reminder_enabled}
                   readOnly
                   name="uMisses"
+                  onChange={handleEdit}
                   id="uMisses"
                 />
                 <label className="switch__label" htmlFor="uMisses" />
@@ -164,20 +164,18 @@ const MedicationDetails = ({medication, handleEdit}) => {
         <div className="details__btns details__btns--bottom">
           <button
             className="btns btn-edit"
-            type="button"
             onClick={handleEdit}
           >
             EDIT MEDICINE
           </button>
           <button
             className="btns btn-create"
-            type="button"
           >
             CREATE COURSE
           </button>
         </div>
       {/* </div> */}
-      </form>
+      </div>
     </div>
   );
 };

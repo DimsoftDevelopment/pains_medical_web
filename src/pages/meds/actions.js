@@ -79,3 +79,8 @@ export const deleteMedicationError = error => ({
   type: MEDS_ACTIONS.DELETE_MEDICATION_ERROR,
   payload: {error},
 });
+
+export const saveMedicationTitle = medication => ({
+  type: MEDS_ACTIONS.SAVE_MEDICATION_TITLE,
+  payload: {medication},
+});

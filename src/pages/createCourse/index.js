@@ -158,7 +158,12 @@ const CreateCourse = () => {
                             alt="MedsIcon"
                           />
 												</p>
-												<button className="btns btn-add">CREATE NEW MEDICINE</button>
+												<Link
+                          className="btns btn-add"
+                          to={ROUTES.CREATE_MEDICATION}
+                        >
+                          CREATE NEW MEDICINE
+                        </Link>
 											</div>
 										</div>
 									</div>

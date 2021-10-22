@@ -58,6 +58,11 @@ const medsState = (state = INITIAL_STATE, action) => {
         meds: medications,
       };
     }
+    case MEDS_ACTIONS.SAVE_MEDICATION_TITLE:
+      return {
+        ...state,
+        medication,
+      };
     case MEDS_ACTIONS.GET_MEDS_ERROR:
     case MEDS_ACTIONS.GET_MEDICATION_ERROR:
     case MEDS_ACTIONS.CREATE_MEDICATION_ERROR:

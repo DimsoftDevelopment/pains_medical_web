@@ -6,21 +6,27 @@ import PageWrapper from '../pageWrapper';
 import TextInput from '../../components/inputs/TextInput';
 import Switch from '../../components/inputs/Switch';
 import RadioGroup from '../../components/inputs/RadioGroup';
+import DeleteMedication from '../../components/modals/DeleteMedication';
 import backIcon from '../../assets/img/icons/i-arrow_left.png';
 import backIcon2x from '../../assets/img/icons/i-arrow_left@2x.png';
 import backIcon3x from '../../assets/img/icons/i-arrow_left@3x.png';
-import {getMedication, updateMedication} from '../meds/actions';
+import {
+  getMedication,
+  createMedication,
+  updateMedication,
+} from '../meds/actions';
 import {config} from '../../config';
 
 const EditMedication = ({match, history}) => {
   const dispatch = useDispatch();
   const {medication} = useSelector(({medsState}) => medsState);
-  const attachments = medication.attachments.data.map(attachment => attachment.attributes);
+  const attachments = medication.attachments ? medication.attachments.data.map(attachment => attachment.attributes) : [];
   const firstImage = attachments.length > 0 ? attachments[0].file_url : '';
   const [images, setImages] = useState([]);
   const [bigImage, setBigImage] = useState(firstImage);
   const [selectedImageID, setSelectedImageID] = useState(attachments[0]?.id || '');
   const [imagesForRemove, setImagesForRemove] = useState([]);
+  const [showConfirmDelete, setConfirmDelete] = useState(false);
   const options = [{
     id: 'pieces',
     name: 'dosage_form',
@@ -55,12 +61,20 @@ const EditMedication = ({match, history}) => {
     }
   };
   const submitMedication = formData => {
-    dispatch(updateMedication({
-      ...medication,
-      ...formData,
-      imagesForRemove,
-      images,
-    }));
+    if (medication.id) {
+      dispatch(updateMedication({
+        ...medication,
+        ...formData,
+        imagesForRemove,
+        images,
+      }));
+    } else {
+      dispatch(createMedication({
+        ...medication,
+        ...formData,
+        images,
+      }));
+    }
     setImages([]);
     setSelectedImageID('');
     setImagesForRemove([]);
@@ -77,13 +91,16 @@ const EditMedication = ({match, history}) => {
     newImages.push({file, url});
     setImages(newImages);
   };
+  const toggleDeleteModal = () => {
+    setConfirmDelete(!showConfirmDelete);
+  };
   useEffect(() => {
     setBigImage(firstImage);
     setSelectedImageID(attachments[0]?.id || '');
   }, [medication]);
   useEffect(() => {
-    if (!medication.id) {
-      const {id} = match.params || {};
+    const {id} = match.params || {};
+    if (!medication.id && id) {
       dispatch(getMedication(id));
     }
   }, []);
@@ -241,7 +258,18 @@ const EditMedication = ({match, history}) => {
                   </div>
                 </div>
                 <div className="create__btns">
-                  <button className="btns btn-delete" data-toggle="class" data-target="#popups" data-classes="remove">DELETE</button>
+                  {medication.id && (
+                    <button
+                      className="btns btn-delete"
+                      onClick={toggleDeleteModal}
+                      // data-toggle="class"
+                      // data-target="#popups"
+                      // data-classes="remove"
+                      type="button"
+                    >
+                      DELETE
+                    </button>
+                  )}
                   <button className="btns btn-course">CREATE COURSE</button>
                 </div>
               </div>
@@ -249,6 +277,11 @@ const EditMedication = ({match, history}) => {
           </form>
         </section>
       </div>
+      {showConfirmDelete && (
+        <DeleteMedication
+          toggleDeleteModal={toggleDeleteModal}
+        />
+      )}
     </PageWrapper>
   );
 };

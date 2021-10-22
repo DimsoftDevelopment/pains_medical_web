@@ -17,6 +17,7 @@ const MEDS_ACTIONS = KeyMirror({
   DELETE_MEDICATION: null,
   DELETE_MEDICATION_SUCCESS: null,
   DELETE_MEDICATION_ERROR: null,
+  SAVE_MEDICATION_TITLE: null,
 });
 const INITIAL_STATE = {
   meds: [],
