@@ -10,15 +10,17 @@ import {ROUTES} from '../../router/routes';
 import TextInput from '../../components/inputs/TextInput';
 import DatePickerInput from '../../components/inputs/DatePicker';
 import MedicationCard from './MedicationCard';
+import SelectedMedication from './SelectedMedication';
 import medsIcon from '../../assets/img/icons/i-arrow_down.png';
 import medsIcon2x from '../../assets/img/icons/i-arrow_down@2x.png';
 import medsIcon3x from '../../assets/img/icons/i-arrow_down@3x.png';
 
 const CreateCourse = () => {
   const [searchValue, setSearchValue] = useState('');
+  const [showMedications, setShowMedications] = useState(false);
   const dispatch = useDispatch();
   const {course} = useSelector(({createCourseState}) => createCourseState);
-  const {meds} = useSelector(({medsState}) => medsState);
+  const {meds, medication} = useSelector(({medsState}) => medsState);
   // const isMedsEmpty = meds.length === 0;
   const {register, control, handleSubmit} = useForm({
     defaultValues: {
@@ -40,6 +42,9 @@ const CreateCourse = () => {
   };
   const handleMedDetails = medication => {
     dispatch(getMedication(medication.id));
+  };
+  const handleShowMeds = () => {
+    setShowMedications(true);
   };
   useEffect(() => {
     dispatch(getMeds({
@@ -109,6 +114,7 @@ const CreateCourse = () => {
                           onChange={field.onChange}
                           value={field.value}
                           label="End"
+                          disabled
                           containerClassName="columns__column columns__column--end"
                         />
                       )}
@@ -117,16 +123,24 @@ const CreateCourse = () => {
                   <div className="courses__medicines">
                     <div className="medicines__columns">
                       <div className="column">
-                        <button className="btns btn-add">ADD MEDICINE</button>
+                        <button
+                          className="btns btn-add"
+                          type="button"
+                          onClick={handleShowMeds}
+                          disabled={showMedications}
+                        >
+                          ADD MEDICINE
+                        </button>
                       </div>
                     </div>
                   </div>
                 </div>
-									<div className="form__bottom">
-										<div className="medicines__search">
-											<div className="search__form">
-												<label className="search__label" htmlFor="mSearch">Select medicine</label>
-												<input
+                {showMedications && (
+                  <div className="form__bottom">
+                    <div className="medicines__search">
+                      <div className="search__form">
+                        <label className="search__label" htmlFor="mSearch">Select medicine</label>
+                        <input
                           className="search__input"
                           name="mSearch"
                           id="mSearch"
@@ -135,38 +149,47 @@ const CreateCourse = () => {
                           value={searchValue}
                           onChange={handleChange}
                         />
-											</div>
-											<div className="search__results">
-												<div className="medicines__list">
-													<div className="list__item">
-                            {meds.map(medication => (
+                      </div>
+                      <div className="search__results">
+                        <div className="medicines__list">
+                          <div className="list__item">
+                            {meds.map(medicationItem => (
                               <MedicationCard
-                                key={medication.id}
-                                medication={medication}
+                                key={medicationItem.id}
+                                medication={medicationItem}
+                                selectedMedication={medication}
                                 handleMedDetails={handleMedDetails}
                               />
                             ))}
-													</div>
-												</div>
-											</div>
-											<div className="search__noresults">
-												<p>
-													There is no such medicine in your library. Create it first.<br/>
-													<img
-                            src={medsIcon}
-                            srcSet={`${medsIcon2x} 2x, ${medsIcon3x} 3x`}
-                            alt="MedsIcon"
-                          />
-												</p>
-												<Link
-                          className="btns btn-add"
-                          to={ROUTES.CREATE_MEDICATION}
-                        >
-                          CREATE NEW MEDICINE
-                        </Link>
-											</div>
-										</div>
-									</div>
+                          </div>
+                        </div>
+                      </div>
+                      {meds.length === 0 && (
+                        <div className="search__noresults">
+                          <p>
+                            There is no such medicine in your library. Create it first.<br/>
+                            <img
+                              src={medsIcon}
+                              srcSet={`${medsIcon2x} 2x, ${medsIcon3x} 3x`}
+                              alt="MedsIcon"
+                            />
+                          </p>
+                          <Link
+                            className="btns btn-add"
+                            to={ROUTES.CREATE_MEDICATION}
+                          >
+                            CREATE NEW MEDICINE
+                          </Link>
+                        </div>
+                      )}
+                    </div>
+                    {medication.id && (
+                      <SelectedMedication
+                        medication={medication}
+                      />
+                    )}
+                  </div>
+                )}
               </form>
             </div>
           </div>

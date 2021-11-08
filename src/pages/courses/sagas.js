@@ -25,7 +25,7 @@ function* handleGetCourses() {
   try {
     const {data} = yield call(processRequest, `/courses`, 'GET');
     if (data.courses) {
-      const courses = data.courses.data;
+      const courses = data.courses.data.map(course => course.attributes);
       yield put(getCoursesSuccess(courses));
     } else {
       yield put(getCoursesError(data));

@@ -4,7 +4,14 @@ import DatePicker from "react-datepicker";
 import moment from 'moment';
 import "react-datepicker/dist/react-datepicker.css";
 
-const DatePickerInput = ({label, name, value, onChange, containerClassName}) => {
+const DatePickerInput = ({
+  label,
+  name,
+  value,
+  onChange,
+  containerClassName,
+  disabled,
+}) => {
   const handleDateChange = date => {
     onChange(moment(date).toISOString());
   };
@@ -19,6 +26,7 @@ const DatePickerInput = ({label, name, value, onChange, containerClassName}) => 
         scrollableYearDropdown
         showYearDropdown
         showMonthDropdown
+        disabled={disabled}
       />
     </div>
   );
@@ -30,6 +38,7 @@ DatePickerInput.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, Date]),
   onChange: PropTypes.func,
   containerClassName: PropTypes.string,
+  disabled: PropTypes.bool,
 };
 
 export default DatePickerInput;

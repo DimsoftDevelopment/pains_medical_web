@@ -3,12 +3,14 @@ import {Link} from 'react-router-dom';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {ROUTES} from '../../router/routes';
-import clipboardIcon from '../../assets/img/icons/i-clipboard.png';
-import clipboardIcon2x from '../../assets/img/icons/i-clipboard@2x.png';
-import clipboardIcon3x from '../../assets/img/icons/i-clipboard@3x.png';
+import {ROUTES} from '../../../router/routes';
+import MedicinesList from './MedicinesList';
+import CoursesList from './CoursesList';
+import clipboardIcon from '../../../assets/img/icons/i-clipboard.png';
+import clipboardIcon2x from '../../../assets/img/icons/i-clipboard@2x.png';
+import clipboardIcon3x from '../../../assets/img/icons/i-clipboard@3x.png';
 
-const ReceptionMedications = ({receptionMedications, selectedDate}) => {
+const ReceptionMedications = ({receptionMedications, selectedDate, courses}) => {
   const isEmpty = receptionMedications.length === 0;
   const isToday = moment().date() === moment(selectedDate).date() ? 'Today, ' : '';
   return (
@@ -24,9 +26,15 @@ const ReceptionMedications = ({receptionMedications, selectedDate}) => {
         {!isEmpty && (
           <div className="block__medicines">
             <div className="block__title">{`${isToday}${moment(selectedDate).format('D MMM')}`}</div>
-              <div className="medicines__list">
-    
-              </div>
+            <MedicinesList receptionMedications={receptionMedications} />
+          </div>
+        )}
+        {!isEmpty && (
+          <div className="block__courses">
+            <div className="block__title">Courses</div>
+            <CoursesList
+              courses={courses}
+            />
           </div>
         )}
         {isEmpty && (

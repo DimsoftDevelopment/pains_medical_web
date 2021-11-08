@@ -7,10 +7,11 @@ const dashboardState = (state = INITIAL_STATE, action) => {
     end_date,
     selectedUser,
     receptionMedications,
+    all_reception_dates,
+    mised_reception_dates,
     error,
   } = payload || {};
   switch(type) {
-    case DASHBOARD_ACTIONS.GET_RECEPTION_MEDICATIONS:
     case DASHBOARD_ACTIONS.GET_RECEPTION_MEDICATIONS_BY_USER:
       return {
         ...state,
@@ -19,6 +20,11 @@ const dashboardState = (state = INITIAL_STATE, action) => {
         selectedUser,
       };
     case DASHBOARD_ACTIONS.GET_RECEPTION_MEDICATIONS_SUCCESS:
+      return {
+        ...state,
+        all_reception_dates,
+        mised_reception_dates,
+      };
     case DASHBOARD_ACTIONS.GET_RECEPTION_MEDICATIONS_BY_USER_SUCCESS:
       return {
         ...state,

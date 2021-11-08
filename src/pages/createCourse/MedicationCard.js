@@ -1,13 +1,17 @@
 import React from 'react';
+import classNames from 'classnames';
 import {config} from '../../config';
 
-const MedicationCard = ({medication, handleMedDetails}) => {
+const MedicationCard = ({medication, handleMedDetails, selectedMedication}) => {
   const attachments = medication.attachments.data.map(attachment => attachment.attributes);
   const getMedication = () => {
     handleMedDetails(medication);
   };
   return (
-    <div className="card">
+    <div className={classNames("card", {
+      active: medication.id === selectedMedication.id,
+      inactive: selectedMedication.id && medication.id !== selectedMedication.id,
+    })}>
       <button
         className="medicine__item"
         onClick={getMedication}

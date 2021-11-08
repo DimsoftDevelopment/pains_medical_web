@@ -1,13 +1,12 @@
 import {DASHBOARD_ACTIONS} from './constants';
 
-export const getReceptionMedications = (start_date, end_date) => ({
+export const getReceptionMedications = () => ({
   type: DASHBOARD_ACTIONS.GET_RECEPTION_MEDICATIONS,
-  payload: {start_date, end_date},
 });
 
-export const getReceptionMedicationsSuccess = receptionMedications => ({
+export const getReceptionMedicationsSuccess = ({all_reception_dates, mised_reception_dates}) => ({
   type: DASHBOARD_ACTIONS.GET_RECEPTION_MEDICATIONS_SUCCESS,
-  payload: {receptionMedications},
+  payload: {all_reception_dates, mised_reception_dates},
 });
 
 export const getReceptionMedicationsError = error => ({

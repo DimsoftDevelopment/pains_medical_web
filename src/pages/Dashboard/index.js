@@ -1,14 +1,15 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import PageWrapper from '../pageWrapper';
-import QuickFamily from './QuickFamily';
-import Calendar from './Calendar';
-import ReceptionMedications from './ReceptionMedications';
+import QuickFamily from './components/QuickFamily';
+import Calendar from './components/Calendar';
+import ReceptionMedications from './components/ReceptionMedications';
 import {
   getReceptionMedications,
   getReceptionMedicationsByUser,
 } from './actions';
 import {getFamilyList} from '../family/actions';
+import {getCourses} from '../courses/actions';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -18,17 +19,22 @@ const Dashboard = () => {
     end_date,
     selectedUser,
     receptionMedications,
+    all_reception_dates,
+    mised_reception_dates,
   } = useSelector(({dashboardState}) => dashboardState);
+  const {courses} = useSelector(({coursesState}) => coursesState);
   useEffect(() => {
     dispatch(getFamilyList());
-    // dispatch(getReceptionMedications(
-    //   start_date,
-    //   end_date,
-    // ));
+    dispatch(getReceptionMedicationsByUser(
+      start_date,
+      end_date,
+    ));
+    dispatch(getReceptionMedications());
+    dispatch(getCourses());
   }, [dispatch]);
   const selectUser = user_id => {
     if (user_id === selectedUser) {
-      dispatch(getReceptionMedications(
+      dispatch(getReceptionMedicationsByUser(
         start_date,
         end_date,
       ));
@@ -41,18 +47,11 @@ const Dashboard = () => {
     }
   };
   const handleDateChange = date => {
-    if (!selectedUser) {
-      dispatch(getReceptionMedications(
-        date.start_date,
-        date.end_date,
-      ));
-    } else {
-      dispatch(getReceptionMedicationsByUser(
-        date.start_date,
-        date.end_date,
-        selectedUser,
-      ));
-    }
+    dispatch(getReceptionMedicationsByUser(
+      date.start_date,
+      date.end_date,
+      selectedUser,
+    ));
   };
   return (
     <PageWrapper
@@ -72,10 +71,13 @@ const Dashboard = () => {
         )}
         <Calendar
           onChangeDate={handleDateChange}
+          courses={all_reception_dates}
+          mised_reception_dates={mised_reception_dates}
         />
         <ReceptionMedications
           receptionMedications={receptionMedications}
           selectedDate={start_date}
+          courses={courses}
         />
       </div>
     </PageWrapper>

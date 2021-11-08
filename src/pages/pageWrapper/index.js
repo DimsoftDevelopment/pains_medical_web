@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import ReactNotification, {store} from 'react-notifications-component';
-import {toggleNotification} from './actions';
+import {toggleNotification, togglePinModal} from './actions';
 import {logout} from '../auth/actions';
 import {ROUTES} from '../../router/routes';
 import PinModal from '../../components/modals/PinModal';
@@ -152,7 +152,7 @@ const PageWrapper = ({children, className, showSideBar}) => {
         </footer>
       </div>
       {isPinModalOpen && (
-        <PinModal />
+        <PinModal togglePinModal={togglePinModal} />
       )}
       {isPinChangedOpen && (
         <PinChanged />

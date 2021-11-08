@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import Modal from './Modal';
 import PinInput from '../inputs/PinInput';
@@ -36,6 +36,11 @@ const PinModal = ({isEdit, handlePinModal}) => {
   const handleCloseModal = () => {
     dispatch(togglePinModal());
   };
+  useEffect(() => {
+    if (!user && (user && !user.phone)) {
+      handleCloseModal();
+    }
+  }, [user]);
   return (
     <Modal
       header={isEdit ? "Change PIN Code" : "Enter PIN Code"}

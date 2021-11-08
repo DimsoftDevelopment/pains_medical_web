@@ -1649,6 +1649,12 @@ button {
       font-size: 18px;
       font-weight: 500;
       letter-spacing: 0.11px; }
+    .courses__add .form__bottom .medicines__settings .settings__select {
+      width: 100%;
+      margin: 1px 0 0;
+      padding: 15px 24px;
+      border-radius: 3.5px;
+      background-color: #fff; }
     .courses__add .form__bottom .medicines__settings .settings__form .custom-select .select-selected {
       padding: 26px 24px;
       font-size: 16px;

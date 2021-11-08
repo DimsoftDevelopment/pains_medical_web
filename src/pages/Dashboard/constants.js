@@ -1,6 +1,8 @@
 import moment from "moment";
 import KeyMirror from "keymirror";
+import {getDefaultDates} from '../../services/DateHelper';
 
+const {start_date, end_date} = getDefaultDates();
 const DASHBOARD_ACTIONS = KeyMirror({
   GET_RECEPTION_MEDICATIONS: null,
   GET_RECEPTION_MEDICATIONS_SUCCESS: null,
@@ -10,10 +12,12 @@ const DASHBOARD_ACTIONS = KeyMirror({
   GET_RECEPTION_MEDICATIONS_BY_USER_ERROR: null,
 });
 const INITIAL_STATE = {
-  start_date: moment().startOf('day'),
-  end_date: moment().endOf('day'),
+  start_date,
+  end_date,
   selectedUser: '',
   receptionMedications: [],
+  mised_reception_dates: [],
+  all_reception_dates: [],
   error: null,
 };
 const MONTHS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];

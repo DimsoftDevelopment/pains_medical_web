@@ -25,5 +25,12 @@ const INITIAL_STATE = {
   course: {},
   error: null,
 };
+const TABS = [{
+  name: 'current',
+  title: 'Current',
+}, {
+  name: 'past',
+  title: 'Past',
+}]
 
-export {COURSES_ACTIONS, INITIAL_STATE};
+export {COURSES_ACTIONS, INITIAL_STATE, TABS};

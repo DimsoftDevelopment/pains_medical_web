@@ -11,15 +11,24 @@ import {
 } from '../pageWrapper/actions';
 import {logout} from '../auth/actions';
 import {processRequest} from '../../services/Api';
+import {getUrl} from '../../services/GetUrl';
+import {getCurrentYear, convertDates} from '../../services/DateHelper';
 
-function* handleGetReceptionMedications(action) {
+function* handleGetReceptionMedicationsDates() {
   try {
-    const {payload} = action || {};
-    const {start_date, end_date} = payload || {};
-    const {data} = yield call(processRequest, `/reception_medications/reception_dates?start_date=${start_date}&end_date=${end_date}`, 'GET');
-    if (data.all_reception_dates) {
-      // data.mised_reception_dates
-      yield put(getReceptionMedicationsSuccess(data.all_reception_dates));
+    const {start_date, end_date} = getCurrentYear();
+    const url = getUrl({
+      url: '/reception_medications/reception_dates',
+      start_date,
+      end_date,
+    });
+    const {data} = yield call(processRequest, url, 'GET');
+    if (data.all_reception_dates && data.mised_reception_dates) {
+      const {all_reception_dates, mised_reception_dates} = data;
+      yield put(getReceptionMedicationsSuccess({
+        all_reception_dates,
+        mised_reception_dates,
+      }));
     } else {
       yield put(getReceptionMedicationsError(data));
     }
@@ -59,10 +68,17 @@ function* handleGetReceptionMedicationsByUser(action) {
   try {
     const {payload} = action || {};
     const {start_date, end_date, selectedUser} = payload || {};
-    const {data} = yield call(processRequest, `/reception_medications?start_date=${start_date}&end_date=${end_date}user_id=${selectedUser}`, 'GET');
-    if (data.mised_reception_dates) {
-      // data.all_reception_dates
-      yield put(getReceptionMedicationsByUserSuccess(data.mised_reception_dates));
+    const dates = convertDates(start_date, end_date);
+    const url = getUrl({
+      url: '/reception_medications',
+      start_date: dates.start_date,
+      end_date: dates.end_date,
+      user_id: selectedUser,
+    });
+    const {data} = yield call(processRequest, url, 'GET');
+    if (data.courses) {
+      const courses = data.courses.data.map(course => course.attributes);
+      yield put(getReceptionMedicationsByUserSuccess(courses));
     } else {
       yield put(getReceptionMedicationsByUserError(data));
     }
@@ -99,6 +115,6 @@ function* handleGetReceptionMedicationsByUser(action) {
 }
 
 export function* watchDashboardSagas() {
-  yield takeEvery(DASHBOARD_ACTIONS.GET_RECEPTION_MEDICATIONS, handleGetReceptionMedications);
+  yield takeEvery(DASHBOARD_ACTIONS.GET_RECEPTION_MEDICATIONS, handleGetReceptionMedicationsDates);
   yield takeEvery(DASHBOARD_ACTIONS.GET_RECEPTION_MEDICATIONS_BY_USER, handleGetReceptionMedicationsByUser);
 }
