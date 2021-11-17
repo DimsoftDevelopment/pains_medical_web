@@ -1,21 +1,26 @@
-import React, {useState, Fragment} from 'react';
-import TimeDose from './components/TimeDose';
-import {NUMBER_REGEXP} from './constants';
+import React, {useState} from 'react';
+import moment from 'moment';
+import Frequency from './components/Frequency';
+import SpecificDays from './components/SpecificDays';
+import DaysInterval from './components/DaysInterval';
+import TimeDoses from './components/TimeDoses';
+import Duration from './components/Duration';
 
-const SelectedMedication = ({medication}) => {
-  const [selectedFrequency, setFrequency] = useState('');
+const SelectedMedication = ({medication, start_date, handleSelectedMedicines}) => {
+  const [selectedFrequency, setFrequency] = useState(medication.frequency || '');
   const [editTimeDose, setEditTimeDose] = useState(false);
-  const [timeDoses, setTimeDoses] = useState([]);
+  const [timeDoses, setTimeDoses] = useState(medication.time_dose || []);
   const [selectedTimeDose, setTimeDose] = useState(null);
   const [selectedEditTimeDose, setSelectedTimeDose] = useState(null);
-  const handleFrequency = event => {
-    const {value} = event.target;
-    setFrequency(value);
-  };
+  const [selectedDays, setSelectedDays] = useState(medication.selected_days || []);
+  const [daysInterval, setDaysInterval] = useState(medication.days_interval_count || 1);
+  const [duration, setDuration] = useState(medication.duration || 1);
+  const [error, setError] = useState('');
   const addTimeDoses = () => {
+    setError('');
     const timeDose = {
-      time: '8:00',
-      dosage_form: medication.dosage_form,
+      time: moment().format('HH:mm'),
+      dosage_form: medication.dosage_form || medication.time_dose[0].dosage_form,
       dose: '1',
     };
     setTimeDose(timeDose);
@@ -23,7 +28,7 @@ const SelectedMedication = ({medication}) => {
   };
   const handleAddTimeDose = () => {
     const newTimeDosesArray = [...timeDoses];
-    if (selectedEditTimeDose) {
+    if (selectedEditTimeDose || selectedEditTimeDose === 0) {
       newTimeDosesArray[selectedEditTimeDose] = {
         ...newTimeDosesArray[selectedEditTimeDose],
         ...selectedTimeDose,
@@ -46,165 +51,80 @@ const SelectedMedication = ({medication}) => {
     allTimeDoses.splice(index, 1);
     setTimeDoses(allTimeDoses);
   };
-  const handleIncreaseTime = () => {
-
+  const handleClear = () => {
+    setFrequency('');
+    setEditTimeDose(false);
+    setTimeDoses([]);
+    setTimeDose(null);
+    setSelectedTimeDose(null);
+    setSelectedDays([]);
+    setDaysInterval(1);
+    setDuration(1);
   };
-  const handleDecreaseTime = () => {
-
-  };
-  const handleDoseChange = event => {
-    const value = event.target.value;
-    if (NUMBER_REGEXP.test(value)) {
-      const newSelectedTimeDose = {...selectedTimeDose};
-      newSelectedTimeDose.dose = value;
-      setTimeDose(newSelectedTimeDose);
+  const handleAddMedicine = () => {
+    if (timeDoses.length === 0) {
+      setError('Please, select time dose');
+    } else {
+      const medicine = {
+        medication_id: medication.id || medication.medication_id,
+        medication_title: medication.title || medication.medication_title,
+        frequency: selectedFrequency,
+        selected_days: selectedFrequency === 'specific_days' ? selectedDays : null,
+        days_interval_count: selectedFrequency === 'days_interval' ? daysInterval : null,
+        duration,
+        time_dose: timeDoses,
+        start_date: moment(start_date).toISOString(),
+        end_date: moment(start_date).add(duration, 'days').toISOString(),
+      };
+      handleSelectedMedicines(medicine);
+      handleClear();
     }
-  };
-  const handleIncreaseDose = () => {
-    const newSelectedTimeDose = {
-      ...selectedTimeDose,
-      dose: Number(selectedTimeDose.dose) + 1,
-    };
-    setTimeDose(newSelectedTimeDose);
-  };
-  const handleDecreaseDose = () => {
-    const newSelectedTimeDose = {
-      ...selectedTimeDose,
-      dose: Number(selectedTimeDose.dose) - 1,
-    };
-    setTimeDose(newSelectedTimeDose);
   };
   return (
     <div className="medicines__settings">
+      {error && (
+        <p className="error-message">{error}</p>
+      )}
       <div className="settings__form form">
-        <div className="form__row custom-select">
-          <label className="settings__label" htmlFor="mFrequency">Frequency</label>
-          <select
-            className="settings__select"
-            onChange={handleFrequency}
-            value={selectedFrequency}
-          >
-            <option value="">Choose frequency</option>
-            <option value="every_day">Every Day</option>
-            <option value="specific_days">Specific days</option>
-            <option value="days_interval">Days interval</option>
-          </select>
-        </div>
+        <Frequency
+          handleFrequency={setFrequency}
+          selectedFrequency={selectedFrequency}
+        />
         {selectedFrequency === 'specific_days' && (
-          <div className="form__row form__row--days">
-            <div className="day">
-              <input className="form__checkbox--days" type="checkbox" name="d01" id="d01" />
-              <label  className="form__label--days" for="d01">MON</label>
-            </div>
-            <div className="day">
-              <input className="form__checkbox--days" type="checkbox" name="d02" id="d02" />
-              <label  className="form__label--days" for="d02">TUE</label>
-            </div>
-            <div className="day">
-              <input className="form__checkbox--days" type="checkbox" name="d03" id="d03" />
-              <label  className="form__label--days" for="d03">WED</label>
-            </div>
-            <div className="day">
-              <input className="form__checkbox--days" type="checkbox" name="d04" id="d04" />
-              <label  className="form__label--days" for="d04">THU</label>
-            </div>
-            <div className="day">
-              <input className="form__checkbox--days" type="checkbox" name="d05" id="d05" />
-              <label  className="form__label--days" for="d05">FRI</label>
-            </div>
-            <div className="day">
-              <input className="form__checkbox--days" type="checkbox" name="d06" id="d06" />
-              <label  className="form__label--days" for="d06">SAT</label>
-            </div>
-            <div className="day">
-              <input className="form__checkbox--days" type="checkbox" name="d07" id="d07" />
-              <label  className="form__label--days" for="d07">SUN</label>
-            </div>
-          </div>
+          <SpecificDays
+            selectedDays={selectedDays}
+            setSelectedDays={setSelectedDays}
+          />
         )}
         {selectedFrequency === 'days_interval' && (
-          <div className="form__row form__row--duration">
-            <input className="form__input" type="text" placeholder="" value="Every 2 days" />
-            <button className="btns btn-prev"></button>
-            <button className="btns btn-next"></button>
-          </div>
+          <DaysInterval
+            daysInterval={daysInterval}
+            setDaysInterval={setDaysInterval}
+          />
         )}
         {selectedFrequency && (
-          <div className="form__row">
-            <label className="settings__label">Time & Dose</label>
-            <div className="form__row form__row--columns">
-            <div className="columns__column columns__column--timeAdoze">
-              {timeDoses.map((timeDose, index) => (
-                <TimeDose
-                  key={index}
-                  timeDose={timeDose}
-                  index={index}
-                  editTimeDose={handleEditTimeDose}
-                  deleteTimeDose={deleteTimeDose}
-                />
-              ))}
-              </div>
-              <div className="columns__column columns__column--add">
-                <button
-                  className="btns btn-timeAdoze"
-                  type="button"
-                  onClick={addTimeDoses}
-                />
-              </div>
-              {selectedTimeDose && (
-                <Fragment>
-                  <div className="columns__column columns__column--time">
-                    <input
-                      className="form__input"
-                      type="text"
-                      name="mTime"
-                      value={selectedTimeDose.time}
-                    />
-                    <button
-                      type="button"
-                      className="btns btn-plus"
-                      onClick={handleIncreaseTime}
-                    />
-                    <button
-                      type="button"
-                      className="btns btn-minus"
-                      onClick={handleDecreaseTime}
-                    />
-                  </div>
-                  <div className="columns__column columns__column--doze">
-                    <input
-                      className="form__input"
-                      type="text"
-                      name="mTime"
-                      value={selectedTimeDose.dose}
-                      onChange={handleDoseChange}
-                    />
-                    <button
-                      type="button"
-                      className="btns btn-plus"
-                      onClick={handleIncreaseDose}
-                    />
-                    <button
-                      type="button"
-                      className="btns btn-minus"
-                      onClick={handleDecreaseDose}
-                    />
-                  </div>
-                </Fragment>
-              )}
-            </div>
-          </div>
+          <TimeDoses
+            timeDoses={timeDoses}
+            handleEditTimeDose={handleEditTimeDose}
+            deleteTimeDose={deleteTimeDose}
+            addTimeDoses={addTimeDoses}
+            selectedTimeDose={selectedTimeDose}
+            setTimeDose={setTimeDose}
+          />
         )}
         {timeDoses.length > 0 && (
-          <div className="form__row form__row--duration">
-            <label className="settings__label">Duration</label>
-            <input className="form__input" type="text" placeholder="" value="7 Days" />
-            <button className="btns btn-prev" />
-            <button className="btns btn-next" />
-          </div>
+          <Duration
+            duration={duration}
+            setDuration={setDuration}
+          />
         )}
         <div className="form__row form__row--submit">
-          <input className="form__reset" type="reset" value="CLEAR" />
+          <input
+            className="form__reset"
+            type="button"
+            value="CLEAR"
+            onClick={handleClear}
+          />
           {editTimeDose ? (
             <input
               className="form__submit"
@@ -216,7 +136,7 @@ const SelectedMedication = ({medication}) => {
             <input
               className="form__submit"
               type="button"
-              // onClick={}
+              onClick={handleAddMedicine}
               value="ADD MEDICINE"
             />
           )}

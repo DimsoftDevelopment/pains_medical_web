@@ -15,5 +15,6 @@ const INITIAL_STATE = {
 };
 
 const NUMBER_REGEXP = /^[0-9\b]+$/;
+const WEEKDAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
-export {CREATE_COURSE_ACTIONS, INITIAL_STATE, NUMBER_REGEXP};
+export {CREATE_COURSE_ACTIONS, INITIAL_STATE, NUMBER_REGEXP, WEEKDAYS};

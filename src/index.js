@@ -7,6 +7,7 @@ import Router from './router';
 import {store} from './store';
 import {appHistory} from './services/HistoryConfig';
 import './assets/css/styles.css';
+import './assets/css/custom.css';
 // import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(

@@ -22,7 +22,7 @@ const TimeDose = ({timeDose, index, editTimeDose, deleteTimeDose}) => {
     >
       <span className="time">{timeDose.time}</span>
       <span className="doze">{`${timeDose.dose} ${timeDose.dosage_form}`}</span>
-      <button className="btns btn-menu" onClick={toggleMenu}>
+      <button className="btns btn-menu" onClick={toggleMenu} type="button">
         <i className="icons i24x24 i-dots"></i>
       </button>
       <div className="medicine__menu">

@@ -1,34 +1,50 @@
 import React, {useEffect, useState, useCallback} from 'react';
 import {Link} from 'react-router-dom';
-import {useForm, Controller} from 'react-hook-form';
+import {useForm} from 'react-hook-form';
 import {useDispatch, useSelector} from 'react-redux';
 import _ from 'lodash';
 import PageWrapper from '../pageWrapper';
 import {updateCourseProp} from './actions';
-import {getMeds, getMedication} from '../meds/actions';
+import {getMeds} from '../meds/actions';
 import {ROUTES} from '../../router/routes';
 import TextInput from '../../components/inputs/TextInput';
 import DatePickerInput from '../../components/inputs/DatePicker';
 import MedicationCard from './MedicationCard';
 import SelectedMedication from './SelectedMedication';
+import CourseMedication from './CourseMedication';
 import medsIcon from '../../assets/img/icons/i-arrow_down.png';
 import medsIcon2x from '../../assets/img/icons/i-arrow_down@2x.png';
 import medsIcon3x from '../../assets/img/icons/i-arrow_down@3x.png';
+import moment from 'moment';
 
 const CreateCourse = () => {
+  const {user} = useSelector(({authState}) => authState);
+  const {course} = useSelector(({createCourseState}) => createCourseState);
+  const {meds, medication} = useSelector(({medsState}) => medsState);
+  const [selectedMedication, setMedication] = useState(medication);
+  const [selectedMedicationIndex, setSelectedMedicationIndex] = useState(null);
+  const [newCourse, setNewCourse] = useState({
+    title: course.title || '',
+    start_date: new Date(),
+    end_date: new Date(),
+    course_medications_attributes: [],
+    user_id: user.id,
+  });
   const [searchValue, setSearchValue] = useState('');
   const [showMedications, setShowMedications] = useState(false);
   const dispatch = useDispatch();
-  const {course} = useSelector(({createCourseState}) => createCourseState);
-  const {meds, medication} = useSelector(({medsState}) => medsState);
   // const isMedsEmpty = meds.length === 0;
-  const {register, control, handleSubmit} = useForm({
+  const {register, handleSubmit} = useForm({
     defaultValues: {
       title: course.title,
     },
   });
-  const handleUpdateCourse = course => {
-    dispatch(updateCourseProp(course));
+  const handleUpdateCourse = courseData => {
+    const newCourseData = {
+      ...newCourse,
+      title: courseData.title,
+    };
+    dispatch(updateCourseProp(newCourseData));
   };
   const debounce = _.debounce(
     query => dispatch(getMeds({page: 1, per_page: 10, query})),
@@ -40,11 +56,54 @@ const CreateCourse = () => {
     setSearchValue(value);
     handleSearch(value);
   };
-  const handleMedDetails = medication => {
-    dispatch(getMedication(medication.id));
+  const handleMedDetails = medicationItem => {
+    setMedication(medicationItem);
+    // dispatch(getMedication(medication.id));
   };
   const handleShowMeds = () => {
     setShowMedications(true);
+  };
+  const handleStartDate = start_date => {
+    setNewCourse({
+      ...newCourse,
+      start_date,
+    });
+  };
+  const handleSelectedMedicines = medicine => {
+    const medicines = [...newCourse.course_medications_attributes];
+    if (selectedMedicationIndex || selectedMedicationIndex === 0) {
+      medicines[selectedMedicationIndex] = {
+        ...medicines[selectedMedicationIndex],
+        ...medicine,
+      };
+      setSelectedMedicationIndex(null);
+    } else {
+      medicines.push(medicine);
+    }
+    setNewCourse({
+      ...newCourse,
+      end_date: moment(newCourse.end_date).isBefore(medicine.end_date) ? medicine.end_date : newCourse.end_date,
+      course_medications_attributes: medicines,
+    });
+    setMedication({});
+    setShowMedications(false);
+  };
+  const handleEditCourseMedicine = index => {
+    const selectedMedicine = newCourse.course_medications_attributes[index];
+    setMedication(selectedMedicine);
+    setSelectedMedicationIndex(index);
+    setShowMedications(true);
+  };
+  const handleDeleteCourseMedicine = index => {
+    const medicines = [...newCourse.course_medications_attributes];
+    medicines.splice(index, 1);
+    setNewCourse({
+      ...newCourse,
+      course_medications_attributes: medicines,
+    });
+    setMedication({});
+    setSelectedMedicationIndex(null);
+    setShowMedications(false);
   };
   useEffect(() => {
     dispatch(getMeds({
@@ -64,7 +123,7 @@ const CreateCourse = () => {
       <div className="content__block">
         <section className="courses">
           <div className="courses__page">
-            <div className="courses__add">
+            <form className="courses__add" onSubmit={handleSubmit(handleUpdateCourse)}>
               <div className="add__top">
                 <Link
                   className="btns btn-back"
@@ -72,9 +131,14 @@ const CreateCourse = () => {
                 >
                   <i className="icons i24x24 i-arrow_left"></i>
                 </Link>
-                <button className="btns btn-save">CREATE COURSE</button>
+                <button
+                  className="btns btn-save"
+                  type="submit"
+                >
+                  CREATE COURSE
+                </button>
               </div>
-              <form className="add__form" onSubmit={handleSubmit(handleUpdateCourse)}>
+              <div className="add__form">
                 <div className="form__top">
                   <div className="form__row form__row--columns">
                     <TextInput
@@ -86,38 +150,21 @@ const CreateCourse = () => {
                       label="Course"
                       containerClassName="columns__column columns__column--course"
                     />
-                    <Controller
-                      control={control}
+                    <DatePickerInput
+                      onChange={handleStartDate}
+                      value={newCourse.start_date}
                       id="start_date"
                       name="start_date"
-                      rules={{required: 'Start date reuired'}}
-                      render={({field}) => (
-                        <DatePickerInput
-                          name={field.name}
-                          onBlur={field.onBlur}
-                          onChange={field.onChange}
-                          value={field.value}
-                          label="Starts"
-                          containerClassName="columns__column columns__column--start"
-                        />
-                      )}
+                      label="Starts"
+                      containerClassName="columns__column columns__column--start"
                     />
-                    <Controller
-                      control={control}
+                    <DatePickerInput
                       id="end_date"
                       name="end_date"
-                      rules={{required: 'Start date reuired'}}
-                      render={({field}) => (
-                        <DatePickerInput
-                          name={field.name}
-                          onBlur={field.onBlur}
-                          onChange={field.onChange}
-                          value={field.value}
-                          label="End"
-                          disabled
-                          containerClassName="columns__column columns__column--end"
-                        />
-                      )}
+                      value={newCourse.end_date}
+                      label="End"
+                      disabled
+                      containerClassName="columns__column columns__column--end"
                     />
                   </div>
                   <div className="courses__medicines">
@@ -132,6 +179,15 @@ const CreateCourse = () => {
                           ADD MEDICINE
                         </button>
                       </div>
+                      {newCourse.course_medications_attributes.map((courseMedication, index) => (
+                        <CourseMedication
+                          key={`${index}_${courseMedication.medication_id}`}
+                          index={index}
+                          courseMedication={courseMedication}
+                          handleEditCourseMedicine={handleEditCourseMedicine}
+                          handleDeleteCourseMedicine={handleDeleteCourseMedicine}
+                        />
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -157,7 +213,7 @@ const CreateCourse = () => {
                               <MedicationCard
                                 key={medicationItem.id}
                                 medication={medicationItem}
-                                selectedMedication={medication}
+                                selectedMedication={selectedMedication}
                                 handleMedDetails={handleMedDetails}
                               />
                             ))}
@@ -183,15 +239,17 @@ const CreateCourse = () => {
                         </div>
                       )}
                     </div>
-                    {medication.id && (
+                    {(selectedMedication.id || selectedMedication.medication_id) && (
                       <SelectedMedication
-                        medication={medication}
+                        medication={selectedMedication}
+                        start_date={newCourse.start_date}
+                        handleSelectedMedicines={handleSelectedMedicines}
                       />
                     )}
                   </div>
                 )}
-              </form>
-            </div>
+              </div>
+            </form>
           </div>
         </section>
       </div>
