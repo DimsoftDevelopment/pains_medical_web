@@ -8,11 +8,10 @@ const CourseMedicationItem = ({courseMedication}) => {
     reception_medications_count,
     mised_medication_count,
   } = courseMedication;
-  const receptionCount = new Array(reception_medications_count).fill(null).map((_, index) => index);
-  receptionCount.forEach(index => receptionCount[index] = {
-    taken: index < taken_medication_count,
-    missed: index < mised_medication_count,
-  });
+  const receptionMissedCount = new Array(mised_medication_count).fill(null).map((_, index) => index);
+  const receptionTakenCount = new Array(taken_medication_count).fill(null).map((_, index) => index);
+  const receptionMedsCount = taken_medication_count + mised_medication_count - reception_medications_count;
+  const receptionCount = new Array(receptionMedsCount >= 0 ? receptionMedsCount : 0).fill(null).map((_, index) => index);
   return (
     <div className="card">
       <div className="card__top">
@@ -24,8 +23,14 @@ const CourseMedicationItem = ({courseMedication}) => {
         </div>
       </div>
       <div className="course__slashes">
-        {receptionCount.map(({taken, missed}, index) => (
-          <span key={index} className={classNames("slash", {taken, missed})}></span>
+        {receptionMissedCount.map(index => (
+          <span key={index} className={classNames("slash", {missed: true})}></span>
+        ))}
+        {receptionTakenCount.map(index => (
+          <span key={index} className={classNames("slash", {taken: true})}></span>
+        ))}
+        {receptionCount.map(index => (
+          <span key={index} className={classNames("slash")}></span>
         ))}
       </div>
     </div>

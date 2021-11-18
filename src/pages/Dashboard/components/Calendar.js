@@ -5,7 +5,7 @@ import {MONTHS, MONTH_DAYS} from '../constants';
 import {isMissedDay} from '../../courses/helpers';
 import {getCurrentDayDate, convertDatesISO} from '../../../services/DateHelper';
 
-const Calendar = ({onChangeDate, all_reception_dates, mised_reception_dates}) => {
+const Calendar = ({onChangeDate, all_reception_dates, mised_reception_dates, hideMonths}) => {
   const [selectedMonth, setSelectedMonth] = useState(moment().month() + 1);
   const [selectedDay, setSelectedDay] = useState(moment().date());
   const handleMonthSelect = month => () => {
@@ -23,21 +23,23 @@ const Calendar = ({onChangeDate, all_reception_dates, mised_reception_dates}) =>
     <section className="calendar">
       <div className="calendar__block">
         <div className="calendar__months">
-          <div className="months__list">
-            {MONTHS.map(month => (
-              <div
-                key={month}
-                className={
-                  classNames("month", {
-                    active: selectedMonth === month,
-                  })
-                }
-                onClick={handleMonthSelect(month)}
-              >
-                {moment().month(month - 1).format('MMMM')}
-              </div>
-            ))}
-          </div>
+          {!hideMonths && (
+            <div className="months__list">
+              {MONTHS.map(month => (
+                <div
+                  key={month}
+                  className={
+                    classNames("month", {
+                      active: selectedMonth === month,
+                    })
+                  }
+                  onClick={handleMonthSelect(month)}
+                >
+                  {moment().month(month - 1).format('MMMM')}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
         <div className="calendar__days">
           <div className="days__list">

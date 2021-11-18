@@ -28,3 +28,18 @@ export const getReceptionMedicationsByUserError = error => ({
   type: DASHBOARD_ACTIONS.GET_RECEPTION_MEDICATIONS_BY_USER_ERROR,
   payload: {error},
 });
+
+export const takeUntakePill = takeUntakePillData => ({
+  type: DASHBOARD_ACTIONS.TAKE_UNTAKE_PILL,
+  payload: {takeUntakePillData},
+});
+
+export const takeUntakePillSuccess = takeUntakePillData => ({
+  type: DASHBOARD_ACTIONS.TAKE_UNTAKE_PILL_SUCCESS,
+  payload: {takeUntakePillData},
+});
+
+export const takeUntakePillError = error => ({
+  type: DASHBOARD_ACTIONS.TAKE_UNTAKE_PILL_ERROR,
+  payload: {error},
+});

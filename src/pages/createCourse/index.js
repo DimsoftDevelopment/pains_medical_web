@@ -6,6 +6,7 @@ import _ from 'lodash';
 import PageWrapper from '../pageWrapper';
 import {updateCourseProp} from './actions';
 import {getMeds} from '../meds/actions';
+import {createCourse} from '../courses/actions';
 import {ROUTES} from '../../router/routes';
 import TextInput from '../../components/inputs/TextInput';
 import DatePickerInput from '../../components/inputs/DatePicker';
@@ -33,7 +34,6 @@ const CreateCourse = () => {
   const [searchValue, setSearchValue] = useState('');
   const [showMedications, setShowMedications] = useState(false);
   const dispatch = useDispatch();
-  // const isMedsEmpty = meds.length === 0;
   const {register, handleSubmit} = useForm({
     defaultValues: {
       title: course.title,
@@ -44,7 +44,7 @@ const CreateCourse = () => {
       ...newCourse,
       title: courseData.title,
     };
-    dispatch(updateCourseProp(newCourseData));
+    dispatch(createCourse(newCourseData));
   };
   const debounce = _.debounce(
     query => dispatch(getMeds({page: 1, per_page: 10, query})),
@@ -58,7 +58,6 @@ const CreateCourse = () => {
   };
   const handleMedDetails = medicationItem => {
     setMedication(medicationItem);
-    // dispatch(getMedication(medication.id));
   };
   const handleShowMeds = () => {
     setShowMedications(true);

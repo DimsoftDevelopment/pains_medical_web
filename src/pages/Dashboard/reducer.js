@@ -9,6 +9,7 @@ const dashboardState = (state = INITIAL_STATE, action) => {
     receptionMedications,
     all_reception_dates,
     mised_reception_dates,
+    takeUntakePillData,
     error,
   } = payload || {};
   switch(type) {
@@ -30,6 +31,24 @@ const dashboardState = (state = INITIAL_STATE, action) => {
         ...state,
         receptionMedications,
       };
+    case DASHBOARD_ACTIONS.TAKE_UNTAKE_PILL_SUCCESS: {
+      const allReceptions = [...state.receptionMedications];
+      allReceptions.forEach((course, courseIndex) => {
+        console.log(course);
+        course.receptions.data.forEach((reception, index) => {
+          if (reception.attributes.id === takeUntakePillData.id) {
+            allReceptions[courseIndex].receptions.data[index].attributes = {
+              ...allReceptions[courseIndex].receptions.data[index].attributes,
+              status: takeUntakePillData.status,
+            };
+          }
+        });
+      });
+      return {
+        ...state,
+        receptionMedications: allReceptions,
+      };
+    }
     case DASHBOARD_ACTIONS.GET_RECEPTION_MEDICATIONS_ERROR:
     case DASHBOARD_ACTIONS.GET_RECEPTION_MEDICATIONS_BY_USER_ERROR:
       return {

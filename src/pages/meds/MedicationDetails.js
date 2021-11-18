@@ -112,7 +112,7 @@ const MedicationDetails = ({medication, handleEdit}) => {
             </div>	
           </div>
         </div>
-        <div className="medicine__forecast">
+        {/* <div className="medicine__forecast">
           <div className="block__title">Usage Forecast</div>
           <div className="forecast__summary">
             <div className="card">
@@ -127,9 +127,9 @@ const MedicationDetails = ({medication, handleEdit}) => {
                   Availability covers current courses
                 </div>
               </div>
-            </div>
+            </div> */}
             {/* <!-- IF ALARM FOR EXAMPLE --> */}
-            <div className="card alarm">
+            {/* <div className="card alarm">
               <div className="card__icon">
               </div>
               <div className="card__text">
@@ -141,9 +141,9 @@ const MedicationDetails = ({medication, handleEdit}) => {
                   <strong>155 MISSING</strong> <br /> to cover course
                 </div>
               </div>
-            </div>
+            </div> */}
             {/* <!-- IF /ALARM FOR EXAMPLE --> */}
-          </div>
+          {/* </div>
           <div className="forecast__courses">
             <div className="courses__list">
               <div className="list__item">
@@ -160,7 +160,7 @@ const MedicationDetails = ({medication, handleEdit}) => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="details__btns details__btns--bottom">
           <button
             className="btns btn-edit"

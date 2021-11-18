@@ -5,6 +5,8 @@ import {
   getReceptionMedicationsError,
   getReceptionMedicationsByUserSuccess,
   getReceptionMedicationsByUserError,
+  takeUntakePillSuccess,
+  takeUntakePillError,
 } from './actions';
 import {
   togglePinModal,
@@ -114,7 +116,50 @@ function* handleGetReceptionMedicationsByUser(action) {
   }
 }
 
+function* handleTakeUntakePill(action) {
+  try {
+    const {payload} = action || {};
+    const {takeUntakePillData} = payload || {};
+    const {data} = yield call(processRequest, `/reception_medications/${takeUntakePillData.id}?status=${takeUntakePillData.status}`, 'PUT');
+    if (data.message === 'Success') {
+      yield put(takeUntakePillSuccess(takeUntakePillData));
+    } else {
+      yield put(takeUntakePillError(data));
+    }
+  } catch(e) {
+    const {data, status, statusText} = e || {};
+    const {error_messages, error, error_message, errors} = data || {};
+
+    if (status === 400) {
+      let message = '';
+      if (error_message) {
+        message = error_message;
+      } else if (error_messages) {
+        const keys = Object.keys(error_messages);
+        const errorMessage = error_messages[keys[0]];
+
+        message = error_messages && `${keys[0]} ${errorMessage}`;
+      }
+
+      yield put(takeUntakePillError(message));
+    } else if (status === 401 && errors && errors.message[0] === 'Token expired') {
+      yield put(togglePinModal());
+      yield put(takeUntakePillError(errors));
+    } else if (status === 401) {
+      yield put(takeUntakePillError(error));
+      yield put(logout());
+    } else if (status === 500) {
+      yield put(takeUntakePillError(statusText || 'Internal server error.'));
+    } else if (e.message) {
+      yield put(takeUntakePillError(e.message));
+    } else {
+      yield put(takeUntakePillError('Internal server error.'));
+    }
+  }
+}
+
 export function* watchDashboardSagas() {
   yield takeEvery(DASHBOARD_ACTIONS.GET_RECEPTION_MEDICATIONS, handleGetReceptionMedicationsDates);
   yield takeEvery(DASHBOARD_ACTIONS.GET_RECEPTION_MEDICATIONS_BY_USER, handleGetReceptionMedicationsByUser);
+  yield takeEvery(DASHBOARD_ACTIONS.TAKE_UNTAKE_PILL, handleTakeUntakePill);
 }

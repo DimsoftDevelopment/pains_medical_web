@@ -1516,6 +1516,7 @@ button {
     margin-bottom: 8px;
     font-size: 11px;
     font-weight: 500;
+    text-transform: uppercase;
     line-height: 1.5;
     letter-spacing: 0.07px; }
     .courses__list .card .course__date .notifications {

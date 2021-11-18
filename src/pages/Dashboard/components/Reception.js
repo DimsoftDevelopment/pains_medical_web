@@ -3,17 +3,35 @@ import classNames from 'classnames';
 import moment from 'moment';
 import {config} from '../../../config';
 
-const Reception = ({reception}) => {
+const Reception = ({reception, toggleModal}) => {
   const medication = reception.medication.data.attributes || {};
   const medicationAttachment = medication.attachments.data[0];
+  const isMissed = reception.status === 'mised';
+  const isTaken = reception.status === 'taken';
+  const openModal = () => {
+    toggleModal({
+      ...medication,
+      reception_id: reception.id,
+      isMissed,
+      isTaken,
+    });
+  };
   return (
     <div
       className={classNames("card", {
-        missed: reception.status === 'mised',
+        missed: isMissed,
+        taken: isTaken,
       })}>
-      <div className="medicine__time">{moment(reception.taking_date).format('h:mm')}</div>
+      <div className="medicine__time">{moment(reception.taking_date).format('HH:mm')}</div>
       <div className="medicine__block">
-        <button className="medicine__item missed btns" data-toggle="class" data-target="#popups" data-classes="missed">
+        <button
+          className={classNames("medicine__item", {
+            missed: isMissed,
+            taken: isTaken,
+            btns: true,
+          })}
+          onClick={openModal}
+        >
           <span className="medicine__text">
             <span className="medicine__name">{medication.title}</span>
             <span className="medicine__quantity">

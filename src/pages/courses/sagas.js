@@ -1,4 +1,5 @@
 import {takeEvery, put, call} from 'redux-saga/effects';
+import {goBack} from 'connected-react-router';
 import {COURSES_ACTIONS} from './constants';
 import {
   getCoursesSuccess,
@@ -215,8 +216,9 @@ function* handleCreateCourse(action) {
     const requestPayload = {course}
     const {data} = yield call(processRequest, `/courses`, 'POST', requestPayload);
     if (data.course) {
-      const course = data.course.data;
+      const course = data.course.data.attributes;
       yield put(createCourseSuccess(course));
+      yield put(goBack());
     } else {
       yield put(createCourseError());
       yield put(toggleNotification({

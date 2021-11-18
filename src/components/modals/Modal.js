@@ -41,6 +41,9 @@ const ModalClasses = {
   pin: "pin",
   remove: "remove",
   invite: "invite",
+  missed: "missed",
+  taken: "taken",
+  take: "take",
 };
 
 Modal.propTypes = {

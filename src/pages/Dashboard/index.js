@@ -1,9 +1,10 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import PageWrapper from '../pageWrapper';
 import QuickFamily from './components/QuickFamily';
 import Calendar from './components/Calendar';
 import ReceptionMedications from './components/ReceptionMedications';
+import TakePill from '../../components/modals/TakePill';
 import {
   getReceptionMedications,
   getReceptionMedicationsByUser,
@@ -12,7 +13,13 @@ import {getFamilyList} from '../family/actions';
 import {getCourses} from '../courses/actions';
 
 const Dashboard = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [selectedMedication, setSelectedMedication] = useState(null);
   const dispatch = useDispatch();
+  const toggleModal = medication => {
+    setSelectedMedication(medication);
+    setShowModal(!showModal);
+  };
   const {familyList} = useSelector(({familyState}) => familyState);
   const {
     start_date,
@@ -78,8 +85,17 @@ const Dashboard = () => {
           receptionMedications={receptionMedications}
           selectedDate={start_date}
           courses={courses}
+          toggleModal={toggleModal}
         />
       </div>
+      {showModal && (
+        <TakePill
+          medication={selectedMedication}
+          handleCloseModal={toggleModal}
+          isMissed={selectedMedication.isMissed}
+          isTaken={selectedMedication.isTaken}
+        />
+      )}
     </PageWrapper>
   );
 };
