@@ -14,10 +14,10 @@ import {getCourses} from '../courses/actions';
 
 const Dashboard = () => {
   const [showModal, setShowModal] = useState(false);
-  const [selectedMedication, setSelectedMedication] = useState(null);
+  const [selectedReception, setSelectedReception] = useState(null);
   const dispatch = useDispatch();
-  const toggleModal = medication => {
-    setSelectedMedication(medication);
+  const toggleModal = reception => {
+    setSelectedReception(reception);
     setShowModal(!showModal);
   };
   const {familyList} = useSelector(({familyState}) => familyState);
@@ -90,10 +90,10 @@ const Dashboard = () => {
       </div>
       {showModal && (
         <TakePill
-          medication={selectedMedication}
+          reception={selectedReception}
           handleCloseModal={toggleModal}
-          isMissed={selectedMedication.isMissed}
-          isTaken={selectedMedication.isTaken}
+          isMissed={selectedReception.isMissed}
+          isTaken={selectedReception.isTaken}
         />
       )}
     </PageWrapper>

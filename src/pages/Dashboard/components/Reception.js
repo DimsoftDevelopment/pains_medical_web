@@ -10,8 +10,7 @@ const Reception = ({reception, toggleModal}) => {
   const isTaken = reception.status === 'taken';
   const openModal = () => {
     toggleModal({
-      ...medication,
-      reception_id: reception.id,
+      ...reception,
       isMissed,
       isTaken,
     });
@@ -43,6 +42,8 @@ const Reception = ({reception, toggleModal}) => {
               {medicationAttachment && (
                 <img
                   src={`${config.REACT_APP_IMAGE_URL}${medicationAttachment.attributes.file_thumb_url}`}
+                  width={52}
+                  height={52}
                   alt={medication.title}
                 />
               )}

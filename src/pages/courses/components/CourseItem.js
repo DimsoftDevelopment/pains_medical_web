@@ -14,7 +14,7 @@ const CourseItem = ({course, isPast}) => {
   });
   const missedPercent = `${missedCount / totalCount * 100}%`;
   const takenPercent = `${takenCount / totalCount * 100}%`;
-  const totalPercent = `${(missedCount + takenCount) / totalCount * 100}%`;
+  const totalPercent = `${totalCount > 0 ? ((missedCount + takenCount) / totalCount * 100) : 0}%`;
   return (
     <div className="list__item">
       <div className={classNames("card", {past: isPast})}>

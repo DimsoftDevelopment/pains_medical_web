@@ -22,7 +22,7 @@ const MedicationDetails = ({medication, handleEdit}) => {
                 <img
                   src={`${config.REACT_APP_IMAGE_URL}${bigImage}`}
                   width='100%'
-                  alt="MEDICINENAME"
+                  alt={medication.title}
                 />
               </figure>
               <button

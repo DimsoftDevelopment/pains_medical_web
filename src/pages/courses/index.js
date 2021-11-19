@@ -20,7 +20,7 @@ import {ROUTES} from '../../router/routes';
 const Courses = () => {
   const [selectedTab, setSelectedTab] = useState(TABS[0].name);
   const [showModal, setShowModal] = useState(false);
-  const [selectedMedication, setSelectedMedication] = useState(null);
+  const [selectedReception, setSelectedReception] = useState(null);
   const dispatch = useDispatch();
   const {
     start_date,
@@ -47,8 +47,8 @@ const Courses = () => {
       date.end_date,
     ));
   };
-  const toggleModal = medication => {
-    setSelectedMedication(medication);
+  const toggleModal = reception => {
+    setSelectedReception(reception);
     setShowModal(!showModal);
   };
   return (
@@ -115,10 +115,10 @@ const Courses = () => {
       </div>
       {showModal && (
         <TakePill
-          medication={selectedMedication}
+          reception={selectedReception}
           handleCloseModal={toggleModal}
-          isMissed={selectedMedication.isMissed}
-          isTaken={selectedMedication.isTaken}
+          isMissed={selectedReception.isMissed}
+          isTaken={selectedReception.isTaken}
         />
       )}
     </PageWrapper>

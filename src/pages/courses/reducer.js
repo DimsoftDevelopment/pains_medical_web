@@ -21,10 +21,12 @@ const coursesState = (state = INITIAL_STATE, action) => {
         course,
       };
     case COURSES_ACTIONS.CREATE_COURSE_SUCCESS:
+      const newCurses = [...state.courses];
+      newCurses.push(course);
       return {
         ...state,
         course,
-        courses: [...state.courses, ...[course]],
+        courses: newCurses,
       };
     case COURSES_ACTIONS.UPDATE_COURSE_SUCCESS: {
       const updatedCourse = [...state.courses];

@@ -23,7 +23,7 @@ const ReceptionMedications = ({
     const slashesCount = [];
     let receptionsDoneCount = 0;
     receptionMedications.forEach(course => {
-      course.receptions.data.forEach(reception => {
+      (course.receptions.data || []).forEach(reception => {
         slashesCount.push(reception.attributes.status);
         receptionsDoneCount = reception.attributes.status !== 'upcoming' ? receptionsDoneCount + 1 : receptionsDoneCount;
       })

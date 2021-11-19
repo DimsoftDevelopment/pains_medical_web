@@ -34,7 +34,6 @@ const dashboardState = (state = INITIAL_STATE, action) => {
     case DASHBOARD_ACTIONS.TAKE_UNTAKE_PILL_SUCCESS: {
       const allReceptions = [...state.receptionMedications];
       allReceptions.forEach((course, courseIndex) => {
-        console.log(course);
         course.receptions.data.forEach((reception, index) => {
           if (reception.attributes.id === takeUntakePillData.id) {
             allReceptions[courseIndex].receptions.data[index].attributes = {

@@ -1,9 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
+import classNames from 'classnames';
 import Modal from './Modal';
 import {takeUntakePill} from '../../pages/dashboard/actions';
+import {config} from '../../config';
+import moment from 'moment';
 
-const TakePill = ({medication, handleCloseModal, isMissed, isTaken}) => {
+const TakePill = ({reception, handleCloseModal, isMissed, isTaken}) => {
+  const medication = reception.medication.data.attributes || {};
+  const attachments = medication.attachments.data.map(attachment => attachment.attributes);
+  const firstImage = attachments.length > 0 ? attachments[0].file_url : '';
+  const [bigImage, setBigImage] = useState(firstImage);
   const dispatch = useDispatch();
   const getAdditionalClassName = () => {
     if (isMissed) return 'popup--medicine popup--missed';
@@ -17,17 +24,20 @@ const TakePill = ({medication, handleCloseModal, isMissed, isTaken}) => {
   };
   const takePill = () => {
     dispatch(takeUntakePill({
-      id: medication.reception_id,
+      id: reception.id,
       status: 'taken',
     }));
     handleCloseModal();
   };
   const untakePill = () => {
     dispatch(takeUntakePill({
-      id: medication.reception_id,
+      id: reception.id,
       status: 'mised',
     }));
     handleCloseModal();
+  };
+  const handleImageClick = attachment => {
+    setBigImage(attachment.file_url);
   };
   return (
     <Modal
@@ -36,26 +46,41 @@ const TakePill = ({medication, handleCloseModal, isMissed, isTaken}) => {
     >
       <div className="medicine">
         <div className="medicine__gallery">
-          <div className="gallery__big">
-            <figure className="big">
-              {/* <img className="image" src="img/temp/paracetamol_01.jpg" srcset="img/temp/paracetamol_01@2x.jpg 2x, img/temp/paracetamol_01@3x.jpg 3x" alt="MEDICINENAME" /> */}
-            </figure>
-          </div>
+          {bigImage && (
+            <div className="gallery__big">
+              <figure className="big">
+                <img
+                  src={`${config.REACT_APP_IMAGE_URL}${bigImage}`}
+                  width='100%'
+                  alt={medication.title}
+                  className="image"
+                />
+              </figure>
+            </div>
+          )}
           <div className="gallery__small">
-            <figure className="small active">
-              {/* <img className="image" src="img/temp/paracetamol_02.jpg" srcset="img/temp/paracetamol_02@2x.jpg 2x, img/temp/paracetamol_02@2x.jpg 3x" alt="MEDICINENAME" /> */}
-            </figure>
-            <figure className="small">
-              {/* <img className="image" src="img/temp/paracetamol_02.jpg" srcset="img/temp/paracetamol_02@2x.jpg 2x, img/temp/paracetamol_02@2x.jpg 3x" alt="MEDICINENAME" /> */}
-            </figure>
-            <figure className="small">
-              {/* <img className="image" src="img/temp/paracetamol_02.jpg" srcset="img/temp/paracetamol_02@2x.jpg 2x, img/temp/paracetamol_02@2x.jpg 3x" alt="MEDICINENAME" /> */}
-            </figure>
+            {attachments.length > 0 && attachments.map(attachment => (
+              <figure
+                className={classNames("small", {
+                  active: attachment.file_url === bigImage,
+                })}
+                key={attachment.id}
+                onClick={() => handleImageClick(attachment)}
+              >
+                <img
+                  src={`${config.REACT_APP_IMAGE_URL}${attachment.file_thumb_url}`}
+                  width={52}
+                  height={52}
+                  className="image"
+                  alt={attachment.id}
+                />
+              </figure>
+            ))}
           </div>
         </div>
-        <div className="medicine__time">11:00</div>
-        <div className="medicine__name">Paracetamol</div>
-        <div className="medicine__quantity">x 2 pcs</div>
+        <div className="medicine__time">{moment(reception.taking_date).format('HH:mm')}</div>
+        <div className="medicine__name">{medication.title}</div>
+        <div className="medicine__quantity">{`x ${reception.dose} ${reception.dosage_form}`}</div>
         {isMissed && (
           <div className="medicine__btns tac">
             <button
@@ -90,7 +115,12 @@ const TakePill = ({medication, handleCloseModal, isMissed, isTaken}) => {
         )}
         {!isMissed && !isTaken && (
           <div className="medicine__btns tac">
-            <button className="btns btn-takeswipe"><span>TAKE</span></button>
+            <button
+              className="btns btn-takeswipe"
+              onClick={takePill}
+            >
+              <span>TAKE</span>
+            </button>
           </div>
         )}
       </div>
