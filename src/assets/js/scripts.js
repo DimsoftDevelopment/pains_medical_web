@@ -1,7 +1,6 @@
 //PopUps
 $(document).on('click', '[data-toggle="class"]', function (e) {
   e.stopPropagation();
-  //console.log('CLICK EDIT');
   var $target = $($(this).data('target'));
   var classes = $(this).data('classes');
   $target.toggleClass(classes).toggleClass('show');
@@ -23,7 +22,6 @@ $(document).on('click', '[data-toggle="class"]', function (e) {
 // Switcher
 $(".switch__input").click(function(e){
   e.stopPropagation();
-  //console.log('click');
   $(this).parents('.switch__wrapper').toggleClass('active');
 });
 
@@ -31,19 +29,16 @@ $(".switch__input").click(function(e){
 // Show notification on family switch track
 $(".settings__row--notifications .block__title .switch__input").click(function(e){
   e.stopPropagation();
-  //console.log('click');
   $(".sidebar__nav").find('.family').toggleClass('show-notification ');
 });
 
 //Show medicine menu 
 $(".courses__add .medicine__timeAdoze .btn-menu").click(function(e){
   e.stopPropagation();
-  //console.log('click');
   $(this).parents('.medicine__timeAdoze').toggleClass('show-menu');
 });
 
 $(".medicines__columns .card__menu .btn-menu").click(function(e){
   e.stopPropagation();
-  //console.log('click');
   $(this).parents('.card').toggleClass('show-menu');
 });

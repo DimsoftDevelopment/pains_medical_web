@@ -61,9 +61,9 @@ button {
     display: inline-block;
     width: 61px;
     height: 61px;
-    background-image: url("../img/logo_small.png");
+    /* background-image: url("../img/logo_small.png");
     background-image: -webkit-image-set(url("../img/logo_small.png") 1x, url("../img/logo_small@2x.png") 2x, url("../img/logo_small@3x.png") 3x);
-    background-image: image-set(url("../img/logo_small.png") 1x, url("../img/logo_small@2x.png") 2x, url("../img/logo_small@3x.png") 3x);
+    background-image: image-set(url("../img/logo_small.png") 1x, url("../img/logo_small@2x.png") 2x, url("../img/logo_small@3x.png") 3x); */
     background-repeat: no-repeat; }
 
 .avatar {
@@ -89,7 +89,7 @@ button {
   .form__row--columns {
     display: flex;
     justify-content: space-between;
-    align-items: start; }
+    align-items: flex-start; }
     .form__row--columns .columns__column--course {
       flex: 1; }
     .form__row--columns .columns__column--start, .form__row--columns .columns__column--end {
@@ -154,7 +154,7 @@ button {
       border-radius: 50%;
       vertical-align: middle; }
 
-.form__input, .form__textarea, .form__select {
+.form__input, .form__textarea, .form__select, .PhoneInputInput {
   padding: 16px 16px 17px 16px;
   width: 100%;
   font-size: 16px;
@@ -192,6 +192,7 @@ button {
 
 .form__input--pin {
   margin: 0 12px;
+  text-align: center;
   width: 20px;
   height: 20px;
   box-shadow: inset 1px 1px 2px 0 rgba(0, 0, 0, 0.1);
@@ -201,10 +202,20 @@ button {
 .form__textarea {
   line-height: 1.33; }
 
+.form .btn-close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  background: url("../img/icons/i-close_red.png"); }
+.form .form__label--avatar-container {
+  position: relative;
+}
 .form .custom-select {
   position: relative; }
-  .form .custom-select select {
-    display: none; }
+  /* .form .custom-select select {
+    display: none; } */
   .form .custom-select .select-selected {
     position: relative;
     width: 100%;
@@ -310,6 +321,7 @@ button {
   font-weight: 600;
   letter-spacing: 0.11px;
   color: #fff;
+  cursor: pointer;
   border-radius: 5px;
   box-shadow: 10px 4px 20px 0 rgba(216, 223, 225, 0.5); }
   .form__reset:disabled, .form__submit:disabled {
@@ -369,6 +381,15 @@ button {
       background-image: url("../img/icons/i-camera.png");
       background-position: 50%;
       background-repeat: no-repeat; }
+    .form--authorization .form__label--avatar-container {
+      position: relative;
+    }
+    .form--authorization .btn-close {
+      position: absolute;
+      right: 30%;
+      width: 40px;
+      height: 40px;
+      background: url("../img/icons/i-close_red.png"); }
   .form--authorization .form__input {
     padding: 16px;
     font-size: 16px;
@@ -536,6 +557,7 @@ button {
   margin-bottom: 16px;
   font-size: 18px;
   font-weight: 500;
+  text-transform: uppercase;
   line-height: 1.5;
   letter-spacing: 0.11px; }
   .block__title--schedule {
@@ -719,17 +741,26 @@ button {
 
 /*Family*/
 /*Calendar*/
+.calendar {
+  width: 100%;
+  overflow: hidden;
+}
 .calendar__block {
   margin-bottom: 24px;
   padding: 24px 0;
   border-top: 1px solid #dbdfe4;
   border-bottom: 1px solid #dbdfe4; }
+  .calendar__block .calendar__months {
+    width: 100%;
+    overflow: auto;
+  }
   .calendar__block .calendar__months .months__list {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 14px; }
     .calendar__block .calendar__months .months__list .month {
+      cursor: pointer;
       font-size: 18px;
       line-height: 1.5;
       letter-spacing: 0.11px; }
@@ -737,6 +768,10 @@ button {
         font-size: 24px;
         font-weight: 600;
         letter-spacing: 0.14px; }
+  .calendar__block .calendar__days {
+    width: 100%;
+    overflow: auto;
+  }
   .calendar__block .calendar__days .days__list {
     display: flex;
     justify-content: space-between;
@@ -754,6 +789,7 @@ button {
         letter-spacing: -0.41px;
         border-radius: 50%; }
       .calendar__block .calendar__days .days__list .day .week__day {
+        text-transform: uppercase;
         font-size: 18px;
         line-height: 1.5;
         letter-spacing: 0.11px; }
@@ -771,7 +807,7 @@ button {
 .schedule__block {
   display: flex;
   justify-content: flex-start;
-  align-items: start; }
+  align-items: flex-start; }
   .schedule__block .block__medicines {
     flex: 0 0 515px; }
   .schedule__block .block__courses {
@@ -867,7 +903,7 @@ button {
 .medicines__columns {
   display: flex;
   justify-content: flex-start;
-  align-items: start;
+  align-items: flex-start;
   flex-wrap: nowrap;
   overflow-x: auto; }
   .medicines__columns .column {
@@ -1060,7 +1096,7 @@ button {
 .medicines__page {
   display: flex;
   justify-content: space-between;
-  align-items: start; }
+  align-items: flex-start; }
   .medicines__page .medicines__search {
     flex: 0 0 428px;
     width: 428px; }
@@ -1123,7 +1159,7 @@ button {
 .medicines__details .medicine__gallery {
   display: flex;
   justify-content: flex-start;
-  align-items: start;
+  align-items: flex-start;
   margin-bottom: 24px; }
   .medicines__details .medicine__gallery .gallery__big {
     position: relative;
@@ -1378,7 +1414,7 @@ button {
   .medicines__create .create__content .form {
     display: flex;
     justify-content: flex-start;
-    align-items: start;
+    align-items: flex-start;
     flex-wrap: wrap; }
   .medicines__create .create__content .create__gallery {
     flex: 0 0 440px;
@@ -1386,7 +1422,7 @@ button {
     .medicines__create .create__content .create__gallery .medicine__gallery {
       display: flex;
       justify-content: flex-start;
-      align-items: start;
+      align-items: flex-start;
       margin-bottom: 24px; }
       .medicines__create .create__content .create__gallery .medicine__gallery .gallery__big {
         position: relative;
@@ -1480,6 +1516,7 @@ button {
     margin-bottom: 8px;
     font-size: 11px;
     font-weight: 500;
+    text-transform: uppercase;
     line-height: 1.5;
     letter-spacing: 0.07px; }
     .courses__list .card .course__date .notifications {
@@ -1599,7 +1636,7 @@ button {
 .courses__add .form__bottom {
   display: flex;
   justify-content: flex-start;
-  align-items: start;
+  align-items: flex-start;
   padding-top: 24px; }
   .courses__add .form__bottom .medicines__search {
     flex: 0 0 428px;
@@ -1613,6 +1650,12 @@ button {
       font-size: 18px;
       font-weight: 500;
       letter-spacing: 0.11px; }
+    .courses__add .form__bottom .medicines__settings .settings__select {
+      width: 100%;
+      margin: 1px 0 0;
+      padding: 15px 24px;
+      border-radius: 3.5px;
+      background-color: #fff; }
     .courses__add .form__bottom .medicines__settings .settings__form .custom-select .select-selected {
       padding: 26px 24px;
       font-size: 16px;
@@ -1868,7 +1911,7 @@ button {
   .settings__page .settings__row--form {
     display: flex;
     justify-content: space-between;
-    align-items: start;
+    align-items: flex-start;
     margin: 0 -16px; }
     .settings__page .settings__row--form .form__row--columns {
       margin: 0 -16px; }
@@ -1986,7 +2029,7 @@ button {
           text-transform: uppercase; }
           .sidebar__nav .menu__list--main .menu__link .icons {
             margin: -2px 26px 0 0;
-            background-image: url("/img/icons/i-menu.png");
+            background-image: url("../img/icons/i-menu.png");
             background-repeat: no-repeat; }
             .sidebar__nav .menu__list--main .menu__link .icons.i-home {
               background-position: -160px -0px; }
@@ -2153,7 +2196,7 @@ button {
     .popup__block.popup--medicine .medicine__gallery {
       display: flex;
       justify-content: space-between;
-      align-items: start;
+      align-items: flex-start;
       margin-bottom: 8px; }
       .popup__block.popup--medicine .medicine__gallery .small {
         margin-bottom: 12px;
@@ -2848,5 +2891,21 @@ button {
 .datepicker--cell-day.-other-month-:empty, .datepicker--cell-year.-other-decade-:empty {
   background: 0 0;
   border: none; }
+
+.input-error-message {
+  color: red;
+  font-size: 12px !important;
+  margin-bottom: 16px;
+  margin-top: 8px;
+}
+
+.link {
+  color: #2b84eb;
+  text-decoration: underline;
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 0.08px;
+  text-align: center;
+}
 
 /*# sourceMappingURL=styles.css.map */
