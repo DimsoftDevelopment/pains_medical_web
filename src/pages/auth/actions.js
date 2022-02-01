@@ -1,5 +1,21 @@
 import {AUTH_ACTIONS} from './constants';
 
+
+export const signIn = ({email, password}) => ({
+  type: AUTH_ACTIONS.SIGN_IN,
+  payload: {email, password},
+})
+
+export const signInSuccess = user => ({
+  type: AUTH_ACTIONS.SIGN_IN_SUCCESS,
+  payload: {user},
+})
+
+export const signInFail = error => ({
+  type: AUTH_ACTIONS.SIGN_IN_ERROR,
+  payload: {error},
+})
+
 export const isAuthenticated = () => ({
   type: AUTH_ACTIONS.IS_AUTHENTICATED,
 });

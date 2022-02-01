@@ -17,6 +17,9 @@ import {
   saveUserInfo,
   signUpSuccess,
   signUpError,
+  signIn,
+  signInSuccess,
+  signInFail
 } from './actions';
 import {
   togglePinModal,
@@ -236,6 +239,7 @@ function* handleSignUp(action) {
 
     if (status === 400) {
       let message = '';
+      let isNotifsSent = false
       if (error_message) {
         message = error_message;
       } else if (Array.isArray(error_messages)) {
@@ -245,10 +249,19 @@ function* handleSignUp(action) {
         message = error_messages && `${keys[0]} ${errorMessage}`;
       } else if (typeof error_messages === 'string') {
         message = error_messages;
+      } else if(typeof error_messages === 'object') {
+        for(let i in error_messages) {
+          yield put(toggleNotification({
+            title: 'Sorry!',
+            message: `${i[0].toUpperCase()}${i.substring(1, i.length)} ${error_messages[i]}`,
+            type: 'danger',
+          }))
+        }
+        isNotifsSent = true
       }
 
       yield put(signUpError(message));
-      yield put(toggleNotification({
+      if(!isNotifsSent) yield put(toggleNotification({
         title: 'Sorry!',
         message,
         type: 'danger',
@@ -263,6 +276,58 @@ function* handleSignUp(action) {
       yield put(signUpError(e.message));
     } else {
       yield put(signUpError('Internal server error.'));
+    }
+  }
+}
+
+function* handleSignIn(action) {
+  const { email, password } = action.payload || {};
+  try {
+    const requestPayload = { user: { email, password } }
+    const {data} = yield call(processRequest, '/authorization/login', 'POST', requestPayload);
+    if (data.user) {
+      const user = data.user.data.attributes;
+      setUser(user);
+      setToken(data.token);
+      setRefreshToken(data.refresh_token);
+      yield put(signInSuccess(user));
+      yield put(togglePinModal());
+    } else {
+      yield put(signInFail(data));
+    }
+  } catch(e) {
+    const {data, status, statusText} = e || {};
+    const {error_messages, error, error_message} = data || {};
+
+    if (status === 400) {
+      let message = '';
+      if (error_message) {
+        message = error_message;
+      } else if (Array.isArray(error_messages)) {
+        const keys = Object.keys(error_messages);
+        const errorMessage = error_messages[keys[0]];
+
+        message = error_messages && `${keys[0]} ${errorMessage}`;
+      } else if (typeof error_messages === 'string') {
+        message = error_messages;
+      }
+
+      yield put(checkVerificationCodeError(message));
+      yield put(toggleNotification({
+        title: 'Sorry!',
+        message,
+        type: 'danger',
+      }));
+    } else if (status === 401) {
+      yield put(checkVerificationCodeError(error));
+      yield put(logout());
+      yield put(togglePinModal());
+    } else if (status === 500) {
+      yield put(checkVerificationCodeError(statusText || 'Internal server error.'));
+    } else if (e.message) {
+      yield put(checkVerificationCodeError(e.message));
+    } else {
+      yield put(checkVerificationCodeError('Internal server error.'));
     }
   }
 }
@@ -288,4 +353,5 @@ export function* watchAuthSagas() {
   yield takeEvery(AUTH_ACTIONS.SEND_PIN_CODE, handleSendPinCode);
   yield takeEvery(AUTH_ACTIONS.SIGN_UP, handleSignUp);
   yield takeEvery(AUTH_ACTIONS.LOGOUT, hanldeLogout);
+  yield takeEvery(AUTH_ACTIONS.SIGN_IN, handleSignIn);
 }

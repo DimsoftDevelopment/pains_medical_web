@@ -2,6 +2,7 @@ const ROUTES = {
   HOME: '/',
   SIGN_IN: '/sign-in',
   PROFILE_CREATION: '/create-profile',
+  DOCTOR_CREATION: '/create-doctor',
   PROFILE_DETAILS: '/profile-details',
   DASHBOARD: '/dashboard',
   COURSES: '/courses',

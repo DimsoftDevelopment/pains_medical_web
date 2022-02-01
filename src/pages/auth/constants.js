@@ -21,6 +21,9 @@ const AUTH_ACTIONS = KeyMirror({
   SIGN_UP: null,
   SIGN_UP_SUCCESS: null,
   SIGN_UP_ERROR: null,
+  SIGN_IN: null,
+  SIGN_IN_SUCCESS: null,
+  SIGN_IN_FAIL: null
 });
 
 const AUTH_STATE = {

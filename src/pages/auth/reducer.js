@@ -6,6 +6,25 @@ const authState = (state = AUTH_STATE, action) => {
   const {user, phone, error} = payload || {};
 
   switch(type) {
+    case AUTH_ACTIONS.SIGN_IN:
+      return {
+        ...state,
+        isLoading: true,
+        error: null
+      }
+    case AUTH_ACTIONS.SIGN_IN_SUCCESS:
+      return {
+        ...state,
+        user,
+        isLoading: false,
+        error: null
+      }
+    case AUTH_ACTIONS.SIGN_IN_FAIL:
+      return {
+        ...state,
+        isLoading: false,
+        error
+      }
     case AUTH_ACTIONS.SEND_VERIFICATION_CODE:
     case AUTH_ACTIONS.RESEND_VERIFICATION_CODE:
     case AUTH_ACTIONS.CHECK_VERIFICATION_CODE:

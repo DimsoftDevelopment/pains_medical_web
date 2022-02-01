@@ -10,6 +10,7 @@ import SignIn from '../pages/auth';
 import Dashboard from '../pages/dashboard';
 import Settings from '../pages/settings';
 import ProfileCreation from '../pages/auth/ProfileCreation';
+import DoctorCreation from '../pages/auth/DoctorCreation';
 import ProfileDetails from '../pages/auth/ProfileDetails';
 import Courses from '../pages/courses';
 import CreateCourse from '../pages/createCourse';
@@ -26,8 +27,9 @@ const Routes = () => {
   return (
     <Switch>
       <PublicRoute exact path={ROUTES.HOME} component={SignIn} />
-      <PublicRoute exact path={ROUTES.SIGN_IN} component={SignIn} />
+      <PublicRoute exact path={ROUTES.SIGN_IN} component={() => <SignIn type='doctor' />} />
       <PublicRoute exact path={ROUTES.PROFILE_CREATION} component={ProfileCreation} />
+      <PublicRoute exact path={ROUTES.DOCTOR_CREATION} component={DoctorCreation} />
       <PublicRoute exact path={ROUTES.PROFILE_DETAILS} component={ProfileDetails} />
       <PrivateRoute exact path={ROUTES.DASHBOARD} component={Dashboard} />
       <PrivateRoute exact path={ROUTES.COURSES} component={Courses} />

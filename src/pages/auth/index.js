@@ -1,11 +1,17 @@
 import React from 'react';
 import PageWrapper from '../pageWrapper';
 import PhoneVerificationModal from '../../components/modals/PhoneVerificationModal';
+import DoctorSignIn from './DoctorSignIn'
 
-const SignIn = () => {
+const SignIn = ({
+  type = 'user'
+}) => {
   return (
     <PageWrapper className={PageWrapper.WrapperClassNames.signin}>
-      <PhoneVerificationModal />
+      {type === 'doctor'
+      ? <DoctorSignIn />
+      : <PhoneVerificationModal />
+      }
     </PageWrapper>
   );
 };
