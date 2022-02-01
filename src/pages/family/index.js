@@ -8,6 +8,7 @@ import {inviteMember} from './actions';
 const Family = () => {
   const [showInviteModal, setShowInviteModal] = useState(false);
   const {familyList} = useSelector(({familyState}) => familyState);
+  console.log(familyList)
   const dispatch = useDispatch();
   const isEmpty = familyList.length === 0;
   const toggleModal = () => {

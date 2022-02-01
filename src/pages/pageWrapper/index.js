@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import ReactNotification, {store} from 'react-notifications-component';
+import { ReactNotifications, Store } from 'react-notifications-component';
 import {toggleNotification, togglePinModal} from './actions';
 import {logout} from '../auth/actions';
 import {ROUTES} from '../../router/routes';
@@ -28,7 +28,7 @@ const PageWrapper = ({children, className, showSideBar}) => {
       dispatch(toggleNotification(null));
     };
     if(notification) {
-      store.addNotification({
+      Store.addNotification({
         title: notification?.title || '',
         message: notification?.message || '',
         type: notification?.type || 'success',
@@ -47,7 +47,7 @@ const PageWrapper = ({children, className, showSideBar}) => {
 
   return (
     <div className={className}>
-      <ReactNotification />
+      <ReactNotifications />
       <div className="page__wrapper">
         <div className="content__wrapper">
           <main className="content">

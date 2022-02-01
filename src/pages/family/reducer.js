@@ -2,7 +2,7 @@ import {FAMILY_ACTIONS, INITIAL_STATE} from './constants';
 
 const familyState = (state = INITIAL_STATE, action) => {
   const {type, payload} = action || {};
-  const {familyList, error} = payload || {};
+  const {familyList = [], error} = payload || {};
 
   switch(type) {
     case FAMILY_ACTIONS.GET_FAMILY_LIST_SUCCESS:
