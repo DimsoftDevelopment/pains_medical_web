@@ -12,7 +12,7 @@ export const signInSuccess = user => ({
 })
 
 export const signInFail = error => ({
-  type: AUTH_ACTIONS.SIGN_IN_ERROR,
+  type: AUTH_ACTIONS.SIGN_IN_FAIL,
   payload: {error},
 })
 

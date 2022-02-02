@@ -44,8 +44,15 @@ function* handleIsAuthenticated() {
     const token = getToken();
 
     if (user && token) {
-      yield put(togglePinModal());
-      yield put(checkVerificationCodeSuccess(user));
+      if(user.pin_code_present) {
+        console.log('SAGA TRUE')
+        yield put(togglePinModal());
+        yield put(checkVerificationCodeSuccess(user));
+        console.log('SAGA: ', user, token)
+      } else {
+        yield put(signInSuccess(user))
+        console.log('SAGA: ', user, token)
+      }
     }
   } catch (e) {
     const {data, status, statusText} = e || {};
@@ -291,7 +298,6 @@ function* handleSignIn(action) {
       setToken(data.token);
       setRefreshToken(data.refresh_token);
       yield put(signInSuccess(user));
-      yield put(togglePinModal());
     } else {
       yield put(signInFail(data));
     }

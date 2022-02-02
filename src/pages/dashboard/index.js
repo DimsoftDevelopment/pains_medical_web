@@ -11,6 +11,7 @@ import {
 } from './actions';
 import {getFamilyList} from '../family/actions';
 import {getCourses} from '../courses/actions';
+import { getPatientsList } from '../patients/actions';
 
 const Dashboard = () => {
   const [showModal, setShowModal] = useState(false);
@@ -32,6 +33,7 @@ const Dashboard = () => {
   const {courses} = useSelector(({coursesState}) => coursesState);
   useEffect(() => {
     dispatch(getFamilyList());
+    dispatch(getPatientsList());
     dispatch(getReceptionMedicationsByUser(
       start_date,
       end_date,

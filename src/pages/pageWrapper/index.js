@@ -19,6 +19,7 @@ const PageWrapper = ({children, className, showSideBar}) => {
     notification,
     isPinChangedOpen,
   } = useSelector(({pageWrapperState}) => pageWrapperState);
+  const { user } = useSelector(({authState}) => authState)
   const currentPage = window.location.pathname;
   const handleLogout = () => {
     dispatch(logout());
@@ -99,7 +100,7 @@ const PageWrapper = ({children, className, showSideBar}) => {
                       <i className="icons i32x32 i-medicine"></i> Meds			
                     </Link>
                   </li>
-                  <li className="menu__item @@nclass @@notification">
+                  {user.user_type === 'user' && <li className="menu__item @@nclass @@notification">
                     <Link
                       className={
                         classnames("menu__link btns", {
@@ -112,7 +113,21 @@ const PageWrapper = ({children, className, showSideBar}) => {
                       <i className="icons i32x32 i-users"></i> Family			
                     </Link>
                     <i className="notification family"></i>
-                  </li>
+                  </li>}
+                  {user.user_type === 'doctor' && <li className="menu__item @@nclass @@notification">
+                    <Link
+                      className={
+                        classnames("menu__link btns", {
+                          active: ROUTES.PATIENTS === currentPage
+                        })
+                      }
+                      to={ROUTES.PATIENTS}
+                      title="Patients"
+                    >
+                      <i className="icons i32x32 i-users"></i> Patients			
+                    </Link>
+                    <i className="notification family"></i>
+                  </li>}
                 </ul>
                 <ul className="menu__list menu__list--main">
                   <li className="menu__item">

@@ -5,6 +5,7 @@ import {watchFamilySagas} from './pages/family/sagas';
 import {watchDashboardSagas} from './pages/dashboard/sagas';
 import {watchMedsSagas} from './pages/meds/sagas';
 import {watchCoursesSagas} from './pages/courses/sagas';
+import { watchPatientsSagas } from './pages/patients/sagas'
 
 export default function* rootSaga() {
   yield fork(watchAuthSagas);
@@ -13,4 +14,5 @@ export default function* rootSaga() {
   yield fork(watchDashboardSagas);
   yield fork(watchMedsSagas);
   yield fork(watchCoursesSagas);
+  yield fork(watchPatientsSagas)
 }

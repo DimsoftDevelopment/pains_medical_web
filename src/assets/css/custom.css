@@ -6,3 +6,913 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 .error-message {
   color: red;
 }
+
+
+/*Content*/
+.content__top {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  box-shadow: 0 7px 20px 0 rgba(216, 223, 225, 0.5);
+  border: solid 1px #f5f8f9;
+  background-color: #fff; }
+  .content__top .top__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 16px;
+    padding-left: 16px; }
+  .content__top .top__link {
+    margin-right: 16px; }
+  .content__top .top__logo {
+    margin-right: 16px; }
+    .content__top .top__logo a {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.5;
+      letter-spacing: 0.1px;
+      color: #2b84eb;
+      text-decoration: none; }
+  .content__top .top__title {
+    flex: 1 0 auto;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.1px;
+    text-align: center;
+    color: #0d2a4a;
+    text-align: center; }
+  .content__top .top__btns {
+    margin-left: 16px; }
+    .content__top .top__btns .btn-courseAdd {
+      display: none; }
+  .content__top--course .top__content {
+    flex-wrap: wrap; }
+  .content__top--course .top__card {
+    flex: 0 0 100%;
+    width: 100%; }
+
+/*Patients*/
+.patients .content__top .btn-userInvite {
+  display: none; }
+
+.patients__block {
+  margin-bottom: 12px; }
+  .patients__block .patients__list {
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    list-style: none;
+    white-space: nowrap;
+    overflow-x: auto; }
+    .patients__block .patients__list .list__item {
+      margin: 0 12px 12px 12px;
+      vertical-align: top;
+      opacity: 0.5; }
+      .patients__block .patients__list .list__item.active {
+        opacity: 1; }
+        .patients__block .patients__list .list__item.active .patient__avatar {
+          width: 40px;
+          height: 40px;
+          border: 4px solid #2b84eb; }
+        .patients__block .patients__list .list__item.active .patient__name {
+          padding-top: 0; }
+          .patients__block .patients__list .list__item.active .patient__name span {
+            font-size: 14px;
+            letter-spacing: 0.08px; }
+    .patients__block .patients__list .list__link {
+      position: relative;
+      display: grid;
+      height: 100%; }
+    .patients__block .patients__list .patient__avatar {
+      align-self: end;
+      margin: 0 auto 16px;
+      width: 30px;
+      height: 30px; }
+    .patients__block .patients__list .patient__name {
+      display: block;
+      padding-top: 6px; }
+      .patients__block .patients__list .patient__name span {
+        display: block;
+        font-size: 10px;
+        font-weight: 500;
+        line-height: 1.5;
+        letter-spacing: 0.08px;
+        text-align: center; }
+    .patients__block .patients__list .patient__notification {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 15px;
+      height: 15px;
+      padding: 1px;
+      font-size: 10px;
+      letter-spacing: -0.41px;
+      text-align: center;
+      color: #fff;
+      border-radius: 50%;
+      background-color: #ff765f; }
+
+.patients__page .patients__search {
+  margin: 0 auto 24px auto;
+  max-width: 430px; }
+
+.patients__page .patients__list {
+  list-style: none; }
+  .patients__page .patients__list .list__item {
+    margin-bottom: 10px; }
+  .patients__page .patients__list .card {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10.6px 62px 10.6px 14.1px;
+    background-color: #fff;
+    border-radius: 4.4px; }
+    .patients__page .patients__list .card .patient__avatar {
+      margin-right: 12px;
+      width: 56px;
+      height: 56px;
+      border: 3.5px solid #2b84eb; }
+    .patients__page .patients__list .card .patient__name {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.5;
+      letter-spacing: 0.08px;
+      color: #0d2a4a; }
+    .patients__page .patients__list .card .patient__link {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      color: #2b84eb;
+      line-height: 1.5;
+      letter-spacing: 0.07px;
+      text-decoration: none; }
+
+.patients__popup .patients__search {
+  margin-bottom: 12px; }
+
+.patients__popup .patients__list {
+  list-style: none; }
+  .patients__popup .patients__list .list__item {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(13, 42, 74, 0.1); }
+    .patients__popup .patients__list .list__item:last-child {
+      padding-bottom: 0;
+      border-bottom: 0 none; }
+  .patients__popup .patients__list .card {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center; }
+    .patients__popup .patients__list .card .patient__avatar {
+      margin-right: 12px;
+      width: 48px;
+      height: 48px; }
+    .patients__popup .patients__list .card .patient__name {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.5;
+      letter-spacing: 0.08px;
+      color: #0d2a4a; }
+
+.patient .content__top .top__btns .btn-userRemove {
+  display: none; }
+
+.patient__page .patient__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-bottom: 32px; }
+  .patient__page .patient__info .info__btns {
+    flex: 0 0 100%;
+    padding-top: 16px; }
+
+.patient__page .patient__avatar {
+  margin-right: 14px;
+  width: 60px;
+  height: 60px; }
+
+.patient__page .patient__stats {
+  margin-bottom: 4px; }
+
+.patient__page .patient__courses, .patient__page .patient__meds {
+  display: inline-block;
+  margin-right: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.1px;
+  color: rgba(13, 42, 74, 0.5); }
+  .patient__page .patient__courses .icons, .patient__page .patient__meds .icons {
+    margin: -2px 0px 0 0; }
+  .patient__page .patient__courses:last-child, .patient__page .patient__meds:last-child {
+    margin-right: 0; }
+
+.patient__page .patient__course {
+  font-size: 14px;
+  font-weight: 700;
+  color: #2b84eb;
+  line-height: 1.5;
+  letter-spacing: 0.08px;
+  text-decoration: none; }
+
+.patient__page .patient__data {
+  padding-top: 24px;
+  border-top: 1px solid rgba(13, 42, 74, 0.2); }
+
+/*Patients*/
+
+
+
+/*Forms*/
+.form .form__block .block__title {
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.08px;
+  color: #0d2a4a; }
+
+.form .form__row {
+  margin-bottom: 16px; }
+  .form .form__row--columns .form__row--columns {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-right: -8px;
+    margin-left: -8px; }
+    .form .form__row--columns .form__row--columns .row__column {
+      padding-right: 8px;
+      padding-left: 8px;
+      margin-bottom: 0; }
+      .form .form__row--columns .form__row--columns .row__column--2 {
+        flex: 0 0 50%;
+        width: 50%; }
+  .form .form__row--pin {
+    justify-content: center;
+    text-align: center; }
+  .form .form__row--submit.btns-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 -15px; }
+    .form .form__row--submit.btns-flex input {
+      margin: 0 15px;
+      flex: 0 0 calc(50% - 30px); }
+  .form .form__row.tac {
+    text-align: center; }
+
+.form .form__label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.07px;
+  color: #0d2a4a;
+  cursor: pointer;
+  opacity: 0.5; }
+  .form .form__label--radio {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(13, 42, 74, 0.5);
+    cursor: pointer;
+    line-height: 1.5;
+    letter-spacing: 0.15px; }
+    .form .form__label--radio:before {
+      display: inline-block;
+      content: '';
+      margin: -3px 16px 0 0;
+      width: 20px;
+      height: 20px;
+      box-shadow: inset 1px 1px 2px 0 rgba(0, 0, 0, 0.1);
+      background-color: #dbdfe4;
+      border-radius: 50%;
+      vertical-align: middle; }
+  .form .form__label--gallery {
+    cursor: pointer; }
+    .form .form__label--gallery .label__text {
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.5;
+      letter-spacing: 0.11px;
+      color: #2b84eb; }
+    .form .form__label--gallery .form__input--image {
+      display: none; }
+    .form .form__label--gallery:before {
+      content: '';
+      display: inline-block;
+      margin-right: 16px;
+      width: 64px;
+      height: 64px;
+      background: rgba(43, 132, 235, 0.1) url("../img/icons/i-camera.svg") no-repeat 50%;
+      background-size: 44px 36px;
+      border-radius: 5px;
+      vertical-align: middle; }
+
+.form .form__text {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.11px;
+  color: #0d2a4a; }
+  .form .form__text--input {
+    padding: 16px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.15px;
+    border-radius: 3.5px;
+    border: solid 1px #dbdfe4;
+    background-color: #ffffff;
+    box-shadow: 0 7px 20px 0 rgba(216, 223, 225, 0.5); }
+
+.form .form__input, .form .form__textarea, .form .form__select {
+  padding: 16px;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.15px;
+  border-radius: 3.5px;
+  border: solid 1px #dbdfe4;
+  background-color: #ffffff;
+  box-shadow: 0 7px 20px 0 rgba(216, 223, 225, 0.5);
+  outline: none; }
+  .form .form__input::-webkit-input-placeholder, .form .form__textarea::-webkit-input-placeholder, .form .form__select::-webkit-input-placeholder {
+    color: rgba(13, 42, 74, 0.54); }
+  .form .form__input::-moz-placeholder, .form .form__textarea::-moz-placeholder, .form .form__select::-moz-placeholder {
+    color: rgba(13, 42, 74, 0.54); }
+  .form .form__input:-ms-input-placeholder, .form .form__textarea:-ms-input-placeholder, .form .form__select:-ms-input-placeholder {
+    color: rgba(13, 42, 74, 0.54); }
+  .form .form__input:-moz-placeholder, .form .form__textarea:-moz-placeholder, .form .form__select:-moz-placeholder {
+    color: rgba(13, 42, 74, 0.54); }
+  .form .form__input[disabled], .form .form__textarea[disabled], .form .form__select[disabled] {
+    background-color: #dbdfe4; }
+
+.form .form__input.datepicker-here {
+  background-image: url("../img/icons/i-calendar.svg");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 16px) 50%; }
+
+.form .form__input.timepicker {
+  background-image: url("../img/icons/i-alarm.svg");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 16px) 50%; }
+
+.form .form__input--24 {
+  font-size: 24px; }
+
+.form .form__input--radio {
+  display: none; }
+  .form .form__input--radio:checked + label {
+    color: #0d2a4a; }
+    .form .form__input--radio:checked + label:before {
+      width: 10px;
+      height: 10px;
+      border: solid 5px #2b84eb;
+      background-color: #f5f8f9;
+      box-shadow: unset; }
+
+.form .form__input--pin {
+  width: 60px;
+  text-align: center; }
+
+.form .form__textarea {
+  line-height: 1.33; }
+
+.form .form__reset, .form .form__cancel, .form .form__submit {
+  padding: 16px 0;
+  min-width: 136px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08px;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 5px;
+  box-shadow: 10px 4px 20px 0 rgba(216, 223, 225, 0.5); }
+  .form .form__reset:disabled, .form .form__cancel:disabled, .form .form__submit:disabled {
+    background-color: #dbdfe4; }
+
+.form .form__reset, .form .form__cancel {
+  background-color: #ff765f; }
+
+.form .form__submit {
+  background-color: #2b84eb; }
+
+.form .custom-select {
+  position: relative; }
+  .form .custom-select select {
+    display: none; }
+  .form .custom-select .select-selected {
+    position: relative;
+    width: 100%;
+    padding: 18px 46px 18px 16px;
+    font-size: 16px;
+    color: #0d2a4a;
+    cursor: pointer;
+    line-height: 1;
+    border-radius: 4px;
+    border: solid 1px #dcdcdc;
+    background-color: #ffffff;
+    box-shadow: 0 7px 20px 0 rgba(216, 223, 225, 0.5); }
+    .form .custom-select .select-selected:after {
+      content: '';
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      margin-top: -6px;
+      width: 21px;
+      height: 12px;
+      background: url("../img/icons/i-chevron_down.svg") no-repeat 50%; }
+    .form .custom-select .select-selected.select-arrow-active:after {
+      transform: rotate(-180deg); }
+  .form .custom-select .select-items {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 24px;
+    background-color: #fff;
+    z-index: 21;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2); }
+    .form .custom-select .select-items div {
+      margin-bottom: 12px;
+      font-size: 16px;
+      color: #0d2a4a;
+      cursor: pointer; }
+      .form .custom-select .select-items div:hover {
+        color: #000; }
+      .form .custom-select .select-items div:last-child {
+        margin-bottom: 0; }
+  .form .custom-select .select-hide {
+    display: none; }
+
+.form .days__list--medicine {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none; }
+  .form .days__list--medicine .form__input--checkbox {
+    display: none; }
+    .form .days__list--medicine .form__input--checkbox:checked + label {
+      color: #0d2a4a;
+      background-color: #fff; }
+  .form .days__list--medicine .form__label--days {
+    display: block;
+    width: 32px;
+    height: 32px;
+    font-size: 8.3px;
+    font-weight: 500;
+    color: rgba(13, 42, 74, 0.5);
+    line-height: 32px;
+    text-transform: uppercase;
+    letter-spacing: -0.27px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #dbdfe4; }
+
+.form .switch__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; }
+  .form .switch__wrapper.active .switch__text,
+  .form .switch__wrapper.active .switch__text *,
+  .form .switch__wrapper.active .switch__hint {
+    color: #0d2a4a; }
+    .form .switch__wrapper.active .switch__text img,
+    .form .switch__wrapper.active .switch__text * img,
+    .form .switch__wrapper.active .switch__hint img {
+      opacity: 1; }
+
+.form .switch__text,
+.form .switch__text * {
+  color: rgba(13, 42, 74, 0.5); }
+  .form .switch__text img,
+  .form .switch__text * img {
+    opacity: 0.5; }
+
+.form .switch__input {
+  display: none; }
+  .form .switch__input:checked + label {
+    background-color: #2b84eb; }
+    .form .switch__input:checked + label:before {
+      left: calc(100% - 31px); }
+
+.form .switch__label {
+  position: relative;
+  display: block;
+  width: 62px;
+  height: 34px;
+  padding: 2px;
+  cursor: pointer;
+  border-radius: 75px;
+  box-shadow: inset 1px 1px 2px 0 rgba(0, 0, 0, 0.1);
+  background-color: #dbdfe4;
+  transition: background-color 0.5s ease; }
+  .form .switch__label:before {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    content: '';
+    width: 29px;
+    height: 30px;
+    border-radius: 75px;
+    background-color: #fff;
+    transition: left 0.5s ease; }
+
+.form .switch__hint {
+  flex: 0 0 100%;
+  color: rgba(13, 42, 74, 0.5); }
+
+.form--authorization {
+  padding: 0 16px;
+  width: 100%;
+  max-width: 320px; }
+  .form--authorization .form__block {
+    margin-bottom: 32px; }
+    .form--authorization .form__block .block__title {
+      margin-bottom: 24px;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 150%;
+      color: #2B84EB; }
+    .form--authorization .form__block.desktop {
+      display: none; }
+  .form--authorization .form__logo {
+    margin-bottom: 16px;
+    text-align: center; }
+    .form--authorization .form__logo .logo {
+      width: 93px;
+      height: 112px; }
+  .form--authorization .form__title {
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: 0.14px;
+    text-align: center; }
+    .form--authorization .form__title .text {
+      display: block;
+      padding-top: 8px;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 1.5;
+      letter-spacing: 0.006em;
+      color: #0D2A4A; }
+  .form--authorization .form__row {
+    margin-bottom: 16px; }
+    .form--authorization .form__row--avatar {
+      margin-bottom: 16px; }
+    .form--authorization .form__row--pin {
+      margin-right: auto;
+      margin-left: auto;
+      max-width: 300px; }
+    .form--authorization .form__row--submit {
+      margin-bottom: 0;
+      padding-top: 24px;
+      text-align: center; }
+    .form--authorization .form__row--skip {
+      padding-top: 24px;
+      text-align: center; }
+    .form--authorization .form__row--link a {
+      font-size: 14px;
+      text-decoration: none; }
+    .form--authorization .form__row.desktop {
+      display: none; }
+  .form--authorization .form__label {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.5;
+    letter-spacing: 0.11px;
+    cursor: pointer; }
+    .form--authorization .form__label--avatar {
+      margin: 0 auto;
+      width: 136px;
+      height: 136px;
+      border-radius: 500px;
+      background-color: rgba(43, 132, 235, 0.1);
+      background-image: url("../img/icons/i-camera.png");
+      background-image: -webkit-image-set(url("../img/icons/i-camera.png") 1x, url("../img/icons/i-camera@2x.png") 2x, url("../img/icons/i-camera@3x.png") 3x);
+      background-image: image-set(url("../img/icons/i-camera.png") 1x, url("../img/icons/i-camera@2x.png") 2x, url("../img/icons/i-camera@3x.png") 3x);
+      background-size: 54px 45px;
+      background-position: 50%;
+      background-repeat: no-repeat; }
+  .form--authorization .form__input, .form--authorization .form__select, .form--authorization .form__textarea {
+    padding: 12px 16px;
+    font-weight: 600;
+    border: 0 none; }
+  .form--authorization .form__input--avatar {
+    display: none; }
+  .form--authorization .form__input--datepicker {
+    background-image: url("../img/icons/i-calendar.png");
+    background-position: calc(100% - 16px) 50%;
+    background-repeat: no-repeat; }
+  .form--authorization .form__submit {
+    max-width: 330px;
+    padding: 14px;
+    letter-spacing: 0.15px;
+    color: #fff;
+    border-radius: 500px;
+    background-color: #2b84eb; }
+    .form--authorization .form__submit:disabled {
+      background-color: #dbdfe4;
+      box-shadow: unset; }
+  .form--authorization .form__status {
+    margin-bottom: 16px;
+    padding-top: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.1px;
+    color: #2b84eb;
+    text-align: center; }
+    .form--authorization .form__status img {
+      margin-left: 10px; }
+  .form--authorization .form__text {
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.5;
+    letter-spacing: 0.1px;
+    color: #0d2a4a;
+    text-align: center; }
+    .form--authorization .form__text a,
+    .form--authorization .form__text .btns.text {
+      color: #2b84eb; }
+  .form--authorization .btn-resend,
+  .form--authorization .btn-skip {
+    font-size: 18px;
+    line-height: 1.5;
+    letter-spacing: 0.11px; }
+  .form--authorization .custom-select .select-selected {
+    padding: 13px 16px 14px 16px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.15px;
+    color: #0d2a4a;
+    border: 0 none; }
+  .form--authorization .custom-select .select-items {
+    right: 15px;
+    left: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.15px; }
+    .form--authorization .custom-select .select-items div {
+      padding: 16px 0; }
+
+.form--search .search__row {
+  margin-bottom: 0; }
+
+.form--search .search__input {
+  padding: 14px 24px 14px 60px;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.15px;
+  color: #0d2a4a;
+  background: #fff url("../img/icons/i-search.svg") no-repeat 16px 50%;
+  border: solid 1px #fff;
+  border-radius: 100px; }
+  .form--search .search__input:focus {
+    border: solid 1px #2b84eb; }
+
+.form--timedoze .form__row {
+  margin: 0;
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(13, 42, 74, 0.1); }
+  .form--timedoze .form__row:last-child {
+    border: 0 none; }
+
+.form--timedoze .time,
+.form--timedoze .doze {
+  margin: 0 24px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.33;
+  letter-spacing: 0.15px;
+  color: #0d2a4a; }
+
+.form--medicine {
+  max-width: 430px; }
+
+/*Forms*/
+
+/*Content*/
+
+
+/*Buttons*/
+.btns {
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none; }
+  .btns.btn-hamburger {
+    width: 24px;
+    height: 24px;
+    transform: rotate(0deg);
+    transition: .5s ease-in-out;
+    cursor: pointer; }
+    .btns.btn-hamburger span {
+      display: block;
+      position: absolute;
+      height: 2px;
+      width: 16px;
+      background: #2b84eb;
+      border-radius: 9px;
+      opacity: 1;
+      left: 4px;
+      transform: rotate(0deg);
+      transition: .25s ease-in-out; }
+      .btns.btn-hamburger span:nth-child(1) {
+        top: 8px; }
+      .btns.btn-hamburger span:nth-child(2) {
+        top: 12px; }
+    .btns.btn-hamburger.active span {
+      top: 11px; }
+      .btns.btn-hamburger.active span:nth-child(1) {
+        transform: rotate(45deg); }
+      .btns.btn-hamburger.active span:nth-child(2) {
+        transform: rotate(-45deg); }
+  .btns.btn-whitebrd {
+    padding: 12px 14px;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.1px;
+    text-align: left;
+    color: #2b84eb;
+    background-color: #fff;
+    background-image: url("../img/icons/i-plus_hover.svg");
+    background-position: calc(100% - 16px) 50%;
+    background-repeat: no-repeat;
+    background-size: 24px;
+    border: solid 1px #dbdfe4;
+    border-radius: 3.5px;
+    box-shadow: 0 7px 20px 0 rgba(216, 223, 225, 0.5); }
+    .btns.btn-whitebrd:before {
+      display: inline-block;
+      content: '';
+      margin-right: 8px;
+      width: 32px;
+      height: 32px;
+      border-radius: 500px;
+      vertical-align: middle; }
+  .btns.btn-icon.btn-notes:before {
+    background: url("../img/icons/i-edit_circle.svg") no-repeat 50%; }
+  .btns.btn-icon.btn-stock:before {
+    background: url("../img/icons/i-stock_circle.svg") no-repeat 50%; }
+  .btns.btn-blue, .btns.btn-cta {
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.1px;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    background-color: #2b84eb;
+    box-shadow: 0 7px 20px 0 rgba(216, 223, 225, 0.5);
+    border-radius: 500px; }
+  .btns.btn-red {
+    padding: 14px 42px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.5;
+    letter-spacing: 0.08px;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: #ff765f;
+    box-shadow: 0 7px 20px 0 rgba(216, 223, 225, 0.5);
+    border-radius: 500px; }
+  .btns:focus {
+    outline: none; }
+
+/*Buttons*/
+
+
+@media only screen and (min-width: 768px) {
+  /*Content*/
+  .content__top {
+    padding-top: 24px;
+    padding-bottom: 24px; }
+    .content__top .top__content {
+      padding-right: 32px;
+      padding-left: 32px; }
+    .content__top .top__logo a {
+      font-size: 32px; }
+    .content__top .top__title {
+      font-size: 18px; }
+  /*Patients*/
+  .patients__block .patients__list .list__item {
+    margin: 0 20px 20px 20px; }
+    .patients__block .patients__list .list__item.active .patient__avatar {
+      width: 64px;
+      height: 64px; }
+    .patients__block .patients__list .list__item.active .patient__name span {
+      font-size: 18px; }
+  .patients__block .patients__list .patient__avatar {
+    width: 48px;
+    height: 48px; }
+  .patients__block .patients__list .patient__name span {
+    font-size: 14px; }
+  .patients__block .patients__list .patient__notification {
+    padding-top: 2px;
+    width: 24px;
+    height: 24px;
+    font-size: 14px; }
+  .patients__page .patients__search {
+    margin-bottom: 42px; }
+  .patients__page .patients__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    flex-wrap: wrap;
+    margin-right: auto;
+    max-width: 890px; }
+    .patients__page .patients__list .list__item {
+      flex: 0 0 326px;
+      margin-bottom: 24px; }
+  .patient__page .patient__info {
+    padding-bottom: 32px; }
+    .patient__page .patient__info .info__text {
+      flex: 1 0 auto; }
+    .patient__page .patient__info .info__btns {
+      flex: unset;
+      padding-top: unset;
+      padding-left: 16px; }
+  .patient__page .patient__avatar {
+    margin-right: 16px;
+    width: 100px;
+    height: 100px; }
+  .patient__page .patient__stats {
+    margin-bottom: 10px; }
+  .patient__page .patient__courses, .patient__page .patient__meds {
+    margin-right: 10px;
+    font-size: 18px;
+    letter-spacing: 0.11px; }
+    .patient__page .patient__courses .icons, .patient__page .patient__meds .icons {
+      margin: -2px 4px 0 0; }
+      .patient__page .patient__courses .icons:before, .patient__page .patient__meds .icons:before {
+        width: 44px;
+        height: 44px; }
+    .patient__page .patient__courses:last-child, .patient__page .patient__meds:last-child {
+      margin-right: 0; }
+  .patient__page .patient__data .form .form__label {
+    margin-bottom: 8px;
+    font-size: 18px; }
+  /*Patients*/
+  /*Content*/
+
+  /*Buttons*/
+  .btns.btn-hamburger {
+    width: 42px;
+    height: 42px; }
+    .btns.btn-hamburger span {
+      left: 7px;
+      width: 28px;
+      height: 4px; }
+      .btns.btn-hamburger span:nth-child(1) {
+        top: 15px; }
+      .btns.btn-hamburger span:nth-child(2) {
+        top: 24px; }
+    .btns.btn-hamburger.active span {
+      top: 19px; }
+  /*Buttons*/
+}
+
+
+
+@media only screen and (min-width: 1440px) {
+  /*Content*/
+  .content__top .top {
+    margin-left: 350px; }
+    .content__top .top__link {
+      margin-right: 32px; }
+    .content__top .top__logo {
+      display: none; }
+    .content__top .top__title {
+      text-align: left; }
+    .content__top .top__btns .btn-hamburger {
+      display: none; }
+    .content__top .top__btns .btn-courseAdd {
+      display: inline-block; }
+  /*Patients*/
+  .patients .content__top .btn-userInvite {
+    display: inline-block; }
+  .patients__page .patients__list .list__item {
+    flex: 0 0 430px;
+    margin-bottom: 30px; }
+  .patient .content__top .top__btns .btn-userRemove {
+    display: inline-block; }
+  /*Patients*/
+  /*Content*/
+}

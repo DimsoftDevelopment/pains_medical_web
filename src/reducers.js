@@ -8,6 +8,7 @@ import {dashboardState} from './pages/dashboard/reducer';
 import {coursesState} from './pages/courses/reducer';
 import {medsState} from './pages/meds/reducer';
 import {createCourseState} from './pages/createCourse/reducer';
+import { patientsState } from './pages/patients/reducer';
 
 const reducers = (history) => combineReducers({
   router: connectRouter(history),
@@ -19,6 +20,7 @@ const reducers = (history) => combineReducers({
   coursesState,
   medsState,
   createCourseState,
+  patientsState,
 });
 
 export default reducers;

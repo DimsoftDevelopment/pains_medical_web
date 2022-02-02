@@ -18,6 +18,7 @@ import Family from '../pages/family';
 import Meds from '../pages/meds';
 import CreateMedication from '../pages/createMedication';
 import EditMedication from '../pages/editMedication';
+import Patients from '../pages/patients';
 
 const Routes = () => {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ const Routes = () => {
       <PrivateRoute exact path={ROUTES.COURSES} component={Courses} />
       <PrivateRoute exact path={ROUTES.CREATE_COURSE} component={CreateCourse} />
       <PrivateRoute exact path={ROUTES.FAMILY} component={Family} />
+      <PrivateRoute exact path={ROUTES.PATIENTS} component={Patients} />
       <PrivateRoute exact path={ROUTES.MEDS} component={Meds} />
       <PrivateRoute exact path={ROUTES.CREATE_MEDICATION} component={CreateMedication} />
       <PrivateRoute exact path={ROUTES.SETTINGS} component={Settings} />

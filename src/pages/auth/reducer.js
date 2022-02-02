@@ -12,13 +12,6 @@ const authState = (state = AUTH_STATE, action) => {
         isLoading: true,
         error: null
       }
-    case AUTH_ACTIONS.SIGN_IN_SUCCESS:
-      return {
-        ...state,
-        user,
-        isLoading: false,
-        error: null
-      }
     case AUTH_ACTIONS.SIGN_IN_FAIL:
       return {
         ...state,
@@ -52,6 +45,7 @@ const authState = (state = AUTH_STATE, action) => {
     case PROFILE_ACTIONS.CHANGE_AVATAR_SUCCESS:
     case AUTH_ACTIONS.SEND_PIN_CODE_SUCCESS:
     case AUTH_ACTIONS.SIGN_UP_SUCCESS:
+    case AUTH_ACTIONS.SIGN_IN_SUCCESS:
       return {
         ...state,
         isLoading: false,
