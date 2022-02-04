@@ -8,8 +8,8 @@ export const getCurrentYear = () => ({
 });
 
 export const convertDates = (start_date, end_date) => ({
-  start_date: moment(start_date).startOf('day').add(getTimezoneOffset(start_date), 'minutes').toISOString(),
-  end_date: moment(end_date).endOf('day').add(getTimezoneOffset(end_date), 'minutes').toISOString(),
+  start_date: start_date && moment(start_date).startOf('day').add(getTimezoneOffset(start_date), 'minutes').toISOString(),
+  end_date: end_date && moment(end_date).endOf('day').add(getTimezoneOffset(end_date), 'minutes').toISOString(),
 });
 
 export const getDefaultDates = () => ({

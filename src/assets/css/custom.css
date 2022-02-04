@@ -8,6 +8,89 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 }
 
 
+/*Icons*/
+.icons {
+  display: inline-block;
+  line-height: 1;
+  vertical-align: middle; }
+  .icons:before {
+    content: '';
+    display: inline-block;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    vertical-align: middle; }
+  .icons.i24x24:before {
+    width: 24px;
+    height: 24px; }
+  .icons.i30x30:before {
+    width: 30px;
+    height: 30px; }
+  .icons.i32x32:before {
+    width: 32px;
+    height: 32px; }
+  .icons.i42x42:before {
+    width: 42px;
+    height: 42px; }
+  .icons.i44x44:before {
+    width: 44px;
+    height: 44px; }
+  .icons.i-clipboard:before {
+    background-image: url("../img/icons/i-clipboard.svg");
+    background-size: 66.66% 75%; }
+  .icons.i-clipboard_hover:before {
+    background-image: url("../img/icons/i-clipboard_hover.svg");
+    background-size: 100%; }
+  .icons.i-chevron_left:before {
+    background-image: url("../img/icons/i-chevron_left.svg");
+    background-size: 100%; }
+  .icons.i-medicine:before {
+    background-image: url("../img/icons/i-medicine.svg");
+    background-size: 91%; }
+  .icons.i-medicine_hover:before {
+    background-image: url("../img/icons/i-medicine_hover.svg");
+    background-size: 91%; }
+  .icons.i-medicine_circle:before {
+    background-image: url("../img/icons/i-medicine_circle.svg");
+    background-size: 100%; }
+  .icons.i-plus:before {
+    background-image: url("../img/icons/i-plus.svg");
+    background-size: 90%; }
+  .icons.i-plus_hover:before {
+    background-image: url("../img/icons/i-plus_hover.svg");
+    background-size: 90%; }
+  .icons.i-plus_circle:before {
+    background-image: url("../img/icons/i-plus_circle.svg");
+    background-size: 100%; }
+  .icons.i-minus_circle:before {
+    background-image: url("../img/icons/i-minus_circle.svg");
+    background-size: 100%; }
+  .icons.i-edit_circle:before {
+    background-image: url("../img/icons/i-edit_circle.svg");
+    background-size: 100%; }
+  .icons.i-stock_circle:before {
+    background-image: url("../img/icons/i-stock_circle.svg");
+    background-size: 100%; }
+  .icons.i-arrow_down:before {
+    background-image: url("../img/icons/i-arrow_down.svg");
+    background-size: 100%; }
+  .icons.i-close:before {
+    background-image: url("../img/icons/i-close.svg");
+    background-size: 100%; }
+  .icons.i-close_red:before {
+    background-image: url("../img/icons/i-close_red.svg");
+    background-size: 100%; }
+  .icons.i-dots:before {
+    background-image: url("../img/icons/i-dots.svg");
+    background-size: 100% 27%; }
+  .icons.i-lock:before {
+    background-image: url("../img/icons/i-lock.svg");
+    background-size: 91% 100%; }
+  .icons.i-bell:before {
+    background-image: url("../img/icons/i-bell.svg");
+    background-size: 91% 100%; }
+
+/*Icons*/
+
 /*Content*/
 .content__top {
   padding-top: 20px;

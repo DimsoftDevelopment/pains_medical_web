@@ -19,6 +19,7 @@ import Meds from '../pages/meds';
 import CreateMedication from '../pages/createMedication';
 import EditMedication from '../pages/editMedication';
 import Patients from '../pages/patients';
+import Appointments from '../pages/appointments';
 
 const Routes = () => {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ const Routes = () => {
       <PublicRoute exact path={ROUTES.PROFILE_DETAILS} component={ProfileDetails} />
       <PrivateRoute exact path={ROUTES.DASHBOARD} component={Dashboard} />
       <PrivateRoute exact path={ROUTES.COURSES} component={Courses} />
+      <PrivateRoute exact path={ROUTES.APPOINTMENTS} component={Appointments} />
       <PrivateRoute exact path={ROUTES.CREATE_COURSE} component={CreateCourse} />
       <PrivateRoute exact path={ROUTES.FAMILY} component={Family} />
       <PrivateRoute exact path={ROUTES.PATIENTS} component={Patients} />

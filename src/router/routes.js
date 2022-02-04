@@ -11,8 +11,10 @@ const ROUTES = {
   CREATE_MEDICATION: '/create-medication',
   EDIT_MEDICATION: '/edit-medication/:id?',
   FAMILY: '/family',
-  PATIENTS: '/patients',
+  PATIENTS: '/patients/:id?',
+  PATIENTSLINK: '/patients',
   SETTINGS: '/settings',
+  APPOINTMENTS: '/appointments'
 };
 
 export {ROUTES};

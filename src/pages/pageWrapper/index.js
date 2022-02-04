@@ -118,15 +118,29 @@ const PageWrapper = ({children, className, showSideBar}) => {
                     <Link
                       className={
                         classnames("menu__link btns", {
-                          active: ROUTES.PATIENTS === currentPage
+                          active: ROUTES.PATIENTSLINK === currentPage
                         })
                       }
-                      to={ROUTES.PATIENTS}
+                      to={ROUTES.PATIENTSLINK}
                       title="Patients"
                     >
                       <i className="icons i32x32 i-users"></i> Patients			
                     </Link>
                     <i className="notification family"></i>
+                  </li>}
+                  {user.user_type === 'doctor' && <li className="menu__item @@nclass @@notification">
+                    <Link
+                      className={
+                        classnames("menu__link btns", {
+                          active: ROUTES.APPOINTMENTS === currentPage
+                        })
+                      }
+                      to={ROUTES.APPOINTMENTS}
+                      title="Appointments"
+                    >
+                      <i className="icons i32x32 i-notes"></i> Appointments			
+                    </Link>
+                    <i className="notification notes"></i>
                   </li>}
                 </ul>
                 <ul className="menu__list menu__list--main">
