@@ -1,18 +1,17 @@
 import React from 'react';
 import Reception from './Reception';
 
-const MedicinesList = ({receptionMedications, toggleModal}) => {
+const MedicinesList = ({appointments, toggleModal}) => {
+  console.log('SOME INFO: ', appointments)
   return (
-    <div className="medicines__list">
-      {receptionMedications.map(course => (
-        <div key={course.id} className="list__item">
-          {(course.receptions.data || []).map(reception => (
-            <Reception
-              key={reception.id}
-              reception={reception.attributes}
-              toggleModal={toggleModal}
-            />
-          ))}
+    <div className="appointments__list">
+      {appointments.map(item => (
+        <div key={item.id} className="list__item">
+          <Reception
+            key={item.id}
+            appointment={item.attributes}
+            toggleModal={toggleModal}
+          />
         </div>
       ))}
     </div>

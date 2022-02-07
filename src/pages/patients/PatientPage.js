@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import PageWrapper from '../pageWrapper'
 import { config } from '../../config'
 import defaultAvatar from '../../assets/img/temp/avatar2.png'
 
-const PatientPage = ({ patient }) => {
-
+const PatientPage = ({ patient, isLoading }) => {
+    const history = useHistory()
   return (
     <PageWrapper showSideBar className={PageWrapper.WrapperClassNames.family}>
+    {!isLoading && <>
       <div className="content__top">
         <div className="top__content">
             <div className="top__link">
-                <Link className="btns btn-back" to="/patients">
+                <button className="btns btn-back" onClick={history.goBack}>
                     <i className="icons i24x24 i-chevron_left"></i>
-                </Link>
+                </button>
             </div>
             <div className="top__title">
                 {patient.last_name} {patient.first_name}
@@ -89,6 +90,7 @@ const PatientPage = ({ patient }) => {
             </div>
         </section>
       </div>
+    </>}
     </PageWrapper>
   )
 }

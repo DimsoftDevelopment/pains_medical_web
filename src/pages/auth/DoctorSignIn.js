@@ -25,13 +25,13 @@ const DoctorCreation = () => {
   return (
     <form className="form form--authorization" onSubmit={handleSubmit(onSubmit)}>
       <div className="logo" />
-      <div class="form__title">
+      <div className="form__title">
         Log in to your account
-        <span class="text">Welcome back! Please enter your details</span>
+        <span className="text">Welcome back! Please enter your details</span>
       </div>
-      <div class="form__block">
-        <div class="block__title">Account info</div>
-        <div class="form__row">
+      <div className="form__block">
+        <div className="block__title">Account info</div>
+        <div className="form__row">
           <TextInput
             register={register}
             name="email"
@@ -42,7 +42,7 @@ const DoctorCreation = () => {
             defaultValue=""
           />
         </div>
-        <div class="form__row">
+        <div className="form__row">
           <TextInput
             register={register}
             name="password"
@@ -54,13 +54,13 @@ const DoctorCreation = () => {
           />
         </div>
       </div>
-        <div class="form__row form__row--link">
-          <a class="link" href="/forgot-doctor" title="Forgot password">Forgot password</a>
+        <div className="form__row form__row--link">
+          <a className="link" href="/forgot-doctor" title="Forgot password">Forgot password</a>
         </div> 
-        <div class="form__row form__row--submit">
+        <div className="form__row form__row--submit">
           <SubmitButton value="Log in" />
         </div>
-        <div class="form__text">
+        <div className="form__text">
           Dont’t have an account? <a href="/create-doctor" title="Sign Up">Sign up</a> for free
         </div>
     </form>

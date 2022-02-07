@@ -11,19 +11,17 @@ import clipboardIcon2x from '../../../assets/img/icons/i-clipboard@2x.png';
 import clipboardIcon3x from '../../../assets/img/icons/i-clipboard@3x.png';
 
 const ReceptionMedications = ({
-  receptionMedications,
+  appointments,
   selectedDate,
-  courses,
-  coursesPage,
   toggleModal,
 }) => {
-  const isEmpty = receptionMedications.length === 0;
+  const isEmpty = appointments.length === 0;
   const isToday = moment().date() === moment(selectedDate).date() ? 'Today, ' : '';
   const getSlashes = () => {
     const slashesCount = [];
     let receptionsDoneCount = 0;
-    receptionMedications.forEach(course => {
-      (course.receptions.data || []).forEach(reception => {
+    appointments.forEach(course => {
+      (course?.receptions?.data || []).forEach(reception => {
         slashesCount.push(reception.attributes.status);
         receptionsDoneCount = reception.attributes.status !== 'upcoming' ? receptionsDoneCount + 1 : receptionsDoneCount;
       })
@@ -35,7 +33,7 @@ const ReceptionMedications = ({
     return (
       <div className="block__title block__title--schedule">
         <div className="date">{`${isToday}${moment(selectedDate).format('D MMM')}`}</div>
-        <div className="count">{`${receptionsDoneCount}/${receptionMedications.length}`}</div>
+        <div className="count">{`${receptionsDoneCount}/${appointments.length}`}</div>
         <div className="slashes">
           {slashesCount.map((slash, index) => (
             <span
@@ -51,56 +49,31 @@ const ReceptionMedications = ({
     );
   };
   return (
-    <section className={classNames("schedule", {
-      'section--fullheight': isEmpty,
-    })}>
-      <div className={classNames("schedule__block", {
-        'block--fullheight': isEmpty,
-      })}>
-        {(isEmpty && !coursesPage) && (
+    <section className="appointments">
+      <div className="appointments__page">
+        {(isEmpty) && (
           <div className="block__title">{`${isToday}${moment(selectedDate).format('D MMM')}`}</div>
         )}
         {!isEmpty && (
           <div className="block__medicines">
-            {coursesPage ? (
-              renderScheduledTitle()
-            ) : (
-              <div className="block__title">{`${isToday}${moment(selectedDate).format('D MMM')}`}</div>
-            )}
+            <div className="block__title">{`${isToday}${moment(selectedDate).format('D MMM')}`}</div>
             <MedicinesList
-              receptionMedications={receptionMedications}
+              appointments={appointments}
               toggleModal={toggleModal}
             />
           </div>
         )}
-        {(!isEmpty && !coursesPage) && (
-          <div className="block__courses">
-            <div className="block__title">Courses</div>
-            <CoursesList
-              courses={courses}
-            />
-          </div>
-        )}
-        {(isEmpty && !coursesPage) && (
-          <div className="block__empty">
+        {(isEmpty) && (
+          <div className="block__empty empty">
             <div className="empty__icon">
-              <img
-                src={clipboardIcon}
-                srcSet={`${clipboardIcon2x} 2x, ${clipboardIcon3x} 3x`}
-                alt="clipboardIcon"
-              />
+              <i className="icons i42x42 i-clipboard_hover"></i>
             </div>
-            <div className="empty__title">No Plans</div>
+            <div className="empty__title">No Appointments</div>
             <div className="empty__text">
-              Want to create a medical course for this day?
+              Want to create a new Appointment?
             </div>
             <div className="empty__btns">
-              <Link
-                className="btns"
-                to={ROUTES.CREATE_COURSE}
-              >
-                CREATE COURSE
-              </Link>
+              <button className="btns" data-toggle="class" data-target="#popups" data-classes="appointment">MAKE AN APPOINTMENT</button>
             </div>
           </div>
         )}
@@ -110,7 +83,7 @@ const ReceptionMedications = ({
 };
 
 ReceptionMedications.propTypes = {
-  receptionMedications: PropTypes.array,
+  appointments: PropTypes.array,
   selectedDate: PropTypes.oneOfType([PropTypes.string, Date, PropTypes.object]),
 };
 

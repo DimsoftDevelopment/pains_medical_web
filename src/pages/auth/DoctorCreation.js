@@ -28,12 +28,12 @@ const DoctorCreation = () => {
     <PageWrapper className={PageWrapper.WrapperClassNames.signin}>
       <form className="form form--authorization" onSubmit={handleSubmit(onSubmit)}>
         <div className="logo" />
-        <div class="form__title">
+        <div className="form__title">
           Create Account
         </div>
-        <div class="form__block">
-          <div class="block__title">Account info</div>
-          <div class="form__row">
+        <div className="form__block">
+          <div className="block__title">Account info</div>
+          <div className="form__row">
             <TextInput
               register={register}
               name="email"
@@ -44,7 +44,7 @@ const DoctorCreation = () => {
               defaultValue=""
             />
           </div>
-          <div class="form__row">
+          <div className="form__row">
             <TextInput
               register={register}
               name="password"
@@ -56,9 +56,9 @@ const DoctorCreation = () => {
             />
           </div>
         </div>
-        <div class="form__block">
-          <div class="block__title">Personal info</div>
-          <div class="form__row">
+        <div className="form__block">
+          <div className="block__title">Personal info</div>
+          <div className="form__row">
             <TextInput
               register={register}
               name="first_name"
@@ -69,7 +69,7 @@ const DoctorCreation = () => {
               defaultValue=""
             />
           </div>
-          <div class="form__row">
+          <div className="form__row">
             <TextInput
               register={register}
               name="last_name"
@@ -80,7 +80,7 @@ const DoctorCreation = () => {
               defaultValue=""
             />
           </div>
-          <div class="form__row">
+          <div className="form__row">
             <Controller
               control={control}
               name="phone"
@@ -96,9 +96,9 @@ const DoctorCreation = () => {
             />
           </div>
         </div>
-        <div class="form__block">
-          <div class="block__title">Hospital info</div>
-          <div class="form__row">
+        <div className="form__block">
+          <div className="block__title">Hospital info</div>
+          <div className="form__row">
             <TextInput
               register={register}
               name="hospital"
@@ -109,7 +109,7 @@ const DoctorCreation = () => {
               defaultValue=""
             />
           </div>
-          <div class="form__row">
+          <div className="form__row">
             <TextInput
               register={register}
               name="imc_number"
@@ -121,11 +121,11 @@ const DoctorCreation = () => {
             />
           </div>
         </div>
-        <div class="form__text">
+        <div className="form__text">
           By clicking «Continue» button you are agree with 
           <a href="/#terms" title="Temrs and Conditions">terms and conditions</a>
         </div>	
-				<div class="form__row form__row--submit">
+				<div className="form__row form__row--submit">
           <SubmitButton value="NEXT" />
         </div>
       </form>

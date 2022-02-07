@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import PatientPage from './PatientPage'
 import PatientsListPage from './PatientsListPage'
-import { getPatientsList } from './actions'
+import { getPatient, getPatientsList } from './actions'
 import _ from 'lodash'
 
 const Patients = ({ match }) => {
-  const { patientsList, isLoading } = useSelector(({patientsState}) => patientsState)
+  const { patient, isLoading } = useSelector(({patientsState}) => patientsState)
   const [id, setId] = useState(null)
   const [searchString, setSearchString] = useState('')
   const dispatch = useDispatch()
@@ -15,6 +15,10 @@ const Patients = ({ match }) => {
     const { id } = match.params || {}
     setId(prev => id)
   }, [match])
+
+  useEffect(() => {
+    if(id) dispatch(getPatient(id))
+  }, [id])
 
   const handleSearchString = _.debounce(e => {
     setSearchString(e.target.value)
@@ -31,9 +35,8 @@ const Patients = ({ match }) => {
 
   return (
     <>
-    {isLoading ? null : id
-    ?
-      <PatientPage patient={patientsList.find(item => item.id === id).attributes} />
+    {id ?
+      <PatientPage patient={patient.attributes} isLoading={isLoading} />
     :
       <PatientsListPage searchString={searchString} handleSearchString={handleSearchString} handleSearch={handleSearch} />
     }

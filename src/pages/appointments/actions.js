@@ -19,3 +19,13 @@ export const addAppointment = ({ place, start_date, user_id }) => ({
   type: APPOINTMENTS_ACTIONS.CREATE_APPOINTMENT,
   payload: { place, start_date, user_id }
 })
+
+export const addAppointmentSuccess = ({ place, start_date, user_id }) => ({
+  type: APPOINTMENTS_ACTIONS.CREATE_APPOINTMENT_SUCCESS,
+  payload: { place, start_date, user_id }
+})
+
+export const addAppointmentFail = ({ place, start_date, user_id }) => ({
+  type: APPOINTMENTS_ACTIONS.CREATE_APPOINTMENT_FAIL,
+  payload: { place, start_date, user_id }
+})

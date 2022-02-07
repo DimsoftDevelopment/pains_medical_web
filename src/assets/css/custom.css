@@ -8,6 +8,74 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 }
 
 
+
+/*Appointments*/
+.appointments .content__top .top__btns .btn-appointmentMake {
+  display: none; }
+
+.appointments__page .appointments__list .list__item {
+  margin-bottom: 10px; }
+
+.appointments__list .card {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 8px;
+  border-radius: 5px;
+  background-color: #fff; }
+  .appointments__list .card .appointment__time {
+    flex: 0 0 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 8px;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.08px; }
+  .appointments__list .card .appointment__text {
+    flex: 1;
+    padding: 0px 10px;
+    text-align: left;
+    border-left: 1px solid #0d2a4a; }
+  .appointments__list .card .appointment__patient {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: 0.06px;
+    color: #2b84eb;
+    text-decoration: none; }
+  .appointments__list .card .appointment__location {
+    display: block;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.08px; }
+  .appointments__list .card .appointment__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .appointments__list .card .appointment__icon .icon {
+      display: block;
+      width: 32px;
+      height: 32px; }
+  .appointments__list .card.canceled .appointment__icon .icon {
+    background-image: url("../img/icons/i-missed.svg");
+    background-size: 100%; }
+  .appointments__list .card.canceled .appointment__time, .appointments__list .card.canceled .appointment__patient, .appointments__list .card.canceled .appointment__location {
+    text-decoration: line-through; }
+  .appointments__list .card.done .appointment__icon .icon {
+    background-image: url("../img/icons/i-taken.svg");
+    background-size: 100%; }
+  .appointments__list .card.past {
+    opacity: 0.5; }
+
+/*Appointments*/
+
+
+
+
 /*Icons*/
 .icons {
   display: inline-block;
@@ -319,17 +387,31 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 .form .form__row {
   margin-bottom: 16px; }
+  .row_customs {
+    margin: 0!important;
+    padding: 0!important;
+  }
+  .row_custom {
+    margin: 0!important;
+    padding: 0!important;
+  }
+  .row_custom:nth-child(1) {
+    padding-right: 8px!important;
+  }
+  .row_custom:nth-child(2) {
+    padding-left: 8px!important;
+  }
   .form .form__row--columns .form__row--columns {
     display: flex;
     justify-content: space-between;
     align-items: start;
     margin-right: -8px;
     margin-left: -8px; }
-    .form .form__row--columns .form__row--columns .row__column {
+    .form .form__row--columns .row__column {
       padding-right: 8px;
       padding-left: 8px;
       margin-bottom: 0; }
-      .form .form__row--columns .form__row--columns .row__column--2 {
+      .form .form__row--columns .row__column--2 {
         flex: 0 0 50%;
         width: 50%; }
   .form .form__row--pin {
@@ -487,8 +569,6 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 .form .custom-select {
   position: relative; }
-  .form .custom-select select {
-    display: none; }
   .form .custom-select .select-selected {
     position: relative;
     width: 100%;
@@ -883,6 +963,27 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 
 @media only screen and (min-width: 768px) {
+  /*Appointments*/
+  .appointments__page .appointments__list .list__item {
+    margin-bottom: 16px; }
+  .appointments__list {
+    max-width: 500px; }
+    .appointments__list .card {
+      padding: 14px 24px 14px 14px; }
+      .appointments__list .card .appointment__time {
+        flex: 0 0 90px;
+        margin-right: 14px;
+        font-size: 14px; }
+      .appointments__list .card .appointment__text {
+        padding: 0 16px; }
+      .appointments__list .card .appointment__patient {
+        font-size: 14px; }
+      .appointments__list .card .appointment__location {
+        font-size: 16px; }
+      .appointments__list .card .appointment__icon .icon {
+        width: 44px;
+        height: 44px; }
+  /*Appointments*/
   /*Content*/
   .content__top {
     padding-top: 24px;
@@ -974,7 +1075,22 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 
 
+
+
 @media only screen and (min-width: 1440px) {
+  /*Appointments*/
+  .appointments .content__top .top__btns .btn-appointmentMake {
+    display: inline-block; }
+  .appointments__page .appointments__list .list__item {
+    margin-bottom: 24px; }
+  .appointments__list {
+    max-width: 515px; }
+    .appointments__list .card {
+      padding: 16px 24px 16px 16px; }
+      .appointments__list .card .appointment__icon .icon {
+        width: 46px;
+        height: 46px; }
+  /*Appointments*/
   /*Content*/
   .content__top .top {
     margin-left: 350px; }

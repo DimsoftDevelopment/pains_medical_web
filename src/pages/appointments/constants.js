@@ -2,7 +2,7 @@ import moment from "moment";
 import KeyMirror from "keymirror";
 import {getDefaultDates} from '../../services/DateHelper';
 
-const {start_date, end_date} = getDefaultDates();
+const { start_date, end_date } = getDefaultDates();
 const APPOINTMENTS_ACTIONS = KeyMirror({
   GET_APPOINTMENTS: null,
   GET_APPOINTMENTS_SUCCESS: null,

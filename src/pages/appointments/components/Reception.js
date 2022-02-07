@@ -2,15 +2,14 @@ import React from 'react';
 import classNames from 'classnames';
 import moment from 'moment';
 import {config} from '../../../config';
+import { Link } from 'react-router-dom'
 
-const Reception = ({reception, toggleModal}) => {
-  const medication = reception.medication.data.attributes || {};
-  const medicationAttachment = medication.attachments.data[0];
-  const isMissed = reception.status === 'mised';
-  const isTaken = reception.status === 'taken';
+const Appointment = ({appointment, toggleModal}) => {
+  const isMissed = appointment.status === 'mised'
+  const isTaken = appointment.status === 'taken'
   const openModal = () => {
     toggleModal({
-      ...reception,
+      ...appointment,
       isMissed,
       isTaken,
     });
@@ -21,38 +20,17 @@ const Reception = ({reception, toggleModal}) => {
         missed: isMissed,
         taken: isTaken,
       })}>
-      <div className="medicine__time">{moment(reception.taking_date).format('HH:mm')}</div>
-      <div className="medicine__block">
-        <button
-          className={classNames("medicine__item", {
-            missed: isMissed,
-            taken: isTaken,
-            btns: true,
-          })}
-          onClick={openModal}
-        >
-          <span className="medicine__text">
-            <span className="medicine__name">{medication.title}</span>
-            <span className="medicine__quantity">
-              {`x ${reception.dose} ${reception.dosage_form}`}
-            </span>
-          </span>
-          <span className="medicine__image">
-            <span className="image">
-              {medicationAttachment && (
-                <img
-                  src={`${config.REACT_APP_IMAGE_URL}${medicationAttachment.attributes.file_thumb_url}`}
-                  width={52}
-                  height={52}
-                  alt={medication.title}
-                />
-              )}
-            </span>
-          </span>
-        </button>
-      </div>
+      <div className="appointment__time">{moment(appointment.start_date).format('HH:MM')}</div>
+      <span className="appointment__text">
+        <Link className="appointment__patient" to={`/patients/${appointment.user.data.id}`}>{appointment.user.data.attributes.first_name} {appointment.user.data.attributes.last_name}</Link>
+        <span className="appointment__location">{appointment.place}</span>
+      </span>
+      <span className="appointment__icon">
+        <span className="icon">
+        </span>
+      </span>
     </div>
   );
 };
 
-export default Reception;
+export default Appointment;

@@ -5,6 +5,8 @@ import {
   getPatientsListError,
   inviteMemberSuccess,
   inviteMemberError,
+  getPatientSuccess,
+  getPatientError,
 } from './actions';
 import {
   togglePinModal,
@@ -23,6 +25,50 @@ function* handleGetPatientsList(action) {
       yield put(getPatientsListSuccess(patientsList));
     } else {
       yield put(getPatientsListError(data));
+    }
+  } catch(e) {
+    const {data, status, statusText} = e || {};
+    const {error_messages, error, error_message, errors} = data || {};
+
+    if (status === 400) {
+      let message = '';
+      if (error_message) {
+        message = error_message;
+      } else if (error_messages) {
+        const keys = Object.keys(error_messages);
+        const errorMessage = error_messages[keys[0]];
+
+        message = error_messages && `${keys[0]} ${errorMessage}`;
+      }
+
+      yield put(getPatientsListError(message));
+    } else if (status === 401 && errors && errors.message[0] === 'Token expired') {
+      yield put(togglePinModal());
+      yield put(getPatientsListError(errors));
+    } else if (status === 401) {
+      yield put(getPatientsListError(error));
+      yield put(logout());
+    } else if (status === 500) {
+      yield put(getPatientsListError(statusText || 'Internal server error.'));
+    } else if (e.message) {
+      yield put(getPatientsListError(e.message));
+    } else {
+      yield put(getPatientsListError('Internal server error.'));
+    }
+  }
+}
+
+
+function* handleGetPatient(action) {
+  try {
+    const { payload } = action || {};
+    const { id } = payload || {}
+    const { data } = yield call(processRequest, `/users/${id}`, 'GET');
+    if (data.user) {
+      const user = data.user.data;
+      yield put(getPatientSuccess(user));
+    } else {
+      yield put(getPatientError(data));
     }
   } catch(e) {
     const {data, status, statusText} = e || {};
@@ -136,5 +182,6 @@ function* handleInviteMember(action) {
 
 export function* watchPatientsSagas() {
   yield takeEvery(PATIENTS_ACTIONS.GET_PATIENTS_LIST, handleGetPatientsList);
+  yield takeEvery(PATIENTS_ACTIONS.GET_PATIENT, handleGetPatient);
   yield takeEvery(PATIENTS_ACTIONS.INVITE_MEMBER, handleInviteMember);
 }

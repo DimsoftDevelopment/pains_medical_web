@@ -12,12 +12,13 @@ const CreateAppointment = ({handleCloseModal, handleCreation}) => {
   const { handleSubmit, register, formState: { errors, isDirty, isValid }, control } = useForm({
     defaultValues: {
       user_id: '',
-      start_date: '',
+      start_date: new Date().toISOString(),
       place: '',
       time: ''
     },
     mode: 'onChange',
-  });
+  })
+
   return (
     <Modal
       title="Make an appointmant"
@@ -25,34 +26,44 @@ const CreateAppointment = ({handleCloseModal, handleCreation}) => {
       additionalClassNames="tac"
       showCloseButton
       handleCloseModal={handleCloseModal}
-
     >
       <form className="form form--popup" onSubmit={handleSubmit(handleCreation)}>
-        <div class="form__row custom-select">
-          <label class="form__label" for="aPatient">Choose a patient</label>
-          <select class="form__select" name="aPatient" id="aPatient">
-            <option selected disabled>Patient</option>
+        <div className="form__row custom-select">
+          <label className="form__label" htmlFor="aPatient">Choose a patient</label>
+          <select defaultValue={''} className="form__select" name="aPatient" id="aPatient" {...register('user_id', {required: true})}>
+            <option value='' disabled>Patient</option>
             {patientsList.map(item => <option value={item.id}>{item.attributes.last_name} {item.attributes.first_name}</option>)}
           </select>
         </div>
-        <div class="form__row">
-          <TextInput name='place' placeholder='Add place' register={register} required={true} />
+        <div className="form__row">
+					<label className="form__label" htmlFor="aLocation">Add place</label>
+          <TextInput id='aLocation' name='place' placeholder='Add place' register={register} required={true} />
         </div>
-        <div class="form__row form__row--columns">
-          <div class="form__row form__row--columns">
-            <div class="row__column row__column--2">
-              <DatePicker name='start_date' placeholder='Choose a date' register={register} required={true} />
-            </div>
-            <div class="row__column row__column--2">
-              <label class="form__label" for="aTime">Choose a time</label>
-              <input
-                className="form__input timepicker"
-                type="time"
-                name="time"
-                id='aTime'
-                {...register('time', {required: true})}
-              />
-            </div>
+        <div className="form__row form__row--columns row_customs">
+          <div className="row__column row__column--2 row_custom">
+            <Controller
+              control={control}
+              name='start_date'
+              render={({field}) => (
+                <DatePicker
+                  name={field.name}
+                  label='Choose a date'
+                  onBlur={field.onBlur}
+                  onChange={field.onChange}
+                  value={field.value}
+                />
+              )}
+            />
+          </div>
+          <div className="row__column row__column--2 row_custom">
+            <label className="form__label" htmlFor="aTime">Choose a time</label>
+            <input
+              className="form__input timepicker"
+              type="time"
+              name="time"
+              id='aTime'
+              {...register('time', {required: true})}
+            />
           </div>
         </div>
         <SubmitButton
