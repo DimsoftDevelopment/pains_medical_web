@@ -7,7 +7,7 @@ const EmptyList = ({handleInvite, type = 'Family'}) => {
   return (
     <section className="family section--fullheight">
       <div className="family__page block--fullheight">	
-        <div className="block__empty">
+        <div className="block__empty empty">
           <div className="empty__icon">
             <img
               src={familyIcon}

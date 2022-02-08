@@ -21,7 +21,7 @@ const CreateMedication = () => {
   };
   return (
     <PageWrapper
-      className={PageWrapper.WrapperClassNames.empty}
+      className={PageWrapper.WrapperClassNames.addMed}
       showSideBar
     >
       <div className="breadcrumbs">

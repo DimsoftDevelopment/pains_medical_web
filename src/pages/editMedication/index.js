@@ -107,7 +107,7 @@ const EditMedication = ({match, history}) => {
   return (
     <PageWrapper
       showSideBar
-      className={PageWrapper.WrapperClassNames.empty}
+      className={PageWrapper.WrapperClassNames.editMed}
     >
       <div className="breadcrumbs">
         <h1 className="page__title">{medication.title}</h1>

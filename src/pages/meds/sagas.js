@@ -25,9 +25,9 @@ function* handleGetMeds(action) {
   try {
     const {payload} = action || {};
     const {meta} = payload || {};
-    const {page, per_page, query} = meta || {};
+    const {page, per_page, query, user_id = ''} = meta || {};
     const getMedicationsSuccess = page === 1 ? getMedsSuccess : getMedsNextPageSuccess;
-    const {data} = yield call(processRequest, `/medications?page${page}&per_page=${per_page}&query=${query}`, 'GET');
+    const {data} = yield call(processRequest, `/medications?page${page}&per_page=${per_page}&query=${query}&user_id=${user_id}`, 'GET');
     if (data.medications) {
       const meds = data.medications.data.map(medication => medication.attributes);
       yield put(getMedicationsSuccess(meds));

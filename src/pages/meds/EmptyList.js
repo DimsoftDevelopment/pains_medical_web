@@ -9,7 +9,7 @@ const EmptyList = () => {
   return (
     <section className="medicines section--fullheight">
       <div className="medicines__block block--fullheight">
-        <div className="block__empty">
+        <div className="block__empty empty">
           <div className="empty__icon">
             <img
               src={medicineIcon}

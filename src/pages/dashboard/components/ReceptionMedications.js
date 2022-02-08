@@ -82,7 +82,7 @@ const ReceptionMedications = ({
           </div>
         )}
         {(isEmpty && !coursesPage) && (
-          <div className="block__empty">
+          <div className="block__empty empty">
             <div className="empty__icon">
               <img
                 src={clipboardIcon}

@@ -16,20 +16,25 @@ import CourseMedication from './CourseMedication';
 import medsIcon from '../../assets/img/icons/i-arrow_down.png';
 import medsIcon2x from '../../assets/img/icons/i-arrow_down@2x.png';
 import medsIcon3x from '../../assets/img/icons/i-arrow_down@3x.png';
-import moment from 'moment';
+import defaultAvatar from '../../assets/img/temp/avatar2.png'
+import { config } from '../../config'
+import moment from 'moment'
 
 const CreateCourse = () => {
   const {user} = useSelector(({authState}) => authState);
+  const { patientsList } = useSelector(({patientsState}) => patientsState);
   const {course} = useSelector(({createCourseState}) => createCourseState);
   const {meds, medication} = useSelector(({medsState}) => medsState);
   const [selectedMedication, setMedication] = useState(medication);
+  const [selectedUser, setSelectedUser] = useState(null)
+  const [showUserSelect, setShowUserSelect] = useState(false)
   const [selectedMedicationIndex, setSelectedMedicationIndex] = useState(null);
   const [newCourse, setNewCourse] = useState({
     title: course.title || '',
     start_date: new Date(),
     end_date: new Date(),
     course_medications_attributes: [],
-    user_id: user.id,
+    user_id: user.type === 'doctor' ? null : user.id,
   });
   const [searchValue, setSearchValue] = useState('');
   const [showMedications, setShowMedications] = useState(false);
@@ -46,8 +51,25 @@ const CreateCourse = () => {
     };
     dispatch(createCourse(newCourseData));
   };
+  const selectUser = id => {
+    setSelectedUser(patientsList.find(item => item.id === id).attributes)
+    setNewCourse(prev => ({
+      ...prev,
+      user_id: id
+    }))
+    setShowUserSelect(false)
+  }
+
+  const disSelectUser = () => {
+    setSelectedUser(null)
+    setNewCourse(prev => ({
+      ...prev,
+      user_id: null
+    }))
+  }
+
   const debounce = _.debounce(
-    query => dispatch(getMeds({page: 1, per_page: 10, query})),
+    query => dispatch(getMeds({page: 1, per_page: 10, query, user_id: selectedUser.id || ''})),
     500,
   );
   const handleSearch = useCallback(debounce, []);
@@ -105,15 +127,22 @@ const CreateCourse = () => {
     setShowMedications(false);
   };
   useEffect(() => {
-    dispatch(getMeds({
+    if(user.user_type === 'doctor') selectedUser && dispatch(getMeds({
       page: 1,
       per_page: 10,
       query: '',
-    }));
-  }, [dispatch]);
+      user_id: selectedUser.id
+    }))
+    else dispatch(getMeds({
+      page: 1,
+      per_page: 10,
+      query: ''
+    }))
+  }, [selectedUser]);
+
   return (
     <PageWrapper
-      className={PageWrapper.WrapperClassNames.empty}
+      className={PageWrapper.WrapperClassNames.courseAdd}
       showSideBar
     >
       <div className="breadcrumbs">
@@ -121,7 +150,7 @@ const CreateCourse = () => {
       </div>
       <div className="content__block">
         <section className="courses">
-          <div className="courses__page">
+          <div className="course__form">
             <form className="courses__add" onSubmit={handleSubmit(handleUpdateCourse)}>
               <div className="add__top">
                 <Link
@@ -137,7 +166,21 @@ const CreateCourse = () => {
                   CREATE COURSE
                 </button>
               </div>
-              <div className="add__form">
+              <div className="course__form">
+                {user.user_type === 'doctor' &&
+                <div className="from__block form__block--patient">
+                  <div className="form__row form__row--columns">
+                    <div className="row__column row__column--2">
+                      <button className="course__patient btns" onClick={() => selectedUser ? disSelectUser() : setShowUserSelect(true)} disabled={showUserSelect}>
+                        <figure className="patient__avatar">
+                          {selectedUser && <img style={{borderRadius: '50%'}} className="image" src={selectedUser.avatar_url ? `${config.REACT_APP_IMAGE_URL}${selectedUser.avatar_url}` : defaultAvatar} alt={selectedUser.email} />}
+                        </figure>
+                        <span className="patient__name">{selectedUser ? `${selectedUser.first_name} ${selectedUser.last_name}` : 'Choose patient'}</span>
+                        <i className={`icons i24x24 i-${selectedUser ? 'close_red' : 'plus_hover'}`}></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>}
                 <div className="form__top">
                   <div className="form__row form__row--columns">
                     <TextInput
@@ -166,16 +209,14 @@ const CreateCourse = () => {
                       containerClassName="columns__column columns__column--end"
                     />
                   </div>
-                  <div className="courses__medicines">
-                    <div className="medicines__columns">
-                      <div className="column">
-                        <button
-                          className="btns btn-add"
-                          type="button"
-                          onClick={handleShowMeds}
-                          disabled={showMedications}
-                        >
-                          ADD MEDICINE
+                  <div className="form__block form__block--medicines">
+                    <div className="block__title">Medicine</div>
+                    <div className="form__row form__row--columns">
+                      <div className="row__column row__column--2">
+                        <button className="btns btn-add" data-toggle="class" data-target="#popups" data-classes="medicine" onClick={handleShowMeds} disabled={showMedications || (!selectedUser ? user.user_type === 'doctor' ? true : false : false)}>
+                          <i className="icons i24x24 i-medicine_circle"></i>
+                          <span className="text">Choose medicine</span>
+                          <i className="icons i24x24 i-plus_hover"></i>
                         </button>
                       </div>
                       {newCourse.course_medications_attributes.map((courseMedication, index) => (
@@ -187,9 +228,60 @@ const CreateCourse = () => {
                           handleDeleteCourseMedicine={handleDeleteCourseMedicine}
                         />
                       ))}
-                    </div>
+                    </div>								
                   </div>
                 </div>
+                <section id="popups" className={`popup ${showUserSelect ? 'patient show' : ''}`}>
+                  <div className="popup__overlay" onClick={() => setShowUserSelect(false)}>
+                    <div onClick={e => e.stopPropagation()}>
+                      <div className="popup__block popup--leave">
+                        <div className="block__title tac">Leave this page</div>
+                        <div className="block__content tac">
+                          <p>
+                            If you leave this page, all changes made will be lost
+                          </p>
+                        </div>
+                        <div className="block__btns">
+                          <button className="btns btn-cancel" data-toggle="class" data-target="#popups" data-classes="leave">CANCEL</button>
+                          <a className="btns btn-remove" href="courses.html">Yes, leave</a>
+                        </div>
+                      </div>
+                      <div className="popup__block popup--patient patients__popup">
+                        <div className="block__top">
+                          <button className="btns btn-close" onClick={() => setShowUserSelect(false)}>
+                            <i className="icons i24x24 i-close"></i>
+                          </button>
+                        </div>
+                        <div className="block__title tac">Choose a patient</div>
+                        <div className="block__content">
+                          <div className="patients__search">
+                            <form className="form--search">
+                              <div className="search__row">
+                                <input className="search__input" type="text" name="uName" />
+                              </div>
+                            </form>
+                          </div>
+                          <div className="patients__results">
+                            <ul className="patients__list">
+                              {patientsList.map(item => 
+                                <li className="list__item" key={item.id} id={item.id} onClick={() => selectUser(item.id)}>
+                                  <div className="card">
+                                    <figure className="patient__avatar avatar">
+                                      <img className="image" src={item.attributes.avatar_url ? `${config.REACT_APP_IMAGE_URL}${item.attributes.avatar_url}` : defaultAvatar} alt={item.attributes.email} />
+                                    </figure>
+                                    <div className="patient__info">
+                                      <span className="patient__name">{item.attributes.first_name} {item.attributes.last_name}</span>
+                                    </div>
+                                  </div>
+                                </li>
+                              )}
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
                 {showMedications && (
                   <div className="form__bottom">
                     <div className="medicines__search">

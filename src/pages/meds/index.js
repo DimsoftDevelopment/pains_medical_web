@@ -34,7 +34,7 @@ const Meds = () => {
     dispatch(getMeds(meta));
   }, []);
   return (
-    <PageWrapper showSideBar className={PageWrapper.WrapperClassNames.empty}>
+    <PageWrapper showSideBar className={PageWrapper.WrapperClassNames.meds}>
       <div className="breadcrumbs">
         <h1 className="page__title">My Medication</h1>
       </div>

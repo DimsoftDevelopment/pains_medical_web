@@ -52,7 +52,7 @@ const Courses = () => {
     setShowModal(!showModal);
   };
   return (
-    <PageWrapper showSideBar className={PageWrapper.WrapperClassNames.empty}>
+    <PageWrapper showSideBar className={PageWrapper.WrapperClassNames.courses}>
       <div className="breadcrumbs">
         <h1 className="page__title">My Courses</h1>
       </div>
