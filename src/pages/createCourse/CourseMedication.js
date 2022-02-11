@@ -31,58 +31,45 @@ const CourseMedication = ({
     }
   };
   return (
-    <div className="column">
+    <div className="list__item">
       <div className={classNames("card", {"show-menu": showMenu})}>
         <div className="card__top">
-          <div className="medicine__icon">
+          <div className="top__icons">
+            <i className="icons i30x30 i-medicine_circle"></i>
           </div>
-          <div className="medicine__text">
+          <div className="top__text">
             <div className="medicine__name">{courseMedication.medication_title}</div>
-            <div className="medicine__frequency">{getFrequencyTitle()}</div>
+            <div className="medicine__period">{getFrequencyTitle()}</div>
           </div>
           <div className="medicine__duration">
             {`${courseMedication.duration}d`}
           </div>
-          <div className="card__menu">
-            <button
-              className="btns btn-menu"
-              type="button"
-              onClick={toggleMenu}
-            >
-              <i className="icons i24x24 i-dots" />
+          <div className="medicine__menu">
+            <button className="btns btn-menu" onClick={toggleMenu}>
+              <i className="icons i24x24 i-dots"></i>
             </button>
-            <div className="medicine__menu">
+            <div className="menu">
               <ul className="menu__list">
                 <li className="list__item">
-                  <button
-                    className="list__link"
-                    type="button"
-                    onClick={handleEdit}
-                  >
-                    Edit
-                  </button>
+                  <button className="btns btn-edit" onClick={handleEdit}>Edit</button>
                 </li>
                 <li className="list__item">
-                  <button
-                    className="list__link delete"
-                    type="button"
-                    onClick={handleDelete}
-                  >
-                    Delete
-                  </button>
+                  <button className="btns btn-delete" onClick={handleDelete}>Delete</button>
                 </li>
               </ul>
             </div>
           </div>
         </div>
-        <div className="medicine__schedule">
-          <ul className="schedule__list">
-            {courseMedication.time_dose.map((timeDose, index) => (
-              <li className="list__item" key={index}>
-                <span className="time">{timeDose.time}</span> <span className="quantity">{`${timeDose.dose} ${timeDose.dosage_form}`}</span>
-              </li>
-            ))}
-          </ul>
+        <div className="card__content">
+          <div className="medicine__schedule">
+            <ul className="medicine__take">
+              {courseMedication.time_dose.map((timeDose, index) => (
+                <li className="list__item" key={index}>
+                  <span className="time">{timeDose.time}</span> <span className="quantity">{`${timeDose.dose} ${timeDose.dosage_form}`}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </div>

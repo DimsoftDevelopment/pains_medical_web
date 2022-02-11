@@ -1,4 +1,117 @@
 /*Please Add You Styles Here*/
+
+
+* {
+  margin: 0;
+  padding: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+html {
+  height: 100%; }
+
+body, html {
+  width: 100%; }
+
+body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background-color: #f5f8f9; }
+  body * {
+    font-family: 'Montserrat', sans-serif;
+    color: #0d2a4a; }
+  body.overlay {
+    overflow: hidden; }
+
+input,
+button {
+  border: 0 none;
+  background-color: transparent; }
+
+a:focus,
+input:focus,
+button:focus {
+  outline: none; }
+
+button {
+  cursor: pointer; }
+
+.logo {
+  display: inline-block;
+  background-image: url("../img/logo.svg");
+  background-repeat: no-repeat;
+  background-size: cover; }
+
+.avatar {
+  position: relative;
+  font-size: 0;
+  line-height: 0;
+  border-radius: 50%;
+  overflow: hidden; }
+  .avatar .image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: center;
+    object-position: center; }
+
+.tabs__menu--switch {
+  text-align: center; }
+  .tabs__menu--switch .menu {
+    position: relative;
+    display: inline-block;
+    padding: 3.2px 2.7px 2.2px 3px;
+    list-style: none;
+    box-shadow: inset 0.7px 0.7px 1.4px 0 rgba(0, 0, 0, 0.25);
+    background-color: #dee2e6;
+    border-radius: 16.9px; }
+    .tabs__menu--switch .menu__list {
+      position: relative;
+      z-index: 2; }
+      .tabs__menu--switch .menu__list .list__item {
+        display: inline-block; 
+        margin: 0!important;}
+        .tabs__menu--switch .menu__list .list__item button {
+          display: block;
+          min-width: 138px;
+          height: 20px;
+          font-size: 10px;
+          font-weight: 600;
+          color: rgba(13, 42, 74, 0.5);
+          text-align: center;
+          line-height: 1.5;
+          letter-spacing: 0.06px;
+          background: transparent!important;
+          border: 0!important;
+        }
+        .tabs__menu--switch .menu__list .list__item.ui-state-active button {
+          color: #0d2a4a; }
+    .tabs__menu--switch .menu .selector {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      display: block;
+      padding: 3px 47.3px 3.6px 47px;
+      height: 25px;
+      background-color: #fff;
+      border-radius: 10.8px;
+      z-index: 1;
+      transition-duration: 0.6s; }
+
+
+
 input[type="time"]::-webkit-calendar-picker-indicator {
   display: none;
 }
@@ -161,7 +274,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     background-image: url("../img/icons/i-close_red.svg");
     background-size: 100%; }
   .icons.i-dots:before {
-    background-image: url("../img/icons/i-dots.svg");
+    /* background-image: url("../img/icons/i-dots.svg"); */
     background-size: 100% 27%; }
   .icons.i-lock:before {
     background-image: url("../img/icons/i-lock.svg");
@@ -622,6 +735,126 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 /*Patients*/
 
+
+/*Schedule*/
+.schedule__block .block__courses {
+  overflow-x: auto; }
+  .schedule__block .block__courses .block__title {
+    display: none; }
+  .schedule__block .block__courses .courses__list {
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap; }
+    .schedule__block .block__courses .courses__list .list__item {
+      margin-right: 16px; }
+      .schedule__block .block__courses .courses__list .list__item .card {
+        min-width: 212px; }
+      .schedule__block .block__courses .courses__list .list__item:last-child {
+        margin-right: 0; }
+
+.schedule__block .block__medicines .medicines__list .list__item {
+  margin-bottom: 10px; }
+  .schedule__block .block__medicines .medicines__list .list__item:last-child {
+    margin-bottom: 0; }
+
+.schedule__list .card {
+  padding: 10px;
+  background-color: #fff;
+  border: solid 0.7px #dbdfe4;
+  border-radius: 3px; }
+  .schedule__list .card__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px; }
+    .schedule__list .card__top .top__icons {
+      margin-right: 10px;
+      border: solid 0.7px rgba(43, 132, 235, 0.5);
+      border-radius: 50%;
+      overflow: hidden; }
+    .schedule__list .card__top .top__text {
+      flex: 1 0 auto; }
+  .schedule__list .card.show-menu .medicine__menu .menu {
+    display: block; }
+
+.schedule__list .medicine__name {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.07px;
+  color: #0d2a4a; }
+
+.schedule__list .medicine__period {
+  font-size: 7.3px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.04px;
+  color: #0d2a4a; }
+
+.schedule__list .medicine__duration {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.07px;
+  color: #2b84eb; }
+
+.schedule__list .medicine__menu {
+  position: relative;
+  margin-left: 12px; }
+  .schedule__list .medicine__menu .menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    padding: 6px;
+    background-color: #fff;
+    border: solid 0.7px #dbdfe4;
+    border-radius: 3px; }
+    .schedule__list .medicine__menu .menu__list {
+      list-style: none; }
+      .schedule__list .medicine__menu .menu__list .list__item {
+        margin-bottom: 8px; }
+        .schedule__list .medicine__menu .menu__list .list__item:last-child {
+          margin-bottom: 0; }
+    .schedule__list .medicine__menu .menu .btns {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      text-decoration: none; }
+      .schedule__list .medicine__menu .menu .btns.btn-edit {
+        color: #2b84eb; }
+      .schedule__list .medicine__menu .menu .btns.btn-delete {
+        color: #ff765f; }
+
+.schedule__list .medicine__take {
+  list-style: none; }
+  .schedule__list .medicine__take .list__item {
+    margin-bottom: 5px; }
+    .schedule__list .medicine__take .list__item:before {
+      content: '';
+      display: inline-block;
+      margin-right: 10px;
+      width: 30px;
+      height: 0.7px;
+      background-color: #0d2a4a;
+      vertical-align: middle; }
+  .schedule__list .medicine__take .time {
+    margin-right: 16px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.07px;
+    color: #0d2a4a; }
+  .schedule__list .medicine__take .quantity {
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.06px;
+    color: #0d2a4a; }
+
+/*Schedule*/
 
 
 /*Forms*/
@@ -1639,6 +1872,77 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 @media only screen and (min-width: 768px) {
 
+  .tabs__menu--switch .menu__list .list__item button {
+    padding-top: 4px;
+    height: 26px;
+    font-size: 12px; }
+  .tabs__menu--switch .menu .selector {
+    height: 27px; }
+ 
+
+  /*Schedule*/
+  .schedule__block {
+    display: flex;
+    justify-content: flex-start;
+    align-items: start; }
+    .schedule__block > .block__title {
+      flex: 0 0 100%;
+      order: 1; }
+    .schedule__block .block__medicines {
+      order: 2;
+      flex: 0 0 415px;
+      margin-right: 24px;
+      width: 415px; }
+    .schedule__block .block__courses {
+      order: 3;
+      flex: 0 0 150px;
+      width: 150px; }
+      .schedule__block .block__courses .block__title {
+        display: block; }
+      .schedule__block .block__courses .courses__list {
+        display: block; }
+        .schedule__block .block__courses .courses__list .list__item {
+          margin-right: 0;
+          margin-bottom: 10px; }
+          .schedule__block .block__courses .courses__list .list__item .card {
+            min-width: unset; }
+  .schedule__list .card__top .top__icons {
+    margin-right: 12px;
+    border-width: 0.8px; }
+    .schedule__list .card__top .top__icons .icons:before {
+      width: 32px;
+      height: 32px; }
+  .schedule__list .medicine__name {
+    font-size: 14px;
+    letter-spacing: 0.08px; }
+  .schedule__list .medicine__period {
+    font-size: 8.3px;
+    letter-spacing: 0.05px; }
+  .schedule__list .medicine__duration {
+    font-size: 14px;
+    letter-spacing: 0.08px; }
+  .schedule__list .medicine__menu {
+    position: relative;
+    margin-left: 12px; }
+    .schedule__list .medicine__menu .menu {
+      padding: 8px;
+      border: solid 0.8px #dbdfe4;
+      border-radius: 3px; }
+      .schedule__list .medicine__menu .menu__list .list__item {
+        margin-bottom: 12px; }
+      .schedule__list .medicine__menu .menu .btns {
+        font-size: 14px; }
+  .schedule__list .medicine__take .list__item {
+    margin-bottom: 5.5px; }
+    .schedule__list .medicine__take .list__item:before {
+      margin-right: 12px;
+      width: 34px;
+      height: 0.8px; }
+  .schedule__list .medicine__take .time {
+    font-size: 14px;
+    letter-spacing: 0.08px; }
+  /*Schedule*/
+
   /*Popups*/
   .popup__block {
     max-width: 480px;
@@ -1908,6 +2212,58 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 
 @media only screen and (min-width: 1440px) {
+
+
+  /*Schedule*/
+  .schedule__block .block__medicines {
+    flex: 0 0 515px;
+    margin-right: 60px;
+    width: 515px; }
+    .schedule__block .block__medicines .medicines__list .list__item {
+      margin-bottom: 32px; }
+  .schedule__block .block__courses {
+    flex: 0 0 244px;
+    width: 244px; }
+    .schedule__block .block__courses .courses__list .list__item {
+      margin-bottom: 16px; }
+  .schedule__list .card__top .top__icons {
+    margin-right: 16px;
+    border-width: 1px; }
+    .schedule__list .card__top .top__icons .icons:before {
+      width: 44px;
+      height: 44px; }
+  .schedule__list .medicine__name {
+    font-size: 18px;
+    letter-spacing: 0.11px; }
+  .schedule__list .medicine__period {
+    font-size: 11px;
+    letter-spacing: 0.07px; }
+  .schedule__list .medicine__duration {
+    font-size: 18px;
+    letter-spacing: 0.11px; }
+  .schedule__list .medicine__menu {
+    position: relative;
+    margin-left: 16px; }
+    .schedule__list .medicine__menu .menu {
+      padding: 10px;
+      border-width: 1px; }
+      .schedule__list .medicine__menu .menu__list .list__item {
+        margin-bottom: 12px; }
+      .schedule__list .medicine__menu .menu .btns {
+        font-size: 16px; }
+  .schedule__list .medicine__take .list__item {
+    margin-bottom: 8px; }
+    .schedule__list .medicine__take .list__item:before {
+      margin-right: 16px;
+      width: 44px;
+      height: 1px; }
+  .schedule__list .medicine__take .time {
+    font-size: 18px;
+    letter-spacing: 0.11px; }
+  .schedule__list .medicine__take .quantity {
+    font-size: 11px;
+    letter-spacing: 0.07px; }
+  /*Schedule*/
 
   /*Courses*/
   .courses__list .card {

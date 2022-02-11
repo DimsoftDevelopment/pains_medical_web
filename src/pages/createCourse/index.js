@@ -2,7 +2,7 @@ import React, {useEffect, useState, useCallback} from 'react';
 import {Link} from 'react-router-dom';
 import {useForm} from 'react-hook-form';
 import {useDispatch, useSelector} from 'react-redux';
-import _ from 'lodash';
+import _ from 'lodash'
 import PageWrapper from '../pageWrapper';
 import {updateCourseProp} from './actions';
 import {getMeds} from '../meds/actions';
@@ -18,6 +18,7 @@ import medsIcon2x from '../../assets/img/icons/i-arrow_down@2x.png';
 import medsIcon3x from '../../assets/img/icons/i-arrow_down@3x.png';
 import defaultAvatar from '../../assets/img/temp/avatar2.png'
 import { config } from '../../config'
+import { getPatientsList } from '../patients/actions'
 import moment from 'moment'
 
 const CreateCourse = () => {
@@ -27,6 +28,7 @@ const CreateCourse = () => {
   const {meds, medication} = useSelector(({medsState}) => medsState);
   const [selectedMedication, setMedication] = useState(medication);
   const [selectedUser, setSelectedUser] = useState(null)
+  const [searchString, setSearchString] = useState('')
   const [showUserSelect, setShowUserSelect] = useState(false)
   const [selectedMedicationIndex, setSelectedMedicationIndex] = useState(null);
   const [newCourse, setNewCourse] = useState({
@@ -44,6 +46,13 @@ const CreateCourse = () => {
       title: course.title,
     },
   });
+
+  const handleSearchString = _.debounce(e => {
+    setSearchString(e.target.value)
+  }, 250)
+
+  useEffect(() => dispatch(getPatientsList(searchString)), [searchString])
+
   const handleUpdateCourse = courseData => {
     const newCourseData = {
       ...newCourse,
@@ -219,16 +228,20 @@ const CreateCourse = () => {
                           <i className="icons i24x24 i-plus_hover"></i>
                         </button>
                       </div>
-                      {newCourse.course_medications_attributes.map((courseMedication, index) => (
-                        <CourseMedication
-                          key={`${index}_${courseMedication.medication_id}`}
-                          index={index}
-                          courseMedication={courseMedication}
-                          handleEditCourseMedicine={handleEditCourseMedicine}
-                          handleDeleteCourseMedicine={handleDeleteCourseMedicine}
-                        />
-                      ))}
-                    </div>								
+                    </div>
+                    <div className="course__schedule">
+                      <div className='schedule__list'>
+                        {newCourse.course_medications_attributes.map((courseMedication, index) => (
+                          <CourseMedication
+                            key={`${index}_${courseMedication.medication_id}`}
+                            index={index}
+                            courseMedication={courseMedication}
+                            handleEditCourseMedicine={handleEditCourseMedicine}
+                            handleDeleteCourseMedicine={handleDeleteCourseMedicine}
+                          />
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <section id="popups" className={`popup ${showUserSelect ? 'patient show' : ''}`}>
@@ -257,7 +270,7 @@ const CreateCourse = () => {
                           <div className="patients__search">
                             <form className="form--search">
                               <div className="search__row">
-                                <input className="search__input" type="text" name="uName" />
+                                <input className="search__input" onChange={handleSearchString} defaultValue={searchString} type="text" name="uName" />
                               </div>
                             </form>
                           </div>

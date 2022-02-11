@@ -22,9 +22,11 @@ import {
 import {logout} from '../auth/actions';
 import {processRequest} from '../../services/Api';
 
-function* handleGetCourses() {
+function* handleGetCourses(action) {
   try {
-    const {data} = yield call(processRequest, `/courses`, 'GET');
+    const { payload } = action || {}
+    const { user_id } = payload || {}
+    const {data} = yield call(processRequest, `/courses${user_id ? `?user_id=${user_id}` : ''}`, 'GET');
     if (data.courses) {
       const courses = data.courses.data.map(course => course.attributes);
       yield put(getCoursesSuccess(courses));
@@ -213,7 +215,7 @@ function* handleCreateCourse(action) {
   try {
     const {payload} = action || {};
     const {course} = payload || {};
-    const requestPayload = {course}
+    const requestPayload = {course, user_id: course.user_id}
     const {data} = yield call(processRequest, `/courses`, 'POST', requestPayload);
     if (data.course) {
       const course = data.course.data.attributes;

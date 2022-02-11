@@ -1,7 +1,8 @@
 import {COURSES_ACTIONS} from './constants';
 
-export const getCourses = () => ({
+export const getCourses = (id) => ({
   type: COURSES_ACTIONS.GET_COURSES,
+  payload: { user_id: id }
 });
 
 export const getCoursesSuccess = courses => ({
