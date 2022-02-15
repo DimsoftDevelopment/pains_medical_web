@@ -138,7 +138,7 @@ const PageWrapper = ({children, className, showSideBar}) => {
                       to={ROUTES.APPOINTMENTS}
                       title="Appointments"
                     >
-                      <i className="icons i32x32 i-notes"></i> Appointments			
+                      <i className="icons icons-nobackground i32x32 i-notes"></i> Appointments			
                     </Link>
                     <i className="notification notes"></i>
                   </li>}

@@ -36,7 +36,7 @@ const Patients = ({ match }) => {
   return (
     <>
     {id ?
-      <PatientPage patient={patient.attributes} isLoading={isLoading} />
+      <PatientPage patient={patient?.attributes} isLoading={isLoading} />
     :
       <PatientsListPage searchString={searchString} handleSearchString={handleSearchString} handleSearch={handleSearch} />
     }

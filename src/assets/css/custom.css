@@ -282,7 +282,12 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   .icons.i-bell:before {
     background-image: url("../img/icons/i-bell.svg");
     background-size: 91% 100%; }
-
+  .icons.i-notes:before {
+    background-image: url("../img/icons/i-calendar.svg");
+    background-size: 91% 100%; }
+  .icons-nobackground {
+    background-image: none!important;
+  }
 /*Icons*/
 
 /*Empty*/
@@ -613,6 +618,9 @@ input[type="time"]::-webkit-calendar-picker-indicator {
         text-align: center; }
     .patients__block .patients__list .patient__notification {
       position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-left: 20px;
       top: 0;
       right: 0;
       width: 15px;

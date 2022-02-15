@@ -18,7 +18,7 @@ const PatientPage = ({ patient, isLoading }) => {
                 </button>
             </div>
             <div className="top__title">
-                {patient.last_name} {patient.first_name}
+                {patient?.last_name} {patient?.first_name}
             </div>
         </div>
       </div>
@@ -27,15 +27,15 @@ const PatientPage = ({ patient, isLoading }) => {
             <div className="patient__page">
                 <div className="patient__info">
                     <figure className="patient__avatar avatar">
-                        <img className="image" src={patient.avatar_url ? `${config.REACT_APP_IMAGE_URL}${patient.avatar_url}` : defaultAvatar} alt={patient.email} />
+                        <img className="image" src={patient?.avatar_url ? `${config.REACT_APP_IMAGE_URL}${patient?.avatar_url}` : defaultAvatar} alt={patient?.email} />
                     </figure>
                     <div className="info__text">
                         <div className="patient__stats">
                             <div className="patient__courses">
-                                <i className="icons i24x24 i-clipboard"></i> {patient.courses_count} Courses
+                                <i className="icons i24x24 i-clipboard"></i> {patient?.courses_count} Courses
                             </div>
                             <div className="patient__meds">
-                                <i className="icons i24x24 i-medicine"></i> {patient.medications_count} Meds
+                                <i className="icons i24x24 i-medicine"></i> {patient?.medications_count} Meds
                             </div>
                         </div>
                         <div className="patient___links">
@@ -52,13 +52,13 @@ const PatientPage = ({ patient, isLoading }) => {
                             <div className="row__column row__column--2">
                                 <label className="form__label">Name</label>
                                 <div className="form__text--input">
-                                    {patient.first_name} {patient.last_name}
+                                    {patient?.first_name} {patient?.last_name}
                                 </div>
                             </div>
                             <div className="row__column row__column--2">
                                 <label className="form__label">Email</label>
                                 <div className="form__text--input">
-                                    {patient.email}
+                                    {patient?.email}
                                 </div>
                             </div>
                         </div>
@@ -67,20 +67,20 @@ const PatientPage = ({ patient, isLoading }) => {
                             <div className="row__column row__column--2">
                                 <label className="form__label">Phone Number</label>
                                 <div className="form__text--input">
-                                    {patient.phone}
+                                    {patient?.phone}
                                 </div>
                             </div>
                             <div className="form__row form__row--columns  row__column--2">
                                 <div className="row__column row__column--2">
                                     <label className="form__label">Gender</label>
                                     <div className="form__text--input" style={{textTransform: 'capitalize'}}>
-                                        {patient.gender}
+                                        {patient?.gender}
                                     </div>
                                 </div>
                                 <div className="row__column row__column--2">
                                     <label className="form__label">Birth Day</label>
                                     <div className="form__text--input">
-                                        {patient.birthday}
+                                        {patient?.birthday}
                                     </div>
                                 </div>
                             </div>
