@@ -109,8 +109,20 @@ const EditMedication = ({match, history}) => {
       showSideBar
       className={PageWrapper.WrapperClassNames.editMed}
     >
-      <div className="breadcrumbs">
-        <h1 className="page__title">{medication.title}</h1>
+      <div className="content__top">
+        <div className="top__content">
+          <div className="top__link">
+            <button className="btns btn-back" onClick={handleBack}>
+              <i className="icons i24x24 i-chevron_left"></i>
+            </button>
+          </div>
+          <div className="top__title">
+            {medication.id ? 'Edit Medication' : 'Create Medication'}
+          </div>
+          <div className="top__btns">
+            {medication.id && <button className="btns btn-medsRemove" onClick={toggleDeleteModal}>Remove</button>}
+          </div>
+        </div>
       </div>
       <div className="content__block">
         <section className="medicines">
@@ -118,22 +130,6 @@ const EditMedication = ({match, history}) => {
             className="medicines__create"
             onSubmit={handleSubmit(submitMedication)}
           >
-            <div className="create__top">
-              <div className="top__btns">
-                <button
-                  className="btns btn-back"
-                  type="button"
-                  onClick={handleBack}
-                >
-                  <img
-                    src={backIcon}
-                    srcSet={`${backIcon2x} 2x, ${backIcon3x} 3x`}
-                    alt="Back"
-                  />
-                </button>
-                <button className="btns btn-complete">COMPLETTE</button>
-              </div>
-            </div>
             <div className="create__content">
               <div className="form">
                 <div className="create__gallery">
@@ -258,19 +254,14 @@ const EditMedication = ({match, history}) => {
                   </div>
                 </div>
                 <div className="create__btns">
-                  {medication.id && (
-                    <button
-                      className="btns btn-delete"
-                      onClick={toggleDeleteModal}
-                      // data-toggle="class"
-                      // data-target="#popups"
-                      // data-classes="remove"
-                      type="button"
-                    >
-                      DELETE
-                    </button>
-                  )}
-                  <button className="btns btn-course">CREATE COURSE</button>
+                  {medication.id ?
+                    <button className="btns btn-course">CREATE COURSE</button>
+                  :
+                    <>
+                    <button className='btns btn-medsRemove'>cancel</button>
+                    <button className='btns btn-course'>SAVE</button>
+                    </>
+                  }
                 </div>
               </div>
             </div>

@@ -28,6 +28,7 @@ import pinIcon3x from '../../assets/img/icons/i-lock@3x.png';
 import familyIcon from '../../assets/img/icons/i-users.png';
 import familyIcon2x from '../../assets/img/icons/i-users@2x.png';
 import familyIcon3x from '../../assets/img/icons/i-users@3x.png';
+import CustomSelect from '../../components/inputs/CustomSelect'
 import 'react-phone-number-input/style.css';
 
 const ProfileForm = () => {
@@ -38,10 +39,16 @@ const ProfileForm = () => {
   });
   const [isPinModalOpened, setPinModalOpened] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const selectArr = [
+    {value: 'male', text: 'Male'},
+    {value: 'female', text: 'Female'},
+    {value: 'other', text: 'Other'},
+  ]
   const dispatch = useDispatch();
   const {
     handleSubmit,
     register,
+    setValue,
     formState: {
       errors,
       dirtyFields,
@@ -179,10 +186,7 @@ const ProfileForm = () => {
               )}
             </div>
             <div className="form__row form__row--columns">
-              <GenderInput
-                defaultValue={user.gender}
-                register={register}
-              />
+              <CustomSelect id='gender' label='Gender' className='form__column--2' defaultName='Gender' name='gender' required={true} register={register} setValue={setValue} data={selectArr} />
               <Controller
                 control={control}
                 id="birthday"

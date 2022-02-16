@@ -51,28 +51,21 @@ const CreateMedication = () => {
       className={PageWrapper.WrapperClassNames.addMed}
       showSideBar
     >
-      <div className="breadcrumbs">
-        <h1 className="page__title">Create Medication</h1>
+      <div className="content__top">
+        <div className="top__content">
+          <div className="top__link">
+            <button className="btns btn-back" onClick={handleBack}>
+              <i className="icons i24x24 i-chevron_left"></i>
+            </button>
+          </div>
+          <div className="top__title">
+            Create Medication
+          </div>
+        </div>
       </div>
       <div className="content__block">
         <form className="medicines section--fullheight courses__add" onSubmit={handleSubmit(handleCreateMedication)}>
           <div className="medicines__create page--fullheight">
-            <div className="create__top">
-              <div className="top__btns">
-                <button
-                  className="btns btn-back"
-                  onClick={handleBack}
-                  type="button"
-                >
-                  <img
-                    src={arrowIcon}
-                    srcSet={`${arrowIcon2x} 2x, ${arrowIcon3x} 3x`}
-                    alt="Back"
-                  />
-                  </button>
-                <button className="btns btn-complete">COMPLETTE</button>
-              </div>
-            </div>
             <div className="create__content create__content--center">
               <div className="name">
                 <TextInput
@@ -87,21 +80,19 @@ const CreateMedication = () => {
                   <div className="course__form">
                     <div className="from__block form__block--patient">
                       <div className="form__row form__row--columns">
-                        <div className="row__column row__column--2">
-                          <button className="course__patient btns" onClick={() => selectedUser ? disSelectUser() : setShowUserSelect(true)} disabled={showUserSelect}>
-                            <figure className="patient__avatar">
-                              {selectedUser && <img style={{borderRadius: '50%'}} className="image" src={selectedUser.avatar_url ? `${config.REACT_APP_IMAGE_URL}${selectedUser.avatar_url}` : defaultAvatar} alt={selectedUser.email} />}
-                            </figure>
-                            <span className="patient__name">{selectedUser ? `${selectedUser.first_name} ${selectedUser.last_name}` : 'Choose patient'}</span>
-                            <i className={`icons i24x24 i-${selectedUser ? 'close_red' : 'plus_hover'}`}></i>
-                          </button>
-                        </div>
+                        <button className="course__patient btns" onClick={() => selectedUser ? disSelectUser() : setShowUserSelect(true)} disabled={showUserSelect}>
+                          <figure className="patient__avatar">
+                            {selectedUser && <img style={{borderRadius: '50%'}} className="image" src={selectedUser.avatar_url ? `${config.REACT_APP_IMAGE_URL}${selectedUser.avatar_url}` : defaultAvatar} alt={selectedUser.email} />}
+                          </figure>
+                          <span className="patient__name">{selectedUser ? `${selectedUser.first_name} ${selectedUser.last_name}` : 'Choose patient'}</span>
+                          <i className={`icons i24x24 i-${selectedUser ? 'close_red' : 'plus_hover'}`}></i>
+                        </button>
                       </div>
                     </div>
                   </div>
                 }
                 <div className="name__btns">
-                  <button className="btns btn-continue">CONTINUE</button>
+                  <button disabled={user.user_type === 'doctor' ? selectedUser ? false : true : false} className="btns btn-continue">CONTINUE</button>
                 </div>
               </div>
             </div>

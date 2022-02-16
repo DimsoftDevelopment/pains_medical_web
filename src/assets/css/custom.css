@@ -1,5 +1,39 @@
 /*Please Add You Styles Here*/
-
+.medicines__create .create__content--center .name__btns .btn-continue {
+  visibility: visible;
+}
+.medicines__create .create__content {
+  max-width: 430px;
+}
+.medicines__create .create__content.create__content--center {
+  max-width: unset;
+}
+.medicines__create .create__content .create__gallery {
+  flex: 0 0 430px;
+}
+.medicines__create .create__content .create__measurement {
+  flex: 0 0 430px;
+}
+.medicines__create .create__content .create__notes {
+  flex: 0 0 430px;
+}
+.medicines__create .create__content .create__stock {
+  flex: 0 0 430px;
+}
+.medicines__create .create__content .create__btns {
+  padding-top: 0;
+}
+.medicines__create .create__content {
+  padding-top: 0;
+}
+.btn-medsRemove {
+  padding: 14px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.1px;
+  color: #fff;
+  background-color: #ff765f;
+  border-radius: 100px; }
 
 * {
   margin: 0;
@@ -464,7 +498,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     .popup__block .block__btns.tac {
       justify-content: center; }
   .popup__block.tac {
-    text-align: center; }
+    text-align: left; }
   .popup__block.popup--terms {
     width: 825px; }
 
@@ -1058,6 +1092,8 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 .form .custom-select {
   position: relative; }
+  .form .custom-select select {
+    display: none; }
   .form .custom-select .select-selected {
     position: relative;
     width: 100%;

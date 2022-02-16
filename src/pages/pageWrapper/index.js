@@ -154,7 +154,7 @@ const PageWrapper = ({children, className, showSideBar}) => {
                       to={ROUTES.SETTINGS}
                       title="Setting"
                     >
-                      <i className="icons i32x32 i-gear"></i> Setting			
+                      <i className="icons i32x32 i-gear"></i> Settings			
                     </Link>
                   </li>
                 </ul>
