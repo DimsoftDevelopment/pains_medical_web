@@ -14,7 +14,8 @@ const ROUTES = {
   PATIENTS: '/patients/:id?',
   PATIENTSLINK: '/patients',
   SETTINGS: '/settings',
-  APPOINTMENTS: '/appointments'
+  APPOINTMENTS: '/appointments',
+  NOTIFICATIONS: '/notifications'
 };
 
 export {ROUTES};

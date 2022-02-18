@@ -142,6 +142,20 @@ const PageWrapper = ({children, className, showSideBar}) => {
                     </Link>
                     <i className="notification notes"></i>
                   </li>}
+                  <li className="menu__item @@nclass @@notification">
+                    <Link
+                      className={
+                        classnames("menu__link btns", {
+                          active: ROUTES.NOTIFICATIONS === currentPage
+                        })
+                      }
+                      to={ROUTES.NOTIFICATIONS}
+                      title="Notifications"
+                    >
+                      <i className="icons icons-nobackground i32x32 i-notifications"></i> Notifications			
+                    </Link>
+                    <i className="notification notes"></i>
+                  </li>
                 </ul>
                 <ul className="menu__list menu__list--main">
                   <li className="menu__item">

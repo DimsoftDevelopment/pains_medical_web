@@ -12,6 +12,8 @@ import {
 import {getFamilyList} from '../family/actions';
 import {getCourses} from '../courses/actions';
 import { getPatientsList } from '../patients/actions';
+import { config } from '../../config'
+import defaultAvatar from '../../assets/img/temp/avatar2.png'
 
 const Dashboard = () => {
   const [showModal, setShowModal] = useState(false);
@@ -21,7 +23,10 @@ const Dashboard = () => {
     setSelectedReception(reception);
     setShowModal(!showModal);
   };
-  const {familyList} = useSelector(({familyState}) => familyState);
+  const {familyList} = useSelector(({familyState}) => familyState)
+  const { patientsList } = useSelector(({patientsState}) => patientsState)
+  const { user } = useSelector(({authState}) => authState)
+  const [selectedPatient, setSelectedUser] = useState(null)
   const {
     start_date,
     end_date,
@@ -37,10 +42,21 @@ const Dashboard = () => {
     dispatch(getReceptionMedicationsByUser(
       start_date,
       end_date,
+      selectedPatient
     ));
     dispatch(getReceptionMedications());
-    dispatch(getCourses());
+    dispatch(getCourses(selectedPatient));
   }, [dispatch]);
+  useEffect(() => {
+    dispatch(getReceptionMedicationsByUser(
+      start_date,
+      end_date,
+      selectedPatient
+    ))
+    dispatch(getReceptionMedications())
+    dispatch(getCourses(selectedPatient))
+  }, [selectedPatient])
+  useEffect(() => user.user_type === 'doctor' && patientsList.length > 0 && setSelectedUser(patientsList[0].id), [patientsList])
   const selectUser = user_id => {
     if (user_id === selectedUser) {
       dispatch(getReceptionMedicationsByUser(
@@ -78,6 +94,23 @@ const Dashboard = () => {
             selectedUser={selectedUser}
           />
         )}
+        {user.user_type === 'doctor' && <section className="patients">
+          <div className="patients__block">
+            <ul className="patients__list">
+              {patientsList.map(item => 
+                <li className={`list__item ${item.id === selectedPatient ? 'active' : ''}`} key={item.id} onClick={() => setSelectedUser(item.id)}>
+                  <div className="list__link btns">
+                    <figure className="patient__avatar avatar">
+                      <img className="image" src={item.attributes.avatar_url ? `${config.REACT_APP_IMAGE_URL}${item.attributes.avatar_url}` : defaultAvatar} alt={item.attributes.email} />
+                    </figure>
+                    <span className="patient__name"><span>{item.attributes.first_name}</span> <span>{item.attributes.last_name}</span></span>
+										{!!item.attributes.courses_count && <span className="patient__notification">{item.attributes.courses_count}</span>}
+                  </div>
+                </li>
+              )}
+            </ul>
+          </div>
+        </section>}
         <Calendar
           onChangeDate={handleDateChange}
           courses={all_reception_dates}

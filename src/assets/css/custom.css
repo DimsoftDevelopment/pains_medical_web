@@ -1,4 +1,12 @@
 /*Please Add You Styles Here*/
+.content__wrapper > .content > .content__block > .section--fullheight .block--fullheight {
+  height: unset;
+}
+
+.schedule__block > .block__title {
+  order: 0!important;
+}
+
 .medicines__create .create__content--center .name__btns .btn-continue {
   visibility: visible;
 }
@@ -234,6 +242,48 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 /*Appointments*/
 
 
+/*Notififcations*/
+.notififcations__page .notififcations__list .list__item {
+  margin-bottom: 10px; }
+
+.notififcations__list .card {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: fasle;
+  padding: 12px 16px;
+  background-color: #fff;
+  border-radius: 3.8px;
+  box-shadow: 0 5.3px 15.2px 0 rgba(216, 223, 225, 0.5); }
+  .notififcations__list .card__text {
+    margin-left: 16px;
+    padding-left: 16px;
+    border-left: 0.8px solid #0d2a4a; }
+
+.notififcations__list .notififcation__time {
+  flex: 0 0 40px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.08px;
+  color: #0d2a4a; }
+
+.notififcations__list .notififcation__patient {
+  font-size: 14px;
+  font-weight: 700;
+  color: #2b84eb;
+  line-height: 1.5;
+  letter-spacing: 0.08px;
+  text-decoration: none; }
+
+.notififcations__list .notififcation__text {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0d2a4a;
+  line-height: 1.5;
+  letter-spacing: 0.08px; }
+
+/*Notififcations*/
 
 
 /*Icons*/
@@ -1924,6 +1974,12 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     height: 27px; }
  
 
+  /*Notififcations*/
+  .notififcations__page .notififcations__list {
+    margin: 0 auto;
+    max-width: 500px; }
+  /*Notififcations*/
+
   /*Schedule*/
   .schedule__block {
     display: flex;
@@ -2257,6 +2313,18 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 @media only screen and (min-width: 1440px) {
 
+  /*Notififcations*/
+  .notififcations__page .notififcations__list {
+    margin: 0 auto;
+    max-width: 600px; }
+  .notififcations__list .card {
+    padding: 16px 24px; }
+    .notififcations__list .card__text {
+      margin-left: 24px;
+      padding-left: 24px; }
+  .notififcations__list .notififcationt__patient, .notififcations__list .notififcationt__text {
+    font-size: 16px; }
+  /*Notififcations*/
 
   /*Schedule*/
   .schedule__block .block__medicines {
