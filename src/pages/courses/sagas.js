@@ -1,5 +1,5 @@
 import {takeEvery, put, call} from 'redux-saga/effects';
-import {goBack} from 'connected-react-router';
+import {push} from 'connected-react-router';
 import {COURSES_ACTIONS} from './constants';
 import {
   getCoursesSuccess,
@@ -21,6 +21,7 @@ import {
 } from '../pageWrapper/actions';
 import {logout} from '../auth/actions';
 import {processRequest} from '../../services/Api';
+import { ROUTES } from '../../router/routes';
 
 function* handleGetCourses(action) {
   try {
@@ -220,7 +221,7 @@ function* handleCreateCourse(action) {
     if (data.course) {
       const course = data.course.data.attributes;
       yield put(createCourseSuccess(course));
-      yield put(goBack());
+      yield put(push(ROUTES.COURSES));
     } else {
       yield put(createCourseError());
       yield put(toggleNotification({

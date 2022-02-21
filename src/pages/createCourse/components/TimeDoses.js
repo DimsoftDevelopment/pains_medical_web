@@ -12,7 +12,7 @@ const TimeDoses = ({
 }) => {
   return (
     <div className="form__row">
-      <label className="settings__label">Time & Dose</label>
+      <label className="form__label">Time & Dose</label>
       <div className="form__row form__row--columns">
       <div className="columns__column columns__column--timeAdoze">
         {timeDoses.map((timeDose, index) => (

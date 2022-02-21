@@ -1,10 +1,10 @@
 import React, {useEffect, useState, useCallback} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import {useForm} from 'react-hook-form';
 import {useDispatch, useSelector} from 'react-redux';
 import _ from 'lodash'
 import PageWrapper from '../pageWrapper';
-import {updateCourseProp} from './actions';
+import { updateCourseProp, setMedicationAction, setSelectedMedicationIndexAction } from './actions';
 import {getMeds} from '../meds/actions';
 import {createCourse} from '../courses/actions';
 import {ROUTES} from '../../router/routes';
@@ -22,25 +22,31 @@ import { getPatientsList } from '../patients/actions'
 import moment from 'moment'
 
 const CreateCourse = () => {
+  const history = useHistory()
+  const dispatch = useDispatch();
   const {user} = useSelector(({authState}) => authState);
   const { patientsList } = useSelector(({patientsState}) => patientsState);
-  const {course} = useSelector(({createCourseState}) => createCourseState);
+  const {course, selectedMedication, selectedMedicationIndex} = useSelector(({createCourseState}) => createCourseState)
+  const setMedication = medication => dispatch(setMedicationAction(medication))
+  const setSelectedMedicationIndex = index => dispatch(setSelectedMedicationIndexAction(index))
   const {meds, medication} = useSelector(({medsState}) => medsState);
-  const [selectedMedication, setMedication] = useState(medication);
+  // const [selectedMedication, setMedication] = useState(medication);
   const [selectedUser, setSelectedUser] = useState(null)
   const [searchString, setSearchString] = useState('')
   const [showUserSelect, setShowUserSelect] = useState(false)
-  const [selectedMedicationIndex, setSelectedMedicationIndex] = useState(null);
+  // const [selectedMedicationIndex, setSelectedMedicationIndex] = useState(null);
   const [newCourse, setNewCourse] = useState({
     title: course.title || '',
-    start_date: new Date(),
-    end_date: new Date(),
-    course_medications_attributes: [],
-    user_id: user.type === 'doctor' ? null : user.id,
+    start_date: course.start_date || new Date(),
+    end_date: course.end_date || new Date(),
+    course_medications_attributes: course.course_medications_attributes || [],
+    user_id: course.user_id ? course.user_id : user.user_type === 'doctor' ? null : user.id,
   });
+  useEffect(() => {
+    dispatch(updateCourseProp(newCourse))
+  }, [newCourse])
   const [searchValue, setSearchValue] = useState('');
   const [showMedications, setShowMedications] = useState(false);
-  const dispatch = useDispatch();
   const {register, handleSubmit} = useForm({
     defaultValues: {
       title: course.title,
@@ -52,6 +58,10 @@ const CreateCourse = () => {
   }, 250)
 
   useEffect(() => dispatch(getPatientsList(searchString)), [searchString])
+
+  useEffect(() => {
+    if(patientsList.length > 0 && course.user_id) setSelectedUser(patientsList.find(item => item.id === course.user_id).attributes)
+  }, [course, patientsList])
 
   const handleUpdateCourse = courseData => {
     const newCourseData = {
@@ -88,7 +98,9 @@ const CreateCourse = () => {
     handleSearch(value);
   };
   const handleMedDetails = medicationItem => {
-    setMedication(medicationItem);
+    setMedication(medicationItem)
+    setShowMedications(false)
+    history.push(ROUTES.CREATE_COURSE_MEDICATION)
   };
   const handleShowMeds = () => {
     setShowMedications(true);
@@ -154,27 +166,28 @@ const CreateCourse = () => {
       className={PageWrapper.WrapperClassNames.courseAdd}
       showSideBar
     >
-      <div className="breadcrumbs">
-        <h1 className="page__title">New Course</h1>
-      </div>
+      <div className="content__top">
+					<div className="top__content">
+						<div className="top__link">
+							<button onClick={history.goBack} className="btns btn-back" data-toggle="class" data-target="#popups" data-classes="leave">
+								<i className="icons i24x24 i-chevron_left"></i>
+							</button>
+						</div>
+						<div className="top__title">
+							Create Courses
+						</div>
+					</div>
+				</div>
       <div className="content__block">
         <section className="courses">
           <div className="course__form">
             <form className="courses__add" onSubmit={handleSubmit(handleUpdateCourse)}>
-              <div className="add__top">
-                <Link
-                  className="btns btn-back"
-                  to={ROUTES.COURSES}
-                >
-                  <i className="icons i24x24 i-arrow_left"></i>
-                </Link>
-                <button
-                  className="btns btn-save"
-                  type="submit"
-                >
-                  CREATE COURSE
-                </button>
-              </div>
+              <button
+                className="btns btn-save btn-cta"
+                type="submit"
+              >
+                CREATE COURSE
+              </button>
               <div className="course__form">
                 {user.user_type === 'doctor' &&
                 <div className="from__block form__block--patient">
@@ -244,7 +257,7 @@ const CreateCourse = () => {
                     </div>
                   </div>
                 </div>
-                <section id="popups" className={`popup ${showUserSelect ? 'patient show' : ''}`}>
+                <section id="popups" className={`popup ${showUserSelect ? 'patient show' : ''} ${showMedications ? 'medicine show' : ''}`}>
                   <div className="popup__overlay" onClick={() => setShowUserSelect(false)}>
                     <div onClick={e => e.stopPropagation()}>
                       <div className="popup__block popup--leave">
@@ -292,66 +305,56 @@ const CreateCourse = () => {
                           </div>
                         </div>
                       </div>
+                      <div className="popup__block popup--medicine medicines__popup">
+                        <div className="block__top">
+                          <button className="btns btn-close" onClick={() => setShowMedications(false)} data-toggle="class" data-target="#popups" data-classes="medicine">
+                            <i className="icons i24x24 i-close"></i>
+                          </button>
+                        </div>
+                        <div className="block__title tac">Select Medicine</div>
+                        <div className="block__content">
+                          <div className="medicines__search">
+                            <form className="form--search">
+                              <div className="search__row">
+                                <input className="search__input" type="text" name="uName" />
+                              </div>
+                            </form>
+                          </div>
+                          <div className="medicines__results">
+                            <ul className="medicines__list">
+                              {meds.map(medicationItem => (
+                                <MedicationCard
+                                  key={medicationItem.id}
+                                  medication={medicationItem}
+                                  selectedMedication={selectedMedication}
+                                  handleMedDetails={handleMedDetails}
+                                />
+                              ))}
+                            </ul>
+                          </div>
+                          {meds.length === 0 && <div className="medicines__noresults">
+                            <p>
+                              There is no such medicine in your library. Create it first.
+                            </p>
+                            <p>
+                              <i className="icons i32x32 i-arrow_down"></i>
+                            </p>
+                            <div className="noresults__btns">
+                              <Link
+                                className="btns btn-add"
+                                to={ROUTES.CREATE_MEDICATION}
+                              >
+                                <i className="icons i24x24 i-medicine_circle"></i>
+                                <span className="text">CREATE NEW MEDICINE</span>
+                                <i className="icons i24x24 i-plus"></i>
+                              </Link>
+                            </div>
+                          </div>}
+                        </div>
+                      </div>		
                     </div>
                   </div>
                 </section>
-                {showMedications && (
-                  <div className="form__bottom">
-                    <div className="medicines__search">
-                      <div className="search__form">
-                        <label className="search__label" htmlFor="mSearch">Select medicine</label>
-                        <input
-                          className="search__input"
-                          name="mSearch"
-                          id="mSearch"
-                          type="text"
-                          placeholder=""
-                          value={searchValue}
-                          onChange={handleChange}
-                        />
-                      </div>
-                      <div className="search__results">
-                        <div className="medicines__list">
-                          <div className="list__item">
-                            {meds.map(medicationItem => (
-                              <MedicationCard
-                                key={medicationItem.id}
-                                medication={medicationItem}
-                                selectedMedication={selectedMedication}
-                                handleMedDetails={handleMedDetails}
-                              />
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                      {meds.length === 0 && (
-                        <div className="search__noresults">
-                          <p>
-                            There is no such medicine in your library. Create it first.<br/>
-                            <img
-                              src={medsIcon}
-                              srcSet={`${medsIcon2x} 2x, ${medsIcon3x} 3x`}
-                              alt="MedsIcon"
-                            />
-                          </p>
-                          <Link
-                            className="btns btn-add"
-                            to={ROUTES.CREATE_MEDICATION}
-                          >
-                            CREATE NEW MEDICINE
-                          </Link>
-                        </div>
-                      )}
-                    </div>
-                    {(selectedMedication.id || selectedMedication.medication_id) && (
-                      <SelectedMedication
-                        medication={selectedMedication}
-                        start_date={newCourse.start_date}
-                        handleSelectedMedicines={handleSelectedMedicines}
-                      />
-                    )}
-                  </div>
-                )}
               </div>
             </form>
           </div>
@@ -360,5 +363,11 @@ const CreateCourse = () => {
     </PageWrapper>
   );
 };
+
+{/* <SelectedMedication
+medication={selectedMedication}
+start_date={newCourse.start_date}
+handleSelectedMedicines={handleSelectedMedicines}
+/> */}
 
 export default CreateCourse;

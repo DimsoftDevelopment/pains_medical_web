@@ -177,6 +177,284 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 }
 
 
+/*Medicines*/
+.medicines .content__top .top__btns .btn-medsAdd {
+  display: none; }
+
+.medicines__list {
+  list-style: none; }
+  .medicines__list .card {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    background-color: #fff; }
+    .medicines__list .card .medicine__time {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 14px;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.5;
+      letter-spacing: 0.08px; }
+    .medicines__list .card .medicine__block {
+      flex: 1;
+      border-left: 1px solid #0d2a4a; }
+    .medicines__list .card .medicine__item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      width: 100%; }
+      .medicines__list .card .medicine__item:last-child {
+        margin-bottom: 0; }
+      .medicines__list .card .medicine__item.missed .medicine__image .image {
+        background-image: url("../img/icons/i-missed.svg");
+        background-size: 100%; }
+      .medicines__list .card .medicine__item.missed .medicine__image img {
+        display: none; }
+      .medicines__list .card .medicine__item.taken .medicine__name, .medicines__list .card .medicine__item.taken .medicine__quantity {
+        text-decoration: line-through; }
+      .medicines__list .card .medicine__item.taken .medicine__image .image {
+        background-image: url("../img/icons/i-taken.svg");
+        background-size: 100%; }
+      .medicines__list .card .medicine__item.taken .medicine__image img {
+        display: none; }
+    .medicines__list .card .medicine__text {
+      flex: 1;
+      padding: 0px 16px;
+      text-align: left; }
+    .medicines__list .card .medicine__name {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.5;
+      letter-spacing: 0.11px; }
+    .medicines__list .card .medicine__quantity, .medicines__list .card .medicine__period {
+      display: block;
+      font-size: 10px;
+      font-weight: 500;
+      line-height: 1.5;
+      letter-spacing: 0.08px;
+      white-space: nowrap; }
+    .medicines__list .card .medicine__quantity {
+      font-weight: 600; }
+    .medicines__list .card .medicine__image {
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      .medicines__list .card .medicine__image .image {
+        position: relative;
+        width: 28px;
+        height: 28px; }
+        .medicines__list .card .medicine__image .image img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          -o-object-fit: cover;
+          object-fit: cover;
+          objct-position: center; }
+    .medicines__list .card .medicine__store {
+      text-align: right; }
+    .medicines__list .card.taken, .medicines__list .card.missed {
+      opacity: 0.5; }
+      .medicines__list .card.taken .medicine__item, .medicines__list .card.missed .medicine__item {
+        opacity: 1; }
+
+.medicines__page .medicines__search {
+  margin-bottom: 16px; }
+
+.medicines__page .medicines__list .list__item {
+  margin-bottom: 10px; }
+
+.medicines__page .medicines__list .card {
+  align-items: center; }
+  .medicines__page .medicines__list .card .medicine__name {
+    margin-bottom: 0; }
+
+.medicines__popup .medicines__search {
+  margin-bottom: 12px; }
+
+.medicines__popup .medicines__list {
+  list-style: none; }
+  .medicines__popup .medicines__list .list__item {
+    padding: 12px 0; }
+    .medicines__popup .medicines__list .list__item:last-child {
+      padding-bottom: 0; }
+  .medicines__popup .medicines__list .card {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0; }
+    .medicines__popup .medicines__list .card .medicine__image {
+      position: relative;
+      margin-right: 12px;
+      width: 52px;
+      height: 52px; }
+      .medicines__popup .medicines__list .card .medicine__image .image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        -o-object-fit: cover;
+        object-fit: cover;
+        -o-object-position: center;
+        object-position: center; }
+    .medicines__popup .medicines__list .card .medicine__name {
+      margin-bottom: 0;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.5;
+      letter-spacing: 0.08px;
+      color: #0d2a4a; }
+
+.medicines__popup .medicines__noresults {
+  text-align: center; }
+  .medicines__popup .medicines__noresults p {
+    font-size: 14px;
+    font-weight: 500;
+    color: #0d2a4a;
+    line-height: 1.5;
+    letter-spacing: 0.08px;
+    opacity: 0.75; }
+    .medicines__popup .medicines__noresults p .icons {
+      margin-bottom: 64px; }
+  .medicines__popup .medicines__noresults .noresults__btns .btn-add {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 3px;
+    background-color: #2b84eb; }
+    .medicines__popup .medicines__noresults .noresults__btns .btn-add .text {
+      flex: 1 0 auto;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.5;
+      letter-spacing: 0.07px;
+      color: #fff; }
+
+.medicine__form .medicine__take {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-wrap: wrap; }
+  .medicine__form .medicine__take .list__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 16px 16px 0;
+    padding: 12px 16px;
+    background-color: #fff;
+    border: solid 0.8px rgba(151, 151, 151, 0.1);
+    border-radius: 2.6px; }
+    .medicine__form .medicine__take .list__item span {
+      display: block;
+      text-align: center; }
+    .medicine__form .medicine__take .list__item .time {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.51;
+      letter-spacing: 0.11px;
+      color: #0d2a4a; }
+    .medicine__form .medicine__take .list__item .quantity {
+      display: block;
+      font-size: 10px;
+      font-weight: 500;
+      line-height: 1.5;
+      letter-spacing: 0.06px;
+      color: #0d2a4a; }
+
+.medication .content__top .top__btns .btn-medsRemove {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08px;
+  color: #ff765f;
+  text-transform: uppercase; }
+
+.medication__form {
+  max-width: 430px; }
+  .medication__form--s1 {
+    margin: 0 auto;
+    padding: 24px 16px;
+    width: 100%;
+    max-width: 490px;
+    background-color: #fff;
+    box-shadow: 10px 4px 20px 0 rgba(216, 223, 225, 0.5);
+    border-radius: 10px; }
+    .medication__form--s1 .form__submit {
+      width: 100%; }
+  .medication__form--s2 .form__row--submit {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+    .medication__form--s2 .form__row--submit .btns {
+      flex: 0 0 calc(50% - 12px); }
+  .medication__form .form__row--text {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.14px;
+    color: #0d2a4a; }
+  .medication__form .form__label--radio {
+    display: inline-block;
+    margin-right: 42px; }
+    .medication__form .form__label--radio:last-child {
+      margin-right: 0; }
+
+.medication__results ul {
+  margin-bottom: 24px;
+  list-style: none; }
+  .medication__results ul li {
+    margin-bottom: 16px;
+    padding: 0 16px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.15px; }
+    .medication__results ul li:last-child {
+      margin-bottom: 0; }
+
+.medication__gallery {
+  margin-bottom: 24px; }
+  .medication__gallery .gallery__main {
+    margin-bottom: 10px; }
+    .medication__gallery .gallery__main .slider__item {
+      position: relative; }
+      .medication__gallery .gallery__main .slider__item .image {
+        width: 100%; }
+    .medication__gallery .gallery__main .btn-delete {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 40px;
+      height: 40px;
+      background: #ff765f url("../img/icons/i-plus.svg") no-repeat 50%;
+      border-radius: 500px;
+      transform: rotate(45deg); }
+  .medication__gallery .gallery__thumbnails .slider__item {
+    margin-right: 12px;
+    opacity: 0.5; }
+    .medication__gallery .gallery__thumbnails .slider__item .form__label--gallery.short .label__text {
+      display: none; }
+    .medication__gallery .gallery__thumbnails .slider__item .form__label--gallery.short:before {
+      margin-right: 0; }
+    .medication__gallery .gallery__thumbnails .slider__item.slick-current {
+      opacity: 1; }
+    .medication__gallery .gallery__thumbnails .slider__item:last-child {
+      margin-right: 0; }
+  .medication__gallery .image {
+    border-radius: 10px; }
+
+/*Medicines*/
 /*Appointments*/
 .appointments .content__top .top__btns .btn-appointmentMake {
   display: none; }
@@ -1675,33 +1953,33 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     flex: 0 0 428px;
     margin-right: 32px;
     width: 428px; }
-  .courses__add .form__bottom .medicines__settings {
+  .medicines__settings {
     flex: 1; }
-    .courses__add .form__bottom .medicines__settings .settings__label {
+    .medicines__settings .settings__label {
       display: block;
       margin-bottom: 17px;
       font-size: 18px;
       font-weight: 500;
       letter-spacing: 0.11px; }
-    .courses__add .form__bottom .medicines__settings .settings__form .custom-select .select-selected {
+    .medicines__settings .settings__form .custom-select .select-selected {
       padding: 26px 24px;
       font-size: 16px;
       font-weight: 600;
       letter-spacing: 0.15px; }
-    .courses__add .form__bottom .medicines__settings .settings__form .custom-select .select-items div {
+    .medicines__settings .settings__form .custom-select .select-items div {
       margin-bottom: 24px;
       font-size: 14px;
       line-height: 1.43;
       letter-spacing: 0.25px; }
-      .courses__add .form__bottom .medicines__settings .settings__form .custom-select .select-items div:last-child {
+      .medicines__settings .settings__form .custom-select .select-items div:last-child {
         margin-bottom: 0; }
-    .courses__add .form__bottom .medicines__settings .settings__form .btn-timeAdoze {
+    .medicines__settings .settings__form .btn-timeAdoze {
       width: 83px;
       height: 70px;
       border-radius: 3.5px;
       background: #fff url("../img/icons/i-plus_dark.png") no-repeat 50%;
       border: 1px solid #dbdfe4; }
-    .courses__add .form__bottom .medicines__settings .settings__form .medicine__timeAdoze {
+    .medicines__settings .settings__form .medicine__timeAdoze {
       position: relative;
       margin-right: 32px;
       padding: 16px;
@@ -1711,23 +1989,23 @@ input[type="time"]::-webkit-calendar-picker-indicator {
       border-radius: 3.5px;
       background-color: #f5f8f9;
       border: 1px solid #dbdfe4; }
-      .courses__add .form__bottom .medicines__settings .settings__form .medicine__timeAdoze span {
+      .medicines__settings .settings__form .medicine__timeAdoze span {
         display: block; }
-      .courses__add .form__bottom .medicines__settings .settings__form .medicine__timeAdoze .time {
+      .medicines__settings .settings__form .medicine__timeAdoze .time {
         font-size: 16px;
         font-weight: 700;
         letter-spacing: 0.15px; }
-      .courses__add .form__bottom .medicines__settings .settings__form .medicine__timeAdoze .doze {
+      .medicines__settings .settings__form .medicine__timeAdoze .doze {
         font-size: 14px;
         font-weight: 500;
         line-height: 1.5;
         letter-spacing: 0.08px; }
-      .courses__add .form__bottom .medicines__settings .settings__form .medicine__timeAdoze .btn-menu {
+      .medicines__settings .settings__form .medicine__timeAdoze .btn-menu {
         position: absolute;
         top: 0;
         right: 0;
         transform: rotate(-90deg); }
-      .courses__add .form__bottom .medicines__settings .settings__form .medicine__timeAdoze .medicine__menu {
+      .medicines__settings .settings__form .medicine__timeAdoze .medicine__menu {
         display: none;
         position: absolute;
         top: -40px;
@@ -1738,59 +2016,59 @@ input[type="time"]::-webkit-calendar-picker-indicator {
         border: solid 2px #dbdfe4;
         background-color: #fff;
         z-index: 2; }
-        .courses__add .form__bottom .medicines__settings .settings__form .medicine__timeAdoze .medicine__menu .menu__list {
+        .medicines__settings .settings__form .medicine__timeAdoze .medicine__menu .menu__list {
           list-style: none;
           text-align: left; }
-          .courses__add .form__bottom .medicines__settings .settings__form .medicine__timeAdoze .medicine__menu .menu__list .list__item {
+          .medicines__settings .settings__form .medicine__timeAdoze .medicine__menu .menu__list .list__item {
             margin-bottom: 16px; }
-            .courses__add .form__bottom .medicines__settings .settings__form .medicine__timeAdoze .medicine__menu .menu__list .list__item:last-child {
+            .medicines__settings .settings__form .medicine__timeAdoze .medicine__menu .menu__list .list__item:last-child {
               margin-bottom: 0; }
-          .courses__add .form__bottom .medicines__settings .settings__form .medicine__timeAdoze .medicine__menu .menu__list .list__link {
+          .medicines__settings .settings__form .medicine__timeAdoze .medicine__menu .menu__list .list__link {
             font-size: 16px;
             font-weight: 500;
             letter-spacing: 0.25px;
             color: #0d2a4a;
             text-decoration: none; }
-            .courses__add .form__bottom .medicines__settings .settings__form .medicine__timeAdoze .medicine__menu .menu__list .list__link.delete {
+            .medicines__settings .settings__form .medicine__timeAdoze .medicine__menu .menu__list .list__link.delete {
               color: #ff765f; }
-      .courses__add .form__bottom .medicines__settings .settings__form .medicine__timeAdoze.show-menu .medicine__menu {
+      .medicines__settings .settings__form .medicine__timeAdoze.show-menu .medicine__menu {
         display: block; }
-    .courses__add .form__bottom .medicines__settings .settings__form .form__row--columns {
+    .medicines__settings .settings__form .form__row--columns {
       justify-content: flex-start;
       flex-wrap: wrap; }
-      .courses__add .form__bottom .medicines__settings .settings__form .form__row--columns .columns__column--time, .courses__add .form__bottom .medicines__settings .settings__form .form__row--columns .columns__column--doze {
+      .medicines__settings .settings__form .form__row--columns .columns__column--time, .medicines__settings .settings__form .form__row--columns .columns__column--doze {
         position: relative; }
-        .courses__add .form__bottom .medicines__settings .settings__form .form__row--columns .columns__column--time .form__input, .courses__add .form__bottom .medicines__settings .settings__form .form__row--columns .columns__column--doze .form__input {
+        .medicines__settings .settings__form .form__row--columns .columns__column--time .form__input, .medicines__settings .settings__form .form__row--columns .columns__column--doze .form__input {
           padding: 24px 24px 25px 24px;
           text-align: center; }
-        .courses__add .form__bottom .medicines__settings .settings__form .form__row--columns .columns__column--time .btn-plus,
-        .courses__add .form__bottom .medicines__settings .settings__form .form__row--columns .columns__column--time .btn-minus, .courses__add .form__bottom .medicines__settings .settings__form .form__row--columns .columns__column--doze .btn-plus,
-        .courses__add .form__bottom .medicines__settings .settings__form .form__row--columns .columns__column--doze .btn-minus {
+        .medicines__settings .settings__form .form__row--columns .columns__column--time .btn-plus,
+        .medicines__settings .settings__form .form__row--columns .columns__column--time .btn-minus, .medicines__settings .settings__form .form__row--columns .columns__column--doze .btn-plus,
+        .medicines__settings .settings__form .form__row--columns .columns__column--doze .btn-minus {
           position: absolute;
           top: 50%;
           margin-top: -14px;
           width: 28px;
           height: 28px; }
-        .courses__add .form__bottom .medicines__settings .settings__form .form__row--columns .columns__column--time .btn-plus, .courses__add .form__bottom .medicines__settings .settings__form .form__row--columns .columns__column--doze .btn-plus {
+        .medicines__settings .settings__form .form__row--columns .columns__column--time .btn-plus, .medicines__settings .settings__form .form__row--columns .columns__column--doze .btn-plus {
           right: 38px;
           background-image: url("../img/icons/i-plus_round.png");
           background-image: -webkit-image-set(url("../img/icons/i-plus_round.png") 1x, url("../img/icons/i-plus_round@2x.png") 2x, url("../img/icons/i-plus_round@3x.png") 3x);
           background-image: image-set(url("../img/icons/i-plus_round.png") 1x, url("../img/icons/i-plus_round@2x.png") 2x, url("../img/icons/i-plus_round@3x.png") 3x); }
-        .courses__add .form__bottom .medicines__settings .settings__form .form__row--columns .columns__column--time .btn-minus, .courses__add .form__bottom .medicines__settings .settings__form .form__row--columns .columns__column--doze .btn-minus {
+        .medicines__settings .settings__form .form__row--columns .columns__column--time .btn-minus, .medicines__settings .settings__form .form__row--columns .columns__column--doze .btn-minus {
           left: 28px;
           background-image: url("../img/icons/i-minus_round.png");
           background-image: -webkit-image-set(url("../img/icons/i-minus_round.png") 1x, url("../img/icons/i-minus_round@2x.png") 2x, url("../img/icons/i-minus_round@3x.png") 3x);
           background-image: image-set(url("../img/icons/i-minus_round.png") 1x, url("../img/icons/i-minus_round@2x.png") 2x, url("../img/icons/i-minus_round@3x.png") 3x); }
-      .courses__add .form__bottom .medicines__settings .settings__form .form__row--columns .columns__column--timeAdoze {
+      .medicines__settings .settings__form .form__row--columns .columns__column--timeAdoze {
         display: flex;
         justify-content: flext-start;
         align-items: center; }
-    .courses__add .form__bottom .medicines__settings .settings__form .form__row--duration {
+    .medicines__settings .settings__form .form__row--duration {
       position: relative; }
-      .courses__add .form__bottom .medicines__settings .settings__form .form__row--duration input {
+      .medicines__settings .settings__form .form__row--duration input {
         text-align: center; }
-      .courses__add .form__bottom .medicines__settings .settings__form .form__row--duration .btn-prev,
-      .courses__add .form__bottom .medicines__settings .settings__form .form__row--duration .btn-next {
+      .medicines__settings .settings__form .form__row--duration .btn-prev,
+      .medicines__settings .settings__form .form__row--duration .btn-next {
         position: absolute;
         bottom: 16px;
         width: 24px;
@@ -1800,22 +2078,22 @@ input[type="time"]::-webkit-calendar-picker-indicator {
         background-image: image-set(url("../img/icons/i-chevron_down.png") 1x, url("../img/icons/i-chevron_down@2x.png") 2x, url("../img/icons/i-chevron_down@3x.png") 3x);
         background-position: 50%;
         background-repeat: no-repeat; }
-      .courses__add .form__bottom .medicines__settings .settings__form .form__row--duration .btn-prev {
+      .medicines__settings .settings__form .form__row--duration .btn-prev {
         left: 16px;
         transform: rotate(90deg); }
-      .courses__add .form__bottom .medicines__settings .settings__form .form__row--duration .btn-next {
+      .medicines__settings .settings__form .form__row--duration .btn-next {
         right: 16px;
         transform: rotate(-90deg); }
-    .courses__add .form__bottom .medicines__settings .settings__form .form__row--days {
+    .medicines__settings .settings__form .form__row--days {
       display: flex;
       justify-content: space-between;
       align-items: center; }
-      .courses__add .form__bottom .medicines__settings .settings__form .form__row--days input {
+      .medicines__settings .settings__form .form__row--days input {
         display: none; }
-        .courses__add .form__bottom .medicines__settings .settings__form .form__row--days input:checked + label {
+        .medicines__settings .settings__form .form__row--days input:checked + label {
           background-color: #fff;
           opacity: 1; }
-      .courses__add .form__bottom .medicines__settings .settings__form .form__row--days label {
+      .medicines__settings .settings__form .form__row--days label {
         display: block;
         width: 48px;
         height: 48px;
@@ -1829,11 +2107,11 @@ input[type="time"]::-webkit-calendar-picker-indicator {
         border-radius: 25px;
         background-color: #dbdfe4;
         opacity: 0.5; }
-    .courses__add .form__bottom .medicines__settings .settings__form .form__row--submit {
+    .medicines__settings .settings__form .form__row--submit {
       display: flex;
       justify-content: space-between;
       align-items: center; }
-      .courses__add .form__bottom .medicines__settings .settings__form .form__row--submit input {
+      .medicines__settings .settings__form .form__row--submit input {
         flex: 0 0 calc(50% - 16px); }
 
 .courses__medicines {
@@ -1974,6 +2252,86 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     height: 27px; }
  
 
+  /*Medicines*/
+  .medicines__list .card {
+    padding: 14px 14px 14px 24px; }
+    .medicines__list .card .medicine__time {
+      margin-right: 24px;
+      font-size: 16px; }
+    .medicines__list .card .medicine__item {
+      margin-bottom: 24px; }
+    .medicines__list .card .medicine__text {
+      padding: 0 24px; }
+    .medicines__list .card .medicine__name {
+      font-size: 14px; }
+    .medicines__list .card .medicine__quantity, .medicines__list .card .medicine__period {
+      font-size: 12px; }
+    .medicines__list .card .medicine__image .image {
+      width: 40px;
+      height: 40px; }
+  .medicines__popup .medicines__list .card .medicine__image {
+    margin-right: 18px; }
+  .medicines__popup .medicines__list .card .medicine__name {
+    font-size: 18px; }
+  .medicines__popup .medicines__noresults {
+    padding-top: 64px; }
+    .medicines__popup .medicines__noresults .noresults__btns .btn-add {
+      padding: 16px; }
+      .medicines__popup .medicines__noresults .noresults__btns .btn-add .icons:before {
+        width: 44px;
+        height: 44px; }
+      .medicines__popup .medicines__noresults .noresults__btns .btn-add .text {
+        font-size: 18px; }
+  .medicines__page .medicines__search {
+    margin-bottom: 24px; }
+    .medicines__page .medicines__search .search__form {
+      margin: 0 auto;
+      max-width: 500px; }
+  .medicines__page .medicines__list {
+    display: flex;
+    justify-content: flex-start;
+    align-items: start;
+    flex-wrap: wrap;
+    margin: 0 -12px; }
+    .medicines__page .medicines__list .list__item {
+      margin-bottom: 16px;
+      padding-right: 12px;
+      padding-left: 12px;
+      flex: 0 0 325px; }
+  .medication .content__top .top__btns .btn-medsRemove {
+    padding: 14px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.1px;
+    color: #fff;
+    background-color: #ff765f;
+    border-radius: 100px; }
+  .medication__form {
+    max-width: 430px; }
+  .medication__gallery {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch; }
+    .medication__gallery .gallery__main {
+      margin-bottom: 0;
+      margin-right: 30px;
+      flex: 0 0 315px;
+      width: 315px; }
+    .medication__gallery .gallery__thumbnails {
+      flex: 0 0 85px;
+      width: 85px; }
+      .medication__gallery .gallery__thumbnails .slider__item {
+        margin-right: 0;
+        margin-bottom: 10px; }
+        .medication__gallery .gallery__thumbnails .slider__item .form__label--gallery:before {
+          margin-right: 0;
+          width: 85px;
+          height: 85px; }
+      .medication__gallery .gallery__thumbnails .slider__small {
+        height: 100%; }
+      .medication__gallery .gallery__thumbnails .slick-track {
+        flex-direction: column; }
+  /*Medicines*/
   /*Notififcations*/
   .notififcations__page .notififcations__list {
     margin: 0 auto;
@@ -2313,6 +2671,28 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 @media only screen and (min-width: 1440px) {
 
+  /*Medicines*/
+  .medicines .content__top .top__btns .btn-medsAdd {
+    display: inline-block; }
+  .medicines__list .card {
+    padding: 18px 18px 18px 36px; }
+    .medicines__list .card .medicine__time {
+      margin-right: 36px;
+      font-size: 14px; }
+    .medicines__list .card .medicine__item {
+      margin-bottom: 40px; }
+    .medicines__list .card .medicine__text {
+      padding: 0 32px; }
+    .medicines__list .card .medicine__name {
+      font-size: 18px; }
+    .medicines__list .card .medicine__quantity, .medicines__list .card .medicine__period {
+      font-size: 14px; }
+    .medicines__list .card .medicine__image .image {
+      width: 52px;
+      height: 52px; }
+  .medicines__page .medicines__list .list__item {
+    flex: 0 0 430px; }
+  /*Medicines*/
   /*Notififcations*/
   .notififcations__page .notififcations__list {
     margin: 0 auto;

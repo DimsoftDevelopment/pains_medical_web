@@ -10,7 +10,7 @@ const Duration = ({duration, setDuration}) => {
   };
   return (
     <div className="form__row form__row--duration">
-      <label className="settings__label">Duration</label>
+      <label className="form__label">Duration</label>
       <input
         className="form__input"
         type="text"

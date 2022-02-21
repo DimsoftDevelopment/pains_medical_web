@@ -5,6 +5,7 @@ import {
   getNotifications
 } from './actions'
 import moment from 'moment'
+import { Link } from 'react-router-dom'
 
 const Appointments = () => {
   const dispatch = useDispatch()
@@ -36,7 +37,8 @@ const Appointments = () => {
                   <div className="card">
                     <div className="notififcation__time">{moment(item.attributes.create_at).format('HH:MM')}</div>
                     <span className="card__text">
-                      <a className="notififcation__patient" href="patient.html">name</a>
+                      <Link className="notififcation__patient" to={`/patients/${item.attributes.user_id}`}>{item.attributes.user_name}</Link>
+                      {' '}
                       <span className="notififcation__text">{item.attributes.message}</span>
                     </span>
                   </div>
