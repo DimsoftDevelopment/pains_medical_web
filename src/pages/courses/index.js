@@ -33,7 +33,7 @@ const Courses = () => {
     all_reception_dates,
     mised_reception_dates,
   } = useSelector(({dashboardState}) => dashboardState);
-  const [selectedUser, setSelectedUser] = useState(user.user_type === 'doctor' ? patientsList[0].id : null)
+  const [selectedUser, setSelectedUser] = useState(user.user_type === 'doctor' ? patientsList[0]?.id : null)
   const {courses} = useSelector(({coursesState}) => coursesState);
   const isEmpty = courses.length === 0;
   const [filteredCourses, setFilteredCourses] = useState({past: [], current: []})
@@ -94,10 +94,9 @@ const Courses = () => {
             </ul>
           </div>
         </section>}
-        {isEmpty && (
+        {isEmpty ?
           <EmptyList />
-        )}
-        {!isEmpty && (
+        : (
           <section className="courses">
             <div className="courses__page">
               <div className="courses__tabs">

@@ -22,7 +22,6 @@ const InviteMember = ({handleCloseModal, handleInvite}) => {
       additionalClassNames="tac"
       showCloseButton
       handleCloseModal={handleCloseModal}
-
     >
       <form className="form form--popup" onSubmit={handleSubmit(handleInvite)}>
         <div className="form__row">

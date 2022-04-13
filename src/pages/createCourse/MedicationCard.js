@@ -10,11 +10,11 @@ const MedicationCard = ({medication, handleMedDetails, selectedMedication}) => {
     <li className="list__item">
       <button className="card btns" onClick={getMedication} >
         <figure className="medicine__image">
-          <img
+          {attachments[0]?.file_thumb_url && <img
             className="image"
             src={`${config.REACT_APP_IMAGE_URL}${attachments[0]?.file_thumb_url}`}
             alt={`attachment`}
-          />
+          />}
         </figure>
         <div className="medicine__info">
           <span className="medicine__name">{medication.title}</span>

@@ -183,5 +183,5 @@ function* handleInviteMember(action) {
 export function* watchPatientsSagas() {
   yield takeEvery(PATIENTS_ACTIONS.GET_PATIENTS_LIST, handleGetPatientsList);
   yield takeEvery(PATIENTS_ACTIONS.GET_PATIENT, handleGetPatient);
-  yield takeEvery(PATIENTS_ACTIONS.INVITE_MEMBER, handleInviteMember);
+  yield takeEvery(PATIENTS_ACTIONS.INVITE_MEMBER_DOCTOR, handleInviteMember);
 }

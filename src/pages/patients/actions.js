@@ -31,15 +31,15 @@ export const getPatientError = error => ({
 })
 
 export const inviteMember = phone => ({
-  type: PATIENTS_ACTIONS.INVITE_MEMBER,
+  type: PATIENTS_ACTIONS.INVITE_MEMBER_DOCTOR,
   payload: { phone },
 })
 
 export const inviteMemberSuccess = () => ({
-  type: PATIENTS_ACTIONS.INVITE_MEMBER_SUCCESS,
+  type: PATIENTS_ACTIONS.INVITE_MEMBER_DOCTOR_SUCCESS,
 })
 
 export const inviteMemberError = error => ({
-  type: PATIENTS_ACTIONS.INVITE_MEMBER_ERROR,
+  type: PATIENTS_ACTIONS.INVITE_MEMBER_DOCTOR_ERROR,
   payload: { error },
 })

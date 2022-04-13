@@ -63,10 +63,11 @@ const CreateCourse = () => {
     if(patientsList.length > 0 && course.user_id) setSelectedUser(patientsList.find(item => item.id === course.user_id).attributes)
   }, [course, patientsList])
 
-  const handleUpdateCourse = courseData => {
+  const handleUpdateCourse = e => {
+    e.preventDefault()
     const newCourseData = {
       ...newCourse,
-      title: courseData.title,
+      // title: courseData.title,
     };
     dispatch(createCourse(newCourseData));
   };
@@ -178,8 +179,8 @@ const CreateCourse = () => {
 						</div>
             <button
               className="btns btn-save btn-cta"
-              type="submit"
-              onClick={e => document.getElementById('formToSubmit').submit()}
+              type='submit'
+              form="formToSubmit"
             >
               CREATE COURSE
             </button>
@@ -188,13 +189,13 @@ const CreateCourse = () => {
       <div className="content__block">
         <section className="courses">
           <div className="course__form">
-            <form className="courses__add" id="formToSubmit" onSubmit={handleSubmit(handleUpdateCourse)}>
+            <form className="courses__add" id="formToSubmit" onSubmit={handleUpdateCourse}>
               <div className="course__form">
                 {user.user_type === 'doctor' &&
                 <div className="from__block form__block--patient">
                   <div className="form__row form__row--columns">
                     <div className="row__column row__column--2">
-                      <button className="course__patient btns" onClick={() => selectedUser ? disSelectUser() : setShowUserSelect(true)} disabled={showUserSelect}>
+                      <button type='button' className="course__patient btns" onClick={() => selectedUser ? disSelectUser() : setShowUserSelect(true)} disabled={showUserSelect}>
                         <figure className="patient__avatar">
                           {selectedUser && <img style={{borderRadius: '50%'}} className="image" src={selectedUser.avatar_url ? `${config.REACT_APP_IMAGE_URL}${selectedUser.avatar_url}` : defaultAvatar} alt={selectedUser.email} />}
                         </figure>
@@ -276,7 +277,7 @@ const CreateCourse = () => {
                       </div>
                       <div className="popup__block popup--patient patients__popup">
                         <div className="block__top">
-                          <button className="btns btn-close" onClick={() => setShowUserSelect(false)}>
+                          <button type='button' className="btns btn-close" onClick={() => setShowUserSelect(false)}>
                             <i className="icons i24x24 i-close"></i>
                           </button>
                         </div>
@@ -309,7 +310,7 @@ const CreateCourse = () => {
                       </div>
                       <div className="popup__block popup--medicine medicines__popup">
                         <div className="block__top">
-                          <button className="btns btn-close" onClick={() => setShowMedications(false)} data-toggle="class" data-target="#popups" data-classes="medicine">
+                          <button type='button' className="btns btn-close" onClick={() => setShowMedications(false)}>
                             <i className="icons i24x24 i-close"></i>
                           </button>
                         </div>

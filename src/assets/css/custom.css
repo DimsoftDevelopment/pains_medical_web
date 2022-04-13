@@ -259,7 +259,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
           height: 100%;
           -o-object-fit: cover;
           object-fit: cover;
-          objct-position: center; }
+          object-position: center; }
     .medicines__list .card .medicine__store {
       text-align: right; }
     .medicines__list .card.taken, .medicines__list .card.missed {
@@ -2040,7 +2040,11 @@ input[type="time"]::-webkit-calendar-picker-indicator {
         position: relative; }
         .medicines__settings .settings__form .form__row--columns .columns__column--time .form__input, .medicines__settings .settings__form .form__row--columns .columns__column--doze .form__input {
           padding: 24px 24px 25px 24px;
-          text-align: center; }
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
         .medicines__settings .settings__form .form__row--columns .columns__column--time .btn-plus,
         .medicines__settings .settings__form .form__row--columns .columns__column--time .btn-minus, .medicines__settings .settings__form .form__row--columns .columns__column--doze .btn-plus,
         .medicines__settings .settings__form .form__row--columns .columns__column--doze .btn-minus {

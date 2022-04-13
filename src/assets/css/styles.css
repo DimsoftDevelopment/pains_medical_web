@@ -884,15 +884,15 @@ button {
   .medicines__list .card .medicine__image {
     display: flex;
     justify-content: center;
-    align-items: center; }
+    align-items: center;
+    background-image: url("../img/icons/i-camera_2.png");
+    background-color: rgba(43, 132, 235, 0.1);
+    background-size: 24px 20px;
+    background-position: 50%;
+    background-repeat: no-repeat; }
     .medicines__list .card .medicine__image .image {
       width: 52px;
-      height: 52px;
-      background-color: rgba(43, 132, 235, 0.1);
-      background-image: url("../img/icons/i-camera_2.png");
-      background-size: 24px 20px;
-      background-position: 50%;
-      background-repeat: no-repeat; }
+      height: 52px;}
   .medicines__list .card .medicine__store {
     text-align: right; }
   .medicines__list .card.taken, .medicines__list .card.missed {
@@ -1735,7 +1735,11 @@ button {
         position: relative; }
         .courses__add .form__bottom .medicines__settings .settings__form .form__row--columns .columns__column--time .form__input, .courses__add .form__bottom .medicines__settings .settings__form .form__row--columns .columns__column--doze .form__input {
           padding: 24px 24px 25px 24px;
-          text-align: center; }
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
         .courses__add .form__bottom .medicines__settings .settings__form .form__row--columns .columns__column--time .btn-plus,
         .courses__add .form__bottom .medicines__settings .settings__form .form__row--columns .columns__column--time .btn-minus, .courses__add .form__bottom .medicines__settings .settings__form .form__row--columns .columns__column--doze .btn-plus,
         .courses__add .form__bottom .medicines__settings .settings__form .form__row--columns .columns__column--doze .btn-minus {

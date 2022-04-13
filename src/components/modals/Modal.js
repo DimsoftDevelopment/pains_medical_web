@@ -17,7 +17,7 @@ const Modal = ({
         <div className={`popup__block ${className ? `popup--${className}` : ""} ${additionalClassNames}`}>
           {showCloseButton && (
             <div className="block__top">
-              <button className="btn btn-close" onClick={handleCloseModal}></button>
+              <button className="btn btn-close" onClick={handleCloseModal} style={{fontSize: 24}}>&#10005;</button>
             </div>
           )}
           <div className="block__title tac">
