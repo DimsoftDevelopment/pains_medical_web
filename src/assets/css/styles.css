@@ -889,7 +889,9 @@ button {
     background-color: rgba(43, 132, 235, 0.1);
     background-size: 24px 20px;
     background-position: 50%;
-    background-repeat: no-repeat; }
+    background-repeat: no-repeat;
+    width: 52px;
+    height: 52px; }
     .medicines__list .card .medicine__image .image {
       width: 52px;
       height: 52px;}
