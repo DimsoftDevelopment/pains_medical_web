@@ -31,7 +31,8 @@ const Appointments = () => {
     dispatch(addAppointment({
       place: data.place,
       user_id: data.user_id,
-      start_date: new Date(`${data.start_date.split('T')[0]}T${data.time}`).toISOString()
+      start_date: new Date(`${data.start_date.split('T')[0]}T${data.time}`).toISOString(),
+      end: () => setShowModal(false)
     }))
   }
 

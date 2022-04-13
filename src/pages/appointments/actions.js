@@ -15,9 +15,9 @@ export const getAppointmentsFail = error => ({
   payload: { error }
 })
 
-export const addAppointment = ({ place, start_date, user_id }) => ({
+export const addAppointment = ({ place, start_date, user_id, end }) => ({
   type: APPOINTMENTS_ACTIONS.CREATE_APPOINTMENT,
-  payload: { place, start_date, user_id }
+  payload: { place, start_date, user_id, end }
 })
 
 export const addAppointmentSuccess = ({ place, start_date, user_id }) => ({

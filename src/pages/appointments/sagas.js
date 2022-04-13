@@ -4,15 +4,19 @@ import {
   getAppointmentsSuccess,
   getAppointmentsFail,
   addAppointmentSuccess,
-  addAppointmentFail
+  addAppointmentFail,
+  getAppointments
 } from './actions';
 import {
+  toggleNotification,
   togglePinModal,
 } from '../pageWrapper/actions';
 import {logout} from '../auth/actions';
 import {processRequest} from '../../services/Api';
 import {getUrl} from '../../services/GetUrl';
 import { convertDates } from '../../services/DateHelper';
+import { push } from 'connected-react-router';
+import { ROUTES } from '../../router/routes';
 
 function* handleGetAppointments(action) {
   try {
@@ -67,7 +71,7 @@ function* handleGetAppointments(action) {
 function* handleCreateAppointment(action) {
   try {
     const {payload} = action || {};
-    const { start_date, user_id, place } = payload || {}
+    const { start_date, user_id, place, end } = payload || {}
     const appointment = {
       appointment: {
         start_date,
@@ -78,7 +82,12 @@ function* handleCreateAppointment(action) {
     const {data} = yield call(processRequest, '/appointments', 'POST', appointment)
     console.log('RESPONSE: ', data)
     if (data.appointment) {
-      yield put(addAppointmentSuccess());
+      end()
+      yield put(addAppointmentSuccess(data.appointment))
+      yield put(getAppointments(start_date))
+      yield put(toggleNotification({
+        title: 'Success!'
+      }))
     } else {
       yield put(addAppointmentFail(data));
     }
