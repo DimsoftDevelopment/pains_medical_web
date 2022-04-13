@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const TextInput = ({
   label,
-  register,
+  register = () => {},
   name,
   required,
   placeholder,
@@ -12,12 +12,16 @@ const TextInput = ({
   defaultValue,
   containerClassName,
   multyline,
+  value,
+  onChange = () => {}
 }) => {
   return (
     <div className={containerClassName ? containerClassName : "form__row"}>
       <label className="form__label" htmlFor={id}>{label}</label>
       {multyline ? (
         <textarea
+          value={value}
+          onChange={onChange}
           {...register(name, {required})}
           className="form__textarea"
           id={id}
@@ -27,6 +31,8 @@ const TextInput = ({
         />
       ) : (
         <input
+          value={value}
+          onChange={onChange}
           {...register(name, {required})}
           className="form__input"
           id={id}

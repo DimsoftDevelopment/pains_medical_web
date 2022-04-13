@@ -45,7 +45,7 @@ const PhoneModal = () => {
             <p className="input-error-message">Phone number is invalid.</p>
           )}
           {errors.phone && errors.phone.type !== 'phoneNumber' && (
-            <p className="input-error-message">{errors.phone}</p>
+            <p className="input-error-message">{errors.phone.message}</p>
           )}
         </div>
         <div className="form__row form__row--text tac">

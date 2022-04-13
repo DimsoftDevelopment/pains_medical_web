@@ -255,7 +255,7 @@ const EditMedication = ({match, history}) => {
                 </div>
                 <div className="create__btns">
                   {medication.id ?
-                    <button className="btns btn-course">CREATE COURSE</button>
+                    <button className="btns btn-course">EDIT</button>
                   :
                     <>
                     <button className='btns btn-medsRemove'>cancel</button>

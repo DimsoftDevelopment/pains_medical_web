@@ -152,7 +152,7 @@ const PageWrapper = ({children, className, showSideBar}) => {
                       to={ROUTES.NOTIFICATIONS}
                       title="Notifications"
                     >
-                      <i className="icons icons-nobackground i32x32 i-notifications"></i> Notifications			
+                      <i className="icons icons-nobackground i32x32 i-bell" style={{opacity: 0.5}}></i> Notifications			
                     </Link>
                     <i className="notification notes"></i>
                   </li>

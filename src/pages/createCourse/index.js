@@ -176,18 +176,19 @@ const CreateCourse = () => {
 						<div className="top__title">
 							Create Courses
 						</div>
+            <button
+              className="btns btn-save btn-cta"
+              type="submit"
+              onClick={e => document.getElementById('formToSubmit').submit()}
+            >
+              CREATE COURSE
+            </button>
 					</div>
 				</div>
       <div className="content__block">
         <section className="courses">
           <div className="course__form">
-            <form className="courses__add" onSubmit={handleSubmit(handleUpdateCourse)}>
-              <button
-                className="btns btn-save btn-cta"
-                type="submit"
-              >
-                CREATE COURSE
-              </button>
+            <form className="courses__add" id="formToSubmit" onSubmit={handleSubmit(handleUpdateCourse)}>
               <div className="course__form">
                 {user.user_type === 'doctor' &&
                 <div className="from__block form__block--patient">
@@ -206,7 +207,8 @@ const CreateCourse = () => {
                 <div className="form__top">
                   <div className="form__row form__row--columns">
                     <TextInput
-                      register={register}
+                      value={newCourse.title}
+                      onChange={e => setNewCourse(prev => ({...prev, title: e.target.value}))}
                       required
                       name="title"
                       placeholder="Course"

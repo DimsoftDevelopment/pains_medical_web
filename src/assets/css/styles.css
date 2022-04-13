@@ -1974,9 +1974,10 @@ button {
 /*SideBar*/
 .sidebar {
   padding: 24px 32px;
-  flex: 0 0 315px;
-  margin-left: 45px;
-  width: 315px;
+  /* flex: 0 0 315px; */
+  flex: 0 0 350px;
+  /* margin-left: 45px; */
+  /* width: 315px; */
   box-shadow: 2px 0 16px 0 rgba(0, 0, 0, 0.2);
   background-color: #ffffff;
   z-index: 1; }
@@ -1993,7 +1994,9 @@ button {
     position: sticky;
     top: 0;
     bottom: 0;
-    padding: 32px 0 64px 0; }
+    /* padding: 32px 0 64px 0; */
+    padding: 64px 0;
+  }
     .sidebar__nav .menu__list {
       list-style: none; }
       .sidebar__nav .menu__list--main {
