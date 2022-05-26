@@ -16,7 +16,7 @@ const Meds = () => {
   const { patientsList } = useSelector(({patientsState}) => patientsState)
   const { user } = useSelector(({authState}) => authState)
   const [searchValue, setSearchValue] = useState('');
-  const [selectedUser, setSelectedUser] = useState(user.user_type === 'doctor' ? patientsList[0].id : user.id)
+  const [selectedUser, setSelectedUser] = useState(user.user_type === 'doctor' ? patientsList[0]?.id : user.id)
   const dispatch = useDispatch();
   const {meds, meta, medication} = useSelector(({medsState}) => medsState);
   const isEmpty = meds.length === 0;
