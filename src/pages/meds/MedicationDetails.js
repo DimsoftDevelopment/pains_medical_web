@@ -1,8 +1,11 @@
 import React, {useState, useEffect} from "react";
 import classNames from "classnames";
 import {config} from '../../config';
+import { useHistory } from "react-router-dom";
+import {ROUTES} from '../../router/routes';
 
 const MedicationDetails = ({medication, handleEdit}) => {
+  const history = useHistory()
   const attachments = medication.attachments.data.map(attachment => attachment.attributes);
   const firstImage = attachments.length > 0 ? attachments[0].file_url : '';
   const [bigImage, setBigImage] = useState(firstImage);
@@ -169,6 +172,7 @@ const MedicationDetails = ({medication, handleEdit}) => {
             EDIT MEDICINE
           </button>
           <button
+          onClick={() => history.push(ROUTES.CREATE_COURSE)}
             className="btns btn-create"
           >
             CREATE COURSE

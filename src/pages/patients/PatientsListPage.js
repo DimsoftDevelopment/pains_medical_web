@@ -25,6 +25,7 @@ const PatientsListPage = ({
   };
   const handleInvite = ({phone}) => {
     dispatch(inviteMember(phone));
+    toggleModal()
   };
 
   return (

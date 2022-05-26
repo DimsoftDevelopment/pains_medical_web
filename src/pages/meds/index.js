@@ -16,7 +16,7 @@ const Meds = () => {
   const { patientsList } = useSelector(({patientsState}) => patientsState)
   const { user } = useSelector(({authState}) => authState)
   const [searchValue, setSearchValue] = useState('');
-  const [selectedUser, setSelectedUser] = useState(user.user_type === 'doctor' ? patientsList[0].id : null)
+  const [selectedUser, setSelectedUser] = useState(user.user_type === 'doctor' ? patientsList[0].id : user.id)
   const dispatch = useDispatch();
   const {meds, meta, medication} = useSelector(({medsState}) => medsState);
   const isEmpty = meds.length === 0;
@@ -38,6 +38,9 @@ const Meds = () => {
   useEffect(() => {
     dispatch(getMeds({...meta, user_id: selectedUser}));
   }, [selectedUser]);
+  useEffect(() => {
+    if(meds.length) dispatch(getMedication(meds[0].id))
+  }, [meds])
   return (
     <PageWrapper showSideBar className={PageWrapper.WrapperClassNames.meds}>
       <div className="content__top">

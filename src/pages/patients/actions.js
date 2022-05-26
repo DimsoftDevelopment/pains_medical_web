@@ -1,5 +1,18 @@
 import { PATIENTS_ACTIONS } from './constants'
 
+export const deletePatient = id => ({
+  type: PATIENTS_ACTIONS.DELETE_PATIENT,
+  payload: { id }
+})
+export const deletePatientSuccess = () => ({
+  type: PATIENTS_ACTIONS.DELETE_PATIENT_SUCCESS,
+  payload: {  }
+})
+export const deletePatientFail = error => ({
+  type: PATIENTS_ACTIONS.DELETE_PATIENT_FAIL,
+  payload: { error }
+})
+
 export const getPatientsList = query => ({
   type: PATIENTS_ACTIONS.GET_PATIENTS_LIST,
   payload: { query }

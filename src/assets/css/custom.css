@@ -3,6 +3,54 @@
   height: unset;
 }
 
+.medicines__list .card {
+  margin-bottom: 15px;
+}
+
+.shit1 {
+  position: relative;
+}
+
+.shit1 .delete {
+  position: absolute;
+  display: none;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  font-size: 24px;
+  font-weight: 400;
+  height: 18px;
+  line-height: 18px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.shit1:hover .delete {
+  display: block;
+}
+
+#days {
+  overflow-x: scroll;
+}
+
+.no_notifications {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.create__btns-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+} .medicines__create .create__content .create__btns.create__btns-flex .btns {
+  margin: 0;
+  min-width: unset;
+  padding: 24px 0;
+  flex: 1;
+}
+
 .schedule__block > .block__title {
   order: 0!important;
 }
@@ -1393,6 +1441,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 .form .form__input--pin {
   width: 60px;
+  height: 60px;
   text-align: center; }
 
 .form .form__textarea {

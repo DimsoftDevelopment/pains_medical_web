@@ -10,6 +10,9 @@ const PROFILE_ACTIONS = KeyMirror({
   DELETE_ACCOUNT: null,
   DELETE_ACCOUNT_SUCCESS: null,
   DELETE_ACCOUNT_ERROR: null,
+  CHANGE_PASS: null,
+  CHANGE_PASS_SUCCESS: null,
+  CHANGE_PASS_ERROR: null
 });
 const INITIAL_STATE = {
   error: null,

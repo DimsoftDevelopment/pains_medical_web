@@ -20,8 +20,10 @@ const Dashboard = () => {
   const [selectedReception, setSelectedReception] = useState(null);
   const dispatch = useDispatch();
   const toggleModal = reception => {
-    setSelectedReception(reception);
-    setShowModal(!showModal);
+    if(user.user_type !== 'doctor') {
+      setSelectedReception(reception);
+      setShowModal(!showModal);
+    }
   };
   const {familyList} = useSelector(({familyState}) => familyState)
   const { patientsList } = useSelector(({patientsState}) => patientsState)
@@ -126,7 +128,7 @@ const Dashboard = () => {
       {showModal && (
         <TakePill
           reception={selectedReception}
-          handleCloseModal={toggleModal}
+          handleCloseModal={() => setShowModal(prev => false)}
           isMissed={selectedReception.isMissed}
           isTaken={selectedReception.isTaken}
         />

@@ -231,6 +231,7 @@ const EditMedication = ({match, history}) => {
                     label=""
                     register={register}
                     type="number"
+                    onChange={e => { if(Number(e.target.value) < 0) e.target.value = 0}}
                   />
                   <div className="reminder">
                     <div className="reminder__text">
@@ -253,7 +254,7 @@ const EditMedication = ({match, history}) => {
                     </div>
                   </div>
                 </div>
-                <div className="create__btns">
+                <div className="create__btns create__btns-flex">
                   {medication.id ?
                     <button className="btns btn-course">EDIT</button>
                   :

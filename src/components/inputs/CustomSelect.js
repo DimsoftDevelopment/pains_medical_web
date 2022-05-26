@@ -12,7 +12,7 @@ const CustomSelect = ({
     data = [],
     label = 'Choose',
     label_className = 'form__label',
-    setValue
+    setValue,
 }) => {
     const [ref, setRef] = useState({})
     const [open, setOpen] = useState(false)
@@ -21,7 +21,7 @@ const CustomSelect = ({
     const handleSelect = e => {
         setOpen(false)
         ref.value = e.target.id
-        if(setValue) setValue(name, e.target.id)
+        if(setValue) setValue(name, e.target.id, { shouldDirty: true })
         if(onChange) {
             const event = {
                 target: {

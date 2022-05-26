@@ -107,7 +107,7 @@ const CreateCourse = () => {
     setShowMedications(true);
   };
   const handleStartDate = start_date => {
-    setNewCourse({
+    if(moment(start_date).isSameOrAfter(new Date(), 'day')) setNewCourse({
       ...newCourse,
       start_date,
     });

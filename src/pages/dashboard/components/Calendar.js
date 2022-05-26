@@ -1,13 +1,28 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import moment from 'moment';
 import classNames from 'classnames';
 import {MONTHS, MONTH_DAYS} from '../constants';
 import {isMissedDay} from '../../courses/helpers';
 import {getCurrentDayDate, convertDatesISO} from '../../../services/DateHelper';
 
+const scrollToCustom = (el) => {
+  const elLeft = el.offsetLeft + el.offsetWidth + el.parentNode.offsetWidth / 2;
+  const elParentLeft = el.parentNode.offsetLeft + el.parentNode.offsetWidth;
+
+  // check if element not in view
+  if (elLeft >= elParentLeft + el.parentNode.scrollLeft) {
+    el.parentNode.scrollLeft = elLeft - elParentLeft;
+  } else if (elLeft <= el.parentNode.offsetLeft + el.parentNode.scrollLeft) {
+    el.parentNode.scrollLeft = el.offsetLeft - el.parentNode.offsetLeft;
+  }
+}
+
 const Calendar = ({onChangeDate, all_reception_dates, mised_reception_dates, hideMonths}) => {
   const [selectedMonth, setSelectedMonth] = useState(moment().month() + 1);
   const [selectedDay, setSelectedDay] = useState(moment().date());
+  useEffect(() => {
+    scrollToCustom(document.getElementById(moment(new Date()).get('D')))
+  }, [])
   const handleMonthSelect = month => () => {
     const {start_date, end_date} = convertDatesISO(selectedDay, month - 1);
     setSelectedMonth(month);
@@ -42,7 +57,7 @@ const Calendar = ({onChangeDate, all_reception_dates, mised_reception_dates, hid
           )}
         </div>
         <div className="calendar__days">
-          <div className="days__list">
+          <div className="days__list" id='days'>
             {days.map(dayData => (
               <button
                 key={dayData.day}
@@ -52,6 +67,7 @@ const Calendar = ({onChangeDate, all_reception_dates, mised_reception_dates, hid
                   past: dayData.isPast,
                   missed: isMissedDay(getCurrentDayDate(selectedMonth, dayData.day), mised_reception_dates),
                 })}
+                id={dayData.day}
               >
                 <div className="month__day">{dayData.day}</div>
                 <div className="week__day">{dayData.weekDay}</div>

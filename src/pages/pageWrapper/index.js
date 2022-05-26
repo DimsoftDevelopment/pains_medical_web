@@ -142,7 +142,7 @@ const PageWrapper = ({children, className, showSideBar}) => {
                     </Link>
                     <i className="notification notes"></i>
                   </li>}
-                  <li className="menu__item @@nclass @@notification">
+                  {user.user_type === 'doctor' && <li className="menu__item @@nclass @@notification">
                     <Link
                       className={
                         classnames("menu__link btns", {
@@ -155,22 +155,20 @@ const PageWrapper = ({children, className, showSideBar}) => {
                       <i className="icons icons-nobackground i32x32 i-bell" style={{opacity: 0.5}}></i> Notifications			
                     </Link>
                     <i className="notification notes"></i>
-                  </li>
-                </ul>
-                <ul className="menu__list menu__list--main">
-                  <li className="menu__item">
-                    <Link
-                      className={
-                        classnames("menu__link btns", {
-                          active: ROUTES.SETTINGS === currentPage
-                        })
-                      }
-                      to={ROUTES.SETTINGS}
-                      title="Setting"
-                    >
-                      <i className="icons i32x32 i-gear"></i> Settings			
-                    </Link>
-                  </li>
+                  </li>}
+                <li className="menu__item">
+                  <Link
+                    className={
+                      classnames("menu__link btns", {
+                        active: ROUTES.SETTINGS === currentPage
+                      })
+                    }
+                    to={ROUTES.SETTINGS}
+                    title="Settings"
+                  >
+                    <i className="icons i32x32 i-gear"></i> Settings			
+                  </Link>
+                </li>
                 </ul>
                 <ul className="menu__list menu__list--last">
                   <li className="menu__item">

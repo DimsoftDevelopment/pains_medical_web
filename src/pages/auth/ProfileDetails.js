@@ -10,10 +10,17 @@ import SubmitButton from '../../components/buttons/SubmitButton';
 import AvatarInput from '../../components/inputs/AvatarInput';
 import {ROUTES} from '../../router/routes';
 import {signUp} from './actions';
+import CustomSelect from '../../components/inputs/CustomSelect'
 
 const ProfileDetails = () => {
+  const selectArr = [
+    {value: 'male', text: 'Male'},
+    {value: 'female', text: 'Female'},
+    {value: 'other', text: 'Other'},
+  ]
+
   const [avatarData, setAvatar] = useState({});
-  const {handleSubmit, register, control} = useForm();
+  const {handleSubmit, register, setValue, control} = useForm();
   const dispatch = useDispatch();
   const {user} = useSelector(({authState}) => authState);
   const handleAvatar = event => {
@@ -59,10 +66,7 @@ const ProfileDetails = () => {
           defaultValue=""
         />
         <div className="form__row form__row--columns">
-          <GenderInput
-            defaultValue=''
-            register={register}
-          />
+          <CustomSelect id='gender' label='Gender' className='form__column--2' defaultName='Gender' name='gender' required={true} register={register} setValue={setValue} data={selectArr} />
           <Controller
             control={control}
             id="birthday"

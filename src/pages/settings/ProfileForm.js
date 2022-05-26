@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {useForm, Controller} from 'react-hook-form';
 import PhoneInput from 'react-phone-number-input';
-import {updateProfile, changeAvatar} from './actions';
+import {updateProfile, changeAvatar, changePass} from './actions';
 import {logout} from '../auth/actions';
 import PinModal from '../../components/modals/PinModal';
 import DeleteAccount from '../../components/modals/DeleteAccount';
@@ -30,6 +30,7 @@ import familyIcon2x from '../../assets/img/icons/i-users@2x.png';
 import familyIcon3x from '../../assets/img/icons/i-users@3x.png';
 import CustomSelect from '../../components/inputs/CustomSelect'
 import 'react-phone-number-input/style.css';
+import Modal from '../../components/modals/Modal';
 
 const ProfileForm = () => {
   const {user} = useSelector(({authState}) => authState);
@@ -39,6 +40,12 @@ const ProfileForm = () => {
   });
   const [isPinModalOpened, setPinModalOpened] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [showChangePass, setShowChangePass] = useState(false)
+  const [passData, setPassData] = useState({
+    old_password: '',
+	  password: '',
+	  password_confirmation: ''
+  })
   const selectArr = [
     {value: 'male', text: 'Male'},
     {value: 'female', text: 'Female'},
@@ -57,6 +64,7 @@ const ProfileForm = () => {
     control,
   } = useForm({
     defaultValues: {
+      gender: user.gender || '',
       first_name: user.first_name || "",
       phone: user.phone || "",
       last_name: user.last_name || "",
@@ -67,7 +75,7 @@ const ProfileForm = () => {
       family_track: user.family_track || false,
     },
   });
-  const isDirty = Object.keys(dirtyFields).length > 0;
+  const isDirty = Object.keys(dirtyFields).length > 0
   const onSubmit = formData => {
     dispatch(updateProfile({
       ...formData,
@@ -85,6 +93,7 @@ const ProfileForm = () => {
       }));
     }
   };
+  const toggleChangePass = () => setShowChangePass(prev => !prev)
   const handlePinModal = () => {
     setPinModalOpened(!isPinModalOpened);
   };
@@ -104,6 +113,16 @@ const ProfileForm = () => {
     setAvatar({});
     setAvatarChanged(true);
   };
+  const handlePassChange = e => setPassData(prev => ({...prev, [e.target.name]: e.target.value}))
+  const handlePassChangeSubmit = () => {
+    dispatch(changePass(passData))
+    toggleChangePass()
+    setPassData(prev => ({
+      old_password: '',
+      password: '',
+      password_confirmation: ''
+    }))
+  }
   return (
     <>
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
@@ -134,19 +153,9 @@ const ProfileForm = () => {
           />
           <div className="user__meds">
             <div className="courses">
-              <img
-                src={clipboardIcon}
-                srcSet={`${clipboardIcon2x} 2x, ${clipboardIcon3x} 3x`}
-                alt="Courses"
-              />
               {`${user.courses_count} Courses`}
             </div>
             <div className="medicines">
-              <img
-                src={medicineIcon}
-                srcSet={`${medicineIcon2x} 2x, ${medicineIcon3x} 3x`}
-                alt="Meds"
-              />
               {`${user.medications_count} Meds`}
             </div>
           </div>
@@ -186,7 +195,7 @@ const ProfileForm = () => {
               )}
             </div>
             <div className="form__row form__row--columns">
-              <CustomSelect id='gender' label='Gender' className='form__column--2' defaultName='Gender' name='gender' required={true} register={register} setValue={setValue} data={selectArr} />
+              <CustomSelect id='gender' defaultValue={user.gender} label='Gender' className='form__column--2' defaultName='Gender' name='gender' required={true} register={register} setValue={setValue} data={selectArr} />
               <Controller
                 control={control}
                 id="birthday"
@@ -246,7 +255,7 @@ const ProfileForm = () => {
             />
             <button
               className="btns btn-pin"
-              onClick={handlePinModal}
+              onClick={user.user_type === 'user' ? handlePinModal : toggleChangePass}
               type="button"
             >
               <img
@@ -254,17 +263,12 @@ const ProfileForm = () => {
                 srcSet={`${pinIcon2x} 2x, ${pinIcon3x} 3x`}
                 alt="CodeIcon"
               />
-              Change PIN Code
+              Change {user.user_type === 'user' ? 'PIN Code' : 'Password'}
             </button>
           </div>
-          <div className="form__column--2">
+          {user.user_type === 'user' && <div className="form__column--2">
             <div className="block__title switch__wrapper">
               <div className="switch__text">
-                <img
-                  src={familyIcon}
-                  srcSet={`${familyIcon2x} 2x, ${familyIcon3x} 3x`}
-                  alt="FamilyIcon"
-                />
                 Family Track	
               </div>
               <Switch
@@ -279,7 +283,7 @@ const ProfileForm = () => {
                 Create medical courses for your family members. Control medications presence, track their progress & more.
               </div>
             </div>
-          </div>
+          </div>}
         </div>
         <div className="settings__btns">
           <button
@@ -297,6 +301,20 @@ const ProfileForm = () => {
       {showDeleteModal && (
         <DeleteAccount toggleDeleteModal={toggleDeleteModal} />
       )}
+      {showChangePass && <Modal
+      header='Password Change'
+      className={Modal.ModalClasses.pin}
+      additionalClassNames="tac">
+        <div className='block__inputs'>
+          <TextInput type='password' name='old_password' value={passData.old_password} label='Old Password' onChange={handlePassChange} />
+          <TextInput type='password' name='password' value={passData.password} label='New Password' onChange={handlePassChange} />
+          <TextInput type='password' name='password_confirmation' value={passData.password_confirmation} label='Confirm Password' onChange={handlePassChange} />
+        </div>
+        <div className="block__btns">
+          <button className="btns btn-cancel" onClick={toggleChangePass}>Cancel</button>
+          <button className="btns btn-remove" onClick={handlePassChangeSubmit}>Change</button>
+        </div>
+      </Modal>}
     </>
   );
 };

@@ -22,7 +22,7 @@ const CreateMedication = () => {
   const [searchString, setSearchString] = useState('')
   const {handleSubmit, register} = useForm();
   const handleCreateMedication = data => {
-    dispatch(saveMedicationTitle({...data, user_id: selectedUser?.id}));
+    dispatch(saveMedicationTitle({...data, user_id: selectedUser?.id || user.id}));
     dispatch(push('/edit-medication'));
   };
   const handleBack = () => {

@@ -27,7 +27,7 @@ const CreateAppointment = ({handleCloseModal, handleCreation}) => {
 
   return (
     <Modal
-      title="Make an appointmant"
+      title="Make an appointment"
       className={Modal.ModalClasses.invite}
       additionalClassNames="tac"
       showCloseButton

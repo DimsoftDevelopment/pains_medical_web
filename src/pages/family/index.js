@@ -16,6 +16,7 @@ const Family = () => {
   };
   const handleInvite = ({phone}) => {
     dispatch(inviteMember(phone));
+    toggleModal()
   };
   return (
     <PageWrapper showSideBar className={PageWrapper.WrapperClassNames.family}>

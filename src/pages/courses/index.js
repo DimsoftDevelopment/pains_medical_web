@@ -126,24 +126,24 @@ const Courses = () => {
                 </div>
 								<div className="tabs__content">
 									<div className="tab">
-                    <CoursesList
-                      courses={isPast ? filteredCourses.past : filteredCourses.current}
-                      isPast={isPast}
-                    />
                     {user.user_type === 'user' && 
-                    <>
                       <Calendar
                         onChangeDate={handleDateChange}
                         courses={all_reception_dates}
                         mised_reception_dates={mised_reception_dates}
                       />
+                    }
+                    <CoursesList
+                      courses={isPast ? filteredCourses.past : filteredCourses.current}
+                      isPast={isPast}
+                    />
+                    {user.user_type === 'user' && 
                       <ReceptionMedications
                         receptionMedications={receptionMedications}
                         selectedDate={start_date}
                         coursesPage
                         toggleModal={toggleModal}
                       />
-                    </>
                     }
                   </div>
                 </div>

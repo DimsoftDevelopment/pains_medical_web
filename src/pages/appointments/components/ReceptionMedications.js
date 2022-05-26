@@ -73,7 +73,7 @@ const ReceptionMedications = ({
               Want to create a new Appointment?
             </div>
             <div className="empty__btns">
-              <button className="btns" data-toggle="class" data-target="#popups" data-classes="appointment">MAKE AN APPOINTMENT</button>
+              <button className="btns" onClick={toggleModal}>MAKE AN APPOINTMENT</button>
             </div>
           </div>
         )}

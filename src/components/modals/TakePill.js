@@ -43,6 +43,8 @@ const TakePill = ({reception, handleCloseModal, isMissed, isTaken}) => {
     <Modal
       className={getClassName()}
       additionalClassNames={getAdditionalClassName()}
+      handleCloseModal={handleCloseModal}
+      showCloseButton
     >
       <div className="medicine">
         <div className="medicine__gallery">

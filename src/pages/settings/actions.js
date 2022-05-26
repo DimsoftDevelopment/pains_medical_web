@@ -15,6 +15,21 @@ export const updateProfileError = error => ({
   payload: {error},
 });
 
+export const changePass = data => ({
+  type: PROFILE_ACTIONS.CHANGE_PASS,
+  payload: data,
+});
+
+export const changePassSuccess = () => ({
+  type: PROFILE_ACTIONS.CHANGE_PASS_SUCCESS,
+  payload: {  },
+});
+
+export const changePassError = error => ({
+  type: PROFILE_ACTIONS.CHANGE_PASS_ERROR,
+  payload: {error},
+});
+
 export const changeAvatar = user => ({
   type: PROFILE_ACTIONS.CHANGE_AVATAR,
   payload: {user},

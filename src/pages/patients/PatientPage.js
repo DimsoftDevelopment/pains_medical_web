@@ -1,12 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import PageWrapper from '../pageWrapper'
 import { config } from '../../config'
 import defaultAvatar from '../../assets/img/temp/avatar2.png'
+import moment from 'moment'
+import Modal from '../../components/modals/Modal';
+import { deletePatient } from './actions'
+import { useParams } from 'react-router-dom'
 
 const PatientPage = ({ patient, isLoading }) => {
     const history = useHistory()
+    const dispatch = useDispatch()
+    const [open, setOpen] = useState(false)
+    const toggleOpen = () => setOpen(prev => !prev)
+    const { id } = useParams()
+    const handleRemove = () => {
+        dispatch(deletePatient(id))
+        toggleOpen()
+    }
   return (
     <PageWrapper showSideBar className={PageWrapper.WrapperClassNames.family}>
     {!isLoading && <>
@@ -43,7 +55,7 @@ const PatientPage = ({ patient, isLoading }) => {
                         </div>
                     </div>
                     <div className="info__btns">				
-                    <button className="btns btn-userRemove btn-red" data-toggle="class" data-target="#popups" data-classes="remove">Remove</button>
+                    <button className="btns btn-userRemove btn-red" onClick={toggleOpen}>Remove</button>
                     </div>
                 </div>
                 <div className="patient__data">
@@ -80,7 +92,7 @@ const PatientPage = ({ patient, isLoading }) => {
                                 <div className="row__column row__column--2">
                                     <label className="form__label">Birth Day</label>
                                     <div className="form__text--input">
-                                        {patient?.birthday}
+                                        {moment(patient?.birthday).format('DD MMM YYYY')}
                                     </div>
                                 </div>
                             </div>
@@ -91,6 +103,19 @@ const PatientPage = ({ patient, isLoading }) => {
         </section>
       </div>
     </>}
+    {open && 
+        <Modal
+        header='Delete Account?'
+        className={Modal.ModalClasses.pin}
+        additionalClassNames="tac"
+        >
+            <p>Are you sure?</p>    
+            <div className='block__btns'>
+                <button className='btn-remove' onClick={toggleOpen}>No</button>
+                <button className='btn-remove' onClick={handleRemove}>Yes</button>
+            </div>
+        </Modal>
+    }
     </PageWrapper>
   )
 }

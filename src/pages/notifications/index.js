@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import PageWrapper from '../pageWrapper'
 import {
+  deleteNotification,
   getNotifications
 } from './actions'
 import moment from 'moment'
@@ -18,6 +19,10 @@ const Appointments = () => {
     dispatch(getNotifications())
   }, [dispatch])
 
+  const handleDelete = e => {
+    dispatch(deleteNotification(e.target.id))
+  }
+
   return (
     <PageWrapper
       className={PageWrapper.WrapperClassNames.notifications}
@@ -32,8 +37,10 @@ const Appointments = () => {
         <section className="notififcations">
           <div className="notififcations__page">
             <div className="notififcations__list">
+              {!notifications.length && <p className='no_notifications'>You don't have any notifications</p>}
               {notifications.map(item =>
-                <div className="list__item">
+                <div className="list__item shit1">
+                  <div className='delete' id={item.id} onClick={handleDelete}>×</div>
                   <div className="card">
                     <div className="notififcation__time">{moment(item.attributes.create_at).format('HH:MM')}</div>
                     <span className="card__text">

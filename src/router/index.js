@@ -47,7 +47,7 @@ const Routes = () => {
       <PrivateRoute exact path={ROUTES.CREATE_MEDICATION} component={CreateMedication} />
       <PrivateRoute exact path={ROUTES.SETTINGS} component={Settings} />
       <PrivateRoute exact path={ROUTES.EDIT_MEDICATION} component={EditMedication} />
-      <Redirect from="*" to={ROUTES.SIGN_IN} />
+      <Redirect from="*" to={ROUTES.HOME} />
     </Switch>
   );
 }

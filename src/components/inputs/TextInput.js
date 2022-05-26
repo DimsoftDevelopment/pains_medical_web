@@ -13,7 +13,8 @@ const TextInput = ({
   containerClassName,
   multyline,
   value,
-  onChange = () => {}
+  onChange = () => {},
+  error
 }) => {
   return (
     <div className={containerClassName ? containerClassName : "form__row"}>
@@ -22,7 +23,7 @@ const TextInput = ({
         <textarea
           value={value}
           onChange={onChange}
-          {...register(name, {required})}
+          {...register(name, {required, onChange})}
           className="form__textarea"
           id={id}
           name={name}
@@ -33,14 +34,16 @@ const TextInput = ({
         <input
           value={value}
           onChange={onChange}
-          {...register(name, {required})}
+          {...register(name, {required, onChange})}
           className="form__input"
           id={id}
           type={type}
+          name={name}
           placeholder={placeholder}
           defaultValue={defaultValue}
         />
       )}
+      {error && <p style={{color: 'red'}}>{error}</p>}
     </div>
   );
 }

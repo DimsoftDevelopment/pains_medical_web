@@ -5,7 +5,8 @@ const notificationsState = (state = INITIAL_STATE, action) => {
   const {
     notifications,
     error,
-    meta
+    meta,
+    id
   } = payload || {}
   switch(type) {
     case NOTIFICATIONS_ACTIONS.GET_NOTIFICATIONS:
@@ -23,6 +24,16 @@ const notificationsState = (state = INITIAL_STATE, action) => {
     case NOTIFICATIONS_ACTIONS.GET_NOTIFICATIONS_FAIL:
       return {
         ...state,
+        isLoading: false,
+        error
+      }
+    case NOTIFICATIONS_ACTIONS.DELETE_NOTIFICATION_SUCCESS:
+      let arr = [...state.notifications]
+      let index = arr.findIndex(item => item.id === id)
+      if(index !== -1) arr.splice(index, 1)
+      return {
+        ...state,
+        notifications: [...arr],
         isLoading: false,
         error
       }
