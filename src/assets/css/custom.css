@@ -3,6 +3,36 @@
   height: unset;
 }
 
+.settings__page .settings__row--top {
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.settings__btns {
+  padding-top: 0;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+} .settings__btns .btn.btn-delete {
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.1px;
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  box-shadow: 0 7px 20px 0 rgb(216 223 225 / 50%);
+  border-radius: 500px;
+}
+
+.fixedbuttoncustom {
+  position: fixed;
+  top: 25px;
+  right: 35px;
+}
+
 .medicines__list .card {
   margin-bottom: 15px;
 }

@@ -11,6 +11,8 @@ const DatePickerInput = ({
   onChange,
   containerClassName,
   disabled,
+  maxDate,
+  minDate
 }) => {
   const handleDateChange = date => {
     onChange(moment(date).toISOString());
@@ -19,6 +21,8 @@ const DatePickerInput = ({
     <div className={containerClassName ? containerClassName : "columns__column--2"}>
       <label className="form__label" htmlFor="uBday">{label || 'Birth day'}</label>
       <DatePicker
+        maxDate={maxDate && new Date()}
+        minDate={minDate && new Date()}
         name={name}
         selected={moment(value).toDate()}
         onChange={handleDateChange}

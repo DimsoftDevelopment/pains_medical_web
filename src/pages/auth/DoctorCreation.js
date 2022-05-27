@@ -112,6 +112,7 @@ const DoctorCreation = () => {
           <div className="form__row">
             <TextInput
               register={register}
+              onChange={e => { if(Number(e.target.value) < 0) e.target.value = 0}}
               name="imc_number"
               placeholder="43242233"
               type="number"

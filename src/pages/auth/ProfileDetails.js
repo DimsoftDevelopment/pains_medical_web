@@ -77,6 +77,7 @@ const ProfileDetails = () => {
                 onBlur={field.onBlur}
                 onChange={field.onChange}
                 value={field.value}
+                maxDate
               />
             )}
           />

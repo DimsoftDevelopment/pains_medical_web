@@ -12,7 +12,7 @@ const PrivateRoute = (props) => {
   return user && token ? (
     <Route {...props } />
   ) : (
-    <Redirect to={ROUTES.SIGN_IN} />
+    <Redirect to={ROUTES.HOME} />
   );
 }
 

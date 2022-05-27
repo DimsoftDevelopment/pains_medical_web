@@ -53,6 +53,7 @@ const CreateAppointment = ({handleCloseModal, handleCreation}) => {
               name='start_date'
               render={({field}) => (
                 <DatePicker
+                  minDate
                   name={field.name}
                   label='Choose a date'
                   onBlur={field.onBlur}

@@ -77,6 +77,7 @@ const ProfileForm = () => {
   });
   const isDirty = Object.keys(dirtyFields).length > 0
   const onSubmit = formData => {
+    console.log(formData)
     dispatch(updateProfile({
       ...formData,
       id: user.id,
@@ -125,23 +126,28 @@ const ProfileForm = () => {
   }
   return (
     <>
-      <form className="form" onSubmit={handleSubmit(onSubmit)}>
+      {(isDirty || isAvatarChanged) && (
+        <button className="btns btn-blue fixedbuttoncustom" form='profileform' type="submit" >Save</button>
+      )}
+      <form className="form" id='profileform' onSubmit={handleSubmit(onSubmit)}>
         <div className="settings__row settings__row--top">
           <div className="block__title">Account</div>
-          {(isDirty || isAvatarChanged) && (
-            <input
-              className="btns btn-logout"
-              type="submit"
-              value="Save"
-            />
-          )}
-          <button
-            className="btns btn-logout"
-            type="button"
-            onClick={handleLogout}
-          >
-            LOG OUT
-          </button>
+          <div className="settings__btns">
+            <button
+              className="btn btn-delete"
+              type="button"
+              onClick={toggleDeleteModal}
+            >
+              DELETE ACCOUNT
+            </button>
+            <button
+              className="btns btn-blue"
+              type="button"
+              onClick={handleLogout}
+            >
+              LOG OUT
+            </button>
+          </div>
         </div>
         <div className="settings__row settings__row--first">
           <AvatarInput
@@ -284,15 +290,6 @@ const ProfileForm = () => {
               </div>
             </div>
           </div>}
-        </div>
-        <div className="settings__btns">
-          <button
-            className="btn btn-delete"
-            type="button"
-            onClick={toggleDeleteModal}
-          >
-            DELETE ACCOUNT
-          </button>
         </div>
       </form>
       {isPinModalOpened && (

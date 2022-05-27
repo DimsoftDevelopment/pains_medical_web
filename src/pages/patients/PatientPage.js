@@ -111,8 +111,8 @@ const PatientPage = ({ patient, isLoading }) => {
         >
             <p>Are you sure?</p>    
             <div className='block__btns'>
-                <button className='btn-remove' onClick={toggleOpen}>No</button>
-                <button className='btn-remove' onClick={handleRemove}>Yes</button>
+                <button className='btns btn-cancel' onClick={toggleOpen}>No</button>
+                <button className='btns btn-remove' onClick={handleRemove}>Yes</button>
             </div>
         </Modal>
     }
