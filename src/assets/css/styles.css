@@ -2285,7 +2285,8 @@ button {
             height: 13px;
             background: url("../img/icons/i-arrow_right-white.png") no-repeat 50%; }
         .popup__block.popup--medicine .medicine__btns .btn-takeswipe:active span {
-          left: calc(100% - 163px); }
+          left: calc(100% - 163px); 
+        }
   .popup__block.popup--missed .medicine__name, .popup__block.popup--missed .medicine__quantity {
     color: #ff765f; }
   .popup__block.popup--taken .medicine__name, .popup__block.popup--taken .medicine__quantity {

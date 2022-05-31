@@ -3,6 +3,42 @@
   height: unset;
 }
 
+.invitation {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(229, 237, 247, 0.6);
+  backdrop-filter: blur(5px);
+}
+.invitation__card {
+  padding: 60px 50px;
+  border-radius: 10px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.invitation__title {
+  font-weight: 600;
+  font-size: 24px;
+}
+.invitation__details {
+  font-size: 18px;
+}
+.invitation__btns {
+  display: flex;
+  gap: 15px;
+  margin-top: 16px;
+  align-items: center;
+}
+
 .settings__page .settings__row--top {
   flex-wrap: wrap;
   gap: 10px;

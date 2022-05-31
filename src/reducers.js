@@ -11,6 +11,7 @@ import {createCourseState} from './pages/createCourse/reducer';
 import { patientsState } from './pages/patients/reducer';
 import { appointmentsState } from './pages/appointments/reducer';
 import { notificationsState } from './pages/notifications/reducer';
+import { doctorsState } from './pages/doctors/reducer';
 
 const reducers = (history) => combineReducers({
   router: connectRouter(history),
@@ -24,7 +25,8 @@ const reducers = (history) => combineReducers({
   createCourseState,
   patientsState,
   appointmentsState,
-  notificationsState
+  notificationsState,
+  doctorsState
 });
 
 export default reducers;

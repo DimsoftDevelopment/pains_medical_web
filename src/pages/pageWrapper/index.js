@@ -114,6 +114,20 @@ const PageWrapper = ({children, className, showSideBar}) => {
                     </Link>
                     <i className="notification family"></i>
                   </li>}
+                  {user.user_type === 'user' && <li className="menu__item @@nclass @@notification">
+                    <Link
+                      className={
+                        classnames("menu__link btns", {
+                          active: ROUTES.DOCTORS === currentPage
+                        })
+                      }
+                      to={ROUTES.DOCTORS}
+                      title="My Doctors"
+                    >
+                      <i className="icons i32x32 i-users"></i> My Doctors			
+                    </Link>
+                    <i className="notification family"></i>
+                  </li>}
                   {user.user_type === 'doctor' && <li className="menu__item @@nclass @@notification">
                     <Link
                       className={

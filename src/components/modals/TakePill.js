@@ -11,6 +11,7 @@ const TakePill = ({reception, handleCloseModal, isMissed, isTaken}) => {
   const attachments = medication.attachments.data.map(attachment => attachment.attributes);
   const firstImage = attachments.length > 0 ? attachments[0].file_url : '';
   const [bigImage, setBigImage] = useState(firstImage);
+  const [btnStatus, setBtnStatus] = useState('calc(100% - 4px)')
   const dispatch = useDispatch();
   const getAdditionalClassName = () => {
     if (isMissed) return 'popup--medicine popup--missed';
@@ -121,7 +122,7 @@ const TakePill = ({reception, handleCloseModal, isMissed, isTaken}) => {
               className="btns btn-takeswipe"
               onClick={takePill}
             >
-              <span>TAKE</span>
+              <span style={{left: btnStatus}}>TAKE</span>
             </button>
           </div>
         )}
