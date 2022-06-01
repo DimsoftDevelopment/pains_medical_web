@@ -9,7 +9,7 @@ const QuickFamilyItem = ({user, selectUser, selectedUser}) => {
     })}>
       <button className="list__link btns" onClick={selectUser}>
         <figure className="family__avatar avatar">
-          <img src={user.avatar_thumb_url} alt="USERNAME" />
+          <img src={`${process.env.REACT_APP_IMAGE_URL}${user.avatar_thumb_url}`} alt="USERNAME" />
         </figure>
         <span className="family__name"><span>{user.first_name}</span> <span>{user.last_name}</span></span>
       </button>

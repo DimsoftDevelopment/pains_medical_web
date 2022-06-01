@@ -17,7 +17,7 @@ function* handleGetFamilyList() {
   try {
     const {data} = yield call(processRequest, `/family_members/users`, 'GET');
     if (data.users) {
-      const familyList = data.users.data;
+      const familyList = data.users.data.map(item => item.attributes);
       yield put(getFamilyListSuccess(familyList));
     } else {
       yield put(getFamilyListError(data));
