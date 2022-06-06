@@ -91,7 +91,7 @@ const DoctorCreation = () => {
                 }
               }}
               render={({field}) => (
-                <PhoneInput {...field} />
+                <TextInput type='number' {...field} />
               )}
             />
           </div>

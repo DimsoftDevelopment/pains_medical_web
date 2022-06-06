@@ -6,6 +6,7 @@ import Modal from './Modal';
 import SubmitButton from '../buttons/SubmitButton';
 import {PHONE} from '../../constants';
 import 'react-phone-number-input/style.css';
+import TextInput from '../inputs/TextInput';
 
 const InviteMember = ({handleCloseModal, handleInvite}) => {
   const {isLoading} = useSelector(({authState}) => authState);
@@ -35,7 +36,7 @@ const InviteMember = ({handleCloseModal, handleInvite}) => {
               }
             }}
             render={({field}) => (
-              <PhoneInput {...field} />
+              <TextInput type='number' {...field} />
             )}
           />
           {errors.phone && errors.phone.type === 'phoneNumber' && (

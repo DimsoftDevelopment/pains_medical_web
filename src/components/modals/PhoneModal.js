@@ -7,6 +7,7 @@ import SubmitButton from '../buttons/SubmitButton';
 import {PHONE} from '../../constants';
 import {sendVerificationCode} from '../../pages/auth/actions';
 import 'react-phone-number-input/style.css';
+import TextInput from '../inputs/TextInput';
 
 const PhoneModal = () => {
   const dispatch = useDispatch();
@@ -38,7 +39,7 @@ const PhoneModal = () => {
               }
             }}
             render={({field}) => (
-              <PhoneInput {...field} />
+              <TextInput type='number' {...field} />
             )}
           />
           {errors.phone && errors.phone.type === 'phoneNumber' && (

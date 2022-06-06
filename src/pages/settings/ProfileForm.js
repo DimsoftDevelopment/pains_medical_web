@@ -190,7 +190,7 @@ const ProfileForm = () => {
                   }
                 }}
                 render={({field}) => (
-                  <PhoneInput {...field} disabled />
+                  <TextInput type='number' {...field} disabled />
                 )}
               />
               {errors.phone && errors.phone.type === 'phoneNumber' && (
