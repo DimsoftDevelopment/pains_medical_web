@@ -107,7 +107,8 @@ function* handleGetPatient(action) {
 function* handleInviteMember(action) {
   try {
     const {payload} = action || {};
-    const {phone} = payload || {};
+    const {phone: checkPhone} = payload || {};
+    const phone = String(checkPhone[0]) === '+' ? checkPhone : `+${checkPhone}`
     const requestPayload = {phone};
     const {data} = yield call(processRequest, '/doctors/invites', 'POST', requestPayload);
     if (data.message) {

@@ -22,7 +22,11 @@ const Appointment = ({appointment, toggleModal}) => {
       })}>
       <div className="appointment__time">{moment(appointment.start_date).format('HH:MM')}</div>
       <span className="appointment__text">
+        {appointment.user ?
         <Link className="appointment__patient" to={`/patients/${appointment.user.data.id}`}>{appointment.user.data.attributes.first_name} {appointment.user.data.attributes.last_name}</Link>
+        :
+        <Link className="appointment__patient" to={`/doctors/${appointment.doctor.data.id}`}>{appointment.doctor.data.attributes.first_name} {appointment.doctor.data.attributes.last_name}</Link>
+        }
         <span className="appointment__location">{appointment.place}</span>
       </span>
       <span className="appointment__icon">

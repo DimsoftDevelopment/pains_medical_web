@@ -14,13 +14,15 @@ const TextInput = ({
   multyline,
   value,
   onChange = () => {},
-  error
+  error,
+  disabled
 }) => {
   return (
     <div className={containerClassName ? containerClassName : "form__row"}>
       <label className="form__label" htmlFor={id}>{label}</label>
       {multyline ? (
         <textarea
+          disabled={disabled}
           value={value}
           onChange={onChange}
           {...register(name, {required, onChange})}
@@ -32,6 +34,7 @@ const TextInput = ({
         />
       ) : (
         <input
+          disabled={disabled}
           value={value}
           onChange={onChange}
           {...register(name, {required, onChange})}

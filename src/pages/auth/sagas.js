@@ -83,7 +83,8 @@ function* handleIsAuthenticated() {
 }
 
 function* handleSendVerificationCode(action) {
-  const {phone, isResend} = action.payload || {};
+  const {phone: checkPhone, isResend} = action.payload || {};
+  const phone = String(checkPhone[0]) === '+' ? checkPhone : `+${checkPhone}`
   try {
     const requestPayload = {
       phone_verification: {phone},
@@ -109,7 +110,8 @@ function* handleSendVerificationCode(action) {
 }
 
 function* handleCheckVerificationCode(action) {
-  const {phone, code} = action.payload || {};
+  const {phone: checkPhone, code} = action.payload || {};
+  const phone = String(checkPhone[0]) === '+' ? checkPhone : `+${checkPhone}`
   try {
     const requestPayload = {phone, code};
     const {data} = yield call(processRequest, '/phone_verifications/check_code', 'POST', requestPayload);
@@ -165,7 +167,8 @@ function* handleCheckVerificationCode(action) {
 }
 
 function* handleSendPinCode(action) {
-  const {phone, pin_code} = action.payload || {};
+  const {phone: checkPhone, pin_code} = action.payload || {};
+  const phone = String(checkPhone[0]) === '+' ? checkPhone : `+${checkPhone}`
   try {
     const refresh_token = getRefreshToken();
     const requestPayload = {phone, pin_code, refresh_token};
@@ -224,7 +227,10 @@ function* handleSignUp(action) {
     const formData = new FormData();
     const keys = Object.keys(user);
     keys.forEach(key => {
-      if (key === 'avatar' && user[key]) {
+      if(key === 'phone') {
+        formData.append(`user[${key}]`, `${String(user[key][0]) === '+' ? '' : '+'}${user[key]}`)
+      }
+      else if (key === 'avatar' && user[key]) {
         formData.append(`user[${key}]`, user[key]);
       } else {
         formData.append(`user[${key}]`, user[key]);

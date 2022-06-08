@@ -87,11 +87,11 @@ const DoctorCreation = () => {
               rules={{
                 required: 'Phone is required.',
                 validate: {
-                  phoneNumber: value => PHONE.test(value),
+                  phoneNumber: value => PHONE.test(String(value)),
                 }
               }}
               render={({field}) => (
-                <TextInput type='number' {...field} />
+                <TextInput type='number' label='Phone' {...field} />
               )}
             />
           </div>

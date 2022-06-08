@@ -19,7 +19,7 @@ const PhoneModal = () => {
     mode: 'onChange',
   });
   const handleSendVerificationCode = ({phone}) => {
-    dispatch(sendVerificationCode(phone));
+    dispatch(sendVerificationCode(phone))
   };
   return (
     <Modal
@@ -35,7 +35,7 @@ const PhoneModal = () => {
             rules={{
               required: 'Phone is required.',
               validate: {
-                phoneNumber: value => PHONE.test(value),
+                phoneNumber: value => PHONE.test(String(value)),
               }
             }}
             render={({field}) => (

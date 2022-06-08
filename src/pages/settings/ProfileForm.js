@@ -186,11 +186,11 @@ const ProfileForm = () => {
                 rules={{
                   required: 'Phone is required.',
                   validate: {
-                    phoneNumber: value => PHONE.test(value),
+                    phoneNumber: value => PHONE.test(String(value)),
                   }
                 }}
                 render={({field}) => (
-                  <TextInput type='number' {...field} disabled />
+                  <TextInput value={user.phone} disabled />
                 )}
               />
               {errors.phone && errors.phone.type === 'phoneNumber' && (

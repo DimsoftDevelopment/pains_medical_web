@@ -32,7 +32,7 @@ const InviteMember = ({handleCloseModal, handleInvite}) => {
             rules={{
               required: 'Phone is required.',
               validate: {
-                phoneNumber: value => PHONE.test(value),
+                phoneNumber: value => PHONE.test(String(value)),
               }
             }}
             render={({field}) => (

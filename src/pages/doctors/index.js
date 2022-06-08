@@ -165,8 +165,8 @@ const Doctors = () => {
             want to add you to the patient list
           </p>
           <div className='invitation__btns'>
-            <button onClick={handleInviteAccept} className='btns btn-accept'>Accept</button>
-            <button onClick={handleInviteReject} className='btns btn-cancel'>Reject</button>
+            <button onClick={handleInviteAccept} className='btncustom btn-accept'>Accept</button>
+            <button onClick={handleInviteReject} className='btncustom btn-cancel'>Reject</button>
           </div>
         </div>
       </div>}

@@ -142,7 +142,7 @@ const PageWrapper = ({children, className, showSideBar}) => {
                     </Link>
                     <i className="notification family"></i>
                   </li>}
-                  {user.user_type === 'doctor' && <li className="menu__item @@nclass @@notification">
+                  <li className="menu__item @@nclass @@notification">
                     <Link
                       className={
                         classnames("menu__link btns", {
@@ -155,7 +155,7 @@ const PageWrapper = ({children, className, showSideBar}) => {
                       <i className="icons icons-nobackground i32x32 i-notes"></i> Appointments			
                     </Link>
                     <i className="notification notes"></i>
-                  </li>}
+                  </li>
                   {user.user_type === 'doctor' && <li className="menu__item @@nclass @@notification">
                     <Link
                       className={

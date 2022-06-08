@@ -12,6 +12,7 @@ import ReceptionMedications from './components/ReceptionMedications'
 const Appointments = () => {
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch()
+  const { user } = useSelector(({authState}) => authState)
 
   const toggleModal = () => setShowModal(prev => !prev)
 
@@ -45,7 +46,7 @@ const Appointments = () => {
         <div className="top__content">
           <h1 className="page__title">Appointments</h1>
           <div className="top__btns">
-            <button onClick={toggleModal} className="btns btn-userInvite btn-cta" data-toggle="class" data-target="#popups" data-classes="invite">Make an appointment</button>
+            {user.user_type === 'doctor' && <button onClick={toggleModal} className="btns btn-userInvite btn-cta" data-toggle="class" data-target="#popups" data-classes="invite">Make an appointment</button>}
           </div>
         </div>
       </div>
