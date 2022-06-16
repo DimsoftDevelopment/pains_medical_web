@@ -114,7 +114,7 @@ const Doctors = () => {
           </div>
         </section>
         {isEmpty ?
-          <EmptyList />
+          <EmptyList doctors={!!doctorsList.length} />
         : (
           <section className="courses">
             <div className="courses__page">

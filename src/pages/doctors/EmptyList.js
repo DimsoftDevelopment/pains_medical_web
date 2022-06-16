@@ -5,7 +5,7 @@ import clipboardIcon from '../../assets/img/icons/i-clipboard.png';
 import clipboardIcon2x from '../../assets/img/icons/i-clipboard@2x.png';
 import clipboardIcon3x from '../../assets/img/icons/i-clipboard@3x.png';
 
-const EmptyList = () => {
+const EmptyList = doctors => {
   return (
     <section className="courses section--fullheight">
       <div className="courses__block block--fullheight">
@@ -16,7 +16,7 @@ const EmptyList = () => {
               srcSet={`${clipboardIcon2x} 2x, ${clipboardIcon3x} 3x`} alt="clipBoardIcon"
             />
           </div>
-          <div className="empty__title">You don’t have any doctors in your list yet</div>
+          <div className="empty__title">{doctors ? 'You don’t have any doctors in your list yet' : 'Doctor has no available courses for you'}</div>
           <div className="empty__text">
           Your doctor will have the opportunity to create medical courses for you & track your progress.
           </div>

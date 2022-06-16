@@ -157,14 +157,24 @@ const ProfileForm = () => {
             className="user__avatar"
             label={`${user.first_name.charAt(0)}${user.last_name.charAt(0)}`}
           />
-          <div className="user__meds">
+          {user.user_type === 'user' && <div className="user__meds">
             <div className="courses">
+              <img
+                src={clipboardIcon}
+                srcSet={`${clipboardIcon2x} 2x, ${clipboardIcon3x} 3x`}
+                alt="Courses"
+              />
               {`${user.courses_count} Courses`}
             </div>
             <div className="medicines">
+              <img
+                src={medicineIcon}
+                srcSet={`${medicineIcon2x} 2x, ${medicineIcon3x} 3x`}
+                alt="Meds"
+              />
               {`${user.medications_count} Meds`}
             </div>
-          </div>
+          </div>}
         </div>
         <div className="settings__row settings__row--form">
           <div className="form__column--2">

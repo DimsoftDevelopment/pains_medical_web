@@ -5,7 +5,7 @@ import {config} from '../../../config';
 import { Link } from 'react-router-dom'
 
 const Appointment = ({appointment, toggleModal}) => {
-  const isMissed = appointment.status === 'mised'
+  const isMissed = appointment.status === 'pending'
   const isTaken = appointment.status === 'taken'
   const openModal = () => {
     toggleModal({

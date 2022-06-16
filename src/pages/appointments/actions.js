@@ -29,3 +29,18 @@ export const addAppointmentFail = ({ place, start_date, user_id }) => ({
   type: APPOINTMENTS_ACTIONS.CREATE_APPOINTMENT_FAIL,
   payload: { place, start_date, user_id }
 })
+
+export const getAppointmentsInvitations = () => ({
+  type: APPOINTMENTS_ACTIONS.CREATE_APPOINTMENT,
+  payload: {  }
+})
+
+export const getAppointmentsInvitationsSuccess = ({ place, start_date, user_id }) => ({
+  type: APPOINTMENTS_ACTIONS.CREATE_APPOINTMENT_SUCCESS,
+  payload: { place, start_date, user_id }
+})
+
+export const getAppointmentsInvitationsFail = ({ place, start_date, user_id }) => ({
+  type: APPOINTMENTS_ACTIONS.CREATE_APPOINTMENT_FAIL,
+  payload: { place, start_date, user_id }
+})

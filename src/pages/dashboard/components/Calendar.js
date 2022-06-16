@@ -6,7 +6,7 @@ import {isMissedDay} from '../../courses/helpers';
 import {getCurrentDayDate, convertDatesISO} from '../../../services/DateHelper';
 
 const scrollToCustom = (el) => {
-  const elLeft = el.offsetLeft + el.offsetWidth + el.parentNode.offsetWidth / 2;
+  const elLeft = el.offsetLeft + el.offsetWidth + el.parentNode.offsetWidth - 70;
   const elParentLeft = el.parentNode.offsetLeft + el.parentNode.offsetWidth;
 
   // check if element not in view

@@ -5,7 +5,8 @@ import Calendar from './components/Calendar'
 import CreateAppointment from '../../components/modals/CreateAppointment'
 import {
   addAppointment,
-  getAppointments
+  getAppointments,
+  getAppointmentsInvitations
 } from './actions'
 import ReceptionMedications from './components/ReceptionMedications'
 
@@ -13,7 +14,7 @@ const Appointments = () => {
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch()
   const { user } = useSelector(({authState}) => authState)
-
+  const { invitations } = useSelector(({appointmentsState}) => appointmentsState)
   const toggleModal = () => setShowModal(prev => !prev)
 
   const {
@@ -23,6 +24,7 @@ const Appointments = () => {
 
   useEffect(() => {
     dispatch(getAppointments(start_date))
+    // dispatch(getAppointmentsInvitations()) 
   }, [dispatch])
   const handleDateChange = date => {
     dispatch(getAppointments(date.start_date))
@@ -35,6 +37,14 @@ const Appointments = () => {
       start_date: new Date(`${data.start_date.split('T')[0]}T${data.time}`).toISOString(),
       end: () => setShowModal(false)
     }))
+  }
+
+  const handleInviteAccept = () => {
+
+  }
+
+  const handleInviteReject = () => {
+
   }
 
   return (
@@ -61,6 +71,20 @@ const Appointments = () => {
           toggleModal={toggleModal}
         />
       </div>
+      {invitations.length && <div className='invitation'>
+        <div className='invitation__card'>
+          <p className='invitation__title'>Invitation</p>
+          <p className='invitation__details'>
+            {/* <strong>{invitations[0].doctor.data.attributes.first_name} {invitations[0].doctor.data.attributes.last_name}</strong> */}
+            {' '}
+            want to add you to the patient list
+          </p>
+          <div className='invitation__btns'>
+            <button onClick={handleInviteAccept} className='btncustom btn-accept'>Accept</button>
+            <button onClick={handleInviteReject} className='btncustom btn-cancel'>Reject</button>
+          </div>
+        </div>
+      </div>}
       {showModal && (
         <CreateAppointment
           handleCloseModal={toggleModal}

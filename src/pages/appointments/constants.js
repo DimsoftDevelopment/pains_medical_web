@@ -9,14 +9,18 @@ const APPOINTMENTS_ACTIONS = KeyMirror({
   GET_APPOINTMENTS_FAIL: null,
   CREATE_APPOINTMENT: null,
   CREATE_APPOINTMENT_SUCCESS: null,
-  CREATE_APPOINTMENT_FAIL: null
+  CREATE_APPOINTMENT_FAIL: null,
+  CREATE_APPOINTMENTS_INVITATIONS: null,
+  CREATE_APPOINTMENTS_INVITATIONS_SUCCESS: null,
+  CREATE_APPOINTMENTS_INVITATIONS_FAIL: null
 })
 const INITIAL_STATE = {
   start_date,
   end_date,
   appointments: [],
   error: null,
-  isLoading: false
+  isLoading: false,
+  invitations: []
 }
 const MONTHS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 const MONTH_DAYS = month => {
