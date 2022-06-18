@@ -39,7 +39,7 @@ const PhoneModal = () => {
               }
             }}
             render={({field}) => (
-              <TextInput type='number' {...field} />
+              <TextInput {...field} />
             )}
           />
           {errors.phone && errors.phone.type === 'phoneNumber' && (

@@ -36,7 +36,7 @@ const InviteMember = ({handleCloseModal, handleInvite}) => {
               }
             }}
             render={({field}) => (
-              <TextInput type='number' {...field} />
+              <TextInput {...field} />
             )}
           />
           {errors.phone && errors.phone.type === 'phoneNumber' && (
