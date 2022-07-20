@@ -41,6 +41,7 @@ const handleError = async (error, instance) => {
       const errorData = {
         headers: error.response.headers,
         status: error.response.status,
+        data: error.response.data
       };
       throw errorData;
     }
@@ -48,6 +49,7 @@ const handleError = async (error, instance) => {
     const errorData = {
       headers: error.response.headers,
       status: error.response.status,
+      data: error.response.data
     };
     throw errorData;
   } else {

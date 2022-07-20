@@ -90,6 +90,7 @@ function* handleSendVerificationCode(action) {
       phone_verification: {phone},
     };
     const {data} = yield call(processRequest, '/phone_verifications', 'POST', requestPayload);
+    console.log(data)
     if (data.message) {
       if (isResend) {
         yield put(resendVerificationCodeSuccess(phone));
@@ -106,6 +107,12 @@ function* handleSendVerificationCode(action) {
   } catch(e) {
     const sendError = isResend ? resendVerificationCodeError : sendVerificationCodeError;
     yield put(sendError(e));
+    console.log(e)
+    yield put(toggleNotification({
+      title: 'Error!',
+      message: e.data.error_message,
+      type: 'danger'
+    }))
   }
 }
 
