@@ -10,7 +10,7 @@ const PublicRoute = (props) => {
   const {user} = useSelector(({authState}) => authState);
 
   return token && (user && user.id) ? (
-    <Redirect to={ROUTES.DASHBOARD} />
+    <Redirect to={user.user_type === 'doctor' ? `/doctor${ROUTES.DASHBOARD}` : ROUTES.DASHBOARD} />
   ) : (
     <Route {...props } />
   );

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import PropTypes from 'prop-types';
@@ -20,6 +20,13 @@ const PageWrapper = ({children, className, showSideBar}) => {
     isPinChangedOpen,
   } = useSelector(({pageWrapperState}) => pageWrapperState);
   const { user } = useSelector(({authState}) => authState)
+  const [routes, setRoutes] = useState({...ROUTES, isInit: true})
+  useEffect(() => user && user.user_type === 'doctor' && routes.isInit && setRoutes(prev => {
+    for(let i in prev) {
+      prev[i] = `/doctor${prev[i]}`
+    }
+    return {...prev, isInit: false}
+  }), [user, routes, setRoutes])
   const currentPage = window.location.pathname;
   const handleLogout = () => {
     dispatch(logout());
@@ -65,10 +72,10 @@ const PageWrapper = ({children, className, showSideBar}) => {
                     <Link
                       className={
                         classnames("menu__link btns", {
-                          active: ROUTES.DASHBOARD === currentPage
+                          active: routes.DASHBOARD === currentPage
                         })
                       }
-                      to={ROUTES.DASHBOARD}
+                      to={routes.DASHBOARD}
                       title="Home"
                     >
                       <i className="icons i32x32 i-home"></i> Home	
@@ -78,10 +85,10 @@ const PageWrapper = ({children, className, showSideBar}) => {
                     <Link
                       className={
                         classnames("menu__link btns", {
-                          active: ROUTES.COURSES === currentPage || ROUTES.CREATE_COURSE === currentPage
+                          active: routes.COURSES === currentPage || routes.CREATE_COURSE === currentPage
                         })
                       }
-                      to={ROUTES.COURSES}
+                      to={routes.COURSES}
                       title="Courses"
                     >
                       <i className="icons i32x32 i-clipboard"></i> Courses
@@ -91,10 +98,10 @@ const PageWrapper = ({children, className, showSideBar}) => {
                     <Link
                       className={
                         classnames("menu__link btns", {
-                          active: ROUTES.MEDS === currentPage
+                          active: routes.MEDS === currentPage
                         })
                       }
-                      to={ROUTES.MEDS}
+                      to={routes.MEDS}
                       title="Medicines"
                     >
                       <i className="icons i32x32 i-medicine"></i> Meds			
@@ -104,10 +111,10 @@ const PageWrapper = ({children, className, showSideBar}) => {
                     <Link
                       className={
                         classnames("menu__link btns", {
-                          active: ROUTES.FAMILY === currentPage
+                          active: routes.FAMILY === currentPage
                         })
                       }
-                      to={ROUTES.FAMILY}
+                      to={routes.FAMILY}
                       title="Family"
                     >
                       <i className="icons i32x32 i-users"></i> Family			
@@ -118,10 +125,10 @@ const PageWrapper = ({children, className, showSideBar}) => {
                     <Link
                       className={
                         classnames("menu__link btns", {
-                          active: ROUTES.DOCTORS === currentPage
+                          active: routes.DOCTORS === currentPage
                         })
                       }
-                      to={ROUTES.DOCTORS}
+                      to={routes.DOCTORS}
                       title="My Doctors"
                     >
                       <i className="icons i32x32 i-users"></i> My Doctors			
@@ -132,10 +139,10 @@ const PageWrapper = ({children, className, showSideBar}) => {
                     <Link
                       className={
                         classnames("menu__link btns", {
-                          active: ROUTES.PATIENTSLINK === currentPage
+                          active: routes.PATIENTSLINK === currentPage
                         })
                       }
-                      to={ROUTES.PATIENTSLINK}
+                      to={routes.PATIENTSLINK}
                       title="Patients"
                     >
                       <i className="icons i32x32 i-users"></i> Patients			
@@ -146,10 +153,10 @@ const PageWrapper = ({children, className, showSideBar}) => {
                     <Link
                       className={
                         classnames("menu__link btns", {
-                          active: ROUTES.APPOINTMENTS === currentPage
+                          active: routes.APPOINTMENTS === currentPage
                         })
                       }
-                      to={ROUTES.APPOINTMENTS}
+                      to={routes.APPOINTMENTS}
                       title="Appointments"
                     >
                       <i className="icons icons-nobackground i32x32 i-notes"></i> Appointments			
@@ -160,10 +167,10 @@ const PageWrapper = ({children, className, showSideBar}) => {
                     <Link
                       className={
                         classnames("menu__link btns", {
-                          active: ROUTES.NOTIFICATIONS === currentPage
+                          active: routes.NOTIFICATIONS === currentPage
                         })
                       }
-                      to={ROUTES.NOTIFICATIONS}
+                      to={routes.NOTIFICATIONS}
                       title="Notifications"
                     >
                       <i className="icons icons-nobackground i32x32 i-bell" style={{opacity: 0.5}}></i> Notifications			
@@ -174,10 +181,10 @@ const PageWrapper = ({children, className, showSideBar}) => {
                   <Link
                     className={
                       classnames("menu__link btns", {
-                        active: ROUTES.SETTINGS === currentPage
+                        active: routes.SETTINGS === currentPage
                       })
                     }
-                    to={ROUTES.SETTINGS}
+                    to={routes.SETTINGS}
                     title="Settings"
                   >
                     <i className="icons i32x32 i-gear"></i> Settings			

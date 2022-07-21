@@ -49,6 +49,21 @@ const Routes = () => {
       <PrivateRoute exact path={ROUTES.CREATE_MEDICATION} component={CreateMedication} />
       <PrivateRoute exact path={ROUTES.SETTINGS} component={Settings} />
       <PrivateRoute exact path={ROUTES.EDIT_MEDICATION} component={EditMedication} />
+      <PublicRoute exact path={`/doctor${ROUTES.HOME}`} component={() => <SignIn type='doctor' />} />
+      <PublicRoute exact path={`${ROUTES.DOCTOR_CREATION}`} component={DoctorCreation} />
+      <PrivateRoute exact path={`/doctor${ROUTES.DASHBOARD}`} component={Dashboard} />
+      <PrivateRoute exact path={`/doctor${ROUTES.COURSES}`} component={Courses} />
+      <PrivateRoute exact path={`/doctor${ROUTES.APPOINTMENTS}`} component={Appointments} />
+      <PrivateRoute exact path={`/doctor${ROUTES.NOTIFICATIONS}`} component={Notifications} />
+      <PrivateRoute exact path={`/doctor${ROUTES.CREATE_COURSE}`} component={CreateCourse} />
+      <PrivateRoute exact path={`/doctor${ROUTES.CREATE_COURSE_MEDICATION}`} component={SelectedMedication} />
+      <PrivateRoute exact path={`/doctor${ROUTES.FAMILY}`} component={Family} />
+      <PrivateRoute exact path={`/doctor${ROUTES.DOCTORS}`} component={Doctors} />
+      <PrivateRoute exact path={`/doctor${ROUTES.PATIENTS}`} component={Patients} />
+      <PrivateRoute exact path={`/doctor${ROUTES.MEDS}`} component={Meds} />
+      <PrivateRoute exact path={`/doctor${ROUTES.CREATE_MEDICATION}`} component={CreateMedication} />
+      <PrivateRoute exact path={`/doctor${ROUTES.SETTINGS}`} component={Settings} />
+      <PrivateRoute exact path={`/doctor${ROUTES.EDIT_MEDICATION}`} component={EditMedication} />
       <Redirect from="*" to={ROUTES.HOME} />
     </Switch>
   );
